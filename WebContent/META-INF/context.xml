@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+	<Resource
+		name="jdbc/MySQ2"
+		auth="Container"
+		type="javax.sql.DataSource"
+		username="team7_id"
+		password="1234"
+		driverClassName="com.mysql.jdbc.Driver"
+		useUnicode="true"
+		factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+		url="jdbc:mysql://localhost:3306/project0724?characterEncoding=UTF8"
+		maxActive="500"
+	/>
+</Context>
