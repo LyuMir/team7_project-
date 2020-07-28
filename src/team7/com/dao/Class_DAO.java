@@ -1,4 +1,4 @@
-package dao;
+package team7.com.dao;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -16,7 +16,7 @@ public class Class_DAO {
 		SqlSessionFactory sqlF2 = null;
 		Reader xml;
 		try {
-			xml = Resources.getResourceAsReader("dao/mybatis_config.xml");
+			xml = Resources.getResourceAsReader("team7/com/dao/mybatis_config.xml");
 			sqlF2 = new SqlSessionFactoryBuilder().build(xml);
 		} catch (IOException e) {
 			e.printStackTrace();

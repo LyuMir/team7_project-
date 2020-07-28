@@ -1,4 +1,4 @@
-package vo;
+package team7.com.vo;
 
 public class ActionForward {
 	private boolean isRedirect=false;
