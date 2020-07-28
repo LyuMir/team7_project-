@@ -1,4 +1,5 @@
-package team7.com.vo;
+package com.team7.vo;
+
 
 public class PageInfo {
 	

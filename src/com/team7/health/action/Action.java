@@ -1,8 +1,8 @@
-package team7.com;
+package com.team7.health.action;
 
 import javax.servlet.http.*;
 
-import team7.com.vo.ActionForward;
+import com.team7.vo.ActionForward;
 
 public interface Action {
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception;

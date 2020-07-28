@@ -1,4 +1,4 @@
-package team7.com.dao;
+package com.team7.dao;
 
 import java.io.IOException;
 import java.io.Reader;
