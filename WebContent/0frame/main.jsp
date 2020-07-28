@@ -2,27 +2,16 @@
 <html class="js">
 <head>
     <meta charset="utf-8">
-    <title>타 이 틀 </title>
-    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+    <title>데일리 헬스</title>
+    <!--  넌 문제 맞음... main -->
     <link rel="stylesheet" href="css/main.css">
-    <!-- 니가 문제야 니가 ...  -->
-    <!-- <link rel="stylesheet" href="css/headhesive.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="css/menumenu88.css"> -->
     <link rel="stylesheet" type="text/css" href="css/mainmain88.css">
-    <!-- <link rel="stylesheet" type="text/css" href="./slick/slick.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css"> -->
-
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="css\css-demo-page.css"> -->
-
     <link rel="stylesheet" href="css\grt-responsive-menu.css">
 
 <!-- Jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js\grt-responsive-menu.js?v=<%=System.currentTimeMillis()%>"></script>
-    <!-- <script type="text/javascript" src="js/headhesive.js"></script> -->
-    <!-- <script type="text/javascript" src="js/dist/headhesive.js"></script> -->
-
 
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700" rel="stylesheet" type='text/css'>
@@ -67,19 +56,20 @@ request.setCharacterEncoding("UTF-8");
     if(log_st==null){
       log_st = 0; 
       session.setAttribute("LOG_STATUS",0);
-      response.sendRedirect("team_main.jsp"); //꼭 이렇게 해야 할까?
+      //response.sendRedirect("main.jsp"); //꼭 이렇게 해야 할까?
+      //모름
   }
   else if(log_st==0)  { //?? 안 먹나?
   %>
 <!-- 헤더를 include로 해봅시다. : 로그인 안 되어있을 시  -->
-<%@ include file="team_header.jsp" %>
+<%@ include file="header.jsp" %>
 
 <%
   }
   else{
   %>
 <!-- 헤더를 include로 해봅시다. : 로그인 되어있을 시  -->
-<%@ include file="team_header2.jsp" %>
+<%@ include file="header2.jsp" %>
 <%
   }
 %>
@@ -93,7 +83,7 @@ request.setCharacterEncoding("UTF-8");
 
 
 <!-- 네비도 include로 할겁니다.  -->
-<%@ include file="team_nav.jsp" %>
+<%@ include file="nav.jsp" %>
         <a id="showHere"></a>
 
 <main role="main">
@@ -169,7 +159,7 @@ request.setCharacterEncoding("UTF-8");
     </main>
 
 <!-- include로 뺀 푸터  -->
-<%@ include file="team_footer.jsp" %>
+<%@ include file="footer.jsp" %>
 
 
 
