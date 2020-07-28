@@ -1,0 +1,140 @@
+
+header * {
+  font-size: var(--font-size-medium);
+}
+
+.fleft{
+  float: left;
+}
+
+/*.j_menu > ol > li:hover:after {
+  background: linear-gradient(to left, var(--accent-color), var(--gradient-color));
+  border-bottom-color: linear-gradient(to left, rgb(200,200,200), var(--gradient-color));
+  border-bottom: 2px solid linear-gradient(to left, var(--accent-color), var(--gradient-color));
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  max-width: 800px;
+}*/
+.mouseover__underliner{
+  transition: left .2s linear;
+
+}
+
+.headerwrap *{
+  margin:0;
+  padding:0;
+}
+
+/*.mouseover__underliner:hover{
+  text-decoration: underline;
+
+  border-bottom: solid;
+  border-bottom-color: linear-gradient(to left, rgb(200,200,200), #6FD6FF);
+  /*transition: left .2s linear;*/
+  /*transition: color .4s ease-out;* /
+
+}*/
+
+.mouseover__underliner a:hover{
+  /*text-decoration: underline;*/
+/*  transition: all 1s; 절대안돼. */
+  border-bottom: solid;
+  border-bottom-color: linear-gradient(to left, rgb(200,200,200), #6FD6FF);
+  /*transition: left .2s linear;*/
+  background-color: var(--silver-color-6);
+  color: var(--silver-color-1);
+}
+/*.ubo__nav__dropdown__content a{
+
+}*/
+
+.ubo__navigation{
+  height: 50px;
+  z-index: 1;
+  box-shadow: 0 0 3px 0 rgba(102,102,102,.75);
+  max-width: 1000px;
+  width: 100%;
+  min-width: 400px;
+  margin: 0 auto 60px auto;
+  /*margin-bottom: 60px;*/
+}
+
+.ubo__nav__wrap{
+  display: flex;
+  height: 300px;
+  /*width: 100%;*/
+  margin: 0 auto;
+
+}
+
+.ubo__navigation__affixed{
+  position: fixed;
+  height: 50px;
+  top: 66px;
+  left: 50px;
+  right: 0; /* 이렇게 하면 좌우 늘여짐 됨.. */
+  box-shadow: none;
+  z-index: 24;
+  transition: left .2s linear;
+}
+
+
+.ubo__nav__con__a{
+  display: block;
+  padding: 15px 30px 14px;
+  text-decoration: none;
+  position: relative;
+  transition: color .4s ease-out;
+}
+
+.ubo__nav__dropdown{
+  float: left;
+  overflow: hidden;
+}
+
+.ubo__nav__dropdown__content{
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  /*margin: 0 8px;*/
+  margin: 5px auto;
+  padding-left: 20px;
+}
+
+div.ubo__nav__dropdown__content {
+  position: fixed;
+  height: 50px;
+  /*top: 70px;*/
+ /* left: 0;
+  right: 0;*/ 
+  /* 이렇게 하면 좌우 늘여짐 됨.. .. 이거 js로 고치자. : 됨 ;  */
+
+
+  box-shadow: none;
+  z-index: 24;
+  transition: left .2s linear;
+  box-shadow: 0 0 3px 0 rgba(102,102,102,.75);
+}
+
+.ubo__nav__dropdown__content a{
+  /*float: none;*/
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+
+}
+/* 이 밑에껄 js로 바꿔버리. */
+/*.ubo__nav__dropdown:hover .ubo__nav__dropdown__content{
+  display: block;
+}*/
+
+.showitplease{
+  display: block;
+}
+
+.unshowitplease{
+  display: none;
+}

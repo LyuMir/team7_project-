@@ -1,0 +1,237 @@
+
+
+
+.j_topmargin {
+  margin-top: 40px;
+}
+
+
+section {
+  padding: 15px;
+}
+
+
+
+/*.j_box0{display: inline-block;
+	width:97%; 
+	height: 400px;}
+
+.j_box1{
+	display: inline-block;
+	width:48%;
+	height: 300px;
+}
+
+.j_box2{width:23.5%; height:200px;display: inline-block;}
+.j_box3{width:48%; height: 200px;display: inline-block;}*/
+
+.grid {
+  display: grid; 
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  align-items: start;
+}
+/*@media (max-width: 60em) {
+  .grid {
+    grid-gap: 3rem;
+  }
+}*/
+.grid__item {
+  /*background-color: #fff; 흰색인듯 */
+  /*background-color: rgba(128,211,211,0.5);*/
+  /*background-color: rgba(211,211,211,0.5);*/
+  border-radius: .4rem;
+  overflow: hidden; /* 이것 < 넘치기   */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.2s;
+
+}
+.grid__item:hover {
+  /*transform: translateY(-1%);*/
+  /*box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.2); 그림자*/
+}
+.grid__item *{
+  transition: 0.5s;
+}
+.grid__item:hover .card__heart img{
+  /*transition: 0.5s;*/
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.card__img {
+  display: block;
+  width: 100%;
+  height: 13rem;ㅜ
+  overflow: hidden;
+  /*오올 이거 유용한 태그인듯 obj cove*/
+}
+.card__img img{
+  transition: .3s ease;
+}
+.grid__item:hover .card__img img{
+  transform : scale(1.08); /*커집니다. */
+}
+
+.card__content {
+  padding: 5px;
+  /*padding-top: 15px;*/
+  /*min-height: 90px;   크기 맞춤 */
+  height: 150px;
+}
+.card__header {
+  /*font-size: 1rem;*/
+  font-size: var(--font-size-medium);
+  font-weight: 700;
+  color: #0d0d0d;
+  margin-bottom: 6px;
+  height: 42px; /*text-overflow:ellipsis;  */
+   overflow: hidden;
+   display: -webkit-box;
+-webkit-line-clamp: 2; /* 라인수 */
+-webkit-box-orient: vertical;
+word-wrap:break-word; 
+
+  /*text-align:  center;*/
+
+}
+.card__text {
+  /*font-size: 0.8rem;*/
+  /*font-size: var(--font-size-text);*/
+  /*letter-spacing: .1rem;*/
+  letter-spacing: .05rem;
+  /*line-height: 1.7;*/
+  line-height: 1.2;
+  color: #3d3d3d;
+  /*margin-bottom: 1.5rem;*/
+  height: 42px; /*text-overflow:ellipsis;  */
+   overflow: hidden;
+   display: -webkit-box;
+-webkit-line-clamp: 3; /* 라인수 */
+-webkit-box-orient: vertical;
+word-wrap:break-word;
+}
+.card__tag00{
+  height:16px;
+  overflow: hidden;
+}
+.card__tag {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color:red;
+}
+
+.card__heart *{
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+
+.card__oinfo {
+  margin-top: 0.2rem;
+  /*font-size: 0.8rem;*/
+  color:blue;
+}
+
+
+.card__oinfo * {
+  width: 20px;
+}
+
+.card__view{
+
+}
+
+.card__unshow_{
+  display: none;
+}
+
+.card__content:hover .card__unshow_{
+  display: block;
+  /*position: relative;*/
+  /*top: -100px;*/
+  position: fixed;
+  bottom: 44px;
+}
+.card__content:hover .card__unshow_:last-child{
+  position: absolute;
+  bottom: 5px;
+}
+
+
+
+.card__btn {
+  /*display: block;*/
+  width: 100%;
+  /*padding: 1rem;*/
+  padding: .5rem 0;
+  /*font-size: 1rem;*/
+  text-align: center;
+  color: #3363ff;
+  /*background-color: #e6ecff;*/
+  border: none;
+  border-radius: .4rem;
+  transition: 0.2s;
+  cursor: pointer;
+  bottom: 5px;
+  /*position: relative;*/
+  position: absolute;
+}
+.card__btn span {
+  margin-left: 1rem;
+  transition: 0.2s;
+}
+.card__btn:hover, .card__btn:active {
+  background-color: #dce4ff;
+}
+.card__btn:hover span, .card__btn:active span {
+  margin-left: 4rem;
+}
+
+
+
+.bmargin{margin:0.5%; }
+
+.flefter{
+  float: left;
+
+}
+
+.frighter{
+  float: right;
+
+}
+
+.fclear{
+  clear: both;
+}
+/*
+.bgc1{background-color: #F5F3F5;}
+.bgc2{background-color: #576CA8;}
+.bgc3{background-color: #274690;}
+.bgc4{background-color: #1B264F;}
+.bgc5{background-color: #272D2D;}
+
+.bgc11{background-color: #C0B9DD;}
+.bgc12{background-color: #80A1D4;}
+.bgc13{background-color: #75C9C8;}
+.bgc14{background-color: #C03221;}
+.bgc15{background-color: #7D84B2;}
+
+.bgc21{background-color: #4B4237;}
+.bgc22{background-color: #D5A021;}
+.bgc23{background-color: #EDE7D9;}
+.bgc24{background-color: #A49694;}
+.bgc25{background-color: #736B60;}
+
+.bgc31{background-color: #8B9474;}
+.bgc32{background-color: #6CAE75;}
+.bgc33{background-color: #8BBD8B;}
+.bgc34{background-color: #F5A65B;}
+.bgc35{background-color: #BFCC94;}
+*/
+.border1{border: 1px solid red;}
+
+.j_color33{color:red;}

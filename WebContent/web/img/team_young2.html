@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html -->
+<html lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <!-- <link rel="stylesheet" href="css/team_main2.css" type="text/css"> -->
+
+  <script src="./team_young2_files/jquery.min.js.다운로드"></script>
+    <link href="./team_young2_files/css" rel="stylesheet">
+    <link href="./team_young2_files/footer.css" rel="stylesheet">
+  <script type="text/javascript" src="./team_young2_files/menumenu88.js.다운로드"></script>
+  <link rel="stylesheet" type="text/css" href="./team_young2_files/menumenu88.css">
+  <link rel="stylesheet" type="text/css" href="./team_young2_files/mainmain88.css">
+  <link rel="stylesheet" type="text/css" href="./team_young2_files/calcal00.css">
+  <link rel="stylesheet" type="text/css" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/css/thiscsss.css">
+
+
+    
+    <title></title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Arimo:400,700&display=swap');
+  
+      /*body {
+        background: #CDDC39;
+        font-family: 'Arimo', sans-serif;
+      }*/
+  
+      h2 {
+        color: #000;
+        text-align: center;
+        font-size: 2em;
+      }
+  
+      .warpper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .tab {
+        cursor: pointer;
+        padding: 10px 20px;
+        margin: 0px 2px;
+        background: #000;
+        display: inline-block;
+        color: #fff;
+        border-radius: 3px 3px 0px 0px;
+        box-shadow: 0 0.5rem 0.8rem #00000080;
+      }
+  
+      .panels {
+        background: #fffffff6;
+        box-shadow: 0 2rem 2rem #00000080;
+        min-height: 200px;
+        width: 100%;
+        max-width: 730px;
+        border-radius: 3px;
+        overflow: hidden;
+        padding: 20px;
+      }
+  
+      .panel {
+        display: none;
+        animation: fadein .8s;
+      }
+  
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+  
+        to {
+          opacity: 1;
+        }
+      }
+  
+      .panel-title {
+        font-size: 1.5em;
+        font-weight: bold
+      }
+  
+      .radio {
+        display: none;
+      }
+  
+      #one:checked~.panels #one-panel,
+      #two:checked~.panels #two-panel,
+      #three:checked~.panels #three-panel,
+      #four:checked~.panels #four-panel,
+      #five:checked~.panels #five-panel {
+        display: block
+      }
+  
+      #one:checked~.tabs #one-tab,
+      #two:checked~.tabs #two-tab,
+      #three:checked~.tabs #three-tab,
+      #four:checked~.tabs #four-tab,
+      #five:checked~.tabs #five-tab {
+        background: #fffffff6;
+        color: #000;
+        border-top: 3px solid #000;
+      }
+    </style>
+  
+    <style>
+      /*body {
+      width: 1000x;
+      margin: 0 auto;
+      border: solid 1px blueviolet;
+    }*/
+  
+      body .bwrap {
+        width: 500px;
+        margin: 0 auto;
+        border: solid 1px peru;
+      }
+  
+      ul li.bli {
+        display: inline;
+        font-size: 20px;
+      }
+  
+      ul li.bli2 {
+        display: block;
+        font-size: 15px;
+      }
+  
+      ul li.size00 {
+        /*붙여서 써야한다.*/
+        display: inline-block;
+        width: 120px;
+        font-size: 20px;
+      }
+  
+      .btsize {
+        width: 100px;
+        margin: 0 auto;
+      }
+  
+      body div p {
+        font-size: 30px;
+        text-align: center;
+      }
+  
+      .binput {
+        height: 20px;
+        margin-bottom: 15px;
+        margin-right: 10px;
+      }
+    </style>
+    
+  </head>
+
+  <body>
+
+<!-- 헤더 시작~~~~~~~~~~~~~~~~~~~~~~~~  -->
+<!-- 위에 네비게이션 메뉴 시작~~~~~~~~~~~~~~~~~~~~~  -->
+<header class="headerwrap">
+  <div class="container000 marginer30_0">
+    <a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html"><img src="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/dailyhealth_logo.png" style="width: 250px; margin: 0px auto 0 auto;"></a>
+  </div>
+  <nav class=" ubo__navigation">
+    <div class="ubo__nav__wrap "> 
+      <!-- 이걸로 감싸서 가운데다 둘 겁니다.  -->
+      <ul class="ubo__nav__content">
+        <li class=" ubo__nav__dropdown mouseover__underliner">
+          <div class="ubo__nav__con__a"> 헬스 </div>
+          <div class="ubo__nav__dropdown__content" style="left: 10px; right: 10px;">
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">운동 소개 </a>
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">내 주변 헬스장 </a>
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">상담 예약 </a>
+          </div>
+        </li>
+        <li class=" ubo__nav__dropdown mouseover__underliner">
+          <div class="ubo__nav__con__a"> 생활 체육 </div>
+          <div class="ubo__nav__dropdown__content" style="left: 10px; right: 10px;">
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">우리 동네 운동장 </a>
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">우리 동네 소모임</a>
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">내 소모임 관리 </a>
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">자랑하기 </a>
+          </div>
+        </li>
+        <li class=" ubo__nav__dropdown mouseover__underliner">
+          <div class="ubo__nav__con__a"> 내 건강관리 </div>
+          <div class="ubo__nav__dropdown__content" style="left: 10px; right: 10px;">
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">운동 일정 </a>
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">식단 관리 </a>
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">수면 관리 </a>
+            <a class="fleft" href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html">계산기 </a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</header>
+<!-- 메인 시작 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="entirewindowwrap"> <!--이걸로 메인을 감싸줘야 푸터가 옆구리에 삐져나오지 않습니다.  -->
+<main id="main000" class="mainwrap">
+
+
+  <!--<h2>CSS Tab</h2>-->
+  <div class="warpper">
+    <input class="radio" id="one" name="group" type="radio" checked="">
+    <input class="radio" id="two" name="group" type="radio">
+    <input class="radio" id="three" name="group" type="radio">
+    <input class="radio" id="four" name="group" type="radio">
+    <input class="radio" id="five" name="group" type="radio">
+
+    <div class="tabs">
+      <label class="tab" id="one-tab" for="one">비만도 계산기</label>
+      <label class="tab" id="two-tab" for="two">기초 대사량 계산기</label>
+      <label class="tab" id="three-tab" for="three">복부 비만도</label>
+      <label class="tab" id="four-tab" for="four">푸쉬업 계산기</label>
+      <label class="tab" id="five-tab" for="five">신체나이 계산기</label>
+    </div>
+
+    <div class="panels">
+
+      <div class="panel" id="one-panel">
+        <div class="panel-title">
+          <p>비만도 계산기</p>
+        </div>
+        <div>
+          <ul>
+            <li class="size00">키 :</li>
+            <li class="bli"><input type="text" class="binput"></li>
+            <li class="bli">cm</li>
+          </ul>
+          <ul>
+            <li class="size00">몸무게 :</li>
+            <li class="bli"><input type="text" class="binput"></li>
+            <li class="bli">kg</li>
+          </ul>
+          <ul>
+            <li class="size00">성 별 :</li>
+            <li class="bli"><input type="radio" name="radio" value="option1" checked="">남</li>
+            <li class="bli"><input type="radio" name="radio" value="option1">여</li>
+          </ul>
+          <div class="btsize"><button type="button" class="btn btn-warning btn-lg">계산하기</button></div>
+        </div>
+        <div>
+          <hr>
+          <h3>결과:</h3>
+        </div>
+      </div>
+
+      <div class="panel" id="two-panel">
+        <div class="panel-title">
+          <p>기초 대사량 계산기</p>
+        </div>
+        <div>
+          <ul>
+            <li class="size00">나이 :</li>
+            <li class="bli"><input type="text" class="binput"></li>
+            <li class="bli">세</li>
+          </ul>
+          <ul>
+            <li class="size00">키 :</li>
+            <li class="bli"><input type="text" class="binput"></li>
+            <li class="bli">cm</li>
+          </ul>
+          <ul>
+            <li class="size00">몸무게 :</li>
+            <li class="bli"><input type="text" class="binput"></li>
+            <li class="bli">kg</li>
+          </ul>
+          <ul>
+            <li class="size00">성 별 :</li>
+            <li class="bli"><input type="radio" name="radio" value="option1" checked="">남</li>
+            <li class="bli"><input type="radio" name="radio" value="option1">여</li>
+          </ul>
+          <div class="btsize"><button type="button" class="btn btn-warning btn-lg">계산하기</button></div>
+        </div>
+        <div>
+          <hr>
+          <h3>결과:</h3>
+        </div>
+      </div>
+
+      <div class="panel" id="three-panel">
+        <div class="panel-title">
+          <p>복부 비만도</p>
+        </div>
+        <div>
+          <ul>
+            <li class="size00">허리 둘레 :</li>
+            <li class="bli"><input type="text" class="binput"></li>
+            <li class="bli">cm</li>
+          </ul>
+          <ul>
+            <li class="size00">엉덩이 둘레 :</li>
+            <li class="bli"><input type="text" class="binput"></li>
+            <li class="bli">cm</li>
+          </ul>
+          <ul>
+            <li class="size00">성 별 :</li>
+            <li class="bli"><input type="radio" name="radio" value="option1" checked="">남</li>
+            <li class="bli"><input type="radio" name="radio" value="option1">여</li>
+          </ul>
+          <div class="btsize"><button type="button" class="btn btn-warning btn-lg">계산하기</button></div>
+        </div>
+        <div>
+          <hr>
+          <h3>결과:</h3>
+        </div>
+      </div>
+
+      <div class="panel" id="four-panel">
+        <div class="panel-title">
+          <p>푸쉬업 계산기</p>
+        </div>
+        <div>
+          <ul>
+            <li class="size00">나이 :</li>
+            <li class="bli"><input type="text" class="binput"></li>
+            <li class="bli">세</li>
+          </ul>
+          <ul>
+            <li class="size00">횟수 :</li>
+            <li class="bli"><input type="text" class="binput"></li>
+            <li class="bli">회</li>&nbsp;(횟수/60초)
+          </ul>
+          <ul>
+            <li class="size00">성 별 :</li>
+            <li class="bli"><input type="radio" name="radio" value="option1" checked="">남</li>
+            <li class="bli"><input type="radio" name="radio" value="option1">여</li>
+          </ul>
+          <div class="btsize"><button type="button" class="btn btn-warning btn-lg">계산하기</button></div>
+        </div>
+        <div>
+          <hr>
+          <h3>결과:</h3>
+        </div>
+      </div>
+
+      <div class="panel" id="five-panel">
+        <div class="panel-title">
+          <p>신체나이 계산기</p>
+        </div>
+        <div>
+          <ol>
+            <li>식생활</li>
+            <ul>
+              <li class="bli2"><input type="checkbox">항상 싱겁게 먹는다.</li>
+              <li class="bli2"><input type="checkbox">신선한 과일이나 채소를 매끼니 먹는다.</li>
+              <li class="bli2"><input type="checkbox">검게 태운 음식을 먹지 않는다.</li>
+              <li class="bli2"><input type="checkbox">식사를 규칙적으로 한다.</li>
+              <li class="bli2"><input type="checkbox">간식을 먹지 않는다.</li>
+            </ul>
+
+            <li>운동</li>
+            <ul>
+              <li class="bli2"><input type="radio">평균 일주일에 3회이상,한번에 30분이상 운동한다.</li>
+              <li class="bli2"><input type="radio">월3회이상 일주일 3회 이하</li>
+              <li class="bli2"><input type="radio">운동을 전혀 하지 않거나 월3회 미만이다.</li>
+            </ul>
+
+            <li>흡연</li>
+            <ul>
+              <li class="bli2"><input type="radio">전혀 피운 적이 없거나 10년전에 끊었다.</li>
+              <li class="bli2"><input type="radio">5년전에 끊었다.</li>
+              <li class="bli2"><input type="radio">1개월 ~ 5년 사이 끊었다.</li>
+              <li class="bli2"><input type="radio">하루 1갑 미만.</li>
+              <li class="bli2"><input type="radio">하루 1값 이상.</li>
+            </ul>
+
+            <li>음주</li>
+            <ul>
+              <li class="bli2"><input type="radio">전혀 마시지 않는다.</li>
+              <li class="bli2"><input type="radio">횟수와 관계없이 주량은 소주2홉 반병 이하로 마신다.</li>
+              <li class="bli2"><input type="radio">평균 일주일에 1~3회 이고 한번에 소주2홉 1병 이상.</li>
+              <li class="bli2"><input type="radio">평균 일주일에 4회 이상이고 한번에 소주를 2홉 1병 이상.</li>
+              <li class="bli2"><input type="radio">5,2와 3사이</li>
+            </ul>
+
+            <li>스트레스(지난 한 달 동안의 스트레스)</li>
+            <ul>
+              <li class="bli2"><input type="radio">정신적+육체적으로 힘든 어려움들을 느낀다.</li>
+              <li class="bli2"><input type="radio">생활신념에 따라 살아가려 애쓰다 좌절을 느낀다.</li>
+              <li class="bli2"><input type="radio">처한 환경이 인간답게 사는데 부족한다고 느낀다.</li>
+              <li class="bli2"><input type="radio">미래에 대해 불확실학 느끼거나 불안해한 적이 있다.</li>
+            </ul>
+
+            <li>운전 및 안전습관</li>
+            <ul>
+              <li class="bli2"><input type="radio">안전밸트를 항상 착용하고,안전에 주의한다.</li>
+              <li class="bli2"><input type="radio">2,1중 한 가지만 해당</li>
+              <li class="bli2"><input type="radio">3,1중 두가지 모두 해당하지 않음</li>
+            </ul>
+
+            <li>건강검진</li>
+            <ul>
+              <li class="bli2"><input type="radio">나는 2년에 1회 이상 건강검진을 받는다.</li>
+              <li class="bli2"><input type="radio">나는 전혀 건강검진을 받지 않느다.</li>
+              <li class="bli2"><input type="radio">1과2사이</li>
+            </ul>
+
+            <li>B형 간염 혹은 바이러스 보유자</li>
+            <ul>
+              <li class="bli2"><input type="radio">그렇다.</li>
+              <li class="bli2"><input type="radio">아니다.</li>
+              <li class="bli2"><input type="radio">모른다.</li>
+            </ul>
+
+            <li>비만도</li>
+            <ul>
+              <li class="bli2"><input type="radio">표준체중</li>
+              <li class="bli2"><input type="radio">과체중 혹은 저체중</li>
+              <li class="bli2"><input type="radio">경도 비만 혹은 경도 저체중</li>
+              <li class="bli2"><input type="radio">고도비만 혹은 고도 저체중</li>
+            </ul>
+            <div class="btsize"><button type="button" class="btn btn-warning btn-lg">계산하기</button></div>
+          </ol>
+        </div>
+        <div>
+          <hr>
+          <h3>결과:</h3>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</main>
+</div>
+<!-- 메인 끝!! -->
+
+
+
+<!-- 푸터 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+  <footer>
+
+    <div class="footwrap0">
+      <ul>
+        <li>
+          <a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#"> <img src="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/img/logo.png"> <br>Daily Health <i>© 2013</i></a>
+        </li>
+        <li>
+          <p class="services">Services</p>
+
+          <ul>
+            <li><a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#">헬스장찾기</a></li>
+            <li><a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#">소모임찾기</a></li>
+            <li><a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#">명예의전당</a></li>
+          </ul>
+        </li>
+        <li>
+          <p class="reachus">Reach us</p>
+
+          <ul>
+            <li><a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#">Email</a></li>
+            <li><a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#">Twitter</a></li>
+            <li><a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#">Facebook</a></li>
+            <li>010-000-0000</li>
+          </ul>
+        </li>
+        <li>
+          <p class="clients">Share to Sns</p>
+
+          <ul>
+            <li><a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#">facebook</a></li>
+            <li><a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#">instagram</a></li>
+            <li><a href="file:///E:/%EC%98%81%EC%9D%B8%EB%8B%98%20%ED%8C%8C%EC%9D%BC/team_young.html#">twitter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+
+  
+
+
+
+
+
+
+</body></html>

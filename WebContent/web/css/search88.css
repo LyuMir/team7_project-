@@ -1,0 +1,81 @@
+
+
+.myinput00{
+  line-height: 35px;
+  font-size: 15px;
+  width: calc(100% - 349px);
+  /*border: none;*/
+  border:silver solid 2px;
+  padding-left: 12px;
+}
+
+
+.vertMiddle{
+
+  vertical-align: middle;
+  padding : auto auto;
+}
+
+.my_spans{
+  margin: 5px;
+  margin-top: 15px;
+  margin-right: -35px;
+}
+
+.my_spans span{
+
+  margin: 5px;
+  margin-right: 15px;
+}
+
+
+
+.mysearch00 *{
+  margin-right: 25px;
+
+}
+.mysearch00 *:last-child{
+  margin-right: 0;
+}
+
+.mysearch00 select{
+
+  /*line-height: 35px;*/ /*안먹음*/
+  height: 39px;
+  font-size: 15px;
+  padding: 0 24px;
+  border:silver solid 2px;
+}
+
+.myselect02{
+
+  height: 39px;
+  font-size: 15px;
+  padding: 0 24px;
+  border:silver solid 2px;
+  border-radius : 14px 3px 0 0 ;
+}
+
+.mysearch00 button{
+
+  line-height: 35px;
+  font-size: 15px;
+  padding: 0 24px;
+  border:silver solid 2px;
+}
+
+.resultborder{
+  width: calc(100% - 30px);
+  min-height: 50px;
+  border: silver solid 3px;
+  padding: 12px;
+}
+
+button:active{
+  color: white;
+  background-color: var(--silver-color-6);
+}
+select:hover{
+  color: white;
+  background-color: var(--silver-color-6);
+}

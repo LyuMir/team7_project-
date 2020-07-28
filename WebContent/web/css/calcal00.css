@@ -1,0 +1,124 @@
+
+    .warpper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tab {
+      cursor: pointer;
+      padding: 10px 20px;
+      margin: 0px 2px;
+      background: #000;
+      display: inline-block;
+      color: #fff;
+      border-radius: 3px 3px 0px 0px;
+      box-shadow: 0 0.5rem 0.8rem #00000080;
+    }
+
+    .panels {
+      background: #fffffff6;
+      box-shadow: 0 2rem 2rem #00000080;
+      min-height: 200px;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 3px;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .panel {
+      display: none;
+      animation: fadein .8s;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .panel-title {
+      font-size: 1.5em;
+      font-weight: bold
+    }
+
+    .radio {
+      display: none;
+    }
+
+    #one:checked~.panels #one-panel,
+    #two:checked~.panels #two-panel,
+    #three:checked~.panels #three-panel,
+    #four:checked~.panels #four-panel,
+    #five:checked~.panels #five-panel {
+      display: block
+    }
+
+    #one:checked~.tabs #one-tab,
+    #two:checked~.tabs #two-tab,
+    #three:checked~.tabs #three-tab,
+    #four:checked~.tabs #four-tab,
+    #five:checked~.tabs #five-tab {
+      background: #fffffff6;
+      color: #000;
+      border-top: 3px solid #000;
+    }
+
+    ul li {
+      display: inline;
+      font-size: 15px;
+    }
+
+    input[type="text"] {
+      margin-top: 5px;
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 5px;
+    }
+
+    input[type="radio"] {
+      margin-top: 10px;
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 25px;
+    }
+
+    ul li.size00 {
+      /*붙여서 써야한다.*/
+      display: inline-block;
+      width: 100px;
+    }
+
+    ul li.size01 {
+      /*붙여서 써야한다.*/
+      display: inline-block;
+      width: 110px;
+    }
+
+    .btsize {
+      width: 100px;
+      margin: 0 auto;
+    }
+
+    body div p {
+      font-size: 20px;
+      text-align: center;
+    }
+
+    
+    .bodyage ul li {
+      /* float: left; */
+      display: block;
+      list-style: none;
+    }
+
+    .bodyage ul li {
+      /* float: left; */
+      display: block;
+      list-style: none;
+    }

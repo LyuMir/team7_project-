@@ -1,0 +1,800 @@
+body {
+    margin: 0;
+    --color-text: #644B47;
+    /*--color-bg: #F2FFED;  연한색입니다. */
+    --color-bg: rgb(225,225,225);  /*회색임*/
+    --color-link: #C72F7A;
+    /*--color-link-hover: #3d3637;*/
+    --color-link-hover: black;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    font-family: soleil, sans-serif;
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* Cursor styles */
+	--cursor-stroke: #644B47;
+	--cursor-fill: none;
+	--cursor-stroke-width: 1px;
+
+  --font-size-title : 2.2em;
+  --font-size-medium : 1.3em;
+  --font-size-text : 1em;
+
+}
+
+
+.fontsize_title{
+  font-size: var(--font-size-title);
+}
+
+.fontsize_m {
+  font-size: var(--font-size-medium);
+}
+
+.fontsize_s {
+  font-size: var(--font-size-text);
+}
+
+
+
+.headerwrap{
+  /*max-width: 1280px;*/
+  width: 1000px;
+  min-width: 400px;
+  margin: 0 auto;
+}
+
+.bar{
+  width: 100%;
+  height: 3px;
+  background-color: #5B000E;
+}
+
+.divclean {
+  clear: both;
+}
+
+.entirewindowwrap {
+  width: 100%;
+  z-index: -1;
+  background-color: inherit;
+}
+
+.mainwrap{
+
+  max-width: 1080px;
+  width: 95%;
+  min-width: 450px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 25px;
+
+}
+
+.marginer{
+  margin:10px;
+}
+
+
+.main_title0{
+  font-weight: 800;
+  font-size: 3.4rem;
+  font-size: var(--font-size-title);
+  color: rgb(110, 115, 242);
+  background-color : rgba(110, 242, 141, 0.5);
+  margin-bottom: 10px;
+}
+
+
+
+.mouseoverer:hover{
+  text-decoration: underline;
+}
+
+.fleft{
+  float: left;
+}
+
+.fright{
+  float: right;
+}
+.fclear{
+  clear: both;
+}
+
+.j_sticky{
+  position: fixed;
+  top: -85px;
+  z-index: 40;
+  width: 100%;
+}
+/*.j_sticky * {
+  z-index: 3;
+}*/
+
+/* dddddddddddddddddddddddddd메뉴ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ*/
+
+.col{
+  display: table;
+  /*display: inline-table;*/
+  float: left;
+  margin-left: 10px;
+  margin-right: 25px;
+}
+
+.j_menu__submenu{ /* container000 의 버튼햄버거 다음에 (혹은 마스트헤드-서치 전에) 놓을 것들입니다. */
+  position: relative;
+  display: flex;
+  left: calc(95% - 324px - 120px);
+}
+
+/*body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+}*/
+/*
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  /*여기가 메뉴창입니다. 
+
+  background: linear-gradient(#E0E0F8, #ECCEF5);
+
+}*/
+.container000{
+  padding: 0 25px;
+  min-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  /*width: 90%;*/
+  max-width: 1400px;
+}
+
+.container000:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*
+Full screen background image
+*/
+.hero {
+  /*background: url('../img/cssmeme3.jpg');*/
+  /*background-color: inherit;*/
+  background-size: cover;
+  width: 100%;
+  /*height: 100%;*/
+  /*position: relative;*/
+  /*background-color: skyblue;*/
+  background-color: rgba(0,0,0,0.3);
+}
+
+/*
+Blueish tint overlay
+*/
+.hero:after {
+  content: '';
+  /*background: rgba(0, 0, 64, 0.5);*/
+  /*position: absolute;*/
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+Making sure everything in .hero sits above our :after elements
+*/
+.hero * {
+  /*position: relative;*/
+  /*이건 또 왜 꺼야하는거야 */
+  /*z-index: 1;*/
+}
+
+#masthead {
+  padding: 0.7em 0;
+  /*position: relative;*/
+  /*이거 껐음 .*/
+}
+
+/*#masthead.is-active {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+}
+*/
+/*
+Using this method because browsers can transition opacity very cheaply as opposed to using background: rgba
+https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/
+*/
+#masthead:after {
+  content: '';
+  /*position: absolute;*/
+  /*top: 0;*/
+  width: 100%;
+  height: 100%;
+  /*background-color: #fff;*/
+  transition: opacity 0.3s ease;
+}
+
+#masthead.is-active:after {
+  opacity: 1;
+}
+
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+.hamburger {
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  font: inherit;
+  margin: 0.8125em 0 0;
+  overflow: visible;
+  outline: none;
+  padding: 0;
+  text-transform: none;
+  transition: opacity 0.15s;
+  -webkit-appearance: none;
+}
+
+.hamburger:hover {
+  opacity: 0.7;
+}
+
+.hamburger-box {
+  width: 30px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 30px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+/*#masthead.is-active .hamburger-inner,
+#masthead.is-active .hamburger-inner::before,
+#masthead.is-active .hamburger-inner::after {
+    background-color: #000;
+}*/
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -6px;
+}
+
+.hamburger-inner::after {
+  bottom: -6px;
+}
+
+/*
+ * Boring
+ */
+/*.hamburger--boring .hamburger-inner,
+.hamburger--boring .hamburger-inner::before,
+.hamburger--boring .hamburger-inner::after {
+  transition-property: none;
+}*/
+
+.hamburger--boring.is-active .hamburger-inner {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hamburger--boring.is-active .hamburger-inner::before {
+  top: 0;
+  opacity: 0;
+}
+
+.hamburger--boring.is-active .hamburger-inner::after {
+  bottom: 0;
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.hamburger-label {
+  color: #fff;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin-left: 0.3125em;
+  text-transform: uppercase;
+}
+
+#masthead.is-active .hamburger-label {
+  color: #000;
+}
+
+.hamburger-box,
+.hamburger-label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#site-nav {
+  clear: both;
+  /*display: flex;*/
+  flex-direction: column;
+  height: 0;
+  overflow: hidden;
+  max-width: 905px;
+  margin: 0 auto;
+  /*padding-top: 2.5em;*/
+}
+
+#site-nav.is-active {
+  height: auto;
+  overflow: visible;
+}
+
+/*#site-nav .col {
+  padding-bottom: 2.5em;
+}*/
+
+/*@media screen and (min-width: 550px) {
+  #site-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }*/
+
+  #site-nav .col {
+    flex: 0 0 50%;
+  }
+}
+
+/*@media screen and (min-width: 768px) {
+  #site-nav .col {
+    flex: 0 0 33.333333333%;
+  }
+}
+*/
+
+#site-nav h4 {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+/* ul => ol*/
+#site-nav ol {
+  list-style-type: none;
+  margin-top: 1em;
+}
+
+#site-nav li {
+  margin-bottom: 0.3125em;
+}
+
+#site-nav li a {
+  color: #2E2E2E;
+  /*font-size: 1.5rem;*/
+  /*color: #b4b9ba;*/ 
+  /*이게 은색입니다.. */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#site-nav li a:hover,
+#site-nav li a:focus {
+  color: #686d6e;
+  /*color: cyan;*/
+  /*
+  --accent-color: #FDA085;
+  --gradient-color: #F6D365;*/
+}
+
+#site-nav .social {
+  margin: 0;
+  overflow: hidden;
+}
+
+#site-nav .social li {
+  float: left;
+  margin: 0 0.3125em;
+  width: 32px;
+  height: 32px;
+}
+
+#site-nav .social li svg {
+  display: block;
+  /*fill: #b4b9ba;*/
+  width: 100%;
+  height: 100%;
+  transition: fill 0.3s ease;
+}
+
+#site-nav .social li:hover svg {
+  fill: #686d6e;
+}
+
+#masthead-search {
+  float: right;
+  margin-top: 0.625em;
+  width: 100%;
+  max-width: 14em;
+  position: relative;
+  -webkit-appearance: none;
+}
+
+#masthead-search input {
+  background: transparent;
+  border: none;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50px;
+  outline: none;
+  width: 100%;
+  padding: 0.75em 1.125em;
+  transition: border-color 0.3s ease;
+  -webkit-appearance: none;
+}
+
+#masthead-search button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  right: 0.75em;
+  transform: translateY(-50%);
+  -webkit-appearance: none;
+}
+
+/*#masthead.is-active #masthead-search button {
+  color: #b4b9ba;
+}
+
+#masthead.is-active #masthead-search input {
+  border-color: #b4b9ba;
+}*/
+
+#masthead-search ::-webkit-input-placeholder {
+    color:    #fff;
+}
+
+#masthead-search :-moz-placeholder {
+   color:    #fff;
+   opacity:  1;
+}
+
+#masthead-search ::-moz-placeholder {
+   color:    #fff;
+   opacity:  1;
+}
+
+#masthead-search :-ms-input-placeholder {
+   color:    #fff;
+}
+
+/*#masthead.is-active #masthead-search ::-webkit-input-placeholder {
+    color:    #b4b9ba;
+}
+*/
+#masthead.is-active #masthead-search :-moz-placeholder {
+   color:    #b4b9ba;
+   opacity:  1;
+}
+
+#masthead.is-active #masthead-search ::-moz-placeholder {
+   color:    #b4b9ba;
+   opacity:  1;
+}
+
+#masthead.is-active #masthead-search :-ms-input-placeholder {
+   color: #b4b9ba
+}
+
+#masthead .col {
+  opacity: 0;
+}
+
+#masthead.is-active .col {
+  transform: translateY(40px);
+  transition: opacity 0.3s ease;
+  animation: fade-in-stagger 0.8s ease forwards;
+}
+
+#masthead.is-active .col:nth-child(1) {
+    -webkit-animation-delay: 0;
+}
+
+#masthead.is-active .col:nth-child(2) {
+    -webkit-animation-delay: 0.1s;
+}
+
+#masthead.is-active .col:nth-child(3) {
+    -webkit-animation-delay: 0.2s;
+}
+
+#masthead.is-active .col:nth-child(4) {
+    -webkit-animation-delay: 0.3s;
+}
+
+#masthead.is-active .col:nth-child(5) {
+    -webkit-animation-delay: 0.4s;
+    margin-right: 0;
+}
+
+@keyframes fade-in-stagger {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* 드롭다운 다른 메뉴 . */
+
+:root {
+  --accent-color: #45494E;
+  --gradient-color: #FBFBFB;
+}
+a:focus {
+  outline: none;
+  position: relative;
+}
+a:focus:after {
+  width: 50px;
+}
+a:after {
+  content: "";
+  /*background: #FBFBFB;*/
+  position: absolute;
+  bottom: 5px;
+  left: 15px;
+  height: 3px;
+  width: 0;
+  transition: 0.5s;
+  transition-delay: 0.2s;
+}
+/*body {
+  background: #45494E;
+  font-family: "Varela Round", Nunito, Montserrat, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}*/
+
+
+.j_menu > ol {
+  list-style: none;
+  margin: 30px 0;
+  padding: 0;
+}
+.j_menu  ol > li {
+  /*background: #3c3c3c;*/
+  /*background: #3c3c3c;*/
+  border-left: 5px solid var(--gradient-color);
+  /*margin-bottom: 1px;*/
+  position: relative;
+  transition: 0.5s;
+}
+.j_menu h4 {
+  text-align: center;
+  font-size: 1.2rem;
+  /*border-left: 5px solid var(--gradient-color);*/
+  /*쩝*/
+}
+/*
+  .j_menu > ol > li(:first-child) {
+    border-top: 5px solid var(--accent-color);
+    /*아직 안먹네  아마 box-size 때문인듯 ?/
+  }
+*/
+
+.j_menu51 > li {
+  --accent-color: #FDA085;
+  --gradient-color: #F6D365;
+}
+.j_menu52 > li {
+  --accent-color: #BFF098;
+  --gradient-color: #6FD6FF;
+}
+.j_menu53 > li {
+  --accent-color: #EA8D8D;
+  --gradient-color: #A890FE;
+}
+.j_menu54 > li {
+  --accent-color: #D8B5FF;
+  --gradient-color: #1EAE98;
+}
+.j_menu55 > li {
+  --accent-color: #C6EA8D;
+  --gradient-color: #FE90AF;
+}
+
+/*.j_menu > ol > li:nth-child(1) {
+  --accent-color: #FDA085;
+  --gradient-color: #F6D365;
+}
+.j_menu > ol > li:nth-child(2) {
+  --accent-color: #BFF098;
+  --gradient-color: #6FD6FF;
+}
+.j_menu > ol > li:nth-child(3) {
+  --accent-color: #EA8D8D;
+  --gradient-color: #A890FE;
+}
+.j_menu > ol > li:nth-child(4) {
+  --accent-color: #D8B5FF;
+  --gradient-color: #1EAE98;
+}
+.j_menu > ol > li:nth-child(5) {
+  --accent-color: #C6EA8D;
+  --gradient-color: #FE90AF;
+}*/
+.j_menu > ol > li a {
+  /*color: #FBFBFB;*/
+  display: block;
+  /*padding: 15px;*/
+  padding: 3px;
+  position: relative;
+  text-decoration: none;
+  z-index: 1;
+}
+
+/* .j_menu > ol > li a:not(:last-child) 는 이제 별표. */
+.j_menu > ol > li a:not(:last-child):before {
+  /*content: "\f078";*/
+  content: "★";
+  /*font-family: fontAwesome;*/
+  /*font-size: 0.75em;*/
+  /*line-height: 50px;*/
+  position: absolute;
+  /*right: -5px;*/
+  right: 1px;
+  /*top: 0;*/
+  /*top: -1px;*/
+  /*bottom: 0;*/
+  margin: auto;
+  transition: 0.5s;
+}
+.j_menu > ol > li:focus,
+.j_menu > ol > li:focus-within,
+.j_menu > ol > li:hover {
+  z-index: 100;
+}
+.j_menu > ol > li:focus:after,
+.j_menu > ol > li:focus-within:after,
+.j_menu > ol > li:hover:after {
+  /*background: linear-gradient(to left, var(--accent-color), var(--gradient-color));*/
+  border-bottom-color: linear-gradient(to left, rgb(200,200,200), var(--gradient-color));
+  /*border-bottom: 2px solid linear-gradient(to left, var(--accent-color), var(--gradient-color));*/
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  max-width: 800px;
+}
+.j_menu > ol > li:focus .sub-menu,
+.j_menu > ol > li:focus-within .sub-menu {
+  max-height: 500px;
+}
+.j_menu > ol > li:focus a:before,
+.j_menu > ol > li:focus-within a:before {
+  transform: rotate(-360deg);
+}
+.j_menu > ol > li:after {
+  /*background: #3c3c3c;*/
+  /*background: #3c3c3c;*/
+  /*이게 후의 검은색입니다. */
+  /*background: inherit; 안되네 */
+  /*background : #b4b9ba;*/
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: 0.5s;
+  max-width: 0;
+  overflow: hidden;
+}
+.j_menu > ol .sub-menu {
+  border-left: 1px solid #FBFBFB;
+  margin-left: 22.5px;
+  list-style: none;
+  max-height: 0px;
+  overflow: hidden;
+  padding-left: 7.5px;
+  position: relative;
+  transition: 0.5s;
+  z-index: 1;
+}
+.j_menu > ol .sub-menu li {
+  font-size: 0.9em;
+  border-left: 0;
+}
+.j_menu > ol .sub-menu li:hover,
+.j_menu > ol .sub-menu li a:focus {
+  background: rgba(60, 60, 60, 0.3);
+}
+.j_menu > ol .sub-menu li a:after {
+  bottom: 5px;
+  height: 1px;
+}
+.j_menu > ol .sub-menu li a:hover:after,
+.j_menu > ol .sub-menu li a:focus:after {
+  width: 15px;
+}
+@media all {
+  a:focus,
+  a:hover {
+    position: relative;
+  }
+  a:focus:after,
+  a:hover:after {
+    width: 50px;
+  }
+  a:after {
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .j_menu {
+    /*margin: 0;*/
+    /*margin-top: 40vh;*/
+    margin-top: 35px;
+  }
+
+  .j_menu > ol {
+    display: block;
+    max-width: none;
+    text-align: center;
+  }
+
+  /*여기는 가로형 세로형 . */
+  .j_menu > ol > li {
+    margin-left: -5px;
+    vertical-align: top;
+    width: 140px;
+  }
+
+
+  .j_menu > ol > li:hover .sub-menu,
+  .j_menu > ol > li:focus .sub-menu,
+  .j_menu > ol > li:focus-within .sub-menu {
+    max-height: 750px;
+  }
+  .j_menu > ol > li:hover a:before {
+    transform: rotate(-260deg);
+  }
+  .j_menu > ol .sub-menu {
+    border-left: 0;
+    margin: 15px -15px -15px;
+    padding-left: 0;
+  }
+}
+

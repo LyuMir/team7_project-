@@ -1,0 +1,326 @@
+body {
+    margin: 0;
+    --color-text: #644B47;
+    /*--color-bg: #F2FFED;  연한색입니다. */
+    --color-bg: rgb(225,225,225);  /*회색임*/
+    --color-link: #C72F7A;
+    /*--color-link-hover: #3d3637;*/
+    --color-link-hover: black;
+    color: var(--color-text);
+/*    background-color: var(--color-bg);*/
+    background-color: white;
+    /*font-family: soleil, sans-serif;*/
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* Cursor styles */
+	--cursor-stroke: #644B47;
+	--cursor-fill: none;
+	--cursor-stroke-width: 1px;
+
+  --font-size-title : 1.3em;
+  --font-size-medium : 1.1em;
+  --font-size-text : 0.9em;
+  font-size: 1em;
+
+
+  --silver-color-1 : rgb(225,225,225);
+  --silver-color-2 : #E5E5E5;
+  --silver-color-3 : #D4D4D4;
+  --silver-color-4 : #CECECE;
+  --silver-color-5 : #C5C5C5;
+  --silver-color-6 : #797979;
+  /*--silver-color-7 : ;*/
+}
+
+a{
+  font-style: none;
+  color: inherit;
+  text-decoration:none;
+}
+
+main{
+  min-height: 1000px;
+}
+
+.mylist0 li{
+  margin: 10px;
+}
+.a_top00 {
+  width: 100%;
+  height: 80px;
+  /*position: relative; 
+  z-index: 2;  따라오게 안 할 겁니다.  */
+  /*border-bottom: 1px solid rgba(255,255,255,1); 이걸 왜??? 투명한걸 왜 넣었지?*/
+  border-bottom: 1px solid black;
+  /*color: black;*/
+  /*font-size: 12px;*/
+}
+
+.top_left00{
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.top_right00{
+  /*margin: auto 0;*/
+        display: flex;
+        /*flex-direction: column;*/
+        justify-content: center;
+  /*
+  display: flex;
+  align-content: center;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;*/
+}
+.top_right00 a{
+  margin: 15px;
+  margin-top: 30px;
+}
+
+
+.j_follow_nav{
+  flex-direction: row;
+  /*height: 70px;*/
+  height: 49px;
+  width: 100%;
+  background-color: inherit;
+}
+.wrap_menu00{
+  max-width: 1000px;
+  margin: auto auto;
+  /*justify-content: space-around;*/
+}
+
+li{
+  list-style-type: none;
+  display: inline-block;
+}
+
+.fontsize_title{
+  font-size: var(--font-size-title);
+}
+
+.fontsize_m {
+  font-size: var(--font-size-medium);
+}
+
+.fontsize_s {
+  font-size: var(--font-size-text);
+}
+
+.marginer30{
+  margin: 30px;
+}
+
+.marginer30_0{
+  margin: 20px 30px 20px 30px;
+}
+
+.headerwrap{
+  /*max-width: 1280px;*/
+  max-width: 1000px;
+  width: 100%;
+  min-width: 400px;
+  margin: 0 auto;
+}
+/*
+.bar{
+  width: 100%;
+  height: 3px;
+  background-color: #5B000E;
+}
+*/
+.divclean {
+  clear: both;
+}
+
+.entirewindowwrap {
+  border-top: 3px solid black;
+  width: 100%;
+  z-index: -1;
+
+
+}
+
+.ywrapmain{
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+.ysubwrap{
+  width: 1200px;
+  height: 900px;
+  margin: 0 auto;
+  border: 2px solid black;
+}
+
+.ysubwrap2{
+  width: 555px;
+  height: 450px;
+  margin: 0 auto;
+  border: 2px solid black;
+float: left;
+}
+
+
+.fontwrap{
+
+  width :400px;
+  margin: 250px auto;
+  font-color: black;
+
+}
+
+.mainwrap{
+
+  max-width: 950px;
+  /*width: 95%;*/
+  /*min-width: 450px;*/
+  margin: 0 auto;
+  background-color: white;
+  padding: 25px;
+
+  /*min-height: 100%;*/
+  /*min-height: 1000px;*/
+  min-height: 600px;
+
+}
+
+.marginer{
+  margin:10px;
+}
+
+.titler{
+  margin: 10px 0 ;
+  font-size: var(--font-size-title);
+  border-bottom:  3px solid var(--silver-color-3);
+}
+
+.main_title0{
+  font-weight: 800;
+  font-size: var(--font-size-title);
+  color: rgb(110, 115, 242);
+  background-color : rgba(110, 242, 141, 0.5);
+  margin-bottom: 10px;
+}
+
+
+
+.mouseoverer:hover{
+  text-decoration: underline;
+}
+
+.fleft{
+  float: left;
+}
+
+.fright{
+  float: right;
+}
+.fclear{
+  clear: both;
+}
+.fleft2{
+  float: left;
+}
+.fleft2:after{
+  clear: both;
+}
+.fright2{
+  float: right;
+}
+.fright2:after{
+  clear: both;
+}
+
+.j_sticky{
+  position: fixed;
+  top: -85px;
+  z-index: 40;
+  width: 100%;
+}
+/*.j_sticky * {
+  z-index: 3;
+}*/
+
+/* dddddddddddddddddddddddddd메뉴ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ*/
+
+.col{
+  display: table;
+  /*display: inline-table;*/
+  float: left;
+  margin-left: 10px;
+  margin-right: 25px;
+}
+
+/* 더보기 */
+.showmemore{
+  /*display: inline-flex;*/
+  position: relative;
+  top: -35px;
+  /*left: 50px;*/
+  /* 제이쿼리 처리됨 */
+
+  /*align-items: center;*/
+}
+
+.subtopbox0{
+  border: 2px solid var(--silver-color-3);
+}
+
+.article32 {
+
+}
+
+.article32 div{
+  margin: 5px;
+  padding: 3px;
+  padding-left: 10px;
+}
+
+.myselect03{
+  border: 1px solid black;
+  /*line-height: 25px;*/
+  padding-top: 5px;
+  padding-bottom: 7px;
+}
+
+.myinput03{
+  border: 0px solid black;
+  line-height: 25px;
+  padding: 5px;
+  /*width:100%;*/
+  width:calc( 100% - 170px );
+  /*와!!! 가능!!!!!*/
+  /*font-size: var(--font-size-text);*/
+  font-size: 16px;
+  /*font-size: var(--font-size-medium);*/
+
+
+}
+
+.myinput04{
+  border: 0px solid black;
+  line-height: 20px;
+  padding: 5px;
+  width:calc( 100% - 20px );
+
+  /*자동 늘어나기 ㄱ */
+
+}
+
+.margin__top20px{
+  margin-top: 20px;
+}
+
+.margin__top5px{
+  margin-top: 5px;
+}
+
+/*@media screen and (max-width: 626px) {  
+  .top_right00{
+    
+    float: unset;
+  }
+}*/

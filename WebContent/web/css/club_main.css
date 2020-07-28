@@ -1,0 +1,224 @@
+*{
+	box-sizing: border-box;
+	transition: 0.3s;
+}
+.mainwrap_club{
+	max-width: 1000px;
+	margin: 0 auto;
+	/*height: 10000px;*/
+	font-size: 12px;
+}
+
+.club_left{
+	width: 235px;
+	padding: 0px;
+	padding-top: 20px;
+	/*position: fixed;*/
+	position: sticky;
+	margin: 0;
+	top: 55px;
+
+	display: inline-block;
+	/*float: left;*/
+}
+
+.left_top{
+	max-width: 235px;
+}
+.left_main{
+
+}
+.left_main div{margin-top: 10px;}
+	.profile_img{
+		/*max-width: 230px;*/
+		width: 230px;
+		height: 230px;
+		align-items: center;
+		margin: 10px auto;
+		border-radius: 50%;
+	}
+	.profile_name{
+		font-size: 18px;
+		font-weight: 700;
+	}
+	.zzim{}
+
+	.profile_info{
+
+	}
+	.profile_info div{
+		margin: 0;
+		/*float: left;*/
+	}
+	.profile_info span{
+		max-width: 200px;
+		/*float:left;*/
+	}
+	.profile_text{
+		/*font-size: 14px;*/
+	}
+	.profile_people{
+		/*font-size: 14px;*/
+	}
+	  .pp_admin{}
+	  .pp_p{}
+
+.club_main{
+	width: 750px;
+	float: right;
+	margin-top: 20px;
+}
+/*.club_main:after{
+	clear: both;
+}*/
+.main_head{
+
+}
+.main_head img{
+	width: 750px;
+	max-height: 300px;
+
+		object-fit: cover; 
+}
+
+.new_write{
+	max-width: 500px;
+	width: 100%;
+	margin : 0 0 25px 0;
+}
+.new_write textarea{
+	width: 100%;
+	height: 100px;
+	border: 3px solid silver;
+	resize: none;
+
+}
+.posts{
+	max-width: 500px;
+	width: 100%;
+	/*border: 1px solid silver;*/
+}
+.posts article{
+
+	width: 100%;
+	border: 1px solid silver;
+	padding: 10px;
+	margin: 10px 0 ;
+}
+
+.posts img{
+	max-height: 350px;
+	max-width: 100%;
+
+		object-fit: cover; 
+}
+.post_like{
+	/*border: 1px solid silver;*/
+	/*background-color: var(--silver-color-6);*/
+	/*color: var(--silver-color-1);*/
+	border-bottom: 1px solid silver;
+	padding: 2px 4px;
+
+	cursor: pointer;
+	float: right;
+	transition: all ease 1s;
+}
+.post_like img{
+	transition: all 0.2s;
+	width: 10px;
+}
+.post_like:hover img{
+	transform: rotate(-360deg);
+}
+.post_like:active img{
+	transform: scale(1.9);
+}
+/*.post_like::after {
+	content: '';
+	display: inline-block;
+	clear: both;
+} 왜 안됨???*/
+
+
+
+
+.weight500{
+	font-weight: 800;
+}
+
+
+
+select{
+	/*width: 230px;*/
+	width: 100%;
+	margin : 0 auto;
+	/*font-size: 14px;*/
+	border: 2px solid silver;
+	padding: 8px 5px;
+	margin-bottom: 5px;
+
+}
+select option{
+	padding: 5px;
+}
+.zzim button{
+	width: 47%;
+}
+button{
+	border: none;
+	width: 100px;
+	/*background-color: white;*/
+	padding: 8px 15px;
+	transition: all 0.2s;
+}
+button img{
+	transition: all 0.2s;
+}
+button:hover{
+	background-color: var(--silver-color-5);
+}
+button:active{
+	background-color: var(--silver-color-6);
+	color: white;
+	/*background-color: white;*/
+	/*border: none;*/
+}
+button:hover img{
+	transform: rotate(45deg);
+}
+button:active img{
+	transform: scale(1.9);
+}
+button:focus {
+	/*outline:1px solid black;*/
+	outline: none;
+}
+
+
+@media screen and (max-width: 1005px){
+	.club_left{
+
+		/*position: fixed;*/
+		/*position: static;
+		bottom: 0;
+		width: 100%;*/
+		display: none;
+	}
+	.club_main{
+		float: unset;
+		margin: 20px auto;
+		max-width: 500px;
+	width: 100%;
+		/*min-width: 500px;*/
+		min-width: 350px;
+	}
+	.main_head{
+		width: 100%;
+	}
+	.main_head img{
+		max-width: 750px;
+		width: 100%;
+	}
+
+
+}
