@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sdf">
+
+
+	<insert id="insert_CreateClub" parameterType="String">
+		insert into team7.team7_club values(default, '${club_name}', '${club_admin}' , '${club_publicity}', '${club_memberJoin}', ${club_memLimit}, '${club_exc_type}', '${club_Date_week} ${club_Date_hour}', '${club_area}', '${club_profileText}', '${club_profile_photo1}', '${club_profile_photo2}' )
+	</insert>
+
+	<select id="ClubselectAll" resultType="dtos.Class_DTO_ClubProperties2" >
+		select * from team7.team7_club
+	</select>
+
+	<select id="ClubselectAll2" resultType="dtos.Class_DTO_ClubProperties2" >
+		select * from team7.team7_club limit ${i}, 10
+	</select>
+
+	<select id="ClubselectNo" resultType="dtos.Class_DTO_ClubProperties2" >
+		select * from team7.team7_club where no = ${i}
+	</select>
+
+	<select id="ClubselectID" resultType="dtos.Class_DTO_ClubProperties2" >
+		select * from team7.team7_club where admin = '${s1}'
+	</select>
+	
+	<update id="update_editClub">
+		update team7.team7_club set publicity = '${club_publicity}' , memberJoin = '${club_memberJoin}' , memberLimit = ${club_memLimit} , e_type = '${club_exc_type}', meetingDate = '${club_Date_week} ${club_Date_hour}', area = '${club_area}' , profile = '${club_profileText}', photo1=  '${club_profile_photo1}', photo2= '${club_profile_photo2}' where no = #{no}
+	</update>
+	
+	<delete id="delete_Club">
+		delete from team7.team7_notice where no = #{no}
+	</delete>
+	
+
+	<select id="NoticeselectAll" resultType="dtos.Class_DTO_Notice" >
+		select * from team7.team7_notice
+	</select>
+	<select id="NoticeselectTHATONE" resultType="dtos.Class_DTO_Notice" >
+		select * from team7.team7_notice where no = ${i}
+	</select>
+	<insert id="insert_Notice" parameterType="String">
+		insert into team7.team7_notice values( default, #{title}, #{writer}, NOW(), #{content}  )
+	</insert>
+	<update id="update_Notice">
+		update team7.team7_notice set title = #{title} , writer = #{writer}, content = #{content} where no = #{no}
+	</update>
+	<delete id="delete_Notice">
+		delete from team7.team7_notice where no = #{no}
+	</delete>
+
+
+
+
+	
+	<insert id="insert_Trainer" parameterType="String">
+	insert into team7.team7_trainer values(default, 'fixed', '${tname}' , '${sex}', '${tphone}', ${tbirth}, '${temail}', '${ttime}', '${tmajor}', '${tcareer}', '${tprofile}', '${tcerti}', '${tstory}', '${twhy}', '${tsns}', '${thowjoin}', 1 );
+	</insert>
+	
+
+	<select id="000000selectAll" resultType="dtos.Class_DTO_ClubProperties" >
+		select * from mybatis_0714.new_table00
+	</select>
+	<insert id="000000insert" parameterType="String">
+		insert into mybatis_0714.new_table00 values( default, #{col1}, #{col2} )
+	</insert>
+
+	<update id="000000update">
+		update mybatis_0714.new_table00 set col1 = #{col1} , col2 = #{col2} where id = #{id}
+	</update>
+	<delete id="000000delete">
+		delete from mybatis_0714.new_table00 where id = #{id}
+	</delete>
+	
+	
+	
+</mapper>
