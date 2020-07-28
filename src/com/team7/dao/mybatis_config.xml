@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	
 	<mappers>
-		<mapper resource="daos/mapper.xml"></mapper>
+		<mapper resource="com/team7/dao/mapper.xml"></mapper>
 	</mappers>	
 	
 </configuration>
