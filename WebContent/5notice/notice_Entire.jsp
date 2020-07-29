@@ -2,6 +2,7 @@
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.DTO_Notice" %>
+<%@ page import="com.team7.vo.PageInfo" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
 <!-- 

@@ -12,17 +12,29 @@ import com.team7.vo.PageInfo;
 
 public class NoticeShowService {
 
-	public List<DTO_Notice> getNoticeList(int page, int limit) {
+	public List<DTO_Notice> getNoticeList(int page) {
 
-		PageInfo page = new PageInfo();
-		page.setPage(i);
+		PageInfo pageinfo = new PageInfo();
+		pageinfo.setPage(page);
 		
 		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<DTO_Notice> rlist= sqlsession.selectList("select_List_Notice", page);
+		List<DTO_Notice> rlist= sqlsession.selectList("select_List_Notice", pageinfo);
 		sqlsession.close();
 		
 		
 		return rlist;
+	}
+	
+	public int getListCount() {
+	
+		int num=0;
+
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<PageInfo> rlist= sqlsession.selectList("select_ListCount_Notice");
+		sqlsession.close();
+		num= rlist.get(0).getPage();
+		System.out.println(num+"여기까지 왓음");
+		return num;
 	}
 }

@@ -22,6 +22,7 @@ public class NoticeListShowAction implements Action{
 		List<DTO_Notice> noticeList = new ArrayList<DTO_Notice>();
 		
 		
+		
 	  	int page=1;
 		int limit=10;
 
@@ -38,7 +39,7 @@ public class NoticeListShowAction implements Action{
 //		BoardListService boardListService = new BoardListService();
 		NoticeShowService nser = new NoticeShowService();
 		int listCount=nser.getListCount();
-		noticeList = nser.getNoticeList(page,limit);
+		noticeList = nser.getNoticeList(page);//,limit);
 		//총 페이지 수.
    		int maxPage=(int)((double)listCount/limit+0.95); //0.95를 더해서 올림 처리.
    		//현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...)
@@ -55,10 +56,10 @@ public class NoticeListShowAction implements Action{
 		pageInfo.setPage(page);
 		pageInfo.setStartPage(startPage);	
 		request.setAttribute("pageInfo", pageInfo);
-		request.setAttribute("noticeList", noticeList);
+		request.setAttribute("rlist", noticeList);
 		
-		List<DTO_Notice> rlist = new NoticeShowService().showList(i);
-		request.setAttribute("rlist", rlist);
+		//List<DTO_Notice> rlist = new NoticeShowService().showList(i);
+		//request.setAttribute("rlist", rlist);
 		
 		ActionForward forward= new ActionForward();
 		forward.setPath("/_FORWHERE.jsp?forwhere=5notice/notice_Entire.jsp");
