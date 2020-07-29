@@ -1,15 +1,15 @@
 package com.team7.vo;
 
-public class DTO_ClubProperties2 {
-int no; 	//소모임 고유번호 
-	String name;	//소모임 이름
-	String admin; 	//소모임 관리자 (개설자)
-	String publicity;	//소모임 공개 : 공개 , 지역공개, 친구공개
-	String memberJoin ;	//소모임 멤버모집 : 공개모집 / 제한모집 / 초대모집 / 모집중단
-int memberLimit ;	//소모임 멤버 모집 시 리미트...	
-	String e_type;	//소모임 주 운동 종류
+public class ClubBean {
+private int no; 	//소모임 고유번호 
+private 	String name;	//소모임 이름
+private 	String admin; 	//소모임 관리자 (개설자)
+private 	String publicity;	//소모임 공개 : 공개 , 지역공개, 친구공개
+private 	String memberJoin ;	//소모임 멤버모집 : 공개모집 / 제한모집 / 초대모집 / 모집중단
+private int memberLimit ;	//소모임 멤버 모집 시 리미트...	
+private 	String e_type;	//소모임 주 운동 종류
 //	String club_date = request.getParameter("club_date");
-	String meetingDate;	//소모임 주모임날 !!!!! < 여기에 다 넣어야 함...
+private 	String meetingDate;	//소모임 주모임날 !!!!! < 여기에 다 넣어야 함...
 //	String club_Date_week; // 소모임 주모임날 : 매주_요일 ... 등 
 //	String club_Date_hour; // 소모임 주모임 시간 : 00부터 00까지.
 //	String meetingDate_select ;	//
@@ -17,10 +17,10 @@ int memberLimit ;	//소모임 멤버 모집 시 리미트...
 //	String meeting_week2 ;
 //	String club_hour1 ;
 //	String club_hour2;
-	String area;	//소모임 장소 
-	String profile ;	//소모임 소개 
-	String photo1;
-	String photo2;
+private 	String area;	//소모임 장소 
+private 	String profile ;	//소모임 소개 
+private 	String photo1;
+private 	String photo2;
 
 	
 	public int getNo() {

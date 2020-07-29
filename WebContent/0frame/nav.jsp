@@ -27,7 +27,7 @@
               <ul class="grt-dropdown-list">
                 <li><a href="health.my">My 헬스장</a></li>
                 <li><a href="trainer.my">My 트레이너</a></li>
-                <li><a href="club.my">My 소모임</a></li>
+                <li><a href="my.club">My 소모임</a></li>
                 <li><a href="info.my">회원정보</a></li>
               </ul>
             </li>

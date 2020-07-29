@@ -48,6 +48,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
+
+
 	<insert id="insert_CreateClub" parameterType="String">
 		insert into team7.team7_club values(default, '${club_name}', '${club_admin}' , '${club_publicity}', '${club_memberJoin}', ${club_memLimit}, '${club_exc_type}', '${club_Date_week} ${club_Date_hour}', '${club_area}', '${club_profileText}', '${club_profile_photo1}', '${club_profile_photo2}' )
 	</insert>
@@ -57,15 +59,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="ClubselectAll2" resultType="com.team7.vo.DTO_ClubProperties2" >
-		select * from team7.team7_club limit ${i}, 10
+		select * from team7.team7_club limit ${page}, 10
 	</select>
 
 	<select id="ClubselectNo" resultType="com.team7.vo.DTO_ClubProperties2" >
-		select * from team7.team7_club where no = ${i}
+		select * from team7.team7_club where no = ${no}
 	</select>
 
 	<select id="ClubselectID" resultType="com.team7.vo.DTO_ClubProperties2" >
-		select * from team7.team7_club where admin = '${s1}'
+		select * from team7.team7_club where admin = '${admin}'
 	</select>
 	
 	<update id="update_editClub">

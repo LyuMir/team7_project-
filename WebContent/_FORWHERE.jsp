@@ -17,7 +17,6 @@
         var width00 = (2000 - $(window).width()) / 2;
         $('.main_pic_00').css("transform","translate( -"+width00+"px , 0% )");
 
-
       }
 
       $(window).resize(function(){
@@ -49,6 +48,10 @@ request.setCharacterEncoding("UTF-8");
 
 
     String forwhere = request.getParameter("forwhere");
+    
+//    if(forwhere.startsWith("club_") || forwhere.startsWith("__club")){
+ //   	forwhere = "3club\\"+forwhere;
+//    } //ㅋㅋ 이런 꼼수 너무 좋아... ...근데 안되네..
     
 
     if(log_st==null){log_st = 0; session.setAttribute("LOG_STATUS",0);
