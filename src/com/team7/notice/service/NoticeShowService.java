@@ -12,7 +12,7 @@ import com.team7.vo.PageInfo;
 
 public class NoticeShowService {
 
-	public List<DTO_Notice> showList(int i) {
+	public List<DTO_Notice> getNoticeList(int page, int limit) {
 
 		PageInfo page = new PageInfo();
 		page.setPage(i);
