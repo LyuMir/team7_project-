@@ -19,7 +19,7 @@
  * 한번 글을 작성한 뒤에는 수정이 번거롭습니다. <br>
  * 작성하실때 주의를 기울여서 작성해주시길 바랍니다. <br>
     </div>
-<form action="writing_action1.jsp" method="post">
+<form action="trainerapply.trainer" method="post">
   <br><br>
 <span class="question">  등록후 최소 6개월간은 데일리 헬스에서 활동을 해주셔야합니다. 동의하십니까?</span><br>
 <input type="radio" name="agree"> 네, 동의합니다
