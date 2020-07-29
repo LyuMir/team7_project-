@@ -126,7 +126,7 @@
 
 
 <span class="question"> 경력사항 / 활동내용 (기간)<br></span>
-<textarea name="coachprofile" cols="50" rows="5" > </textarea>
+<textarea name="coachcareer" cols="50" rows="5" > </textarea>
 	<div class="check_font" id="profilecheck"></div>
 
 <br><br>
@@ -144,16 +144,16 @@
 
 <span class="question"> 프로그램을 소개해주세요 !<br></span>
 * 코칭하셨던 회원 중 가장 기억에 남는 회원님의 케이스를 함께 기재해주세요.<br>
-<textarea name="coachstory" cols="50" rows="5" > </textarea>
-	<div class="check_font" id="storycheck"></div>
+<textarea name="coachprofile" cols="50" rows="5" > </textarea>
+	<div class="check_font" id="profilecheck"></div>
 
 <br><br>
 
 <span class="question"> 코치님의 프로필 소개를 해주세요!<br></span>
 * 홈핏 코치는 전문성을 바탕으로 체계적으로 회원님의 건강을 케어하는 일이기 때문에 열정과 책임감을 가지셔야 합니다.<br>
 * 왜 데일리헬스 코치가 되고 싶은지 적어주세요.<br>
-<textarea name="coachwhy" cols="50" rows="5" > </textarea>
-	<div class="check_font" id="whycheck"></div>
+<textarea name="coachstroy" cols="50" rows="5" > </textarea>
+	<div class="check_font" id="storycheck"></div>
 
  <br><br>
 <span class="question">코치님을 더 잘 알 수 있도록 인스타그램 등의 SNS 계정이 있다면 소개해주세요.</span><br><br>
