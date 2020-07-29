@@ -37,4 +37,20 @@ public class NoticeShowService {
 		System.out.println(num+"여기까지 왓음");
 		return num;
 	}
+	
+	
+	public List<DTO_Notice> getNotice(int no) {
+
+		DTO_Notice notice = new DTO_Notice();
+		notice.setNo(no);
+		
+		
+		
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<DTO_Notice> rlist= sqlsession.selectList("select_Notice", notice);
+		sqlsession.close();
+		
+		
+		return rlist;
+	}
 }

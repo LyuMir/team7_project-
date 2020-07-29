@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
+
+</head>
+<body>
+
+<main id="main000" class="mainwrap">
+
+  <section>
+	  <div class="sticky_side_bar fright">
+	  	ꓥ  &nbsp; &nbsp; 1 2 3 4 5  … 12 &nbsp; &nbsp;  ꓦ
+	  </div>
+    <div id="buttons"></div>
+    <div class="grid">    
+     <!-- <% for(int i = 0; i < rlist.size(); i++){ %> -->
+		<article class="grid__item" onclick="">
+			<div class="card">
+				<div class="card__img00 fright">
+					<img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
+				</div>
+				<div class="card__content fleft">
+					<div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
+					<div class="card__header">이름을 여기다 쓰세요 </div>
+					<div class="card__tag00 content_now">누가누가 들어있ㄴ는지 여기 </div>
+					<div class="card__tag00 content_what"> 운동 (태그 활성화됨): <span>배드민턴,정1,정2,정3,정4,구</span></div>
+					<div class="card__tag00 content_where"> 장소 (태그 활성화됨): <span>서울</span></div>
+					<div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
+					<div class="card__heart"> 
+						<img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
+					</div>
+				</div>
+				<div class="card__bottomContent">
+					<div class="card__text">프로필 설명 여기에 써집니다. </div>
+				</div>
+			</div>
+		</article>
+    <article class="grid__item" onclick="">
+      <div class="card">
+        <div class="card__img00 fright">
+          <img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
+        </div>
+        <div class="card__content fleft">
+          <div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
+          <div class="card__header">이름을 여기다 쓰세요 </div>
+          <div class="card__tag00 content_now">누가누가 들어있ㄴ는지 여기 </div>
+          <div class="card__tag00 content_what"> 운동 (태그 활성화됨): <span>정3,정4,구</span></div>
+          <div class="card__tag00 content_where"> 장소 (태그 활성화됨): <span>서울</span></div>
+          <div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
+          <div class="card__heart"> 
+            <img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
+          </div>
+        </div>
+        <div class="card__bottomContent">
+          <div class="card__text">프로필 설명 여기에 써집니다. </div>
+        </div>
+      </div>
+    </article>
+    <article class="grid__item" onclick="">
+      <div class="card">
+        <div class="card__img00 fright">
+          <img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
+        </div>
+        <div class="card__content fleft">
+          <div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
+          <div class="card__header">이름을 여기다 쓰세요 </div>
+          <div class="card__tag00 content_now">누가누가 들어있ㄴ는지 여기 </div>
+          <div class="card__tag00 content_what"> 운동 (태그 활성화됨): <span>구,광</span></div>
+          <div class="card__tag00 content_where"> 장소 (태그 활성화됨): <span>부천</span></div>
+          <div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
+          <div class="card__heart"> 
+            <img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
+          </div>
+        </div>
+        <div class="card__bottomContent">
+          <div class="card__text">프로필 설명 여기에 써집니다. </div>
+        </div>
+      </div>
+    </article>
+
+
+    </div><!-- 그리그 끝! -->
+    "Icon made by Freepik from www.flaticon.com"<br> <br>
+    Icons made by Pixel perfect from  www.flaticon.com
+  </section>
+</main>
+
+<script type="text/javascript">
+  (function() {
+
+  var $articles = $('.grid article.grid__item');  // Store all 아티클 --images
+  var $buttons = $('#buttons');                   // Store buttons element
+  var tagged = {};                                // Create tagged object
+
+  $articles.each(function() {                         // Loop through 아티클이라니까images and
+    var article = this;                               // Store img in variable
+    //var tags = $(this).data('tags');              // Get this element's tags
+    var tags = $(this).find('.content_what').children('span').text()
+    var tags2 = $(this).find('.content_where').children('span').text();
+                  // Get this element's tags
+    //alert(tags);//ㅋㅋ
+
+    if (tags) {                                   // If the element had tags
+      tags.split(',').forEach(function(tagName) { // Split at comma and
+
+        if (tagged[tagName] == null) {            // If object doesn't have tag
+          tagged[tagName] = [];                   // Add empty array to object
+        }
+        tagged[tagName].push(article);                // Add the image to the array
+      });
+    }
+
+    if (tags2) {                                   // If the element had tags
+      tags2.split(',').forEach(function(tagName) { // Split at comma and
+
+        if (tagged[tagName] == null) {            // If object doesn't have tag
+          tagged[tagName] = [];                   // Add empty array to object
+        }
+        tagged[tagName].push(article);                // Add the image to the array
+      });
+    }
+  });
+  $('<button/>', {                                 // Create empty button
+    text: 'Show All',                              // Add text 'show all'
+    class: 'active',                               // Make it active
+    click: function() {                            // Add onclick handler to
+      $(this)                                      // Get the clicked on button
+        .addClass('active')                        // Add the class of active
+        .siblings()                                // Get its siblings
+        .removeClass('active');                    // Remove active from siblings
+      $articles.hide(500).slideDown(500);                 // Show all images
+    }
+  }).appendTo($buttons);                           // Add to buttons
+
+  $.each(tagged, function(tagName) {               // For each tag name
+    $('<button/>', {                               // Create empty button
+      text: tagName + ' (' + tagged[tagName].length + ')', // Add tag name
+      click: function() {                          // Add click handler
+        $(this)                                    // The button clicked on
+          .addClass('active')                      // Make clicked item active
+          .siblings()                              // Get its siblings
+          .removeClass('active');                  // Remove active from siblings
+        $articles                                      // With all of the images
+          .hide(500)                                  // Hide them
+          .filter(tagged[tagName])                 // Find ones with this tag
+          .fadeIn(300);                                // Show just those images
+      }
+    }).appendTo($buttons);                         // Add to the buttons
+  });
+
+}());
+
+</script>
+
+</body>
+</html>

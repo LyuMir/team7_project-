@@ -63,7 +63,7 @@ public class NoticeListShowAction implements Action{
 		
 		ActionForward forward= new ActionForward();
 		forward.setPath("/_FORWHERE.jsp?forwhere=5notice/notice_Entire.jsp");
-		return null;
+		return forward;
 	}
 
 }

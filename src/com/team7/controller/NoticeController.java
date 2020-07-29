@@ -38,6 +38,40 @@ public class NoticeController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/showme.notice")) {
+			action  = new com.team7.notice.action.NoticeSelectedAction();
+			System.out.println("¿©±â±îÂî?");
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/write.notice")) {
+			action  = new com.team7.notice.action.NoticeWriteAction();
+			System.out.println("¿©±â±îÂî?");
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/edit.notice")) {
+			action  = new com.team7.notice.action.NoticeEditAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/delete.notice")) {
+			action  = new com.team7.notice.action.NoticeDeleteAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		

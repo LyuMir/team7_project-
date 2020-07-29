@@ -1,8 +1,7 @@
+<%@page import="com.team7.vo.DTO_Notice"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="daos.Class_DAO" %>
-<%@ page import="dtos.Class_DTO_ClubProperties" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
 
@@ -26,16 +25,15 @@ request.setCharacterEncoding("UTF-8");
 //    System.out.println(dateFormat.format(date));
 
 	
-	String no = request.getParameter("no");
-	String title = request.getParameter("title");
-	String writer = request.getParameter("writer");
-	String n22 = request.getParameter("n22");
+//	String no = request.getParameter("no");
+//	String title = request.getParameter("title");
+//	String writer = request.getParameter("writer");
+//	String n22 = request.getParameter("n22");
 
-
-	dtos.Class_DTO_i iii = new dtos.Class_DTO_i();
-	iii.setI(Integer.parseInt(no));
-	List<dtos.Class_DTO_Notice> rlist  = new Class_DAO().notice_selectThatone(iii);
-	
+	//dtos.Class_DTO_i iii = new dtos.Class_DTO_i();
+	//iii.setI(Integer.parseInt(no));
+	List<DTO_Notice> rlist//  = new Class_DAO().notice_selectThatone(iii);
+		= (List<DTO_Notice>)request.getAttribute("rlist");
 	
 	boolean adminyn = false;
 	if(log_id == null){
@@ -47,7 +45,7 @@ request.setCharacterEncoding("UTF-8");
 			//out.println("??? 여기까지는 오냐?");
 		}
 	}
-
+	
 %>
 
 <div class="mainwrap">
@@ -66,27 +64,28 @@ request.setCharacterEncoding("UTF-8");
 	내용 : <%=rlist.get(0).getContent() %>
 	
 	<br>
-	<form action="team_FORWHERE.jsp" method="post">
-		<input type="hidden" name="forwhere" value="notice_show_page.jsp">
-		<button>뒤로가기 </button>
-	</form>
+<!-- 	<form action="team_FORWHERE.jsp" method="post">
+		<input type="hidden" name="forwhere" value="notice_show_page.jsp"> -->
+		<button onclick="javascript:history.go(-1)">뒤로가기 </button>
+	<!-- </form> -->
 	
 	<!-- 관리자에게만 보이는 div  -->
 	<% if(adminyn){ %>
 	<div class="">
-		<form action="team_FORWHERE.jsp" method="post">
-			<input type="hidden" name="forwhere" value="notice_writeNedit_page.jsp">
+		<form action="_FORWHERE.jsp" method="post">
+			<input type="hidden" name="forwhere" value="5notice/notice_writeNedit.jsp">
 			<input type="hidden" name="title" value="<%=rlist.get(0).getTitle() %>">
 			<input type="hidden" name="writer" value="<%=rlist.get(0).getWriter() %>">
 			<!-- <input type="hidden" name="content" value=""> -->
 			<textarea style="display: none;" name="content"><%=rlist.get(0).getContent() %></textarea>
 			<!-- 솔직히 수정페이지 가서 db 접근 해도 되는데 그냥 보내자.. -->
-			<input type="hidden" name="no" value="<%=no%>">
+			<input type="hidden" name="no" value="<%=rlist.get(0).getNo()%>">
 			<input type="hidden" name="forwhat" value="edit">
 			<button>수정하기 </button>
 		</form>
-		<form action="notice_delete.jsp" method="post">
-			<input type="hidden" name="no" value="<%=no%>">
+		<form action="delete.notice" method="post">
+			<input type="hidden" name="id" value="<%=log_id%>">
+			<input type="hidden" name="no" value="<%=rlist.get(0).getNo()%>">
 			<button>삭제하기 </button>
 		</form>
 	</div>

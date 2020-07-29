@@ -28,11 +28,11 @@ request.setCharacterEncoding("UTF-8");
         </tr>
         <tr>
             <td>
-            	<form method="post" action="notice_writeNedit.jsp" id="noticeit">
+	        <% if(!editgo){ %>
+            	<form method="post" action="write.notice" id="noticeit">
 	                <table class="table2">
 	                    <tr>
 	                        <td>작성자</td>
-	        <% if(!editgo){ %>
 	                        <td><input type=text name=writer size=20> </td>
 	                    </tr>
 	                    <tr>
@@ -43,6 +43,10 @@ request.setCharacterEncoding("UTF-8");
 	                        <td>내용</td>
 	                        <td><textarea name=content cols=85 rows=15></textarea></td>
 	       	<% }else{ %>
+            	<form method="post" action="edit.notice" id="noticeit">
+	                <table class="table2">
+	                    <tr>
+	                        <td>작성자</td>
 	                        <td><input type=text name=writer size=20 value="<%=writer%>"> </td>
 	                    </tr>
 	                    <tr>

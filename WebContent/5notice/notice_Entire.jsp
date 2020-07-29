@@ -28,7 +28,12 @@ request.setCharacterEncoding("UTF-8");
 
 	//List<DTO_Notice> rlist  = new Class_DAO().notice_selectorAll();
 		List<DTO_Notice> rlist  = (List<DTO_Notice>)request.getAttribute("rlist");
-
+ PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+	int listCount=pageInfo.getListCount();
+	int nowPage=pageInfo.getPage();
+	int maxPage=pageInfo.getMaxPage();
+	int startPage=pageInfo.getStartPage();
+	int endPage=pageInfo.getEndPage();
 		
 	boolean adminyn = false;
 	if(log_id == null){
@@ -64,9 +69,9 @@ request.setCharacterEncoding("UTF-8");
 					<td><%=rlist.get(i).getWriter() %></td>
 					<td><%= dateFormat.format( rlist.get(i).getNdate() )%>  </td>
 					<td style="display: none;">
-						<form action="team_FORWHERE.jsp" method="post" data-name="d">
-							<input type="hidden" name="forwhere" value="notice_thatone.jsp">
-							<input type="hidden" name="no" value="<%=rlist.get(i).getNo() %>">
+						<form action="showme.notice" method="post" data-name="d">
+							<input type="hidden" name="forwhere" value="5notice/notice_thatone.jsp">
+							<input type="hidden" name="notice_no" value="<%=rlist.get(i).getNo() %>">
 						</form>
 						<!-- 알고 보니 td 사이에 끼어넣었어야.. -->
 					</td>
@@ -74,20 +79,39 @@ request.setCharacterEncoding("UTF-8");
 <% } %>
 	</table>
 	<div class="">
-		<span><</span>
+		<!-- <span><</span>
 		<span>1</span>
 		<span>2</span>
 		<span>3</span>
 		<span>4</span>
 		<span>5</span>
 		<span>...</span>
-		<span>></span>
+		<span>></span> -->
+		<%if(nowPage<=1){ %>
+		[이전]&nbsp;
+		<%}else{ %>
+		<a href="noticeshow.notice?page=<%=nowPage-1 %>">[이전]</a>&nbsp;
+		<%} %>
+
+		<%for(int a=startPage;a<=endPage;a++){
+				if(a==nowPage){%>
+		[<%=a %>]&nbsp;
+		<%}else{ %>
+		<a href="noticeshow.notice?page=<%=a %>">[<%=a%>]</a>&nbsp;
+		<%} %>
+		<%} %>
+
+		<%if(nowPage>=maxPage){ %>
+		[다음]
+		<%}else{ %>
+		<a href="noticeshow.notice?page=<%=nowPage+1 %>">[다음]</a>
+		<%} %>
 	</div>
 	<!-- 관리자에게만 보이는 div  -->
 	<% if(adminyn){ %>
 	<div class="">
-		<form action="team_FORWHERE.jsp" method="post">
-			<input type="hidden" name="forwhere" value="notice_writeNedit_page.jsp">
+		<form action="_FORWHERE.jsp" method="post">
+			<input type="hidden" name="forwhere" value="5notice/notice_writeNedit.jsp">
 			<input type="hidden" name="forwhat" value="write">
 			<button>글쓰기 </button>
 		</form>

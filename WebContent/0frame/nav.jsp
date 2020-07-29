@@ -39,9 +39,9 @@
                 <li><a href="MngRev.rev">예약 확인</a></li>
               </ul>
             </li>
-            <li class="grt-dropdown" ><a href="notice.notice"><img src="img/mymenu.png"></a>
+            <li class="grt-dropdown" ><a href="noticeshow.notice"><img src="img/mymenu.png"></a>
               <ul class="grt-dropdown-list">
-                <li><a href="notice.notice">공지시항</a></li>
+                <li><a href="noticeshow.notice">공지시항</a></li>
                 <li><a href="qna.notice">자주 하는 질문</a></li>
               </ul>
             </li>
