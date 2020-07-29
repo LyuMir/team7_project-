@@ -9,6 +9,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="sdf">
 
 
+	<select id="select_login" resultType="com.team7.vo.MemberInfo1" >
+		select * from team7.team7_member where id = '${id}' AND pw = '${pw}'
+	</select>
+
+
+	<insert id="insert_JOIN" parameterType="String">
+		"insert into team7.team7_member values('${id}', '${name}', '${nickname}', '${email}', '${pw}', '${state}', '${address_num}' , '${address}', '${interest}','${joindate}','${logdate}', NOW(), NOW() ) 
+	</insert>
+
+
+
+
+
+
+
 	<insert id="insert_CreateClub" parameterType="String">
 		insert into team7.team7_club values(default, '${club_name}', '${club_admin}' , '${club_publicity}', '${club_memberJoin}', ${club_memLimit}, '${club_exc_type}', '${club_Date_week} ${club_Date_hour}', '${club_area}', '${club_profileText}', '${club_profile_photo1}', '${club_profile_photo2}' )
 	</insert>

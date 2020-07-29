@@ -165,9 +165,19 @@
 		</div>
 		</form>
 
+
+<%
+request.setCharacterEncoding("UTF-8");
+    String fail2 =request.getParameter("fail");
+    String log_id = (String) session.getAttribute("LOG_ID");
+    String whatdo = request.getParameter("whatdo");
+    // String fromwhere = request.getParameter("fromwhere");
+    // response.setHeader("fromwhere", );
+%>
 		<form action="login.log" method="post" id="LOGINFormplz">
 			<input type="hidden" name="log_id2" id="log_id2">
 			<input type="hidden" name="log_pw2" id="log_pw2">
+			<!--  fromwhere%>" -->
 		</form>
 		
 		
@@ -175,14 +185,6 @@
 
 </div>
 
-
-<%
-request.setCharacterEncoding("UTF-8");
-    String fail2 =request.getParameter("fail");
-    String log_id = (String) session.getAttribute("LOG_ID");
-    String whatdo = request.getParameter("whatdo");
-    
-%>
 	<script type="text/javascript">
 		var fail2 = "<%=fail2%>";
 		var log_id = "<%=log_id%>";

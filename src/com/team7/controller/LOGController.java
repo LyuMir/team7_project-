@@ -37,15 +37,12 @@ public class LOGController extends javax.servlet.http.HttpServlet
 		}
 		else if(command.equals("/login.log")){
 			
-			if(request.getParameter("log_id2").equals("")) {
-				System.out.println("안썻음 ㅡㅡ");
-				forward=new ActionForward();
-				forward.setPath("Join_and_LogIn.jsp");
-				return;	//빠짐 
-			}
-			System.out.println("여기까지?");
-			System.out.println(request.getParameter("log_id2"));
-			
+//			if(request.getParameter("log_id2").equals("")) {
+//				System.out.println("안썻음 ㅡㅡ");
+//				forward=new ActionForward();
+//				forward.setPath("Join_and_LogIn.jsp");
+//				//return;	//빠짐 
+//			}
 			action  = new com.team7.member.action.LoginAction();
 			try {
 				forward=action.execute(request, response );
@@ -61,8 +58,20 @@ public class LOGController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
-		
-		if(forward != null){	//가야할 곳이 있다면 보냄. 
+
+		if(forward != null){	//가야할 곳이 있다면 보냄. \
+			if(forward.getPath()==null) {
+				forward.setPath("/index.jsp");
+			}
+			if(forward.getPath().equals("")) {
+				forward.setPath("/index.jsp");
+			}
+			if(forward.getPath().startsWith("\\")) {
+				forward.setPath(forward.getPath().substring(1));
+				System.out.println(forward.getPath()+"필요 할까?");
+			}
+
+			System.out.println(forward.getPath()+"으로 갑니다...");
 			
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());
@@ -73,7 +82,6 @@ public class LOGController extends javax.servlet.http.HttpServlet
 			}
 			
 		}
-		
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
