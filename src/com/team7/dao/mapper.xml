@@ -15,10 +15,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<insert id="insert_JOIN" parameterType="String">
-		"insert into team7.team7_member values('${id}', '${name}', '${nickname}', '${email}', '${pw}', '${state}', '${address_num}' , '${address}', '${interest}','${joindate}','${logdate}', NOW(), NOW() ) 
+		insert into team7.team7_member values('${id}', '${name}', '${nickname}', '${email}', '${pw}', '${state}', '${address_num}' , '${address}', '${interest}', NOW(), NOW() ) 
 	</insert>
 
 
+	<select id="select_List_Notice" resultType="com.team7.vo.DTO_Notice" >
+		select * from team7.team7_notice limit ${page}, 10
+	</select>
 
 
 

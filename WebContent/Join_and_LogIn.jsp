@@ -157,7 +157,7 @@
 					<div class="output01 output011">
 						<div class="nogo"></div>
 					</div>
-					<a href="#">비밀번호를 잊으셨나요?</a><br>
+					<a href="forgot.log">비밀번호를 잊으셨나요?</a><br>
 					<input type="hidden" id="join_type" name="join_type">
 					<button type="button" class="bt00" onclick="logingo()" style="position: absolute; bottom: 8px;">로그인</button>
 				<!-- </form> -->

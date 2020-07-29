@@ -17,7 +17,7 @@ public class LogoutAction implements Action{
 
 		ActionForward forward= new ActionForward();
 //		String fromwhere = request.getHeader("referer");	 //이거 못써먹겠다.  중간에 다 걸림. 
-		String fromwhere = request.getParameter("fromwhere");	// 뭐 안 들어있으면 저기 밑에서 알아서 걸리겠지. 이건 괜찮.
+		String fromwhere = request.getParameter("forwhere");	// 뭐 안 들어있으면 저기 밑에서 알아서 걸리겠지. 이건 괜찮.
 		forward.setPath(fromwhere);
 //		forward.setPath("/index.jsp");
 		return forward;	

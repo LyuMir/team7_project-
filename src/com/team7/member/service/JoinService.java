@@ -7,11 +7,12 @@ import com.team7.vo.MemberInfo1;
 
 public class JoinService {
 
-	public void joingo(MemberInfo1 info){
+	public int joingo(MemberInfo1 info){
 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		sqlsession.insert("insert_JOIN",info);
+		int rs = sqlsession.insert("insert_JOIN",info);
 		sqlsession.commit();
 		sqlsession.close();
+		return rs;
 	}
 }

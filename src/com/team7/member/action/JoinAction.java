@@ -2,6 +2,7 @@ package com.team7.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.team7.member.service.JoinService;
 import com.team7.vo.ActionForward;
@@ -26,7 +27,7 @@ public class JoinAction implements Action{
 	    String address3 =request.getParameter("sample4_detailAddress");
 	    // String [] address =request.getParameterValues("address");
 	    String [] interest =request.getParameterValues("interest");
-	    String interest0 = null;
+	    String interest0 = "";
 	    if(interest !=null){ // 굿
 
 	        for(int ii = 0 ; ii < interest.length ; ii++){
@@ -46,11 +47,23 @@ public class JoinAction implements Action{
 		info.setNickname(nickname);
 		info.setPw(pw);
 		info.setState("신규회원");
+
+		ActionForward forward = new ActionForward();
 		
-		
-		new JoinService().joingo(info);
-		
-		return null;
+		int rs = new JoinService().joingo(info);
+		//그래도 혹시 모르니까. 
+		if(rs>0) {
+			HttpSession session = request.getSession(true);
+			session.setAttribute("LOG_ID",id);
+	        session.setAttribute("LOG_STATUS",1);
+			forward.setPath("/index.jsp");
+			
+		}
+		else {
+			forward.setPath("/Join_and_LogIn.jsp?fail=회원가입실패");
+		}
+
+		return forward;
 	}
 
 }
