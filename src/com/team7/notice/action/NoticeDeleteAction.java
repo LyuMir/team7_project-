@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team7.notice.service.*;
 import com.team7.vo.ActionForward;
-import com.team7.vo.DTO_Notice;
+import com.team7.vo.NoticeBean;
 import com.team7.vo.PageInfo;
 
 

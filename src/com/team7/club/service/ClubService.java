@@ -26,38 +26,38 @@ public class ClubService {
 		return rlist;
 	}
 	
-	public List<ClubBean> club_selectorAll2(PageInfo i0) {
+	public List<ClubBean> club_selectorAll2(PageInfo pageInfo) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<ClubBean> rlist = sqlsession.selectList("ClubselectAll2", i0);
+		List<ClubBean> rlist = sqlsession.selectList("ClubselectAll2", pageInfo);
 		sqlsession.close();
 		return rlist;
 	}
 	
 
-	public List<ClubBean> club_selector_no(ClubBean i0) { // 리스트로밖에 ㅇ나됨 
+	public List<ClubBean> club_selector_no(ClubBean clubBean) { // 리스트로밖에 ㅇ나됨 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<ClubBean> theclub = sqlsession.selectList("ClubselectNo", i0);
+		List<ClubBean> theclub = sqlsession.selectList("ClubselectNo", clubBean);
 		sqlsession.close();
 		return theclub;
 	}
 	
-	public List<ClubBean> club_selector_id(ClubBean ss) { // 아이디(admin)에 따른 모든 것들. 
+	public List<ClubBean> club_selector_id(ClubBean clubBean) { // 아이디(admin)에 따른 모든 것들. 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<ClubBean> theclub = sqlsession.selectList("ClubselectID", ss);
+		List<ClubBean> theclub = sqlsession.selectList("ClubselectID", clubBean);
 		sqlsession.close();
 		return theclub;
 	}
 
-	public void club_editor(DTO_ClubProperties club) {
+	public void club_editor(ClubBean clubBean) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		sqlsession.update("update_editClub", club); 
+		sqlsession.update("update_editClub", clubBean); 
 		sqlsession.commit();
 		sqlsession.close();
 	}
 
-	public void club_deletor(DTO_ClubProperties club) {
+	public void club_deletor(ClubBean clubBean) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		sqlsession.delete("delete_Club", club); 
+		sqlsession.delete("delete_Club", clubBean); 
 		sqlsession.commit();
 		sqlsession.close();
 	}

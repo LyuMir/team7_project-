@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team7.notice.service.*;
 import com.team7.vo.ActionForward;
-import com.team7.vo.DTO_Notice;
+import com.team7.vo.NoticeBean;
 import com.team7.vo.PageInfo;
 
 
@@ -22,7 +22,7 @@ public class NoticeWriteAction implements Action{
 		String writer = request.getParameter("writer");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		DTO_Notice notice = new DTO_Notice();
+		NoticeBean notice = new NoticeBean();
 		notice.setContent(content);
 		notice.setTitle(title);
 		notice.setWriter(writer);

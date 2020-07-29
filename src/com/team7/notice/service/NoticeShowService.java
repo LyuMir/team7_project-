@@ -5,21 +5,21 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.team7.dao.Class_DAO;
-import com.team7.vo.DTO_Notice;
+import com.team7.vo.NoticeBean;
 import com.team7.vo.MemberInfo1;
 import com.team7.vo.MemberLogInfo;
 import com.team7.vo.PageInfo;
 
 public class NoticeShowService {
 
-	public List<DTO_Notice> getNoticeList(int page) {
+	public List<NoticeBean> getNoticeList(int page) {
 
 		PageInfo pageinfo = new PageInfo();
 		pageinfo.setPage(page);
 		
 		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<DTO_Notice> rlist= sqlsession.selectList("select_List_Notice", pageinfo);
+		List<NoticeBean> rlist= sqlsession.selectList("select_List_Notice", pageinfo);
 		sqlsession.close();
 		
 		
@@ -39,15 +39,15 @@ public class NoticeShowService {
 	}
 	
 	
-	public List<DTO_Notice> getNotice(int no) {
+	public List<NoticeBean> getNotice(int no) {
 
-		DTO_Notice notice = new DTO_Notice();
+		NoticeBean notice = new NoticeBean();
 		notice.setNo(no);
 		
 		
 		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<DTO_Notice> rlist= sqlsession.selectList("select_Notice", notice);
+		List<NoticeBean> rlist= sqlsession.selectList("select_Notice", notice);
 		sqlsession.close();
 		
 		

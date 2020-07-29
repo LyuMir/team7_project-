@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team7.notice.service.*;
 import com.team7.vo.ActionForward;
-import com.team7.vo.DTO_Notice;
+import com.team7.vo.NoticeBean;
 import com.team7.vo.PageInfo;
 
 
@@ -24,7 +24,7 @@ public class NoticeSelectedAction implements Action{
 			
 		
 		NoticeShowService nser = new NoticeShowService();
-		List<DTO_Notice> noticeList = new ArrayList<DTO_Notice>();
+		List<NoticeBean> noticeList = new ArrayList<NoticeBean>();
 		noticeList = nser.getNotice(no);
 		
 		ActionForward forward= new ActionForward();

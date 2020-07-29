@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team7.vo.ActionForward;
 
-public class ClubShowAllAction implements Action{
+public class ClubMainAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -13,8 +13,10 @@ public class ClubShowAllAction implements Action{
 		//request.getParameter("");
 		
 		
-		
-		return null;
+
+		ActionForward forward= new ActionForward();
+		forward.setPath("");
+		return forward;
 	}
 
 }

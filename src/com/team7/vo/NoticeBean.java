@@ -3,7 +3,7 @@ package com.team7.vo;
 import java.text.*;
 import java.util.Date;
 
-public class DTO_Notice {
+public class NoticeBean {
 	private int	no;
 	private String title,writer,content;
 	private Date ndate;

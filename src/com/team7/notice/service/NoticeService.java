@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.team7.dao.Class_DAO;
-import com.team7.vo.DTO_Notice;
+import com.team7.vo.NoticeBean;
 import com.team7.vo.MemberInfo1;
 import com.team7.vo.MemberLogInfo;
 import com.team7.vo.PageInfo;
@@ -17,7 +17,7 @@ public class NoticeService {
 	public void delete(int no) {
 		
 		
-		DTO_Notice notice = new DTO_Notice();
+		NoticeBean notice = new NoticeBean();
 		notice.setNo(no);
 		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
@@ -27,14 +27,14 @@ public class NoticeService {
 		
 	}
 	
-	public void edit(DTO_Notice notice) {
+	public void edit(NoticeBean notice) {
 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		sqlsession.update("update_Notice",notice);
 		sqlsession.commit();
 		sqlsession.close();
 	}
-	public void insert(DTO_Notice notice) {
+	public void insert(NoticeBean notice) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		sqlsession.insert("insert_Notice",notice);
 		sqlsession.commit();

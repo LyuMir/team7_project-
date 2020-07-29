@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="com.team7.vo.DTO_Notice" %>
+<%@ page import="com.team7.vo.NoticeBean" %>
 <%@ page import="com.team7.vo.PageInfo" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
@@ -14,7 +14,7 @@
 <script src="js\grt-responsive-menu.js?v=<%=System.currentTimeMillis()%>"></script> -->
 
 <%
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 
     String log_id = (String) session.getAttribute("LOG_ID");
     Integer log_st = (Integer) session.getAttribute("LOG_STATUS");
@@ -27,7 +27,7 @@ request.setCharacterEncoding("UTF-8");
 
 
 	//List<DTO_Notice> rlist  = new Class_DAO().notice_selectorAll();
-		List<DTO_Notice> rlist  = (List<DTO_Notice>)request.getAttribute("rlist");
+		List<NoticeBean> rlist  = (List<NoticeBean>)request.getAttribute("rlist");
  PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	int listCount=pageInfo.getListCount();
 	int nowPage=pageInfo.getPage();
@@ -41,11 +41,10 @@ request.setCharacterEncoding("UTF-8");
 	}
 	else{
 		if(log_id.equals("admin")){
-			adminyn = true;
-			//out.println("??? 여기까지는 오냐?");
+	adminyn = true;
+	//out.println("??? 여기까지는 오냐?");
 		}
 	}
-
 %>
 
 <div class="mainwrap">

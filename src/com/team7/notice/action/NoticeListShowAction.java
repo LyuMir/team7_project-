@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team7.notice.service.*;
 import com.team7.vo.ActionForward;
-import com.team7.vo.DTO_Notice;
+import com.team7.vo.NoticeBean;
 import com.team7.vo.PageInfo;
 
 
@@ -19,7 +19,7 @@ public class NoticeListShowAction implements Action{
 		
 		
 		//ArrayList<BoardBean> articleList=new ArrayList<BoardBean>();
-		List<DTO_Notice> noticeList = new ArrayList<DTO_Notice>();
+		List<NoticeBean> noticeList = new ArrayList<NoticeBean>();
 		
 		System.out.println("여기까지??000");
 		

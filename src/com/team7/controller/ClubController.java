@@ -40,7 +40,7 @@ public class ClubController extends javax.servlet.http.HttpServlet
 			forward.setPath("");
 		}
 		else if(command.equals("/Search.club")){	// 그 일 요청받은 거면 다음을 해라.
-			action  = new com.team7.club.action.ClubSearchAction();
+			//action  = new com.team7.club.action.ClubSearchAction();
 			try {
 				forward=action.execute(request, response );
 			} catch (Exception e) {
