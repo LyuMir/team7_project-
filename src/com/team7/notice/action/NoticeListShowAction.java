@@ -21,7 +21,7 @@ public class NoticeListShowAction implements Action{
 		//ArrayList<BoardBean> articleList=new ArrayList<BoardBean>();
 		List<DTO_Notice> noticeList = new ArrayList<DTO_Notice>();
 		
-		
+		System.out.println("여기까지??000");
 		
 	  	int page=1;
 		int limit=10;
