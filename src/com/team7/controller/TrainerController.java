@@ -1,12 +1,14 @@
 package com.team7.controller;
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.team7.notice.action.Action;
+import com.team7.trainer.action.Action;
 import com.team7.vo.ActionForward;
 
 
@@ -24,50 +26,46 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		
 		
 		ActionForward forward=null;	//forward : 갈 곳 지정 
-		Action action=null;			//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
+		Action action=null;	
 		
-		if(command.equals("/noticeshow.notice")){	// 그 일 요청받은 거면 다음을 해라.
-			action  = new com.team7.notice.action.NoticeListShowAction();
+		//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
+		
+		HttpSession session = request.getSession(true);
+		int logined= (Integer)session.getAttribute("LOG_STATUS"); //오브젝트형식으로있다
+		
+		if(command.startsWith("/id_") && logined !=1) {
+			response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
+			return;
+		}
+		
+		if(command.equals("/id_MainToApply.trainer")){	
+				
+			
+			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
+		  
+		}
+		else if(command.equals("/id_trainerapply.trainer")) {
+			action  = new com.team7.trainer.action.TrainerCreateAction();
 			try {
-				forward=action.execute(request, response );
+				forward=action.execute(request, response); //메서드실행함
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/showme.notice")) {
-			action  = new com.team7.notice.action.NoticeSelectedAction();
-			System.out.println("여기까찌?");
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
+		}  //할거 담기
+
+		
+		if(forward != null){
+			
+			if(forward.isRedirect()){
+				response.sendRedirect(forward.getPath());
+			}else{
+				RequestDispatcher dispatcher=
+						request.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(request, response);
 			}
-		}
-		else if(command.equals("/write.notice")) {
-			action  = new com.team7.notice.action.NoticeWriteAction();
-			System.out.println("여기까찌?");
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		else if(command.equals("/edit.notice")) {
-			action  = new com.team7.notice.action.NoticeEditAction();
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		else if(command.equals("/delete.notice")) {
-			action  = new com.team7.notice.action.NoticeDeleteAction();
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+			
+		}//가서 페이지 보내기
 
 }
 }

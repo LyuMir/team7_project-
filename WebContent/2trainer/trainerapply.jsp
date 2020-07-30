@@ -1,24 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     
-<%@ page import="com.team7.vo.MemberLogInfo" %>
 
 <!DOCTYPE html>
 
-<%
-request.setCharacterEncoding("UTF-8");
- MemberLogInfo info = (MemberLogInfo) session.getAttribute("logid");	//오로지 얘를 위해!!
-%>
 
-
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
 
       <link rel="stylesheet" type="text/css" href="css/writing.css">
-    <title></title>
-  </head>
-  <body>
 
     <div class="ycontainer">
       <h2 class="hero__text ">코치지원서 </h2>
@@ -195,5 +183,3 @@ request.setCharacterEncoding("UTF-8");
 
     </div>
 
-  </body>
-</html>
