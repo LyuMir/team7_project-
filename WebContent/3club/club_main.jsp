@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="daos.Class_DAO" %>
-<%@ page import="dtos.Class_DTO_ClubProperties" %>
+
 <%@ page import="java.util.List" %>
 
 
@@ -18,7 +17,7 @@
 	int adminyn=0, joinyn=0;
 
 	String club_id = request.getParameter("clubid");
-dtos.Class_DTO_i iii = new dtos.Class_DTO_i();
+//Class_DTO_i iii = new dtos.Class_DTO_i();
 iii.setI(Integer.parseInt(club_id));	// req로 받아서 넣어 사용하면 되겠네요 
 List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selector_no(iii);
 %>

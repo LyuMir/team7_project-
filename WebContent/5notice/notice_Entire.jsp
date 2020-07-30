@@ -143,7 +143,7 @@
 	}
 	table *{
 		/*border: 1px solid silver;*/
-		font-size: 15px;
+		font-size: 13px;
 	}
 	thead *{
 		font-size: 17px;

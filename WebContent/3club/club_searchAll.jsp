@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="daos.Class_DAO" %>
-<%@ page import="dtos.Class_DTO_ClubProperties" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.team7.vo.ClubBean" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
 	<!-- 바디... main만 있어도 됨.  -->
@@ -13,8 +12,8 @@ request.setCharacterEncoding("UTF-8");
 //String whichNum = request.getParameter("whichNum"); 
 // 아직 12345 목록 크기 정하지 않았습니다. 
 
-List<DTO_ClubProperties2> rlist // = new Class_DAO().club_selectorAll2(iii);
-			= ()
+List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
+			=(List<ClubBean>) request.getAttribute("rlist");
 
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
 
@@ -57,6 +56,12 @@ List<DTO_ClubProperties2> rlist // = new Class_DAO().club_selectorAll2(iii);
 	<input type="hidden" name="clubid" id="clubid3">
 </form>
 
+
+    </div><!-- 그리그 끝! -->
+    "Icon made by Freepik from www.flaticon.com"<br> <br>
+    Icons made by Pixel perfect from  www.flaticon.com
+  </section>
+  
 <!-- <script type="text/javascript" src="js/club_whereto.js"></script> -->
 <script type="text/javascript">
 
@@ -136,11 +141,6 @@ List<DTO_ClubProperties2> rlist // = new Class_DAO().club_selectorAll2(iii);
 
 }
 </script>
-
-    </div><!-- 그리그 끝! -->
-    "Icon made by Freepik from www.flaticon.com"<br> <br>
-    Icons made by Pixel perfect from  www.flaticon.com
-  </section>
 </main>
 
 

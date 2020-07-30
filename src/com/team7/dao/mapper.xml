@@ -19,13 +19,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 
-	<select id="select_List_Notice" resultType="com.team7.vo.DTO_Notice" >
+	<select id="select_List_Notice" resultType="com.team7.vo.NoticeBean" >
 		select * from team7.team7_notice limit ${page}, 10
 	</select>
 	<select id="select_ListCount_Notice" resultType="com.team7.vo.PageInfo" >
 		select count(*) as 'page' from team7.team7_notice
 	</select>
-	<select id="select_Notice" resultType="com.team7.vo.DTO_Notice" >
+	<select id="select_Notice" resultType="com.team7.vo.NoticeBean" >
 		select * from team7.team7_notice where no = ${no}
 	</select>
 	
@@ -39,10 +39,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from team7.team7_notice where no = ${no}
 	</delete>
 	
-	<select id="NoticeselectAll" resultType="com.team7.vo.DTO_Notice" >
+	<select id="NoticeselectAll" resultType="com.team7.vo.NoticeBean" >
 		select * from team7.team7_notice
 	</select>
-	<select id="NoticeselectTHATONE" resultType="com.team7.vo.DTO_Notice" >
+	<select id="NoticeselectTHATONE" resultType="com.team7.vo.NoticeBean" >
 		select * from team7.team7_notice where no = ${i}
 	</select>
 
