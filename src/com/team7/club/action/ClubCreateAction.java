@@ -27,6 +27,8 @@ public class ClubCreateAction implements Action{
 		String club_area = request.getParameter("club_area");
 		String club_profileText = request.getParameter("club_profileText");
 		
+		String photo1 = request.getParameter("");
+		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("LOG_ID");
 		
@@ -64,8 +66,8 @@ public class ClubCreateAction implements Action{
 //		clubBean.setNo();
 		clubBean.setProfile(club_profileText);
 		clubBean.setPublicity(club_publicity);
-//		clubBean.setPhoto1();
-//		clubBean.setPhoto2();
+		clubBean.setPhoto1();
+		clubBean.setPhoto2();
 		new ClubService().club_creator(clubBean);
 		
 
