@@ -53,14 +53,14 @@ public class ClubController extends javax.servlet.http.HttpServlet
 			}
 		}
 		else if(command.equals("/Mng.club")){	// 그 일 요청받은 거면 다음을 해라.
-//			action  = new com.team7.club.action.ManageAction();
-//			try {
-//				forward=action.execute(request, response );
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-			forward = new ActionForward();
-			forward.setPath("_FORWHERE.jsp?forwhere=club_myClubs.jsp");
+			action  = new com.team7.club.action.ManageAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+//			forward = new ActionForward();
+//			forward.setPath("_FORWHERE.jsp?forwhere=club_myClubs.jsp");
 		}
 		else if(command.equals("/id_my.club")){
 //			action  = new com.team7.club.action.MypageAction();

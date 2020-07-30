@@ -20,23 +20,23 @@
               <ul class="grt-dropdown-list">
                 <li><a href="MainInfo.club">소모임이란</a></li>
                 <li><a href="Search.club">소모임 찾기</a></li>
-                <li><a href="Mng.club">소모임 개설/관리</a></li>
+                <li><a href="id_Mng.club">소모임 개설/관리</a></li>
               </ul>
             </li>
             <li class="grt-dropdown"  ><a href="info.my"><img src="img/myhealth.png"></a>
               <ul class="grt-dropdown-list">
-                <li><a href="health.my">My 헬스장</a></li>
-                <li><a href="trainer.my">My 트레이너</a></li>
-                <li><a href="my.club">My 소모임</a></li>
-                <li><a href="info.my">회원정보</a></li>
+                <li><a href="id_health.my">My 헬스장</a></li>
+                <li><a href="id_trainer.my">My 트레이너</a></li>
+                <li><a href="id_my.club">My 소모임</a></li>
+                <li><a href="id_info.my">회원정보</a></li>
               </ul>
             </li>
             <li class="grt-dropdown" ><a href="profInfo.notice"><img src="img/mymenu.png"></a>
               <ul class="grt-dropdown-list">
-                <li><a href="profInfo.notice">전문가 등록이란</a></li>
-                <li><a href="Mng.health">헬스장 등록/관리</a></li>
-                <li><a href="Mng.trainer">트레이너 등록/관리</a></li>
-                <li><a href="MngRev.rev">예약 확인</a></li>
+                <li><a href="id_profInfo.notice">전문가 등록이란</a></li>
+                <li><a href="id_Mng.health">헬스장 등록/관리</a></li>
+                <li><a href="id_Mng.trainer">트레이너 등록/관리</a></li>
+                <li><a href="id_MngRev.rev">예약 확인</a></li>
               </ul>
             </li>
             <li class="grt-dropdown" ><a href="noticeshow.notice"><img src="img/mymenu.png"></a>
