@@ -33,7 +33,7 @@ public class NoticeWriteAction implements Action{
 		
 		
 		ActionForward forward= new ActionForward();
-		forward.setPath("noticeshow.notice");
+		forward.setPath("noticeshow.notice"); //jsp 로 가던지 기능을 부르던지  //
 		return forward;
 	}
 

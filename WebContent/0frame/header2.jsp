@@ -8,7 +8,7 @@
  		<a><%=id %></a>
       <a href="logout.log">로그아웃</a>
       <!-- <a href="">마이 페이지</a>-->
-      <!-- <a href="">코치지원</a> -->
+      <a href="id_MainToApply.trainer">코치지원</a>
     </div>
   </div>
 </header>

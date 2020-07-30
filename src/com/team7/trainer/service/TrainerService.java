@@ -1,42 +1,42 @@
-package com.team7.notice.service;
+package com.team7.trainer.service;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.team7.dao.Class_DAO;
-import com.team7.vo.NoticeBean;
+import com.team7.vo.Trainer_info;
 import com.team7.vo.MemberInfo1;
 import com.team7.vo.MemberLogInfo;
 import com.team7.vo.PageInfo;
 
-public class NoticeService {
+public class TrainerService {
 
 	
 	
 	public void delete(int no) {
 		
 		
-		NoticeBean notice = new NoticeBean();
-		notice.setNo(no);
+		Trainer_info trainer = new Trainer_info();
+		trainer.setNo(no);
 		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		sqlsession.delete("delete_Notice", notice);
+		sqlsession.delete("delete_Trainer", trainer);
 		sqlsession.commit();
 		sqlsession.close();
 		
 	}
 	
-	public void edit(NoticeBean notice) {
+	public void edit(Trainer_info trainer) {
 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		sqlsession.update("update_Notice",notice);
+		sqlsession.update("update_Rrainer",trainer);
 		sqlsession.commit();
 		sqlsession.close();
 	}
-	public void insert(NoticeBean notice) {
+	public void insert(Trainer_info trainer) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		sqlsession.insert("insert_Notice",notice);
+		sqlsession.insert("insert_Trainer",trainer);
 		sqlsession.commit();
 		sqlsession.close();
 		
