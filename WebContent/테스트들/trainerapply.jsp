@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
+<%@ page import="com.team7.vo.MemberLogInfo" %>
+
 <!DOCTYPE html>
+
+<%
+request.setCharacterEncoding("UTF-8");
+ MemberLogInfo info = (MemberLogInfo) session.getAttribute("logid");	//오로지 얘를 위해!!
+%>
+
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -29,7 +39,7 @@
 <br><br>
 <span class="question"> 이름을 입력해주세요<br></span>
 *본명을 입력해주세요<br>
-<input type="textfield" name="coachname" ><br>
+<input type="text" name="coachname" ><br>
 	<div class="check_font" id="namecheck"></div>
 
 
@@ -157,7 +167,7 @@
 
  <br><br>
 <span class="question">코치님을 더 잘 알 수 있도록 인스타그램 등의 SNS 계정이 있다면 소개해주세요.</span><br><br>
-<input type="textfield" name="coachsns"size="50px" placeholder="없다면 공란으로 두셔도됩니다">
+<input type="text" name="coachsns"size="50px" placeholder="없다면 공란으로 두셔도됩니다">
 
 <br><br>
 
