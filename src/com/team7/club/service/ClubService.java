@@ -12,7 +12,7 @@ import com.team7.vo.PageInfo;
 public class ClubService {
 
 	
-	public void club_creator(DTO_ClubProperties club) {
+	public void club_creator(ClubBean club) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		sqlsession.insert("insert_CreateClub", club); // 변수이름값, 변수값  ... 불러올 id , 보내줄 dto인듯. 
 		sqlsession.commit();
