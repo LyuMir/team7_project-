@@ -51,7 +51,7 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 		</article>
 		<%} %>
 
-<form id="gotoClub" action="toMain.club" method="post" style="display:none;">
+<form id="gotoClub" action="toClubMain.club" method="post" style="display:none;">
 	<!-- <input type="hidden" name="forwhere" value="club_main.jsp"> -->
 	<input type="hidden" name="clubid" id="clubid3">
 </form>
@@ -139,7 +139,7 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 
 }());
 
-}
+
 </script>
 </main>
 

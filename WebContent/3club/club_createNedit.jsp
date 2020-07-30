@@ -25,8 +25,9 @@ String id = (String) session.getAttribute("LOG_ID");
 
 ClubBean dto = new ClubBean();
 dto.setAdmin(id);
-List<ClubBean> rlist  = new ClubService().club_selector_id(dto);
+List<ClubBean> rlist  = //new ClubService().club_selector_id(dto);
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
+		(List<ClubBean>) session.getAttribute("rlist");
 %> 
 
 <main id="main000" class="mainwrap">
@@ -115,20 +116,20 @@ List<ClubBean> rlist  = new ClubService().club_selector_id(dto);
 <!--  post 대신 우선 get으로 살펴보기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
 
 <form id="createClub" action="team_FORWHERE.jsp" method="post">
-	<input type="hidden" name="forwhere" value="club_create_userpage.jsp">
+	<input type="hidden" name="forwhere" value="3club/club_create.jsp">
 </form>
 
 <form id="editClub" action="team_FORWHERE.jsp" method="post">
-	<input type="hidden" name="forwhere" value="club_edit_userpage.jsp">
+	<input type="hidden" name="forwhere" value="3club/club_edit.jsp">
 	<input type="hidden" name="clubid" id="clubid">
 </form>
 <form id="deleteClub" action="team_FORWHERE.jsp" method="post">
-	<input type="hidden" name="forwhere" value="club_delete.jsp">
+	<input type="hidden" name="forwhere" value="clubDelete.club">
 	<!-- 딜리트는 갔다가 바로 여기로 돌아올겁ㄴ디ㅏ.  -->
 	<input type="hidden" name="clubid" id="clubid2">
 </form>
 <form id="gotoClub" action="team_FORWHERE.jsp" method="post">
-	<input type="hidden" name="forwhere" value="club_main.jsp">
+	<input type="hidden" name="forwhere" value="3club/club_main.jsp">
 	<input type="hidden" name="clubid" id="clubid3">
 </form>
 

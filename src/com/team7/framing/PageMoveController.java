@@ -1,4 +1,4 @@
-package com.team7.controller;
+package com.team7.framing;
 
 import java.io.IOException;
 
@@ -9,11 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.team7.club.action.Action;
 import com.team7.vo.ActionForward;
 
-@WebServlet("*.club")
-public class ClubController extends javax.servlet.http.HttpServlet 
+@WebServlet("*.to")
+public class PageMoveController extends javax.servlet.http.HttpServlet 
 {
 
 	
@@ -28,7 +27,7 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		
 		
 		ActionForward forward=null;	//forward : 갈 곳 지정 
-		Action action=null;			//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
+		//Action action=null;			//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
 
 		HttpSession session = request.getSession(true);
 		int logined =0;
@@ -36,51 +35,23 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		else {
 			logined=(Integer) session.getAttribute("LOG_STATUS");
 		}
-		if(command.startsWith("/id_") && logined !=1) {
-			//id가 필요하며 login이 안 되어있을시
-			response.setCharacterEncoding("utf-8");
-			response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
-			return;	//여기에 걸리면 밑에 구문들은 실행하지 않습니다... sendRedirect라서 어차피 실행 안되겠지만, 혹시 모르니까. 
+		if(command.startsWith("/id_")) {
+			//id가 필요하며 
+			if(logined != 1) {
+				//login이 안 되어있을시
+				response.setCharacterEncoding("utf-8");
+				response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
+				return;	//여기에 걸리면 밑에 구문들은 실행하지 않습니다... sendRedirect라서 어차피 실행 안되겠지만, 혹시 모르니까. 
+			}
+			
+			command = command.substring(4);
+			command = "/"+command;
+			System.out.println(command+"입니다.");
 		}
 		
-		
-		if(command.equals("/MainInfo.club")){
+		if(command.equals("/club_intro.to")){
 			forward = new ActionForward();
-			forward.setPath("_FORWHERE.jsp?forwhere=3club/club_intro.jsp");//그냥 보내는 것만. 
-		}
-		else if(command.equals("/Search.club")){	
-			action  = new com.team7.club.action.ClubShowAction();
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		else if(command.equals("/Mng.club")){	// 그 일 요청받은 거면 다음을 해라.
-			action  = new com.team7.club.action.ClubManageAction();
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		else if(command.equals("/id_my.club")){
-			action  = new com.team7.club.action.MypageAction();
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-//			forward = new ActionForward();
-//			forward.setPath("_FORWHERE.jsp?forwhere=club_myClubs.jsp");
-		}
-		else if(command.equals("/toClubMain.club")){
-			action  = new com.team7.club.action.ClubPageAction();
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			forward.setPath("_FORWHERE.jsp?forwhere=3club/club_intro.jsp");
 		}
 		
 

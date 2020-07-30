@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
-
+<%@ page import="com.team7.vo.ClubBean" %>
 <%@ page import="java.util.List" %>
 
 
@@ -18,8 +18,9 @@
 
 	String club_id = request.getParameter("clubid");
 //Class_DTO_i iii = new dtos.Class_DTO_i();
-iii.setI(Integer.parseInt(club_id));	// req로 받아서 넣어 사용하면 되겠네요 
-List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selector_no(iii);
+//iii.setI(Integer.parseInt(club_id));	// req로 받아서 넣어 사용하면 되겠네요 
+//List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selector_no(iii);
+List<ClubBean> rlist = (List<ClubBean>) session.getAttribute("rlist");
 %>
 <%
 //if(id.equals("null")){
@@ -167,7 +168,7 @@ if(id ==null){
 			</div>
 		</section>
 		<div class="fclear">.</div>
-<form id="sender0" action="team_FORWHERE.jsp" method="" style="display: none;">
+<form id="sender0" action="team_FORWHERE.jsp" method="post" style="display: none;">
 	<input type="hidden" name="forwhere" id="forwhere">
 	<input type="hidden" name="clubid" value="<%=rlist.get(0).getNo()%>">
 </form>

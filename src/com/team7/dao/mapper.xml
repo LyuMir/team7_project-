@@ -54,19 +54,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into team7.team7_club values(default, '${club_name}', '${club_admin}' , '${club_publicity}', '${club_memberJoin}', ${club_memLimit}, '${club_exc_type}', '${club_Date_week} ${club_Date_hour}', '${club_area}', '${club_profileText}', '${club_profile_photo1}', '${club_profile_photo2}' )
 	</insert>
 
-	<select id="ClubselectAll" resultType="com.team7.vo.DTO_ClubProperties2" >
+	<select id="ClubselectAll" resultType="com.team7.vo.ClubBean" >
 		select * from team7.team7_club
 	</select>
 
-	<select id="ClubselectAll2" resultType="com.team7.vo.DTO_ClubProperties2" >
+	<select id="ClubselectAll2" resultType="com.team7.vo.ClubBean" >
 		select * from team7.team7_club limit ${page}, 10
 	</select>
 
-	<select id="ClubselectNo" resultType="com.team7.vo.DTO_ClubProperties2" >
+	<select id="ClubselectNo" resultType="com.team7.vo.ClubBean" >
 		select * from team7.team7_club where no = ${no}
 	</select>
 
-	<select id="ClubselectID" resultType="com.team7.vo.DTO_ClubProperties2" >
+	<select id="ClubselectID" resultType="com.team7.vo.ClubBean" >
 		select * from team7.team7_club where admin = '${admin}'
 	</select>
 	
