@@ -35,7 +35,7 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		
 		if(command.startsWith("id_") && logined !=1) {
 			//id가 필요하며 login이 안 되어있을시
-			response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요.");
+			response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
 			return;	//여기에 걸리면 밑에 구문들은 실행하지 않습니다... sendRedirect라서 어차피 실행 안되겠지만, 혹시 모르니까. 
 		}
 		
