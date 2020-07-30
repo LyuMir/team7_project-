@@ -29,7 +29,7 @@
 	%>
 
 	<main>
-	<form class="" action="edit.club" method="post"	id="club_creator_form">
+	<form class="" action="edit.club" enctype="multipart/form-data"  method="post"	id="club_creator_form">
 		<input readonly="true" type="hidden" name="no" value="<%=id%>">
 		<table>
 			
@@ -186,8 +186,12 @@
 			</tr>
 			<tr>
 				<td>소모임 사진</td>
-				<td>소모임 프로필 사진 : b ... 소모임 대표 사진 : b // 현재 사진 올리기 기능이 제한되어
-					있습니다. 문의사항 : 이재형 0720</td>
+				<td>소모임 프로필 사진 <!-- : b ... 소모임 대표 사진 : b // 현재 사진 올리기 기능이 제한되어
+					있습니다. 문의사항 : 이재형 0720 -->
+					<br>
+						<input type="file" name="photo1"> 메인 사진 (대문 사진) <br>
+						<input type="file" name="photo2"> 메인 프로필 사진 
+				</td>
 			</tr>
 		</table>
 	</form>

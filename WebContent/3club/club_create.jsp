@@ -14,7 +14,7 @@
 	<!-- 사실 우리에게 필요한 것은 메인만 -->
 
 	<main>
-		<form class="" action="create.club" method="post" id="club_creator_form">
+		<form class="" enctype="multipart/form-data" action="create.club" method="post" id="club_creator_form">
 			<table>
 				<tr>
 					<td>소모임 이름</td>
@@ -194,7 +194,9 @@
 				<tr>
 					<td>소모임 사진</td>
 					<td>
-						소모임 프로필 사진 : b ... 소모임 대표 사진 : b // 현재 사진 올리기 기능이 제한되어 있습니다. 문의사항 : 이재형 0720
+						<!-- 소모임 프로필 사진 : b ... 소모임 대표 사진 : b // 현재 사진 올리기 기능이 제한되어 있습니다. 문의사항 : 이재형 0720 -->
+						<input type="file" name="photo1"> 메인 사진 (대문 사진) <br>
+						<input type="file" name="photo2"> 메인 프로필 사진 
 					</td>
 				</tr>
 			</table>

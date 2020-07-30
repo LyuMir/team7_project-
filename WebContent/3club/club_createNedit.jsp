@@ -128,7 +128,7 @@ String id = (String) session.getAttribute("LOG_ID");
 	<!-- 딜리트는 갔다가 바로 여기로 돌아올겁ㄴ디ㅏ.  -->
 	<input type="hidden" name="clubid" id="clubid2">
 </form>
-<form id="gotoClub" action="_FORWHERE.jsp" method="post">
+<form id="gotoClub" action="toClubMain.club" method="post">
 	<input type="hidden" name="forwhere" value="3club/club_main.jsp">
 	<input type="hidden" name="clubid" id="clubid3">
 </form>
@@ -170,6 +170,13 @@ function gotoClub2(req){
 	$('#gotoClub').find('#clubid3').val(id);
 	$('#gotoClub').submit();
 	
+}
+function manageClub(req){
+	var id = $(req).parent('.wrapEn0').find('.card__idhere').attr('id');
+
+	$('#manageClub').children('#clubid').val(id);
+
+	$('#manageClub').submit();
 }
 
 </script>

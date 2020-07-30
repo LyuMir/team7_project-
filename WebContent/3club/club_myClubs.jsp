@@ -6,7 +6,7 @@
 <html>
 <head>
 	<title>소모임 전체보기...</title>
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?version=55">
 </head>
 <body>
 	<!-- 바디... main만 있어도 됨.  -->
@@ -24,6 +24,9 @@ String id = (String) session.getAttribute("LOG_ID");
 List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
 		(List<ClubBean>) request.getAttribute("rlist");
+
+
+		List<ClubBean> rlist2 = (List<ClubBean>)request.getAttribute("rlist2");
 %>
 
 <main id="main000" class="mainwrap">
@@ -32,11 +35,43 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 	  <div class="sticky_side_bar fright">
 	  	ꓥ  &nbsp; &nbsp; 1 2 3 4 5  … 12 &nbsp; &nbsp;  ꓦ
 	  </div>
-내가 속한 소모임 . 
+내가 창설한 소모임 . 
     <div class="grid">
 
 		   
      <% for(int i = 0; i < rlist.size(); i++){ %>
+		<article class="grid__item">
+			<div class="wrapEn0">
+				<div class="overray0 manageit" onclick="manageClub(this)">소모임 관리하기</div>
+				<!-- <div class="overray0 deleteit" onclick="deleteClub(this)">소모임 삭제하기</div> -->
+				<div class="wrapEntire" onclick="gotoClub2(this)">
+					<div class="card">
+						<div class="card__img00 fright">
+							<img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
+						</div>
+						<div class="card__content fleft">
+							<div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
+							<div class="card__header"><%=rlist.get(i).getName() %></div>
+							<div class="card__tag00 content_now"><%=rlist.get(i).getMemberJoin() %></div>
+							<div class="card__tag00 content_what"> 운동 : <span><%=rlist.get(i).getE_type() %></span></div>
+							<div class="card__tag00 content_where"> 장소 : <span><%=rlist.get(i).getArea() %></span></div>
+							<div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
+							<div class="card__heart"> 
+								<img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
+							</div>
+						</div>
+						<div class="card__bottomContent">
+							<div class="card__text"><%=rlist.get(i).getProfile() %></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+		<%} %>
+
+		<br> 내가 속한 소모임 
+
+     <% for(int i = 0; i < rlist2.size(); i++){ %>
 		<article class="grid__item" onclick="gotoClub2(this)">
 			<div class="card">
 				<div class="card__img00 fright">
@@ -44,17 +79,17 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 				</div>
 				<div class="card__content fleft">
 					<div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
-					<div class="card__header"><%=rlist.get(i).getName() %></div>
-					<div class="card__tag00 content_now"><%=rlist.get(i).getMemberJoin() %></div>
-					<div class="card__tag00 content_what"> 운동 : <span><%=rlist.get(i).getE_type() %></span></div>
-					<div class="card__tag00 content_where"> 장소 : <span><%=rlist.get(i).getArea() %></span></div>
-					<div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
+					<div class="card__header"><%=rlist2.get(i).getName() %></div>
+					<div class="card__tag00 content_now"><%=rlist2.get(i).getMemberJoin() %></div>
+					<div class="card__tag00 content_what"> 운동 : <span><%=rlist2.get(i).getE_type() %></span></div>
+					<div class="card__tag00 content_where"> 장소 : <span><%=rlist2.get(i).getArea() %></span></div>
+					<div class="card__tag00 content_when"> 시간 : <span><%=rlist2.get(i).getMeetingDate() %></span></div>
 					<div class="card__heart"> 
 						<img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
 					</div>
 				</div>
 				<div class="card__bottomContent">
-					<div class="card__text"><%=rlist.get(i).getProfile() %></div>
+					<div class="card__text"><%=rlist2.get(i).getProfile() %></div>
 				</div>
 			</div>
 		</article>
@@ -69,6 +104,10 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 	<!-- <input type="hidden" name="forwhere" value="club_main.jsp"> -->
 	<input type="hidden" name="clubid" id="clubid3">
 </form>
+<form id="manageClub" action="manage.club" method="post" style="display:none;">
+	<!-- <input type="hidden" name="forwhere" value="club_main.jsp"> -->
+	<input type="hidden" name="clubid" id="clubid3">
+</form>
 
 
     "Icon made by Freepik from www.flaticon.com"<br> <br>
@@ -79,12 +118,21 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 
 <script type="text/javascript" src="js/club_whereto.js"></script>
 <script type="text/javascript">
+
+var kk = 0 ;
 	function gotoClub2(req){
+		//alert("112222");
 	var id =$(req).find('.card__idhere').attr('id');
 	$('#gotoClub').find('#clubid3').val(id);
 	$('#gotoClub').submit();
 	
 }
+	function manageClub(req){
+		//alert("???du");
+		var id =$(req).find('.card__idhere').attr('id');
+		$('#manageClub').find('#clubid3').val(id);
+		$('#manageClub').submit();
+	}
 </script>
 
 

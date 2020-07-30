@@ -69,6 +69,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="ClubselectID" resultType="com.team7.vo.ClubBean" >
 		select * from team7.team7_club where admin = '${admin}'
 	</select>
+	<select id="Select_club_by_Member" resultType="com.team7.vo.ClubBean" >
+		select * from team7.team7_club where no in (select club from team7.team7_cmember where cmember = '${id}')
+	</select>
 	
 	<update id="update_editClub">
 		update team7.team7_club set publicity = '${club_publicity}' , memberJoin = '${club_memberJoin}' , memberLimit = ${club_memLimit} , e_type = '${club_exc_type}', meetingDate = '${club_Date_week} ${club_Date_hour}', area = '${club_area}' , profile = '${club_profileText}', photo1=  '${club_profile_photo1}', photo2= '${club_profile_photo2}' where no = #{no}
@@ -82,7 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<insert id="insert_PICTURE" parameterType="String">
-	insert into team7.team7_picture values(${id}, ${picture})
+		insert into team7.team7_picture_data values('${id}', '${picture}')
 	</insert>
 	
 

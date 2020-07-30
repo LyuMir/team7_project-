@@ -20,7 +20,7 @@ public class ClubController extends javax.servlet.http.HttpServlet
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");	//내가 추가함
+		//request.setCharacterEncoding("UTF-8");	//내가 추가함
 		String RequestURI=request.getRequestURI();	//req 가져옴 :http://localhost:8080/WebProject0724_MVC2/boardList.bo
 		String contextPath=request.getContextPath(); //http://localhost:8080/WebProject0724_MVC2/
 		String command=RequestURI.substring(contextPath.length()); //앞에 글자 지움 : boardList.bo
@@ -75,9 +75,41 @@ public class ClubController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//			forward = new ActionForward();
-//			forward.setPath("_FORWHERE.jsp?forwhere=club_createNedit.jsp");
 		}
+		else if(command.equals("/create.club")){
+			action  = new com.team7.club.action.ClubCreateAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/edit.club")){
+			action  = new com.team7.club.action.ClubEditAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/Delete.club")){
+			action  = new com.team7.club.action.ClubDeleteAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/manage.club")){
+			action  = new com.team7.club.action.ClubEnrollAction();	//clubid
+			System.out.println("sdfsd");
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		else if(command.equals("/toClubMain.club")){
 			action  = new com.team7.club.action.ClubPageAction();
 			try {
@@ -86,7 +118,7 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
-
+		
 //		else if(command.equals("/clubName.club")){
 //			action  = new com.team7.club.action.ClubNameAction();
 //			System.out.println("여기는?");

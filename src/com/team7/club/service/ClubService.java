@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.team7.dao.Class_DAO;
 import com.team7.vo.DTO_ClubProperties;
+import com.team7.vo.MemberLogInfo;
 import com.team7.vo.ClubBean;
 import com.team7.vo.PageInfo;
 
@@ -44,6 +45,14 @@ public class ClubService {
 	public List<ClubBean> club_selector_id(ClubBean clubBean) { // 아이디(admin)에 따른 모든 것들. 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		List<ClubBean> theclub = sqlsession.selectList("ClubselectID", clubBean);
+		sqlsession.close();
+		return theclub;
+	}
+	
+
+	public List<ClubBean> club_selector_cmember(MemberLogInfo id) { // 아이디(admin)에 따른 모든 것들. 
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ClubBean> theclub = sqlsession.selectList("Select_club_by_Member", id);
 		sqlsession.close();
 		return theclub;
 	}
