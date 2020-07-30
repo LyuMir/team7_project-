@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team7.club.service.ClubService;
+import com.team7.photo.service.PhotoUploadService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.ClubBean;
 
@@ -27,7 +28,8 @@ public class ClubCreateAction implements Action{
 		String club_area = request.getParameter("club_area");
 		String club_profileText = request.getParameter("club_profileText");
 		
-		String photo1 = request.getParameter("");
+		String photo1 = request.getParameter("photo1");
+		String photo2 = request.getParameter("photo2");
 		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("LOG_ID");
@@ -66,13 +68,17 @@ public class ClubCreateAction implements Action{
 //		clubBean.setNo();
 		clubBean.setProfile(club_profileText);
 		clubBean.setPublicity(club_publicity);
-		clubBean.setPhoto1();
-		clubBean.setPhoto2();
+		clubBean.setPhoto1(photo1);
+		clubBean.setPhoto2(photo2);
 		new ClubService().club_creator(clubBean);
-		
+		boolean k = new PhotoUploadService().upload(request, "/club"+"/"+club_name, photo1);
+		boolean k1 = new PhotoUploadService().upload(request, "/club"+"/"+club_name, photo2);
 
+		System.out.println(k+"사진넣기");
+		System.out.println(k1+"사진넣기");
+		
 		ActionForward forward= new ActionForward();
-		forward.setPath("");
+		forward.setPath("id_Mng.club");
 		return forward;
 	}
 

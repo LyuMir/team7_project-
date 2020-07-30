@@ -15,12 +15,15 @@ import com.team7.vo.PhotoBean;
 
 public class PhotoUploadService {
 
-	public boolean upload(HttpServletRequest request, String savefolder, String fromwhat) throws IOException {
+	public boolean upload(HttpServletRequest request, String savefolder, String photoid) throws IOException {
 		boolean ok = false;
 		String realFolder="";
 //		String saveFolder="/abc";
 		if(savefolder ==null) {
 			return false;
+		}
+		if(!savefolder.startsWith("/")) {
+			savefolder = "/"+savefolder;
 		}
 		int fileSize=5*1024*1024;
 		ServletContext context = request.getServletContext();
@@ -33,7 +36,7 @@ public class PhotoUploadService {
 				new DefaultFileRenamePolicy());
 		
 		PhotoBean photoBean = new PhotoBean();
-		photoBean.setId(fromwhat);
+		photoBean.setId(photoid);
 		photoBean.setPicture(multi.getOriginalFileName((String)multi.getFileNames().nextElement()));
 		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();

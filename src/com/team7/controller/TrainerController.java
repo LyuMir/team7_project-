@@ -32,13 +32,14 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		
 		HttpSession session = request.getSession(true);
 		int logined= (Integer)session.getAttribute("LOG_STATUS"); //오브젝트형식으로있다
-		
+		System.out.print("되는건가");
 		if(command.startsWith("/id_") && logined !=1) {
 			response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
 			return;
 		}
-		
+		System.out.print("되는건가");
 		if(command.equals("/id_MainToApply.trainer")){	
+			String id = (String)session.getAttribute("LOGIN");
 				
 			
 			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.

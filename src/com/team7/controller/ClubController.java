@@ -50,7 +50,7 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		
 		if(command.equals("/MainInfo.club")){
 			forward = new ActionForward();
-			forward.setPath("_FORWHERE.jsp?forwhere=3club/club_intro.jsp");//그냥 보내는 것만. 
+			forward.setPath("_FORWHERE.jsp?forwhere=3club/club_intro.jsp");
 		}
 		else if(command.equals("/Search.club")){	
 			action  = new com.team7.club.action.ClubShowAction();
@@ -76,39 +76,10 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 //			forward = new ActionForward();
-//			forward.setPath("_FORWHERE.jsp?forwhere=club_myClubs.jsp");
+//			forward.setPath("_FORWHERE.jsp?forwhere=club_createNedit.jsp");
 		}
 		else if(command.equals("/toClubMain.club")){
 			action  = new com.team7.club.action.ClubPageAction();
-			System.out.println("여기는?");
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		else if(command.equals("/Delete.club")){
-			action  = new com.team7.club.action.ClubDeleteAction();
-			System.out.println("여기는?");
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		else if(command.equals("/create.club")){
-			action  = new com.team7.club.action.ClubDeleteAction();
-			System.out.println("여기는?");
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		else if(command.equals("/edit.club")){
-			action  = new com.team7.club.action.ClubDeleteAction();
-			System.out.println("여기는?");
 			try {
 				forward=action.execute(request, response );
 			} catch (Exception e) {

@@ -121,6 +121,22 @@
 <br><br>
 
 
+<span class="question"> 코치님 프로필의 제목을 적어주세요!<br></span>
+* 예시) 마음과 몸의 조화를통한 요가  <br>
+<input type="text" name="bigtext" placeholder="20자 내외로적어주세요" size="30">
+	<div class="check_font" id="bigtextcheck"></div>
+
+<br><br>
+
+<span class="question"> 코치님 프로필의 소글귀를 적어주세요!<br></span>
+* 예시) 흐트러진 몸과 마음을 하나의 차크라로 모아보는 연습을 통해 우리는 좀더 우리몸에 더욱더 가까워질수있습니다.  <br>
+<input type="text" name="smalltext" placeholder="50자 내외로적어주세요" size="60">
+	<div class="check_font" id="smalltextcheck"></div>
+
+<br><br>
+
+
+
 
 
 <span class="question"> 경력사항 / 활동내용 (기간)<br></span>
