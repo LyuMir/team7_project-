@@ -23,10 +23,12 @@ public class ClubPageAction implements Action{
 		List<ClubBean> rlist = new ClubService().club_selector_no(clubBean);
 
 		request.setAttribute("rlist", rlist);
-		
+		request.setAttribute("rlist00", rlist);
+				System.out.println(rlist.get(0).getAdmin());
+				System.out.println(rlist.get(0).getMeetingDate());
+				
 		ActionForward forward= new ActionForward();
 		forward.setPath("_FORWHERE.jsp?forwhere=3club/club_main.jsp");
-		System.out.println("여기까지 오나?");
 		return forward;
 	}
 

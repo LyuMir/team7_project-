@@ -67,8 +67,11 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 
 
 	function gotoClub2(req){
+    //alert("dd");
 	var id =$(req).find('.card__idhere').attr('id');
+	//alert(id);
 	$('#gotoClub').find('#clubid3').val(id);
+	//alert($('#gotoClub').find('#clubid3').val());
 	$('#gotoClub').submit();
 	
 }

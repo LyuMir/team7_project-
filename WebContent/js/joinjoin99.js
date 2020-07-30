@@ -349,7 +349,7 @@
 		// 	noBecause("영문, 숫자, '-','_' 포함 3자 이상 입력해주세요.",i);
 		// }
 		$.ajax({
-			url : '9oldjsp/email__validate.jsp' ,  //'id__validate__.jsp',
+			url : './9oldjsp/email__validate.jsp' ,  //'id__validate__.jsp',
 
 			data : {'input1':thone}, // key : value, key : value , ... 여러개 가능 
 

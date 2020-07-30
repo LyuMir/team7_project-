@@ -29,8 +29,7 @@
 	%>
 
 	<main>
-	<form class="" action="club_edit.jsp" method="post"
-		id="club_creator_form">
+	<form class="" action="edit.club" method="post"	id="club_creator_form">
 		<input readonly="true" type="hidden" name="no" value="<%=id%>">
 		<table>
 			
@@ -196,4 +195,4 @@
 		<button onclick="formSender2()">소모임 수정하기</button>
 	</div>
 	</main>
-	<script type="text/javascript" src="js/club_CRU.js"></script>
+	<script type="text/javascript" src="js/club_CRU.js?version=22"></script>

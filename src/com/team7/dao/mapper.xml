@@ -75,7 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<delete id="delete_Club">
-		delete from team7.team7_notice where no = #{no}
+		delete from team7.team7_club where no = #{no}
 	</delete>
 	
 

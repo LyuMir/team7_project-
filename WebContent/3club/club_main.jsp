@@ -4,27 +4,22 @@
 <%@ page import="com.team7.vo.ClubBean" %>
 <%@ page import="java.util.List" %>
 
-
-    <!-- <link rel="stylesheet" type="text/css" href="css/mainmain88.css"> -->
     <link rel="stylesheet" type="text/css" href="css/club_main.css">
 	<link rel="stylesheet" type="text/css" href="css/photo_modal00.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%
 
+request.setCharacterEncoding("UTF-8");
 	String id = (String) session.getAttribute("LOG_ID");
 	
 	int adminyn=0, joinyn=0;
 
-	String club_id = request.getParameter("clubid");
-//Class_DTO_i iii = new dtos.Class_DTO_i();
-//iii.setI(Integer.parseInt(club_id));	// req로 받아서 넣어 사용하면 되겠네요 
-//List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selector_no(iii);
-List<ClubBean> rlist = (List<ClubBean>) session.getAttribute("rlist");
-%>
-<%
+List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
+List<ClubBean> rlist00 =  (List<ClubBean>) request.getAttribute("rlist00");
 //if(id.equals("null")){
-	
+	//out.println(rlist);
+	//out.println(rlist00.get(0));
 if(id ==null){
 	
 }else{
@@ -168,10 +163,10 @@ if(id ==null){
 			</div>
 		</section>
 		<div class="fclear">.</div>
-<form id="sender0" action="team_FORWHERE.jsp" method="post" style="display: none;">
+<!-- <form id="sender0" action="team_FORWHERE.jsp" method="post" style="display: none;">
 	<input type="hidden" name="forwhere" id="forwhere">
-	<input type="hidden" name="clubid" value="<%=rlist.get(0).getNo()%>">
-</form>
+	<input type="hidden" name="clubid" value="=rlist.get(0).getNo()%>">
+</form> -->
 	</main>
 
 
@@ -180,8 +175,8 @@ if(id ==null){
 	<script type="text/javascript" src="js/photo_modal00.js"></script>
 <script type="text/javascript">
 
-	var adminyn = <%=adminyn %>;
-	var joinyn = <%=joinyn %>; // 0과 1입니다. 
+	//minyn %>;
+	//nyn %>; // 0과 1입니다. 
 
 	var z1button = $('#z_zzim_1');
 	var z2button = $('#z_join1');
@@ -189,16 +184,16 @@ if(id ==null){
 	var sender0 = $('#sender0');
 	var forwhere = $('#forwhere');
 
-	function zzim1(){
-		if(adminyn ==1){
-			sender0.children('#forwhere').val('club_createNedit.jsp');
-			sender0.submit();
-		}
-		else{
-			//sender0.
-			// 이건 ajax로 찜 연결 ㅇㅇ. 
-		}
-	}
+	// function zzim1(){
+	// 	if(adminyn ==1){
+	// 		sender0.children('#forwhere').val('club_createNedit.jsp');
+	// 		sender0.submit();
+	// 	}
+	// 	else{
+	// 		//sender0.
+	// 		// 이건 ajax로 찜 연결 ㅇㅇ. 
+	// 	}
+	// }
 	function zzim2(){
 
 	}

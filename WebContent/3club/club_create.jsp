@@ -14,7 +14,7 @@
 	<!-- 사실 우리에게 필요한 것은 메인만 -->
 
 	<main>
-		<form class="" action="club_create.jsp" method="post" id="club_creator_form">
+		<form class="" action="create.club" method="post" id="club_creator_form">
 			<table>
 				<tr>
 					<td>소모임 이름</td>
@@ -205,8 +205,6 @@
 	</main>
 </body>
 
-<script type="text/javascript" src="js/club_CRU.js">
-
-</script>
+<script type="text/javascript" src="js/club_CRU.js?version=22"></script>
 
 </html>

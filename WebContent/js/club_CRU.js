@@ -91,7 +91,7 @@ $(document).ready(function(){
 
 		// 중복 이름 확인 절차 ㄱㄱ
 		$.ajax({
-				url : '__club_name__validate.jsp', //문서 위치. 
+				url : './9oldjsp/__club_name__validate.jsp', //문서 위치. 
 
 				dataType : 'text', 
 

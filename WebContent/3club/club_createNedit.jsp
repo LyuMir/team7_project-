@@ -23,11 +23,11 @@ String id = (String) session.getAttribute("LOG_ID");
 // dtos.Class_DTO_i iii = new dtos.Class_DTO_i();
 // iii.setI(0);	// req로 받아서 넣어 사용하면 되겠네요 
 
-ClubBean dto = new ClubBean();
-dto.setAdmin(id);
-List<ClubBean> rlist  = //new ClubService().club_selector_id(dto);
+//ClubBean dto = new ClubBean();
+//dto.setAdmin(id);
+//List<ClubBean> rlist  = //new ClubService().club_selector_id(dto);
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
-		(List<ClubBean>) session.getAttribute("rlist");
+	List<ClubBean> rlist = 	(List<ClubBean>) request.getAttribute("rlist");
 %> 
 
 <main id="main000" class="mainwrap">
@@ -115,20 +115,20 @@ List<ClubBean> rlist  = //new ClubService().club_selector_id(dto);
   </section>
 <!--  post 대신 우선 get으로 살펴보기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
 
-<form id="createClub" action="team_FORWHERE.jsp" method="post">
+<form id="createClub" action="_FORWHERE.jsp" method="post">
 	<input type="hidden" name="forwhere" value="3club/club_create.jsp">
 </form>
 
-<form id="editClub" action="team_FORWHERE.jsp" method="post">
+<form id="editClub" action="_FORWHERE.jsp" method="post">
 	<input type="hidden" name="forwhere" value="3club/club_edit.jsp">
 	<input type="hidden" name="clubid" id="clubid">
 </form>
-<form id="deleteClub" action="team_FORWHERE.jsp" method="post">
-	<input type="hidden" name="forwhere" value="clubDelete.club">
+<form id="deleteClub" action="Delete.club" method="post">
+	<!-- <input type="hidden" name="forwhere" value="clubDelete.club"> -->
 	<!-- 딜리트는 갔다가 바로 여기로 돌아올겁ㄴ디ㅏ.  -->
 	<input type="hidden" name="clubid" id="clubid2">
 </form>
-<form id="gotoClub" action="team_FORWHERE.jsp" method="post">
+<form id="gotoClub" action="_FORWHERE.jsp" method="post">
 	<input type="hidden" name="forwhere" value="3club/club_main.jsp">
 	<input type="hidden" name="clubid" id="clubid3">
 </form>
@@ -137,7 +137,42 @@ List<ClubBean> rlist  = //new ClubService().club_selector_id(dto);
     Icons made by Pixel perfect from  www.flaticon.com
 </main>
 
-<script type="text/javascript" src="js/club_whereto.js"></script>
+<!-- <script type="text/javascript" src="js/club_whereto.js"></script> -->
+<script type="text/javascript">
+	
+	function createClub(){
+	$('#createClub').submit();
+}
+function editClub(req){
+	var id = $(req).parent('.wrapEn0').find('.card__idhere').attr('id');
+
+	$('#editClub').children('#clubid').val(id);
+
+	$('#editClub').submit();
+}
+function deleteClub(req){
+	var id = $(req).parent('.wrapEn0').find('.card__idhere').attr('id');
+	$('#deleteClub').children('#clubid2').val(id);
+	var confirmE = confirm("해당 소모임을 삭제하시겠습니까?");
+	if(confirmE){
+		$('#deleteClub').submit();	//페이지 왔다갔다 하는 대신 ajax로 되나 한번 볼꺼임.
+
+	}
+}
+function gotoClub(req){
+	var id =$(req).parent('.wrapEn0').find('.card__idhere').attr('id');
+	$('#gotoClub').children('#clubid3').val(id);
+	$('#gotoClub').submit();
+}
+
+function gotoClub2(req){
+	var id =$(req).find('.card__idhere').attr('id');
+	$('#gotoClub').find('#clubid3').val(id);
+	$('#gotoClub').submit();
+	
+}
+
+</script>
 
 
 </body>
