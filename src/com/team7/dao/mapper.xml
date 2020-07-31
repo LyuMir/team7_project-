@@ -97,6 +97,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into team7.team7_trainer values(default, '${id}', '${tname}' , '${sex}', '${tphone}', ${tbirth}, '${temail}', '${twhere}', '${tmajor}', '${tcareer}', '${tprofile}', '${tcerti}', '${tstory}', '${tsns}', '${thowjoin}', 1, '${bigtext}','${smalltext}');
 	</insert>
 	
+	<select id="selectall_Trainer" resultType="com.team7.vo.Trainer_info" >
+		select * from team7.team7_club
+	</select>
+	
+	
 	
 	
 	

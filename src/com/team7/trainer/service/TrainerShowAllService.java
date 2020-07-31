@@ -17,40 +17,54 @@ public class TrainerShowAllService {
 		PageInfo pageinfo = new PageInfo();
 		pageinfo.setPage(page);
 		
-		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<Trainer_info> rlist= sqlsession.selectList("select_List_Notice", pageinfo);
+		List<Trainer_info> rlist= sqlsession.selectList("selectall_Trainer", pageinfo);
 		sqlsession.close();
 		
 		
 		return rlist;
 	}
 	
-	public int getListCount() {
 	
-		int num=0;
+	public List<Trainer_info> getmaintext(int no) {
 
-		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<PageInfo> rlist= sqlsession.selectList("select_ListCount_Notice");
-		sqlsession.close();
-		num= rlist.get(0).getPage();
-		System.out.println(num+"여기까지 왓음");
-		return num;
-	}
-	
-	
-	public List<Trainer_info> getNotice(int no) {
-
-		Trainer_info notice = new NoticeBean();
-		notice.setNo(no);
-		
-		
+		Trainer_info trainerinfo = new Trainer_info();
+		trainerinfo.setNo(no);
 		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<Trainer_info> rlist= sqlsession.selectList("select_Notice", notice);
+		List<Trainer_info> TrainerList= sqlsession.selectList("select_Notice", trainerinfo);
 		sqlsession.close();
 		
 		
-		return rlist;
+		return TrainerList;
 	}
-}
+
+
+	public List<Trainer_info> getsmalltext(int no) {
+
+	Trainer_info trainerinfo = new Trainer_info();
+	trainerinfo.setNo(no);
+	
+	SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+	List<Trainer_info> TrainerList= sqlsession.selectList("select_Notice", trainerinfo);
+	sqlsession.close();
+	
+	
+		return TrainerList;
+	}
+	
+	
+	public List<Trainer_info> getmajor(int no) {
+
+	Trainer_info trainerinfo = new Trainer_info();
+	trainerinfo.setNo(no);
+	
+	SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+	List<Trainer_info> TrainerList= sqlsession.selectList("select_Notice", trainerinfo);
+	sqlsession.close();
+	
+	
+		return TrainerList;
+	}
+	}
+
