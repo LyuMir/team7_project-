@@ -32,11 +32,15 @@ public class ClubEnrollAction implements Action{
 		
 		ClubBean clubBean = new ClubBean();
 		clubBean.setNo(Integer.parseInt(clubid));
+		
+		
+		List<ClubBean> rlist = new ClubService().club_selector_no(clubBean);
 		List<C_enroll_Bean> rlist_e = new CEnrollService().c_enroll_selector(clubBean);
 
 		List<CmemberBean> rlist_m = new CMemberService().cmember_selector(clubBean);
 		
-		
+
+		request.setAttribute("rlist", rlist);
 		request.setAttribute("rlist_e", rlist_e);
 		request.setAttribute("rlist_m", rlist_m);
 		

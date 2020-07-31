@@ -80,10 +80,10 @@ if(id ==null){
 					<button id="z_join1">가입신청 <img src="img/star34.png"></button>
 				</div>
 	<% } %>
-				<div class="zzim">
+				<!-- <div class="zzim">
 					<button id="z_zzim1">찜취소 <img src="img/heart34.png"></button>
 					<button id="z_join1">탈퇴하기 <img src="img/star34.png"></button>
-				</div>
+				</div> -->
 				<!-- 둘 중에 하나만 나타나게 jsp 처리 할거임.  -->
 				<div class="profile_mozip_status">
 					<span class="weight500">현재 정원 : </span>/150, <%=rlist.get(0).getMemberJoin() %> 중
