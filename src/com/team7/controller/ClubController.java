@@ -109,6 +109,15 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/managePro.club")){
+			action  = new com.team7.club.action.ClubEnrollProAction();	//clubid
+			//System.out.println("sdfsd");
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		else if(command.equals("/toClubMain.club")){
 			action  = new com.team7.club.action.ClubPageAction();
@@ -117,6 +126,16 @@ public class ClubController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		else if(command.equals("/id_joinme.club")){
+//			action  = new com.team7.club.action.ClubJoinMeFormAction();
+//			try {
+//				forward=action.execute(request, response );
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+			forward = new ActionForward();
+			forward.setPath("_FORWHERE.jsp?forwhere=3club/club_enroll.jsp");
 		}
 		else if(command.equals("/enrollgo.club")){
 			action  = new com.team7.club.action.ClubJoinMeAction();

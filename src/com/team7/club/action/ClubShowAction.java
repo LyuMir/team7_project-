@@ -18,7 +18,8 @@ public class ClubShowAction implements Action{
 
 		PageInfo pageInfo = new PageInfo();
 
-		List<ClubBean> rlist = new ClubService().club_selectorAll2(pageInfo);
+		//List<ClubBean> rlist = new ClubService().club_selectorAll2(pageInfo);
+		List<ClubBean> rlist = new ClubService().club_selectorAll();
 		
 		request.setAttribute("rlist", rlist);
 		

@@ -26,6 +26,14 @@ public class CEnrollService {
 		sqlsession.close();
 	}
 	
+	public void cEnrollRemove(C_enroll_Bean enroll) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.delete("delete_enroll", enroll); 
+		sqlsession.commit();
+		sqlsession.close();
+		
+	}
+	
 	
 //	public List<ClubBean> club_selector_id(ClubBean clubBean) { // 아이디(admin)에 따른 모든 것들. 
 //		SqlSession sqlsession = new Class_DAO().get_conn().openSession();

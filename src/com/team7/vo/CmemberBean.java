@@ -2,13 +2,14 @@ package com.team7.vo;
 
 public class CmemberBean {
 
-	private String club,cmember;
+	private int club;
+	private String cmember;
 
-	public String getClub() {
+	public int getClub() {
 		return club;
 	}
 
-	public void setClub(String club) {
+	public void setClub(int club) {
 		this.club = club;
 	}
 

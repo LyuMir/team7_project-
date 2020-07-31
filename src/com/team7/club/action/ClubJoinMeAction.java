@@ -1,58 +1,78 @@
 package com.team7.club.action;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.team7.club.service.CEnrollService;
 import com.team7.club.service.CMemberService;
-import com.team7.club.service.ClubService;
-import com.team7.dao.Class_DAO;
-import com.team7.photo.service.PhotoUploadService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.C_enroll_Bean;
 import com.team7.vo.ClubBean;
 import com.team7.vo.CmemberBean;
-import com.team7.vo.PhotoBean;
 
 public class ClubJoinMeAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		//String clubid = request.getParameter("clubid");
-		Integer clubid = (Integer)request.getAttribute("clubid");
-		
+		String clubid = request.getParameter("clubid");
+//		String clubid = (String)request.getAttribute("clubid");
+		//System.out.println(clubid);
+		//System.out.println(request.getPathInfo()); 
 		HttpSession session = request.getSession();
+		ActionForward forward = null;
 		
-		String  etime, wanttodo,memo ="";
+		String  etime, wanttodo,memo,id ="";
 		etime = request.getParameter("etime");
 		wanttodo = request.getParameter("wanttodo");
 		memo = request.getParameter("memo");
+		id =(String)session.getAttribute("LOG_ID");
 		
 		C_enroll_Bean enrll = new C_enroll_Bean();
-		enrll.setClub(clubid);
+		enrll.setClub(Integer.parseInt(clubid));
+//		enrll.setClub(clubid);
 		enrll.setEtime(etime);
 		enrll.setMemo(memo);
-		enrll.setWanttobe((String)session.getAttribute("LOG_ID"));
+		enrll.setWanttobe(id);
 		enrll.setWanttodo(wanttodo);
 		
-		new CEnrollService().cEnrollMe(enrll);
+		ClubBean clubBean = new ClubBean();
+		clubBean.setNo(Integer.parseInt(clubid));
+		List<CmemberBean> member = new CMemberService().cmember_selector(clubBean);
 		
+		boolean ok = true;
+		for(int i = 0 ; i < member.size(); i++) {
+			if (member.get(i).getCmember().equals(id)) {
+				ok = false;
+				break;
+			}
+		}
+		
+		
+		if(ok) {
+			new CEnrollService().cEnrollMe(enrll);
+			forward= new ActionForward();
+			forward.setPath("Search.club");
+		}
+		else {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('잘못된 경로 : 이미 가입되어있는 소모임입니다. ')");
+			out.println("history.back();");
+			out.println("</script>");
+		}
 		//new ClubService().club_selector_no(clubBean);
-		
 
-		
-		ActionForward forward= new ActionForward();
-		forward.setPath("Search.club");
+
+//		forward.setPath("toClubMain.club");
+//		forward.setPath("Search.club");
+//		forward.setPath("_FORWHERE.jsp?forwhere=3club/club_main.jsp&");
 		return forward;
 	}
 

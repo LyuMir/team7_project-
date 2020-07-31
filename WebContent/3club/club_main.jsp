@@ -72,7 +72,7 @@ if(id ==null){
 	<% }else{ %>
 				<div class="zzim">
 					<button id="z_zzim1">찜하기 <img src="img/heart34.png"></button>
-					<button id="z_join1">가입신청 <img src="img/star34.png"></button>
+					<button id="z_join1" onclick="joinme()">가입신청 <img src="img/star34.png"></button>
 				</div>
 	<% } %>
 				<!-- <div class="zzim">
@@ -169,6 +169,10 @@ if(id ==null){
 <form id="form2" action="manage.club" method="post" style="display: none;">
 	<input type="hidden" name="clubid" value="<%=rlist.get(0).getNo()%>">
 </form>
+<form id="form3" action="id_joinme.club" method="post" style="display: none;">
+	<input type="hidden" name="clubid" value="<%=rlist.get(0).getNo()%>">
+	<input type="hidden" name="clubname" value="<%=rlist.get(0).getName()%>">
+</form>
 	</main>
 
 
@@ -190,6 +194,10 @@ if(id ==null){
 	}
 	function joinmanagego(){
 		$('#form2').submit();
+	}
+	function joinme(){
+		//alert($('#form3').children('input').val());
+		$('#form3').submit();
 	}
 
 	// function zzim1(){
