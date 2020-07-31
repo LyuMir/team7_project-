@@ -3,7 +3,7 @@ package com.team7.vo;
 
 public class C_enroll_Bean {
 	private int club;
-	private String wanttobe,etime,wanttodo,memeo;
+	private String wanttobe,etime,wanttodo,memo;
 	public int getClub() {
 		return club;
 	}
@@ -28,11 +28,11 @@ public class C_enroll_Bean {
 	public void setWanttodo(String wanttodo) {
 		this.wanttodo = wanttodo;
 	}
-	public String getMemeo() {
-		return memeo;
+	public String getMemo() {
+		return memo;
 	}
-	public void setMemeo(String memeo) {
-		this.memeo = memeo;
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 	
 }

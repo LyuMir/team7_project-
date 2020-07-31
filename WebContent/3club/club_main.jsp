@@ -33,10 +33,6 @@ if(id ==null){
 		찜하기/탈퇴하기 | 	찜하기. 가입신청   | 관리하기 / 가입관리 
 
 		new_write 글쓰기 관리 : 권한없음 (disabled) | 가능  | 삭제까지...?
-
-		
-
-
  -->
 
 
@@ -65,14 +61,13 @@ if(id ==null){
 				</div>
 	<% if(adminyn == 1){ %>
 				<div class="zzim">
-					<button id="z_zzim_1" onclick="">관리하기 <img src="img/heart34.png"></button>
-					<button id="z_join_1">가입관리 <img src="img/star34.png"></button>
-					<!-- 모집 안할때 disabled 할꺼임  -->
+					<button id="z_zzim_1" onclick="managego()">관리하기 <img src="img/heart34.png"></button>
+					<button id="z_join_1" onclick="joinmanagego()">가입관리 <img src="img/star34.png"></button>
 				</div>
 	<% }else if(joinyn == 1){ %>
 				<div class="zzim">
 					<button id="z_zzim1">찜하기 <img src="img/heart34.png"></button>
-					<button id="z_join1">탈퇴하기 <img src="img/star34.png"></button>
+					<button id="z_join1">탈퇴하기 <img src="img/star_black34.png"></button>
 				</div>
 	<% }else{ %>
 				<div class="zzim">
@@ -167,8 +162,14 @@ if(id ==null){
 	<input type="hidden" name="forwhere" id="forwhere">
 	<input type="hidden" name="clubid" value="=rlist.get(0).getNo()%>">
 </form> -->
+<form id="form1" action="_FORWHERE.jsp" method="" style="display: none;">
+	<input type="hidden" name="forwhere" value="3club/club_edit.jsp">
+	<input type="hidden" name="clubid" value="<%= rlist.get(0).getNo() %>">
+</form>
+<form id="form2" action="manage.club" method="post" style="display: none;">
+	<input type="hidden" name="clubid" value="<%=rlist.get(0).getNo()%>">
+</form>
 	</main>
-
 
 
 
@@ -183,6 +184,13 @@ if(id ==null){
 
 	var sender0 = $('#sender0');
 	var forwhere = $('#forwhere');
+
+	function managego(){
+		$('#form1').submit();
+	}
+	function joinmanagego(){
+		$('#form2').submit();
+	}
 
 	// function zzim1(){
 	// 	if(adminyn ==1){

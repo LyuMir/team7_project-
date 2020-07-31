@@ -89,11 +89,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 
 	<insert id="insert_cJoin" parameterType="String">
-		insert into team7.team7_cmember values(${club},'${wanttobe}','${etime}','${wanttodo}','${memo}')
+		insert into team7.team7_cmember values(${club}, '${cmember}')
 	</insert>
 	<insert id="insert_enroll" parameterType="String">
-		insert into team7.team7_club_enroll values(${club}, '${cmember}')
+		insert into team7.team7_club_enroll values(${club},'${wanttobe}','${etime}','${wanttodo}','${memo}')
 	</insert>
+
+
+
+
+
 
 
 	<insert id="insert_PICTURE" parameterType="String">

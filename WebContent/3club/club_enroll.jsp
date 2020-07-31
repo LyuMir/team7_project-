@@ -6,8 +6,11 @@
 
 
 소모임 가입하기. 
-
-<form id="form1" action="enrollgo">
+<%
+	
+	//request.setAttribute("clubid",..);
+%>
+<form id="form1" action="enrollgo.club">
 	<table>
 <!-- 		<thead>
 			<td>
@@ -21,22 +24,22 @@
 			<td>원하는 소모임 : </td>
 			<td>이름 , 인원 </td>
 		</tr>
-		<input type="hidden" name="clubid" value="">
+		<!-- <input type="hidden" name="clubid" value=""> -->
 		<tr>
 			<td>소모임 :</td>
 			<td>어디어디임. <br>무슨무슨임. </td>
 		</tr>
 		<tr>
 			<td>운동 가능 시간대 : </td>
-			<td><input type="text" name=""></td>
+			<td><input type="text" name="etime"></td>
 		</tr>
 		<tr>
 			<td>선호하는 운동 <br> 포지션, 경력, 실력 등 </td>
-			<td><input type="text" name=""></td>
+			<td><input type="text" name="wanttodo"></td>
 		</tr>
 		<tr>
 			<td>한마디 :</td>
-			<td><textarea></textarea></td>
+			<td><textarea name="memo"></textarea></td>
 		</tr>
 	</table>
 </form>

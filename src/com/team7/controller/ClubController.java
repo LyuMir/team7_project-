@@ -118,6 +118,14 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/enrollgo.club")){
+			action  = new com.team7.club.action.ClubJoinMeAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 //		else if(command.equals("/clubName.club")){
 //			action  = new com.team7.club.action.ClubNameAction();
