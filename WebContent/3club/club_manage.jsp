@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.team7.vo.ClubBean" %>
+<%@ page import="com.team7.vo.C_enroll_Bean" %>
+<%@ page import="com.team7.vo.CmemberBean" %>
 <%@ page import="java.util.List" %>
 
 
@@ -11,7 +13,8 @@ request.setCharacterEncoding("UTF-8");
 	String id = (String) session.getAttribute("LOG_ID");
 
 List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
-
+List<C_enroll_Bean> rlist_e = (List<C_enroll_Bean>) request.getAttribute("rlist_e");
+List<CmemberBean> rlist_m = (List<CmemberBean>) request.getAttribute("rlist_m");
 
 %>
 
@@ -24,20 +27,28 @@ List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
 	<table>
 		<tr>
 			<td>소모임 </td>
-			<td>< % =rlist.get(0).getName() %></td>
+			<td><%=rlist.get(0).getName() %></td>
 		</tr>
 		<tr>
 			<td>총 인원</td>
-			<td>< % =rlist.get(0).getMemberLimit() %>...이거 아님. </td>
+			<td><%=rlist_m.size() %></td>
 		</tr>
 		<tr>
-			<td>다음 모임일 </td>
-			<td>< % =rlist.get(0).getMeetingDate() %></td>
+			<td>현재 정회원 명단 </td>
+			<td>
+				<%for(int i = 0 ; i < rlist_m.size(); i++){ %>
+				<%=rlist_m.get(i).getCmember() %> , 
+				<%} %>
+			</td>
 		</tr>
-		<tr></tr>
+<!-- 		<tr>
+			<td>다음 모임일 </td>
+			<td><%=rlist.get(0).getMeetingDate() %></td>
+		</tr>
+		<tr></tr> -->
 	</table>
-	다음 모임일 : 
-				<button>확정하기</button>
+<!-- 	다음 모임일 : 
+				<button>확정하기</button> -->
 <br>
 	<button class="clickhere">모든 구성원에게 알림 쪽지 보내기 </button>
 	<div>
@@ -58,7 +69,7 @@ List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
 
 <br>
 	소모임 가입 신청자 : 
-<form>
+<form id="joingo00" action="managePro.club" method="post">
 	<table>
 		<thead>
 			<tr>
@@ -70,34 +81,25 @@ List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
 				<th>수락 / 거절</th>
 			</tr>
 		</thead>
-		<%  %>
+		<% for(int i = 0 ; i < rlist_e.size(); i++){ %>
 		<tr>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
+			<td><%=rlist_e.get(i) %></td>
+			<td><%=rlist_e.get(i).getWanttobe() %></td>
+			<td><%=rlist_e.get(i) %> </td>
+			<td><%= %></td>
+			<td><%= %></td>
 			<td>
-<!-- 				<label class="container-checkbox jok">
-				  <input type="checkbox">
-				  <span class="checkmark"></span>
-				</label>
-				<label class="container-checkbox jno">
-				  <input type="checkbox">
-				  <span class="checkmark"></span>
-				</label> -->
-
-				<input class="jok" type="checkbox" name="YouJoin:<>">
-				<input class="jno" type="checkbox" name="Decline:<>">
+				<input class="jok" type="checkbox" name="YouJoin:<%= %>">
+				<input class="jno" type="checkbox" name="Decline:<%= %>">
 			</td>
 		</tr>
-		<%   %>
+		<% }  %>
 	</table>
 </form>
 
 
-	<button>저장</button>
-	<button>취소</button>
+	<button onclick="saveit()">저장</button>
+	<button onclick="cancleit()">취소</button>
 
 	<!-- <button> 관리 페이지로 </button> -->
 
@@ -130,6 +132,29 @@ List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
 			$(this).next().slideToggle(300);
 		});
 	});
+
+	function saveit(){
+		var confirmE = confirm("이대로 진행하시겠습니까?");
+		if(confirmE){
+			$('#joingo00').submit();
+		}
+	}
+
+	function cancleit(){
+		var confirmE = confirm("취소하시겠습니까?");
+		if(confirmE){
+			// $('form').each(function(){
+			// 	this.reset();
+			// });
+			joks.each(function(){
+				$(this).prop("checked",false);
+			});
+			jnos.each(function(){
+				$(this).prop("checked",false);
+			});
+		}
+	}
+
 </script>
 
 <style type="text/css">

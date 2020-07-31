@@ -1,0 +1,52 @@
+package com.team7.club.service;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.team7.dao.Class_DAO;
+import com.team7.vo.C_enroll_Bean;
+import com.team7.vo.ClubBean;
+import com.team7.vo.MemberLogInfo;
+
+public class CEnrollService {
+
+
+	public List<C_enroll_Bean> c_enroll_selector(ClubBean clubBean){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<C_enroll_Bean> papers = sqlsession.selectList("select_C_enrolls",clubBean);
+		sqlsession.close();
+		return papers;
+	}
+	
+	
+	
+//	public List<ClubBean> club_selector_id(ClubBean clubBean) { // 아이디(admin)에 따른 모든 것들. 
+//		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+//		List<ClubBean> theclub = sqlsession.selectList("ClubselectID", clubBean);
+//		sqlsession.close();
+//		return theclub;
+//	}
+//	
+//
+//	public List<ClubBean> club_selector_cmember(MemberLogInfo id) { // 아이디(admin)에 따른 모든 것들. 
+//		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+//		List<ClubBean> theclub = sqlsession.selectList("Select_club_by_Member", id);
+//		sqlsession.close();
+//		return theclub;
+//	}
+//
+//	public void club_editor(ClubBean clubBean) {
+//		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+//		sqlsession.update("update_editClub", clubBean); 
+//		sqlsession.commit();
+//		sqlsession.close();
+//	}
+//
+//	public void club_deletor(ClubBean clubBean) {
+//		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+//		sqlsession.delete("delete_Club", clubBean); 
+//		sqlsession.commit();
+//		sqlsession.close();
+//	}
+}
