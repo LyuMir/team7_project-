@@ -102,7 +102,7 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		}
 		else if(command.equals("/manage.club")){
 			action  = new com.team7.club.action.ClubEnrollAction();	//clubid
-			System.out.println("sdfsd");
+			//System.out.println("sdfsd");
 			try {
 				forward=action.execute(request, response );
 			} catch (Exception e) {
