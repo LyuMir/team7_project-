@@ -6,10 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.team7.notice.service.*;
+import com.team7.trainer.service.*;
 import com.team7.trainer.service.TrainerShowAllService;
 import com.team7.vo.ActionForward;
-import com.team7.vo.NoticeBean;
+import com.team7.vo.Trainer_info;
 import com.team7.vo.PageInfo;
 import com.team7.vo.Trainer_info;
 
@@ -22,6 +22,8 @@ public class TrainerShowAllAction implements Action{
 		
 //		DTO_Notice notice = new DTO_Notice();
 //		notice.setNo(no);
+		System.out.println("액션까지왔을까요?");
+		
 		TrainerShowAllService tser = new TrainerShowAllService();
 		List<Trainer_info> trainerlist = new ArrayList<Trainer_info>();
 

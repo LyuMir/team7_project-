@@ -18,14 +18,14 @@ public class TrainerShowAllService {
 		
 		List<Trainer_info> tser = sqlsession.selectList("selectall_Trainer");
 		
-		
-		for (int i=0 ; i < tser.size() ; i ++) {
-		String imsi = tser.get(i).getTmajor();
-		String [] major = imsi.split(",");
-		System.out.println(major[i]);
-		
-		}
-		
+		System.out.print("¿©±â´Â?");
+//		for (int i=0 ; i < tser.size() ; i ++) {
+//		String imsi = tser.get(i).getTmajor();
+//		String [] major = imsi.split(",");
+//		System.out.println(major[i]);
+//		
+//		}
+//		
 		sqlsession.close();
 		
 		

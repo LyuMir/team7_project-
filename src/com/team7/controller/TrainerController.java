@@ -46,8 +46,9 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
 		  
 		}
-		else if(command.equals("/id_trainerapply.trainer")) {
+		 if(command.equals("/id_trainerapply.trainer")) {
 			action  = new com.team7.trainer.action.TrainerCreateAction();
+			System.out.print("d");
 			try {
 				forward=action.execute(request, response); //메서드실행함
 			} catch (Exception e) {
@@ -55,10 +56,11 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			}
 		}  //할거 담기
 		
-		if(command.equals("/Search.trainer")){	
-			//System.out.print("클릭됩니까");
+		 if(command.equals("/Search.trainer")){	
+			System.out.print("클릭됩니까");
 			action  = new com.team7.trainer.action.TrainerShowAllAction();
 			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+			System.out.println("여기는요");
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/TrainerShowAll.jsp");
 		  
 		}

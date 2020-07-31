@@ -25,11 +25,14 @@ public class TrainerCreateAction implements Action{
 		String tphone = request.getParameter("coachphone");
 		String tbirth = request.getParameter("coachbirth");
 		String temail = request.getParameter("coachemail");
-		String ttime = request.getParameter("aavailabletime"); //값이 어떻게넘어올까?
-		
-		String tmajor="";//체크박스 이것도많음
+		String ttime ="";
+		String [] ttimeimsi = request.getParameterValues("availabeltime");
+		for(int i=0 ; i<=ttimeimsi.length-1; i++) {
+		ttime = ttime+","+ttimeimsi[i];
+		}
+		String tmajor="";
 		String [] majorimsi = request.getParameterValues("major");
-		for(int i=0 ; i<=3 ; i++) {
+		for(int i=0 ; i<=majorimsi.length-1 ; i++) {
 			tmajor = tmajor+","+majorimsi[i];
 		}// 스플릿으로 빼온다. 자동으로 나온 배열 i 넣는다. 
 		
@@ -55,7 +58,7 @@ public class TrainerCreateAction implements Action{
 		trainer.setTphone(tphone);
 		trainer.setTemail(temail);
 		trainer.setTwhere(twhere);
-		trainer.setBigtext(bigtext);
+		trainer.setTbigtext(bigtext);
 		trainer.setTsmalltext(smalltext);
 		trainer.setTmajor(tmajor);
 		trainer.setTcareer(tcareer);
