@@ -101,7 +101,7 @@ public class Trainer_info {
 	}
 	public void setTcerti(String tcerti) {
 		this.tcerti = tcerti;
-	}
+	} 
 	public String getTstory() {
 		return tstory;
 	}
