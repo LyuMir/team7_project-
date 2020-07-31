@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>¼Ò¸ðÀÓÀÇ ¼Ò¸ðÀÓ</title>
-
-
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    
 
     <link rel="stylesheet" type="text/css" href="css/coachprofile.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
+
 
 	<main class="mainwrap_club">
 		<section class="club_right">
 			<article class="left_top">
 			<ul class="ad_text">
-				<li>*ÄÚÄ¡´ÔÀÇ ÇÁ·ÎÇÊÀÔ´Ï´Ù</li>
-				<li>ÄÚÄ¡ »ó´ã¿äÃ»À» ÅëÇØ</li>
-				<li>ÀÚ¼¼ÇÑ »ó´ãÀ» ¹Þ¾Æº¸¼¼¿ä ^^</li>
+				<li>*ì½”ì¹˜ë‹˜ì˜ í”„ë¡œí•„ìž…ë‹ˆë‹¤</li>
+				<li>ì½”ì¹˜ ìƒë‹´ìš”ì²­ì„ í†µí•´</li>
+				<li>ìžì„¸í•œ ìƒë‹´ì„ ë°›ì•„ë³´ì„¸ìš” ^^</li>
 			</ul>
 			</article>
 
@@ -25,31 +21,31 @@
 				<!-- <div class="profile_img"><img src=""></div> -->
 				<img class="profile_img" src="img/trainer.jpeg">
 				<div class="profile_name">
-					<h3>Jeniffer ÄÚÄ¡</h3>
+					<h3>Jeniffer ì½”ì¹˜</h3>
 					<hr>
-					<span class="a_text"> ¸ö°ú ¸¶À½ÀÇ Á¶È­Ã£¾Æ°¡±â</span>
+					<span class="a_text"> ëª¸ê³¼ ë§ˆìŒì˜ ì¡°í™”ì°¾ì•„ê°€ê¸°</span>
 					<span> </span>
 				</div>
 				<div class="zzim">
-					<button class="hero__btn1">1:1 »ó´ã¿äÃ» <img src="img/heart34.png"></button>
-					<button class="hero__btn1">¹Ù·Î µî·ÏÇÏ±â <img src="img/star34.png"></button>
+					<button class="hero__btn1">1:1 ìƒë‹´ìš”ì²­ <img src="img/heart34.png"></button>
+					<button class="hero__btn1">ë°”ë¡œ ë“±ë¡í•˜ê¸° <img src="img/star34.png"></button>
 				</div>
 				<div class="profile_text">
 				</div>
 
 			</article>
 		</section>
-		<!-- ¿ÞÂÊ ³¡.  -->
+		<!-- ì™¼ìª½ ë.  -->
 		<!-- <section class="club_left2">.</section> -->
-		<!-- ¿ÞÂÊ ºÎÇÇ°¨? -->
+		<!-- ì™¼ìª½ ë¶€í”¼ê°? -->
 		<section class="">
 			<article class="main_head">
-				<!-- »çÁø Å©°Ô ³ÖÀ»°ÅÀÓ. ...»çÁø µÉ±î? -->
+				<!-- ì‚¬ì§„ í¬ê²Œ ë„£ì„ê±°ìž„. ...ì‚¬ì§„ ë ê¹Œ? -->
 				<img class="ImageForModal" src="img/aaas.jpeg" onclick="ImageClickFunction(this)">
 
 				<div class="modal">
 					<img class="modal-content">
-					<div class="caption">***Æ®·¹ÀÌ³Ê´ÔÀÇ »çÁøÀÔ´Ï´Ù. </div>
+					<div class="caption">***íŠ¸ë ˆì´ë„ˆë‹˜ì˜ ì‚¬ì§„ìž…ë‹ˆë‹¤. </div>
 				</div>
 			</article>
 <div class="divclean">
@@ -62,30 +58,30 @@
 <hr class="line1">
 
 <div class="hero__btn">
-	¿ä°¡
+	ìš”ê°€
 </div>
 <div class="hero__btn">
-	ÀçÈ°
+	ìž¬í™œ
 </div>
 <div class="hero__text">
-	¸ö°ú ¸¶À½ÀÇ Á¶È­ Ã£¾Æ°¡±â
+	ëª¸ê³¼ ë§ˆìŒì˜ ì¡°í™” ì°¾ì•„ê°€ê¸°
 </div>
 <p>
-¸ö°ú ¸¶À½ÀÇ ÇÇ·Î¸¦ Ç®¾î³»°í ¿¡³ÊÁö¸¦ ÃæÀüÇÏµµ·Ï µ½´Â ¿ä°¡ ÇÁ·Î±×·¥
+ëª¸ê³¼ ë§ˆìŒì˜ í”¼ë¡œë¥¼ í’€ì–´ë‚´ê³  ì—ë„ˆì§€ë¥¼ ì¶©ì „í•˜ë„ë¡ ë•ëŠ” ìš”ê°€ í”„ë¡œê·¸ëž¨
 </p>
 <div class="info">
 
 
 <div>
-<img src="img/time.png" class="littleimg">	<p class="label">¼ö¾÷Áö¿ª</p>
+<img src="img/time.png" class="littleimg">	<p class="label">ìˆ˜ì—…ì§€ì—­</p>
 </div>
 
 <div>
-<img src="img/effect.png" class="littleimg">	<p class="label">¼ö¾÷È¿°ú</p>
+<img src="img/effect.png" class="littleimg">	<p class="label">ìˆ˜ì—…íš¨ê³¼</p>
 </div>
 
 <div>
-<img src="img/when.png" class="littleimg">	<p class="label">¼ö¾÷°¡´É½Ã°£</p>
+<img src="img/when.png" class="littleimg">	<p class="label">ìˆ˜ì—…ê°€ëŠ¥ì‹œê°„</p>
 </div>
 <br>
 
@@ -93,43 +89,43 @@
 
 <br>
 <div class="container1">
-* ¾Æ·¡¿¡ ±âÀçÇØÁÖ½Å°ÍµéÀº ¾îÂ¼°íÀúÂ¼°íÀúÀú Ü°í°í°í¿À~<br>
-* ¾Æ·¡¿¡ ±âÀçÇØÁÖ½Å°ÍµéÀº ¾îÂ¼°íÀúÂ¼°íÀúÀú Ü°í°í°í¿À~<br>
-* ¾Æ·¡¿¡ ±âÀçÇØÁÖ½Å°ÍµéÀº ¾îÂ¼°íÀúÂ¼°íÀúÀú Ü°í°í°í¿À~<br>
+* ì•„ëž˜ì— ê¸°ìž¬í•´ì£¼ì‹ ê²ƒë“¤ì€ ì–´ì©Œê³ ì €ì©Œê³ ì €ì €ì¡²ê³ ê³ ê³ ì˜¤~<br>
+* ì•„ëž˜ì— ê¸°ìž¬í•´ì£¼ì‹ ê²ƒë“¤ì€ ì–´ì©Œê³ ì €ì©Œê³ ì €ì €ì¡²ê³ ê³ ê³ ì˜¤~<br>
+* ì•„ëž˜ì— ê¸°ìž¬í•´ì£¼ì‹ ê²ƒë“¤ì€ ì–´ì©Œê³ ì €ì©Œê³ ì €ì €ì¡²ê³ ê³ ê³ ì˜¤~<br>
 </div>
 
 <nav id="findnav">
 <ul class="findwhere">
-	<li><a href="#coach1">ÄÚÄ¡Á¤º¸</a></li>
-	<li><a href="#coach2">°æ·Â»çÇ×%È°µ¿</a></li>
-	<li><a href="#program">ÇÁ·Î±×·¥¼Ò°³</a></li>
-	<li><a href="#review">ÈÄ±â</a></li>
+	<li><a href="#coach1">ì½”ì¹˜ì •ë³´</a></li>
+	<li><a href="#coach2">ê²½ë ¥ì‚¬í•­%í™œë™</a></li>
+	<li><a href="#program">í”„ë¡œê·¸ëž¨ì†Œê°œ</a></li>
+	<li><a href="#review">í›„ê¸°</a></li>
 </ul>
 </nav>
 
 
 <div class="coachprofile info">
 	<br><br>
-	<p class="hg" id="coach1">ÄÚÄ¡Á¤º¸</p>
+	<p class="hg" id="coach1">ì½”ì¹˜ì •ë³´</p>
 	<img class="profile_img2" src="img/trainer.jpeg">
 	<div class="profile_name">
-		<h3 class="hero__info">Jeniffer ÄÚÄ¡</h3>
-		<span class="a_text">(µ¥ÀÌÅÍº£ÀÌ½º) ¸ö°ú ¸¶À½ÀÇ Á¶È­Ã£¾Æ°¡±â</span><br>
-		<span class="a_text1"> ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!! ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-		 ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-	  ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-	 ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-  ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
- ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
+		<h3 class="hero__info">Jeniffer ì½”ì¹˜</h3>
+		<span class="a_text">(ë°ì´í„°ë² ì´ìŠ¤) ëª¸ê³¼ ë§ˆìŒì˜ ì¡°í™”ì°¾ì•„ê°€ê¸°</span><br>
+		<span class="a_text1"> ìžê¸°ì†Œê°œê°€ ë“¤ì–´ê°‘ë‹ˆë‹¤!!!!!!!!!!! ìžê¸°ì†Œê°œê°€ ë“¤ì–´ê°‘ë‹ˆë‹¤!!!!!!!!!!!
+		 ìžê¸°ì†Œê°œê°€ ë“¤ì–´ê°‘ë‹ˆë‹¤!!!!!!!!!!!
+	  ìžê¸°ì†Œê°œê°€ ë“¤ì–´ê°‘ë‹ˆë‹¤!!!!!!!!!!!
+	 ìžê¸°ì†Œê°œê°€ ë“¤ì–´ê°‘ë‹ˆë‹¤!!!!!!!!!!!
+  ìžê¸°ì†Œê°œê°€ ë“¤ì–´ê°‘ë‹ˆë‹¤!!!!!!!!!!!
+ ìžê¸°ì†Œê°œê°€ ë“¤ì–´ê°‘ë‹ˆë‹¤!!!!!!!!!!!
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-ÀÚ±â¼Ò°³ÀÔ´Ï´Ù</span>
+ìžê¸°ì†Œê°œìž…ë‹ˆë‹¤</span>
 	</div>
 
 </div>
 
 <br>
 <div class="career info" >
-	<p class="hg2" id="coach2">ÄÚÄ¡°æ·Â»çÇ× * È°µ¿³»¿ë</p><br>
+	<p class="hg2" id="coach2">ì½”ì¹˜ê²½ë ¥ì‚¬í•­ * í™œë™ë‚´ìš©</p><br>
 	<p>
 		*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
 			*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
@@ -145,7 +141,7 @@
 </div>
 
 <div class="cert info" >
-	<p class="hg2" >º¸À¯ÀÚ°ÝÁõ</p><br>
+	<p class="hg2" >ë³´ìœ ìžê²©ì¦</p><br>
 	<p>
 		*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
 			*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
@@ -161,21 +157,21 @@
 </div>
 
 <div class="cert info" >
-	<p class="hg" id="program">ÇÁ·Î±×·¥¼Ò°³</p><br>
+	<p class="hg" id="program">í”„ë¡œê·¸ëž¨ì†Œê°œ</p><br>
 	<p>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-		»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
+		ì‚°í›„ë¡²=ã…ã„´ã…‡ë¼ã…£ã„´ë­‰ã„¹;ã…ã…£ã„´ë¬´ã…ì´êµ°ã„±;ã…ã…£ã…ã„´ã„±ã„´asfdasdfsadfsa<br>
 
 	</p>
 </div>
@@ -184,9 +180,9 @@
 <div class="cert info" ><br>
 	<p class="hg" id="review">Q n A</p><br>
 	<p class="container1">
-		¡Ø 1È¸ Ã¼Çè¿¡ °üÇÑ ¹®ÀÇ»çÇ×À» ÀÚÀ¯·Ó°Ô ³²°ÜÁÖ¼¼¿ä ^^<br>
-	¡ØÄÚÄ¡´ÔÀÌ È®ÀÎÈÄ ¿¬¶ôÀ»µå¸³´Ï´Ù!<br>
-	¡Ø´ñ±ÛÈ®ÀÎ¿¡¼­ ¿¬¶ô±îÁö´Â ÃÖ´ë ¿µ¾÷±âÁØ 5ÀÏÀÌ ¼Ò¿äµÉ¼öÀÖ½À´Ï´Ù
+		â€» 1íšŒ ì²´í—˜ì— ê´€í•œ ë¬¸ì˜ì‚¬í•­ì„ ìžìœ ë¡­ê²Œ ë‚¨ê²¨ì£¼ì„¸ìš” ^^<br>
+	â€»ì½”ì¹˜ë‹˜ì´ í™•ì¸í›„ ì—°ë½ì„ë“œë¦½ë‹ˆë‹¤!<br>
+	â€»ëŒ“ê¸€í™•ì¸ì—ì„œ ì—°ë½ê¹Œì§€ëŠ” ìµœëŒ€ ì˜ì—…ê¸°ì¤€ 5ì¼ì´ ì†Œìš”ë ìˆ˜ìžˆìŠµë‹ˆë‹¤
 
 
 </p><br>
@@ -201,52 +197,50 @@
 
 
 			<article class="new_write">
-				<!-- ¿©±â¿¡ »õ °Ô½Ã±Û ¿Ã¸± ¼ö ÀÖµµ·Ï.  -->
+				<!-- ì—¬ê¸°ì— ìƒˆ ê²Œì‹œê¸€ ì˜¬ë¦´ ìˆ˜ ìžˆë„ë¡.  -->
 				<form style="width:600px">
-					<textarea placeholder="¹®ÀÇ»çÇ×À» ³²°ÜÁÖ¼¼¿ä!!"></textarea>
+					<textarea placeholder="ë¬¸ì˜ì‚¬í•­ì„ ë‚¨ê²¨ì£¼ì„¸ìš”!!"></textarea>
 					<div class="fleft">
-						<button onclick="post_photo(); return false;">»çÁø¾÷·Îµå</button>
+						<button onclick="post_photo(); return false;">ì‚¬ì§„ì—…ë¡œë“œ</button>
 					</div>
 					<div class="fright">
-						<button type="reset">¸®¼Â</button>
-						<button onclick="postgo(); return false;">ÀúÀå</button>
+						<button type="reset">ë¦¬ì…‹</button>
+						<button onclick="postgo(); return false;">ì €ìž¥</button>
 					</div>
 					<div class="fclear"></div>
 				</form>
 			</article>
 			<div class="posts">
 				<!-- <article class="post"> -->
-					<!-- Æ÷½ºÆ®µéÀÌ ÀÚ²Ù ³ª¿Â´Ù  -->
+					<!-- í¬ìŠ¤íŠ¸ë“¤ì´ ìžê¾¸ ë‚˜ì˜¨ë‹¤  -->
 				<!-- </article> -->
 				<article>
-					¿©±â¼­ºÎÅÍ Æ÷½ºÆ® ½ÃÀÛ
+					ì—¬ê¸°ì„œë¶€í„° í¬ìŠ¤íŠ¸ ì‹œìž‘
 					<div class="post_img">
-						<img class="ImageForModal" src="img/ÀÌ»ÛÀÌ¹ÌÁö3.jpg" onclick="ImageClickFunction(this)">
+						<img class="ImageForModal" src="img/ì´ìœì´ë¯¸ì§€3.jpg" onclick="ImageClickFunction(this)">
 						<div class="modal">
 						  <img class="modal-content">
-						  <div class="caption">È®´ë»çÁø </div>
+						  <div class="caption">í™•ëŒ€ì‚¬ì§„ </div>
 						</div>
 					</div>
 					<div class="post_text">
-					´ñ±ÛÀÌ½áÁý´Ï´Ù <br>
-					¹«´Ï¹«´Ï ³ª¹«´Ì
+					ëŒ“ê¸€ì´ì¨ì§‘ë‹ˆë‹¤ <br>
+					ë¬´ë‹ˆë¬´ë‹ˆ ë‚˜ë¬´ëŠ¬
 					</div>
 					<div class="fclear" id="info"></div>
 				</article>
-				<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-				<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-				<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-				<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-				<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-				<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
+				<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+				<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+				<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+				<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+				<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+				<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
 
 			</div>
 		</section>
 
 	</main>
 
-
-</body>
 
 	<script type="text/javascript" src="js/photo_modal00.js"></script>
 
@@ -379,7 +373,7 @@
 		content: '';
 		display: inline-block;
 		clear: both;
-	} ¿Ö ¾ÈµÊ???*/
+	} ì™œ ì•ˆë¨???*/
 
 
 
@@ -442,9 +436,9 @@
 
 
 
-	// ±âÁ¸ css¿¡¼­ ÇÃ·ÎÆÃ ¹è³Ê À§Ä¡(top)°ªÀ» °¡Á®¿Í ÀúÀåÇÑ´Ù.
+	// ê¸°ì¡´ cssì—ì„œ í”Œë¡œíŒ… ë°°ë„ˆ ìœ„ì¹˜(top)ê°’ì„ ê°€ì ¸ì™€ ì €ìž¥í•œë‹¤.
 	var floatPosition = $('#findnav').offset().top;
-	// 250px ÀÌ·±½ÄÀ¸·Î °¡Á®¿À¹Ç·Î ¿©±â¼­ ¼ýÀÚ¸¸ °¡Á®¿Â´Ù. parseInt( °ª );
+	// 250px ì´ëŸ°ì‹ìœ¼ë¡œ ê°€ì ¸ì˜¤ë¯€ë¡œ ì—¬ê¸°ì„œ ìˆ«ìžë§Œ ê°€ì ¸ì˜¨ë‹¤. parseInt( ê°’ );
 
 		 $(window).scroll(function(){
 		 var scrollTop = $(window).scrollTop();
@@ -462,21 +456,21 @@
 
 	}).scroll();
 
-	//."z_zzim1">ÂòÇÏ±â  id="z_join1" °¡ÀÔÇÏ±â
+	//."z_zzim1">ì°œí•˜ê¸°  id="z_join1" ê°€ìž…í•˜ê¸°
 	//$('#')
 	// $('#z_zzim1').click(zzimed());
 	$('#z_zzim1').on('click', function(){
-		//$(this).html('Âò!');
+		//$(this).html('ì°œ!');
 		$(this).zzimed();
 
-		// $(this).zzimed(); ³ñ
+		// $(this).zzimed(); ë†‰
 	});
 
 	function zzimed(){
-		$(this).html('Âò!<img src="img/heart34.png">');
+		$(this).html('ì°œ!<img src="img/heart34.png">');
 	}
 	function zzimc(){
-		$(this).html('ÂòÇÏ±â <img src="img/heart34.png">');
+		$(this).html('ì°œí•˜ê¸° <img src="img/heart34.png">');
 	}
 
 	function post_photo(){
@@ -488,5 +482,3 @@
 	}
 </script>
 
-
-</html>

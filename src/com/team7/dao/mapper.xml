@@ -22,6 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_List_Notice" resultType="com.team7.vo.NoticeBean" >
 		select * from team7.team7_notice limit ${page}, 10
 	</select>
+	
+	
 	<select id="select_ListCount_Notice" resultType="com.team7.vo.PageInfo" >
 		select count(*) as 'page' from team7.team7_notice
 	</select>
