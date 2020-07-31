@@ -90,7 +90,7 @@ public class Trainer_info {
 		this.tcareer = tcareer;
 	}
 	public String getTprofile() {
-		return tprofile;
+		return tprofile;  
 	}
 	public void setTprofile(String tprofile) {
 		this.tprofile = tprofile;
