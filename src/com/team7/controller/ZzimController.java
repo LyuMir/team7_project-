@@ -49,10 +49,27 @@ public class ZzimController extends javax.servlet.http.HttpServlet
 
 		if(logined !=1) {
 			response.setCharacterEncoding("utf-8");
-			
+			RequestDispatcher dispatcher=
+					request.getRequestDispatcher("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
+			dispatcher.forward(request, response);
+			return;	
 		}
 		
-		
+		if(command.equals("/club.zzim")) {
+			//new CZAction().execute(request, response);
+		}
+		else if(command.equals("/club_cancle.zzim")) {
+			//new CZ_Action().ex
+		}
+		else if(command.equals("/clubPost.zzim")) {
+			//
+		}
+		else if(command.equals("/clubPost_cancle.zzim")) {
+			
+		}
+		else if(command.equals("/")) {
+			
+		}
 //		
 //		if(command.equals("/MainInfo.club")){
 //			forward = new ActionForward();

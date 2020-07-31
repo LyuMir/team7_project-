@@ -22,11 +22,11 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 <main id="main000" class="mainwrap">
 
   <section>
+    <div id="buttons"></div>
 	  <div class="sticky_side_bar fright">
 	  	ꓥ  &nbsp; &nbsp; 1 2 3 4 5  … 12 &nbsp; &nbsp;  ꓦ
 	  </div>
 
-    <div id="buttons"></div>
     <div class="grid">    
      <% for(int i = 0; i < rlist.size(); i++){ %>
 		<article class="grid__item" onclick="gotoClub2(this)">

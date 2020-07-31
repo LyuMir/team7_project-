@@ -141,7 +141,10 @@ main *{
   border-radius: 0 10px 5px 0;
 }
 
-
+#buttons{
+  
+  width: calc(100% - 35px);
+}
 .grid {
   display: grid; 
   max-width: 900px;
