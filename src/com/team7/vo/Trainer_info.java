@@ -97,6 +97,7 @@ public class Trainer_info {
 	}
 	public String getTcerti() {
 		return tcerti;
+
 	}
 	public void setTcerti(String tcerti) {
 		this.tcerti = tcerti;
