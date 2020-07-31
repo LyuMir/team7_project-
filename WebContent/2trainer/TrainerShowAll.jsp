@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
+<%@ page import="org.apache.ibatis.session.SqlSession" %>
+<%@ page import="com.team7.vo.Trainer_info" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.*" %>
 
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-    
     <meta charset="utf-8">
     <title>코치찾기</title>
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -10,6 +13,11 @@
       <!-- <link rel="stylesheet" href="css/mainyun.css"> -->
       <link rel="stylesheet" type="text/css" href="css/gridgrid88yuncard.css">
       <link rel="stylesheet" type="text/css" href="css/picpiccard.css">
+
+
+<%List<Trainer_info> tser  = (List<Trainer_info>)request.getAttribute("tser"); %>
+
+
 
 <body id="top">
 
@@ -59,90 +67,32 @@
               <div id="gallery">
 
                 <div class="grid">
-
-                  <article class="grid__item" data-tags="Blog">
+                
+     <% for(int i = 0; i < tser.size(); i++){ 
+     
+     	String imsi = tser.get(i).getTmajor(); // 운동1, 운동2, 운동3
+		String [] major = imsi.split(",");		//[운동1, 운동2, ..]%>
+     
+                  <article class="grid__item" data-tags="<%= imsi %>">
                     <div class="card">
                       <div class="card__img">
                         <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains">
                       </div>
                     <div class="card__content">
-                      <div class="card__tag00"> 어떤 분류 </div>
-                      <div class="card__header">제목 ! </div>
-                      <p class="card__text">근데... 내용이 꼭 필요할까? 제목만 있고 내용은 클릭해서 보게 해야하지 않을까?  </p>
+                      <div class="card__tag00"> <%=tser.get(i).getTname() %></div>
+                      <div class="card__header"><%=tser.get(i).getTbigtext() %> </div>
+                      <p class="card__text"><%=tser.get(i).getTsmalltext() %></p>
                      <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
                     </div>
                   </div>
                   </article>
+                  
+                  <% for(int j=0; j< major.length; j++){ %>
+             		<%=major[j]%>
+             <%} %>
+           <%} %>
+               
 
-                  <article class="grid__item" data-tags="Blog">
-                    <div class="card">
-                      <div class="card__img">
-                        <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains">
-                      </div>
-                    <div class="card__content">
-                      <div class="card__tag00"> 어떤 분류 </div>
-                      <div class="card__header">제목 ! </div>
-                      <p class="card__text">근데... 내용이 꼭 필요할까? 제목만 있고 내용은 클릭해서 보게 해야하지 않을까?  </p>
-                     <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
-                    </div>
-                  </div>
-                  </article>
-
-                  <article class="grid__item" data-tags="Blog3,Blog">
-                    <div class="card">
-                      <div class="card__img">
-                        <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains">
-                      </div>
-                    <div class="card__content">
-                      <div class="card__tag00"> 어떤 분류 </div>
-                      <div class="card__header">제목 ! </div>
-                      <p class="card__text">근데... 내용이 꼭 필요할까? 제목만 있고 내용은 클릭해서 보게 해야하지 않을까?  </p>
-                     <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
-                    </div>
-                  </div>
-                  </article>
-
-                  <article class="grid__item" data-tags="yoga,Blog">
-                    <div class="card">
-                      <div class="card__img">
-                        <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains">
-                      </div>
-                    <div class="card__content">
-                      <div class="card__tag00"> 어떤 분류 </div>
-                      <div class="card__header">제목 ! </div>
-                      <p class="card__text">근데... 내용이 꼭 필요할까? 제목만 있고 내용은 클릭해서 보게 해야하지 않을까?  </p>
-                     <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
-                    </div>
-                  </div>
-                  </article>
-
-                  <article class="grid__item" data-tags="yoga,weight">
-                    <div class="card">
-                      <div class="card__img">
-                        <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains">
-                      </div>
-                    <div class="card__content">
-                      <div class="card__tag00"> 어떤 분류 </div>
-                      <div class="card__header">제목 ! </div>
-                      <p class="card__text">근데... 내용이 꼭 필요할까? 제목만 있고 내용은 클릭해서 보게 해야하지 않을까?  </p>
-                     <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
-                    </div>
-                  </div>
-                  </article>
-
-                  <article class="grid__item" data-tags="spinning">
-                    <div class="card">
-                      <div class="card__img">
-                        <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains">
-                      </div>
-                    <div class="card__content">
-                      <div class="card__tag00"> 어떤 분류 </div>
-                      <div class="card__header">제목 ! </div>
-                      <p class="card__text">근데... 내용이 꼭 필요할까? 제목만 있고 내용은 클릭해서 보게 해야하지 않을까?  </p>
-                     <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
-                    </div>
-                  </div>
-                  </article>
 
 
 

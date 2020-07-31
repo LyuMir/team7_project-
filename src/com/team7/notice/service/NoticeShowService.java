@@ -19,7 +19,9 @@ public class NoticeShowService {
 		
 		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		
 		List<NoticeBean> rlist= sqlsession.selectList("select_List_Notice", pageinfo);
+		
 		sqlsession.close();
 		
 		

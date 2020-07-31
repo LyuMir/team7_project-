@@ -56,7 +56,8 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		}  //할거 담기
 		
 		if(command.equals("/Search.trainer")){	
-			action  = new com.team7.trainer.action.TrainerCreateAction();
+			//System.out.print("클릭됩니까");
+			action  = new com.team7.trainer.action.TrainerShowAllAction();
 			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/TrainerShowAll.jsp");
 		  
@@ -73,6 +74,18 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			}
 			
 		}//가서 페이지 보내기
+		
 
-}
+	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8"); //내가 추가함
+		doProcess(request,response);
+	}  	
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8"); //내가 추가함
+		doProcess(request,response);
+	}   
 }
