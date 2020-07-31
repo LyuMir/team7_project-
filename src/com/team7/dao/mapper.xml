@@ -93,10 +93,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	
-	<insert id="insert_Trainer" parameterType="String">
-	insert into team7.team7_trainer values(default, '${id}', '${tname}' , '${sex}', '${tphone}', ${tbirth}, '${temail}', '${twhere}', '${tmajor}', '${tcareer}', '${tprofile}', '${tcerti}', '${tstory}', '${tsns}', '${thowjoin}', 1, '${bigtext}','${smalltext}');
+		<insert id="insert_CreateClub" parameterType="String">
+		insert into team7.team7_club values(default, '${name}', '${admin}' , '${publicity}', '${memberJoin}', ${memberLimit}, '${e_type}', '${meetingDate}', '${area}', '${profile}', '${photo1}', '${photo2}' )
 	</insert>
-	
+
 	<select id="selectall_Trainer" resultType="com.team7.vo.Trainer_info" >
 		select * from team7.team7_club
 	</select>

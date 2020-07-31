@@ -25,15 +25,21 @@ public class TrainerCreateAction implements Action{
 		String tphone = request.getParameter("coachphone");
 		String tbirth = request.getParameter("coachbirth");
 		String temail = request.getParameter("coachemail");
-		String ttime = request.getParameter("aavailabletime"); //값이 어떻게넘어올까?
 		
-		String tmajor="";//체크박스 이것도많음
+		String ttime ="";
+		String [] ttimeimsi = request.getParameterValues("availabeltime");
+		for(int i=0 ; i<=ttimeimsi.length-1; i++) {
+		ttime = ttime+","+ttimeimsi[i];
+		} //값이 어떻게넘어올까?
+		
+		
+		String tmajor="";
 		String [] majorimsi = request.getParameterValues("major");
-		for(int i=0 ; i<=3 ; i++) {
+		for(int i=0 ; i<=majorimsi.length-1 ; i++) {
 			tmajor = tmajor+","+majorimsi[i];
 		}// 스플릿으로 빼온다. 자동으로 나온 배열 i 넣는다. 
 		
-		String twhere = request.getParameter("trainerarea"+" "+"contry"); //셀렉트박스
+		String twhere = request.getParameter("trainerarea"); //셀렉트박스
 		String bigtext =request.getParameter("bigtext");
 		String smalltext =request.getParameter("smalltext");
 		String tcareer = request.getParameter("coachcareer");
@@ -44,6 +50,25 @@ public class TrainerCreateAction implements Action{
 		String thowjoin = request.getParameter("coachhowjoin");
 		String tphoto = request.getParameter("photos");
 		
+		System.out.println(id);
+		System.out.println(tname);
+		System.out.println(sex);
+		System.out.println(tphone);
+		System.out.println(temail);
+		System.out.println(ttime);
+		System.out.println(tbirth);
+		System.out.println(tmajor);
+		System.out.println(twhere);
+		System.out.println(bigtext);
+		System.out.println(smalltext);
+		System.out.println(tcareer);
+		System.out.println(tprofile);
+		System.out.println(tcerti);
+		System.out.println(tstory);
+		System.out.println(thowjoin);
+		System.out.println(tsns);
+		System.out.println(tphoto);
+		
 		
 		
 		Trainer_info trainer = new Trainer_info();
@@ -52,10 +77,13 @@ public class TrainerCreateAction implements Action{
 		trainer.setId(id);
 		trainer.setTname(tname);
 		trainer.setSex(sex);
+		trainer.setTbirth(tbirth);
 		trainer.setTphone(tphone);
 		trainer.setTemail(temail);
+		trainer.setTtime(ttime);
+		trainer.setTbirth(tbirth);
 		trainer.setTwhere(twhere);
-		trainer.setBigtext(bigtext);
+		trainer.setTbigtext(bigtext);
 		trainer.setTsmalltext(smalltext);
 		trainer.setTmajor(tmajor);
 		trainer.setTcareer(tcareer);
@@ -63,7 +91,8 @@ public class TrainerCreateAction implements Action{
 		trainer.setTcerti(tcerti);
 		trainer.setTstory(tstory);
 		trainer.setThowjoin(thowjoin);
-		trainer.setTphone(tphone);
+		trainer.setTsns(tsns);
+		
 		
 //		
 //		notice.setContent(content);
