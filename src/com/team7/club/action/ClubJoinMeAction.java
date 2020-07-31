@@ -24,14 +24,22 @@ public class ClubJoinMeAction implements Action{
 //		String clubid = (String)request.getAttribute("clubid");
 		//System.out.println(clubid);
 		//System.out.println(request.getPathInfo()); 
-		HttpSession session = request.getSession();
-		ActionForward forward = null;
-		
-		String  etime, wanttodo,memo,id ="";
+		String  etime="", wanttodo="",memo="",id ="";
 		etime = request.getParameter("etime");
 		wanttodo = request.getParameter("wanttodo");
 		memo = request.getParameter("memo");
+		HttpSession session = request.getSession(true);
 		id =(String)session.getAttribute("LOG_ID");
+		request.setCharacterEncoding("utf-8");
+		
+		System.out.println(etime);
+		System.out.println(wanttodo);
+		System.out.println(id);
+		System.out.println(memo);
+		System.out.println(request.getParameter("etime"));
+		System.out.println(request.getCharacterEncoding());
+
+		ActionForward forward = null;
 		
 		C_enroll_Bean enrll = new C_enroll_Bean();
 		enrll.setClub(Integer.parseInt(clubid));

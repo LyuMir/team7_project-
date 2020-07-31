@@ -7,6 +7,7 @@
 
 소모임 가입하기. 
 <%
+	request.setCharacterEncoding("UTF-8");
 	String clubid = request.getParameter("clubid");
 	request.setAttribute("clubid",clubid);
 	String clubname = request.getParameter("clubname");
@@ -14,7 +15,7 @@
 	//<%=clubid  % >
 		//< % = (String)request.g etAttribute("c lubid" )  >
 %>
-<form id="form1" method="post" action="enrollgo.club">
+<form id="form1"  method="" action="enrollgo.club">
 	<input type="hidden" name="clubid" value="<%=clubid%>">
 	<table>
 
@@ -57,7 +58,9 @@
 	function joinmego(){
 		var zz00 = confirm( '<%=clubname%>에 가입 신청 하시겠습니까?');
 		if(zz00){
-
+			//alert($('input').eq(1).val());
+			//alert($('input').eq(2).val());
+			//alert($('textarea').val());
 			$('#form1').submit();
 		}
 	}

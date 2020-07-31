@@ -42,8 +42,7 @@ public class ClubEnrollProAction implements Action{
 		HttpSession session = request.getSession();
 		int clubno = (Integer)session.getAttribute("clubid");
 		session.removeAttribute("clubid");
-		System.out.println(clubno+"를");
-		System.out.println("이거 나오긴 하나"+joks[0]+"..");
+		//System.out.println("이거 나오긴 하나"+joks[0]+"..");
 		enroll.setClub(clubno);
 		memberBean.setClub(clubno);
 		
@@ -51,22 +50,21 @@ public class ClubEnrollProAction implements Action{
 		for(int i = 0 ; i<joks.length; i ++) {
 			if(joks[i].contains("YouJoin:")) {
 				ok = (joks[i].substring(8));
-				System.out.println(ok+"를...");
 				enroll.setWanttobe(ok);
+
+				memberBean.setCmember(ok);
 				
-				ser2.cmember_joinit(memberBean);//cmember 추가.
+				ser2.member_toCLUB(memberBean);//cmember 추가.
 				ser.cEnrollRemove(enroll);//club_enroll 가입서 삭제. 
 				// 가입 축하 메세지 ㄱ
 			}
 		}
 		}
-		
 		if(jnos !=null) {
 		for(int i = 0 ; i<jnos.length; i ++) {
-			if(jnos[i].contains("YouJoin:")) {
+			if(jnos[i].contains("Decline:")) {
 				no = (jnos[i].substring(8));
 				enroll.setWanttobe(no);
-				
 				// 거절 메세지...?
 				// 일주일 유예...?
 				ser.cEnrollRemove(enroll);//club_enroll 가입서 삭제. 
@@ -76,6 +74,8 @@ public class ClubEnrollProAction implements Action{
 
 		ActionForward forward= new ActionForward();
 //		forward.setPath("_FORWHERE.jsp?forwhere=3club/club_manage.jsp");
+		forward.setPath("manage.club?clubid="+clubno);
+//		ActionForward forward = null;
 		return forward;
 	}
 

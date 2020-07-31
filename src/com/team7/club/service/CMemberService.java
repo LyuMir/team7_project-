@@ -21,12 +21,11 @@ public class CMemberService {
 		
 	}
 	
-	public void cmember_joinit(CmemberBean cmember) {
+	public void member_toCLUB(CmemberBean cmember) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		sqlsession.insert("insert_cJoin",cmember);
+		sqlsession.insert("insert_cmem",cmember);
 		sqlsession.commit();
 		sqlsession.close();
-		
 	}
 	
 	public void c_letme(C_enroll_Bean enroll) {

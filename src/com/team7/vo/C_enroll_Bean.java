@@ -1,9 +1,12 @@
 
 package com.team7.vo;
 
+import java.util.Date;
+
 public class C_enroll_Bean {
-	private int club;
+	private int enroll_id, club;
 	private String wanttobe,etime,wanttodo,memo;
+	private Date date;
 	public int getClub() {
 		return club;
 	}
@@ -33,6 +36,18 @@ public class C_enroll_Bean {
 	}
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+	public int getEnroll_id() {
+		return enroll_id;
+	}
+	public void setEnroll_id(int enroll_id) {
+		this.enroll_id = enroll_id;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 }

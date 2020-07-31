@@ -2,7 +2,7 @@ package com.team7.vo;
 
 public class CmemberBean {
 
-	private int club;
+	private int id, club;
 	private String cmember;
 
 	public int getClub() {
@@ -19,6 +19,14 @@ public class CmemberBean {
 
 	public void setCmember(String cmember) {
 		this.cmember = cmember;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

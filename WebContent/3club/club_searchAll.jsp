@@ -42,7 +42,8 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 					<div class="card__tag00 content_where"> 장소 : <span><%=rlist.get(i).getArea() %></span></div>
 					<div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
 					<div class="card__heart"> 
-						<img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
+						<img src="img/heart35.png"> <span>000  </span>  &nbsp;
+						<img src="img/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
 					</div>
 				</div>
 				<div class="card__bottomContent">
