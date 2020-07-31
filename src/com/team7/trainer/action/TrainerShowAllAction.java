@@ -25,14 +25,18 @@ public class TrainerShowAllAction implements Action{
 		System.out.println("액션까지왔을까요?");
 		
 		TrainerShowAllService tser = new TrainerShowAllService();
+		
 		List<Trainer_info> trainerlist = new ArrayList<Trainer_info>();
 
 		trainerlist = tser.getTrainerinfo();
+		System.out.println(trainerlist.get(0).getNo());
+		
 
 		ActionForward forward= new ActionForward();
 		request.setAttribute("tser", trainerlist);
-		forward.setPath("/_FORWHERE.jsp?forwhere=5notice/TrainerShowAll.jsp");
+		forward.setPath("/_FORWHERE.jsp?forwhere=2trainer/TrainerShowAll.jsp");
 		return forward;
+		
 	}
 
 }

@@ -15,7 +15,9 @@
       <link rel="stylesheet" type="text/css" href="css/picpiccard.css">
 
 
-<%List<Trainer_info> tser  = (List<Trainer_info>)request.getAttribute("tser"); %>
+<%
+request.setCharacterEncoding("UTF-8");
+List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); %>
 
 
 
@@ -68,12 +70,9 @@
 
                 <div class="grid">
 
-     <% for(int i = 0; i < tser.size(); i++){
+     <% for(int i =0 ; i < tser.size() ; i++){ %>
 
-     	String imsi = tser.get(i).getTmajor(); // 운동1, 운동2, 운동3
-		String [] major = imsi.split(",");		//[운동1, 운동2, ..]%>
-
-                  <article class="grid__item" data-tags="<%= imsi %>">
+                  <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>">
                     <div class="card">
                       <div class="card__img">
                         <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains">
@@ -87,9 +86,7 @@
                   </div>
                   </article>
 
-                  <% for(int j=0; j< major.length; j++){ %>
-             		<%=major[j]%>
-             <%} %>
+                 
            <%} %>
 
 

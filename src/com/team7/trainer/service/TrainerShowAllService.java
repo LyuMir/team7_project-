@@ -25,7 +25,12 @@ public class TrainerShowAllService {
 //		System.out.println(major[i]);
 //		
 //		}
-//		
+		
+//		 for(int i =0 ; i < tser.size() ; i++){
+//			 
+//			 int a = tser.get(0).getNo();
+////		
+//		 }
 		sqlsession.close();
 		
 		
