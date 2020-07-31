@@ -75,7 +75,7 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); %>
                   <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>">
                     <div class="card">
                       <div class="card__img">
-                        <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains">
+                      <a href = "trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>"> <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains"></a> 
                       </div>
                     <div class="card__content">
                       <div class="card__tag00"> <%=tser.get(i).getTname() %></div>
@@ -86,7 +86,7 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); %>
                   </div>
                   </article>
 
-                 
+                 <input type="hidden" name="number" value="<%= tser.get(i).getNo() %>">
            <%} %>
 
 

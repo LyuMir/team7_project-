@@ -72,7 +72,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		}  //할거 담기
 		
 		 if(command.equals("/Search.trainer")){	
-			System.out.print("클릭됩니까");
+			System.out.print("트레이너 서치 클릭됩니까");
 			action  = new com.team7.trainer.action.TrainerShowAllAction();
 			try {
 				forward=action.execute(request, response); //메서드실행함
@@ -80,7 +80,18 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 				e.printStackTrace();
 			}
 //		  
-		}System.out.print("dddddd");
+		}
+		
+		 if(command.equals("/trainerUserpage.trainer")){	
+				System.out.println("트레이너 개인페이지 클릭됩니까");
+				action  = new com.team7.trainer.action.TrainerUserpageAction();
+				try {
+					forward=action.execute(request, response); //메서드실행함
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+//			  
+			}System.out.print("dddddd");
 
 		System.out.println(command+"...dla..임");
 		if(forward != null){

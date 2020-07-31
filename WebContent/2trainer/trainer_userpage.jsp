@@ -1,10 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
+<%@ page import="org.apache.ibatis.session.SqlSession" %>
+<%@ page import="com.team7.vo.Trainer_info" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.*" %>
     
 
     <link rel="stylesheet" type="text/css" href="css/coachprofile.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%
+request.setCharacterEncoding("UTF-8");
+List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
 
+//request.setAttribute("no", tser.get(0).getNo());
+
+%>
 
 	<main class="mainwrap_club">
 		<section class="club_right">

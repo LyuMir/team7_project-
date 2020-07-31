@@ -26,6 +26,8 @@ public class MypageAction implements Action{
 		MemberLogInfo id = new MemberLogInfo();
 		id.setId((String)session.getAttribute("LOG_ID"));
 		List<ClubBean> rlist2 = new ClubService().club_selector_cmember(id);
+		
+		
 		request.setAttribute("rlist2", rlist2);
 		
 		
