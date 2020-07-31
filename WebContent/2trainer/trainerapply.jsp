@@ -17,7 +17,7 @@
  * 한번 글을 작성한 뒤에는 수정이 번거롭습니다. <br>
  * 작성하실때 주의를 기울여서 작성해주시길 바랍니다. <br>
     </div>
-<form action="trainerapply.trainer" method="post">
+<form action="id_trainerapply.trainer" method="post">
   <br><br>
 <span class="question">  등록후 최소 6개월간은 데일리 헬스에서 활동을 해주셔야합니다. 동의하십니까?</span><br>
 <input type="radio" name="agree"> 네, 동의합니다
@@ -59,7 +59,7 @@
 <span class="question"> 상담 가능 일시<br></span>
 * 홈핏팀과의 1회 대면 미팅 후에 정식으로 활동이 가능합니다. 미팅 가능한 요일 및 시간을 말씀해주세요.<br>
 * 미팅은 홈핏 운영 시간 내에 진행됩니다. (운영시간: 평일 9:30~18:30)<br><br>
-<input type="checkbox" name="availabeltime" value="월요일 오전"> 월요일 오전
+<input type="checkbox" name="availabeltime" value="Monday mornung"> 월요일 오전
 <input type="checkbox" name="availabeltime" value="화요일 오전"> 화요일 오전
 <input type="checkbox" name="availabeltime" value="수요일 오전"> 수요일 오전 
 <input type="checkbox" name="availabeltime" value="목요일 오전"> 목요일 오전
@@ -93,7 +93,7 @@
 
 <span class="question"> 활동 지역<br></span>
 * 강사, 트레이너로써 활동 지역을 입력해주세요.<br>
-<select name='trainerarea' onchange="areaSelector(this)" >
+<select name="trainerarea" >
 							<option value='전체'>전체</option>
 							<option value='서울'>서울</option>
 							<option value='부산'>부산</option>
@@ -113,9 +113,6 @@
 							<option value='제주'>제주</option>
 						</select>
 
-						<select name='county'  class=select>
-							<option value='전지역'>전지역</option>
-						</select>
 	<div class="check_font" id="areacheck"></div>
 
 <br><br>
@@ -191,11 +188,11 @@
 아래 보내기 버튼 클릭 시  <a href="ddd" class="href">이용약관</a> 및  <a href="ddd" class="href">취급방침</a>에 동의한 것으로 간주합니다.
 <br><br><br>
 
+
 <button class="btn" type="submit" name="button">보내기</button>
+
 
 </form>
 
-
-
     </div>
-
+<script type="text/javascript" src="js/club_CRU.js?version=22"></script>
