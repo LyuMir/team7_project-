@@ -21,6 +21,21 @@ public class CMemberService {
 		
 	}
 	
+	public void cmember_joinit(CmemberBean cmember) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.insert("insert_cJoin",cmember);
+		sqlsession.commit();
+		sqlsession.close();
+		
+	}
+	
+	public void c_letme(C_enroll_Bean enroll) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.insert("insert_enroll",enroll);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	
 	
 //	public List<C_enroll_Bean> c_enroll_selector(ClubBean clubBean){
 //		SqlSession sqlsession = new Class_DAO().get_conn().openSession();

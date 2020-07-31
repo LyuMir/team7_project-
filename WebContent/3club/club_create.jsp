@@ -68,14 +68,15 @@
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="축구"><label>축구</label></div>
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="배구"><label>배구</label></div>
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="야구"><label>야구</label></div>
-						<div class="checkme"><input type="checkbox" name="club_exc_type" value="헬스"><label>헬스</label></div>
+						<div class="checkme"><input type="checkbox" name="club_exc_type" value="족구"><label>족구</label></div>
+						<div class="checkme"><input type="checkbox" name="club_exc_type" value="배드민턴"><label>배드민턴</label></div>
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="달리기"><label>달리기</label></div>
+						<div class="checkme"><input type="checkbox" name="club_exc_type" value="등산"><label>등산</label></div>
+						<div class="checkme"><input type="checkbox" name="club_exc_type" value="헬스"><label>헬스</label></div>
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="필라테스"><label>필라테스</label></div>
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="요가"><label>요가</label></div>
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="보드"><label>보드</label></div>
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="자전거"><label>자전거</label></div>
-						<div class="checkme"><input type="checkbox" name="club_exc_type" value="족구"><label>족구</label></div>
-						<div class="checkme"><input type="checkbox" name="club_exc_type" value="배드민턴"><label>배드민턴</label></div>
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="맨손 체조"><label>맨손 체조</label></div>
 						<div>
 							소모임에서 주로 하는 운동을 선택해주세요. 

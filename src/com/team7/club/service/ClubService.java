@@ -16,6 +16,9 @@ public class ClubService {
 	public void club_creator(ClubBean club) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		sqlsession.insert("insert_CreateClub", club); // 변수이름값, 변수값  ... 불러올 id , 보내줄 dto인듯. 
+		List<ClubBean> clubBean = sqlsession.selectList("ClubselectID", club);
+			System.out.println(clubBean.get(clubBean.size()-1).getNo()+"라는 놈의..");
+		sqlsession.insert("insert_CCMember",clubBean.get(clubBean.size()-1));//될까??? 진짜 될까??? 된다. 이제 개설자는 자동으로...
 		sqlsession.commit();
 		sqlsession.close();
 	}

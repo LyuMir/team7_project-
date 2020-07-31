@@ -56,6 +56,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into team7.team7_club values(default, '${name}', '${admin}' , '${publicity}', '${memberJoin}', ${memberLimit}, '${e_type}', '${meetingDate}', '${area}', '${profile}', '${photo1}', '${photo2}' )
 	</insert>
 
+	<insert id="insert_CCMember" parameterType="String">
+		insert into team7.team7_cmember values(${no},'${admin}')
+	</insert>
+	
 	<select id="ClubselectAll" resultType="com.team7.vo.ClubBean" >
 		select * from team7.team7_club
 	</select>
@@ -84,6 +88,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 
+	<insert id="insert_cJoin" parameterType="String">
+		insert into team7.team7_cmember values(${club},'${wanttobe}','${etime}','${wanttodo}','${memo}')
+	</insert>
+	<insert id="insert_enroll" parameterType="String">
+		insert into team7.team7_club_enroll values(${club}, '${cmember}')
+	</insert>
 
 
 	<insert id="insert_PICTURE" parameterType="String">
@@ -92,9 +102,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 
 
-	
-		<insert id="insert_CreateClub" parameterType="String">
-		insert into team7.team7_club values(default, '${name}', '${admin}' , '${publicity}', '${memberJoin}', ${memberLimit}, '${e_type}', '${meetingDate}', '${area}', '${profile}', '${photo1}', '${photo2}' )
+
+	<insert id="insert_Trainer" parameterType="String">
+	insert into team7.team7_trainer values(default, '${id}', '${tname}' , '${sex}', '${tphone}', ${tbirth}, '${temail}', '${twhere}', '${tmajor}', '${tcareer}', '${tprofile}', '${tcerti}', '${tstory}', '${tsns}', '${thowjoin}', 1, '${bigtext}','${smalltext}');
+	saf;lajsd;fklrielajr;klaw
 	</insert>
 
 	<select id="selectall_Trainer" resultType="com.team7.vo.Trainer_info" >
