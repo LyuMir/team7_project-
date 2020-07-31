@@ -12,12 +12,15 @@ import com.team7.vo.PageInfo;
 
 public class TrainerUserpageService {
 
-	public List<Trainer_info> getTrainerOneinfo() {
+	public List<Trainer_info> getTrainerOneinfo(Trainer_info info) {
 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		
-		List<Trainer_info> tser = sqlsession.selectList("selectOne_Trainer");
+		List<Trainer_info> tser = sqlsession.selectList("selectOne_Trainer",info);
 		
+		System.out.println(tser.get(0).getId());
+		System.out.println(tser.get(0).getTbigtext());
+
 		System.out.print("¿©±â´Â?");
 
 		sqlsession.close();
@@ -67,5 +70,8 @@ public class TrainerUserpageService {
 	
 		return TrainerList;
 	}
+
+
+	
 	}
 

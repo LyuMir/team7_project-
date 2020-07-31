@@ -24,21 +24,22 @@ public class TrainerUserpageAction implements Action{
 //		DTO_Notice notice = new DTO_Notice();
 //		notice.setNo(no);
 		System.out.println("유저페이지 액션까지왔을까요?");
-		String number = request.getParameter("number");
+		int no = Integer.parseInt(request.getParameter("number"));
 		
-		System.out.println(number);
-		
-
-		int no = Integer.parseInt(request.getParameter("number")); //전페이지에서 넘버가져오기! 
 		System.out.println(no);
+		
+		Trainer_info info = new Trainer_info();
+		info.setNo(no);
+		
 		TrainerUserpageService tser = new TrainerUserpageService();
 		List<Trainer_info> traineronelist = new ArrayList<Trainer_info>();
 		
-		
+		traineronelist = tser.getTrainerOneinfo(info);
 	
 		
 
 		ActionForward forward= new ActionForward();
+		
 		request.setAttribute("tser", traineronelist);
 		forward.setPath("/_FORWHERE.jsp?forwhere=2trainer/trainer_userpage.jsp");
 		return forward;

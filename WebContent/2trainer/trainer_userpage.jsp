@@ -32,9 +32,9 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 				<!-- <div class="profile_img"><img src=""></div> -->
 				<img class="profile_img" src="img/trainer.jpeg">
 				<div class="profile_name">
-					<h3>Jeniffer 코치</h3>
+					<h3><%=tser.get(0).getTname() %> 코치</h3>
 					<hr>
-					<span class="a_text"> 몸과 마음의 조화찾아가기</span>
+					<span class="a_text"> <%=tser.get(0).getTbigtext() %></span>
 					<span> </span>
 				</div>
 				<div class="zzim">
@@ -75,10 +75,10 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 	재활
 </div>
 <div class="hero__text">
-	몸과 마음의 조화 찾아가기
+	<%=tser.get(0).getTbigtext() %>
 </div>
 <p>
-몸과 마음의 피로를 풀어내고 에너지를 충전하도록 돕는 요가 프로그램
+<%=tser.get(0).getTsmalltext() %>
 </p>
 <div class="info">
 
@@ -269,7 +269,7 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 		height: 600px;
 		padding-top: 20px;
 		position: fixed;
-		top: 10px;
+		
     margin: 38px 0 200px 620px;
 		background-color: inherit;
 		background-color: white;

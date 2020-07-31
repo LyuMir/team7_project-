@@ -115,7 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectOne_Trainer" resultType="com.team7.vo.Trainer_info" >
-		select * from team7.team7_trainer where no = '${no}'
+		select * from team7.team7_trainer where no = ${no}
 	</select>
 	
 	
