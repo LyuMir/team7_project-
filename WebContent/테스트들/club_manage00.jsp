@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.team7.vo.ClubBean" %>
-<%@ page import="com.team7.vo.C_enroll_Bean" %>
-<%@ page import="com.team7.vo.CmemberBean" %>
 <%@ page import="java.util.List" %>
 
 
@@ -13,8 +11,7 @@ request.setCharacterEncoding("UTF-8");
 	String id = (String) session.getAttribute("LOG_ID");
 
 List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
-List<C_enroll_Bean> rlist_e = (List<C_enroll_Bean>) request.getAttribute("rlist_e");
-List<CmemberBean> rlist_m = (List<CmemberBean>) request.getAttribute("rlist_m");
+
 
 %>
 
@@ -27,28 +24,20 @@ List<CmemberBean> rlist_m = (List<CmemberBean>) request.getAttribute("rlist_m");
 	<table>
 		<tr>
 			<td>소모임 </td>
-			<td><%=rlist.get(0).getName() %></td>
+			<td>< % =rlist.get(0).getName() %></td>
 		</tr>
 		<tr>
 			<td>총 인원</td>
-			<td><%=rlist_m.size() %></td>
+			<td>< % =rlist.get(0).getMemberLimit() %>...이거 아님. </td>
 		</tr>
 		<tr>
-			<td>현재 정회원 명단 </td>
-			<td>
-				<%for(int i = 0 ; i < rlist_m.size(); i++){ %>
-				<%=rlist_m.get(i).getCmember() %> , 
-				<%} %>
-			</td>
-		</tr>
-<!-- 		<tr>
 			<td>다음 모임일 </td>
-			<td><%=rlist.get(0).getMeetingDate() %></td>
+			<td>< % =rlist.get(0).getMeetingDate() %></td>
 		</tr>
-		<tr></tr> -->
+		<tr></tr>
 	</table>
-<!-- 	다음 모임일 : 
-				<button>확정하기</button> -->
+	다음 모임일 : 
+				<button>확정하기</button>
 <br>
 	<button class="clickhere">모든 구성원에게 알림 쪽지 보내기 </button>
 	<div>
@@ -81,19 +70,28 @@ List<CmemberBean> rlist_m = (List<CmemberBean>) request.getAttribute("rlist_m");
 				<th>수락 / 거절</th>
 			</tr>
 		</thead>
-		<% for(int i = 0 ; i < rlist_e.size(); i++){ %>
+		<%  %>
 		<tr>
-			<td><%=rlist_e.get(i) %></td>
-			<td><%=rlist_e.get(i).getWanttobe() %></td>
-			<td><%=rlist_e.get(i).getEtime()%></td>
-			<td><%=rlist_e.get(i).getWanttodo() %></td>
-			<td><%=rlist_e.get(i).getMemeo() %></td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
 			<td>
-				<input class="jok" type="checkbox" name="YouJoin:<%=rlist_e.get(i).getWanttobe() %>">
-				<input class="jno" type="checkbox" name="Decline:<%=rlist_e.get(i).getWanttobe() %>">
+<!-- 				<label class="container-checkbox jok">
+				  <input type="checkbox">
+				  <span class="checkmark"></span>
+				</label>
+				<label class="container-checkbox jno">
+				  <input type="checkbox">
+				  <span class="checkmark"></span>
+				</label> -->
+
+				<input class="jok" type="checkbox" name="YouJoin:<>">
+				<input class="jno" type="checkbox" name="Decline:<>">
 			</td>
 		</tr>
-		<% }  %>
+		<%   %>
 	</table>
 </form>
 

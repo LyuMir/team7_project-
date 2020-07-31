@@ -123,13 +123,15 @@ var kk = 0 ;
 	function gotoClub2(req){
 		//alert("112222");
 	var id =$(req).find('.card__idhere').attr('id');
+	//alert(id);
 	$('#gotoClub').find('#clubid3').val(id);
 	$('#gotoClub').submit();
 	
 }
 	function manageClub(req){
 		//alert("???du");
-		var id =$(req).find('.card__idhere').attr('id');
+		var id =$(req).parent().find('.card__idhere').attr('id');
+		//alert(id);
 		$('#manageClub').find('#clubid3').val(id);
 		$('#manageClub').submit();
 	}

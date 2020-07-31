@@ -22,8 +22,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_List_Notice" resultType="com.team7.vo.NoticeBean" >
 		select * from team7.team7_notice limit ${page}, 10
 	</select>
-	
-	
 	<select id="select_ListCount_Notice" resultType="com.team7.vo.PageInfo" >
 		select count(*) as 'page' from team7.team7_notice
 	</select>
@@ -56,10 +54,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into team7.team7_club values(default, '${name}', '${admin}' , '${publicity}', '${memberJoin}', ${memberLimit}, '${e_type}', '${meetingDate}', '${area}', '${profile}', '${photo1}', '${photo2}' )
 	</insert>
 
-	<insert id="insert_CCMember" parameterType="String">
-		insert into team7.team7_cmember values(${no},'${admin}')
-	</insert>
-	
 	<select id="ClubselectAll" resultType="com.team7.vo.ClubBean" >
 		select * from team7.team7_club
 	</select>
@@ -88,12 +82,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 
-	<insert id="insert_cJoin" parameterType="String">
-		insert into team7.team7_cmember values(${club},'${wanttobe}','${etime}','${wanttodo}','${memo}')
-	</insert>
-	<insert id="insert_enroll" parameterType="String">
-		insert into team7.team7_club_enroll values(${club}, '${cmember}')
-	</insert>
 
 
 	<insert id="insert_PICTURE" parameterType="String">
@@ -107,27 +95,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into team7.team7_trainer values(default, '${id}', '${tname}' , '${sex}', '${tphone}', ${tbirth}, '${temail}', '${twhere}', '${tmajor}', '${tcareer}', '${tprofile}', '${tcerti}', '${tstory}', '${tsns}', '${thowjoin}', 1, '${bigtext}','${smalltext}');
 	</insert>
 	
-	<select id="selectall_Trainer" resultType="com.team7.vo.Trainer_info" >
-		select * from team7.team7_club
-	</select>
 	
 	
 	
 	
-	
-	
-	<select id="select_C_enrolls" resultType="com.team7.vo.C_enroll_Bean" >
-		select * from team7.team7_club_enroll where club = ${no}
-	</select>
-	
-	<select id="select_C_members" resultType="com.team7.vo.CmemberBean" >
-		select * from team7.team7_cmember where club = ${no}
-	</select>
-
-
-
-
-
 
 	<select id="000000selectAll" resultType="com.team7.vo.DTO_ClubProperties" >
 		select * from mybatis_0714.new_table00
