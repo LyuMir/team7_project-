@@ -34,7 +34,12 @@
 
         }
       });
+		var log_status ;
+		<%
 
+			int log_status = (Integer) session.getAttribute("LOG_STATUS");
+		%>
+		log_status = <%= log_status%>;
 
     </script>
 

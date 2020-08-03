@@ -4,13 +4,15 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.team7.vo.ClubBean" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=3">
 	<!-- 바디... main만 있어도 됨.  -->
 <%
 request.setCharacterEncoding("UTF-8");
 
 //String whichNum = request.getParameter("whichNum"); 
 // 아직 12345 목록 크기 정하지 않았습니다. 
+// if(session.getAttribute("LOG_ID"))
+// String id = (String) session.getAttribute("LOG_ID");
 
 List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 			=(List<ClubBean>) request.getAttribute("rlist");
@@ -30,6 +32,7 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
     <div class="grid">    
      <% for(int i = 0; i < rlist.size(); i++){ %>
 		<article class="grid__item" onclick="gotoClub2(this)">
+    <!-- <article class="grid__item" > -->
 			<div class="card">
 				<div class="card__img00 fright">
 					<img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
@@ -42,7 +45,10 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 					<div class="card__tag00 content_where"> 장소 : <span><%=rlist.get(i).getArea() %></span></div>
 					<div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
 					<div class="card__heart"> 
-						<img src="img/heart35.png"> <span>000  </span>  &nbsp;
+            <!-- heart zzim의 관계 설정. ... onclick="Zzimshow_club(this)" -->
+            <div class="zzimSystem"  data-id="<%=rlist.get(i).getNo()%>">
+              <img src="img/heart034.png"> <span class="counter" data-target="">0  </span> 
+            </div>
 						<img src="img/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
 					</div>
 				</div>
@@ -65,6 +71,7 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
   </section>
   
 <!-- <script type="text/javascript" src="js/club_whereto.js"></script> -->
+<script type="text/javascript" src="77zzim/zzim_js.js"></script>
 <script type="text/javascript">
 
 
@@ -143,7 +150,6 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
   });
 
 }());
-
 
 </script>
 </main>

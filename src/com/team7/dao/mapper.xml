@@ -78,6 +78,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="Select_club_by_Member" resultType="com.team7.vo.ClubBean" >
 		select * from team7.team7_club where no in (select club from team7.team7_cmember where cmember = '${id}')
 	</select>
+	<select id="Select_club_by_MyZZIM" resultType="com.team7.vo.ClubBean" >
+		select * from team7.team7_club where no in (select club from team7.team7_zzim3 where person = '${id}')
+	</select>
+	<select id="Select_club_by_where" resultType="com.team7.vo.ClubBean" >
+		select * from team7.team7_club where area = '${area}'  
+	</select>
 	
 	<update id="update_editClub">
 		update team7.team7_club set publicity = '${club_publicity}' , memberJoin = '${club_memberJoin}' , memberLimit = ${club_memLimit} , e_type = '${club_exc_type}', meetingDate = '${club_Date_week} ${club_Date_hour}', area = '${club_area}' , profile = '${club_profileText}', photo1=  '${club_profile_photo1}', photo2= '${club_profile_photo2}' where no = #{no}
@@ -113,6 +119,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into team7.team7_picture_data values('${id}', '${picture}')
 	</insert>
 	
+	
+	
+	
+	<insert id="insert_ZGym" parameterType="String">
+		insert into team7.team7_zzim1 values( default, '${person}', ${gym} )
+	</insert>
+	<insert id="insert_ZTainer" parameterType="String">
+		insert into team7.team7_zzim2 values( default, '${person}', ${trainer} )
+	</insert>
+	<insert id="insert_ZClub" parameterType="String">
+		insert into team7.team7_zzim3 values( default, '${person}', ${club} )
+	</insert>
+	
+	<delete id="delete_ZGym">
+		delete from team7.team7_zzim1 where person = '${person}' AND gym = ${gym}
+	</delete>
+	<delete id="delete_ZTrainer">
+		delete from team7.team7_zzim2 where person = '${person}' AND trainer = ${trainer}
+	</delete>
+	<delete id="delete_ZClub">
+		delete from team7.team7_zzim3 where person = '${person}' AND club = ${club}
+	</delete>
+	
+	
+	<select id="select_zzim1" resultType="com.team7.vo.ZZIMBean" >
+		select * from team7.team7_zzim3 where gym = ${gym}
+	</select>
+	<select id="select_zzim2" resultType="com.team7.vo.ZZIMBean" >
+		select * from team7.team7_zzim3 where trainer = ${trainer}
+	</select>
+	<select id="select_zzim3" resultType="com.team7.vo.ZZIMBean" >
+		select * from team7.team7_zzim3 where club = ${club}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 	
@@ -139,14 +190,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from mybatis_0714.new_table00
 	</select>
 	<insert id="000000insert" parameterType="String">
-		insert into mybatis_0714.new_table00 values( default, #{col1}, #{col2} )
+		insert into mybatis_0714.new_table00 values( default, ${col1}, ${col2} )
 	</insert>
 
 	<update id="000000update">
-		update mybatis_0714.new_table00 set col1 = #{col1} , col2 = #{col2} where id = #{id}
+		update mybatis_0714.new_table00 set col1 = ${col1} , col2 = ${col2} where id = ${id}
 	</update>
 	<delete id="000000delete">
-		delete from mybatis_0714.new_table00 where id = #{id}
+		delete from mybatis_0714.new_table00 where id = ${id}
 	</delete>
 	
 	

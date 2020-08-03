@@ -28,32 +28,19 @@ public class ClubJoinMeFormAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		//String clubid = request.getParameter("clubid");
-		Integer clubid = (Integer)request.getAttribute("clubid");
-		
-		HttpSession session = request.getSession();
-		request.setCharacterEncoding("utf-8");
-		
-		String  etime, wanttodo,memo ="";
-		etime = request.getParameter("etime");
-		wanttodo = request.getParameter("wanttodo");
-		memo = request.getParameter("memo");
-		
-		C_enroll_Bean enrll = new C_enroll_Bean();
-		enrll.setClub(clubid);
-		enrll.setEtime(etime);
-		enrll.setMemo(memo);
-		enrll.setWanttobe((String)session.getAttribute("LOG_ID"));
-		enrll.setWanttodo(wanttodo);
-		
-		new CEnrollService().cEnrollMe(enrll);
-		
-		//new ClubService().club_selector_no(clubBean);
-		
 
+		String clubid = request.getParameter("clubid");
+
+		ClubBean clubBean = new ClubBean();
+		clubBean.setNo(Integer.parseInt(clubid));
+		
+		List<ClubBean> clubs = new ClubService().club_selector_no(clubBean);
+		List<CmemberBean> members = new CMemberService().cmember_selector(clubBean);
+		request.setAttribute("rlist", clubs);
+		request.setAttribute("mlist", members);
 		
 		ActionForward forward= new ActionForward();
-		forward.setPath("Search.club");
+		forward.setPath("_FORWHERE.jsp?forwhere=3club/club_enroll.jsp");
 		return forward;
 	}
 

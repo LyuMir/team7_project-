@@ -15,8 +15,11 @@ request.setCharacterEncoding("UTF-8");
 	
 	int adminyn=0, joinyn=0;
 
+List<ClubBean> mylist = (List<ClubBean>) request.getAttribute("mylist");
+List<ClubBean> mylist2 = (List<ClubBean>) request.getAttribute("mylist2");
 List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
 List<ClubBean> rlist00 =  (List<ClubBean>) request.getAttribute("rlist00");
+List<ClubBean> tlist = (List<ClubBean>) request.getAttribute("tlist");
 //if(id.equals("null")){
 	//out.println(rlist);
 	//out.println(rlist00.get(0));
@@ -41,15 +44,24 @@ if(id ==null){
 			<article class="left_top">
 				<select>
 					<option>내가 속한 소모임</option>
+		<% for(int i = 0 ; i < mylist.size(); i++){ %>
+					<option data-id="<%= mylist.get(i).getNo() %>"><%=mylist.get(i).getName() %></option>
+		<% } %>
 				</select>
 				<select>
 					<option>내가 찜한 소모임</option>
+		<% for(int i = 0 ; i < mylist2.size(); i++){ %>
+					<option data-id="<%= mylist2.get(i).getNo() %>"><%=mylist2.get(i).getName() %></option>
+		<% } %>
 				</select>
 				<select>
 					<option>(소모임)과 가까운 소모임</option>
-					<option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 </option>
+		<% for(int i = 0 ; i < tlist.size(); i++){ %>
+					<option data-id="<%= tlist.get(i).getNo() %>"><%=tlist.get(i).getName() %></option>
+		<% } %>
+					<!-- <option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 </option>
 					<option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 2</option>
-					<option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 3</option>
+					<option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 3</option> -->
 				</select>
 			</article>
 			<hr>
@@ -66,12 +78,12 @@ if(id ==null){
 				</div>
 	<% }else if(joinyn == 1){ %>
 				<div class="zzim">
-					<button id="z_zzim1">찜하기 <img src="img/heart34.png"></button>
+					<button id="z_zzim1" onclick="Zzim_club(this)" data-id="<%=rlist.get(0).getNo()%>">찜하기 <img src='img/heart034.png'></button>
 					<button id="z_join1">탈퇴하기 <img src="img/star_black34.png"></button>
 				</div>
 	<% }else{ %>
 				<div class="zzim">
-					<button id="z_zzim1">찜하기 <img src="img/heart34.png"></button>
+					<button id="z_zzim1" onclick="Zzim_club(this)" data-id="<%=rlist.get(0).getNo()%>">찜하기 <img src='img/heart034.png'></button>
 					<button id="z_join1" onclick="joinme()">가입신청 <img src="img/star34.png"></button>
 				</div>
 	<% } %>
@@ -177,6 +189,7 @@ if(id ==null){
 
 
 
+	<script type="text/javascript" src="77zzim/zzim_js.js?ver=3"></script>
 	<script type="text/javascript" src="js/photo_modal00.js"></script>
 <script type="text/javascript">
 

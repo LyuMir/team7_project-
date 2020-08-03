@@ -59,6 +59,18 @@ public class ClubService {
 		sqlsession.close();
 		return theclub;
 	}
+	public List<ClubBean> select_club_by_ZZIM(MemberLogInfo id) { // 아이디(admin)에 따른 모든 것들. 
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ClubBean> theclub = sqlsession.selectList("Select_club_by_MyZZIM", id);
+		sqlsession.close();
+		return theclub;
+	}
+	public List<ClubBean> select_club_by_where(ClubBean clubBean) { // 아이디(admin)에 따른 모든 것들. 
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ClubBean> theclub = sqlsession.selectList("Select_club_by_where", clubBean);
+		sqlsession.close();
+		return theclub;
+	}
 
 	public void club_editor(ClubBean clubBean) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();

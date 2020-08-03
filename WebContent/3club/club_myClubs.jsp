@@ -3,12 +3,12 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.ClubBean" %>
 <%@ page import="java.util.List" %>
-<html>
+<!-- <html>
 <head>
-	<title>소모임 전체보기...</title>
+	<title>소모임 전체보기...</title> -->
 	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?version=55">
-</head>
-<body>
+<!-- </head>
+<body> -->
 	<!-- 바디... main만 있어도 됨.  -->
 <%
 request.setCharacterEncoding("UTF-8");
@@ -57,7 +57,10 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 							<div class="card__tag00 content_where"> 장소 : <span><%=rlist.get(i).getArea() %></span></div>
 							<div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
 							<div class="card__heart"> 
-								<img src="img/heart35.png"> <span>000  </span>  &nbsp;
+								            <!-- heart zzim의 관계 설정.  -->
+					            <div class="zzimSystem" onclick="Zzimshow_club(this)" data-id="<%=rlist.get(i).getNo()%>">
+					              <img src="img/heart034.png"> <span class="counter" data-target="">0  </span> 
+					            </div>
 								<img src="img/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
 							</div>
 						</div>
@@ -86,7 +89,10 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 					<div class="card__tag00 content_where"> 장소 : <span><%=rlist2.get(i).getArea() %></span></div>
 					<div class="card__tag00 content_when"> 시간 : <span><%=rlist2.get(i).getMeetingDate() %></span></div>
 					<div class="card__heart"> 
-						<img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
+						<div class="zzimSystem" onclick="Zzimshow_club(this)" data-id="<%=rlist.get(i).getNo()%>">
+							<img src="img/heart034.png"> <span class="counter" data-target="">0  </span> 
+						</div>
+						<img src="img/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
 					</div>
 				</div>
 				<div class="card__bottomContent">
@@ -137,7 +143,8 @@ var kk = 0 ;
 		$('#manageClub').submit();
 	}
 </script>
+<script type="text/javascript" src="77zzim/zzim_js.js"></script>
 
-
+<!-- 
 </body>
-</html>
+</html> -->

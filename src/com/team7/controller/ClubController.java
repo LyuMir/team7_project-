@@ -128,14 +128,14 @@ public class ClubController extends javax.servlet.http.HttpServlet
 			}
 		}
 		else if(command.equals("/id_joinme.club")){
-//			action  = new com.team7.club.action.ClubJoinMeFormAction();
-//			try {
-//				forward=action.execute(request, response );
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-			forward = new ActionForward();
-			forward.setPath("_FORWHERE.jsp?forwhere=3club/club_enroll.jsp");
+			action  = new com.team7.club.action.ClubJoinMeFormAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+//			forward = new ActionForward();
+//			forward.setPath("_FORWHERE.jsp?forwhere=3club/club_enroll.jsp");
 		}
 		else if(command.equals("/enrollgo.club")){
 			action  = new com.team7.club.action.ClubJoinMeAction();
