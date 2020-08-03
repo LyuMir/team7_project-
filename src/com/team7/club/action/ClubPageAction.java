@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.team7.club.service.CEnrollService;
+import com.team7.club.service.CMemberService;
 import com.team7.club.service.ClubService;
 import com.team7.controller.ClubController;
 import com.team7.vo.*;
@@ -41,10 +43,27 @@ public class ClubPageAction implements Action{
 		System.out.println(rlist.get(0).getArea());
 		clubBean.setArea(rlist.get(0).getArea());
 		List<ClubBean> tlist = new ClubService().select_club_by_where(clubBean);
+		CmemberBean cmember = new CmemberBean();
+		cmember.setClub(Integer.parseInt(club_id));
+		cmember.setCmember(id0);
+		List<CmemberBean> ami0 = new CMemberService().amiinclub(cmember);
+		List<C_enroll_Bean> didi = new CEnrollService().c_enroll_selector(clubBean);
+		boolean ami = false;
+		boolean ied = false;
+		if(ami0.size() !=0) {
+			ami = true;
+		}
+		for(int i = 0 ; i < didi.size(); i++) {
+			if(didi.get(i).getWanttobe().equals(id0)) {
+				ied = true;
+			}
+		}
 		
 		request.setAttribute("mylist", mylist);
 		request.setAttribute("mylist2", mylist2);
 		request.setAttribute("tlist", tlist);
+		request.setAttribute("ami", ami);
+		request.setAttribute("ied", ied);
 
 		request.setAttribute("rlist", rlist);
 		request.setAttribute("rlist00", rlist);

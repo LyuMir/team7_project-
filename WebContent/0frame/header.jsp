@@ -6,7 +6,7 @@
     <span class="top_right00 fright">
       <a href="Join_and_LogIn.jsp?whatdo=login">로그인</a>
       <a href="Join_and_LogIn.jsp">회원가입 </a>
-      <<a href="id_MainToApply.trainer">코치지원</a>
+      <a href="id_MainToApply.trainer">코치지원</a>
     </span>
   </div>
 </header>

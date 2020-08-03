@@ -2,6 +2,7 @@
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.ClubBean" %>
+<%@ page import="com.team7.vo.CmemberBean" %>
 <%@ page import="java.util.List" %>
 
     <link rel="stylesheet" type="text/css" href="css/club_main.css">
@@ -20,6 +21,8 @@ List<ClubBean> mylist2 = (List<ClubBean>) request.getAttribute("mylist2");
 List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
 List<ClubBean> rlist00 =  (List<ClubBean>) request.getAttribute("rlist00");
 List<ClubBean> tlist = (List<ClubBean>) request.getAttribute("tlist");
+boolean ami = (boolean) request.getAttribute("ami");	//탈퇴 중 tf
+boolean ied = (boolean) request.getAttribute("ied");	//가입신청중 tf
 //if(id.equals("null")){
 	//out.println(rlist);
 	//out.println(rlist00.get(0));
@@ -28,6 +31,11 @@ if(id ==null){
 }else{
 	if(id.equals(rlist.get(0).getAdmin())){
 		adminyn=1;
+	}
+	for(int i = 0 ; i < mylist.size(); i++){
+		if(mylist.get(i).getNo() == rlist.get(0).getNo()){
+			joinyn = 1;
+		}
 	}
 }
 %>
@@ -79,7 +87,7 @@ if(id ==null){
 	<% }else if(joinyn == 1){ %>
 				<div class="zzim">
 					<button id="z_zzim1" onclick="Zzim_club(this)" data-id="<%=rlist.get(0).getNo()%>">찜하기 <img src='img/heart034.png'></button>
-					<button id="z_join1">탈퇴하기 <img src="img/star_black34.png"></button>
+					<button id="z_join1" onclick="outme()">탈퇴하기 <img src="img/star_black34.png"></button>
 				</div>
 	<% }else{ %>
 				<div class="zzim">
@@ -185,6 +193,9 @@ if(id ==null){
 	<input type="hidden" name="clubid" value="<%=rlist.get(0).getNo()%>">
 	<input type="hidden" name="clubname" value="<%=rlist.get(0).getName()%>">
 </form>
+<form id="form4" action="outme.club" method="post" style="display: none;">
+	<input type="hidden" name="clubid" value="<%=rlist.get(0).getNo()%>">
+</form>
 	</main>
 
 
@@ -195,6 +206,11 @@ if(id ==null){
 
 	//minyn %>;
 	//nyn %>; // 0과 1입니다. 
+	var ami = false;
+	var ied = false;
+	
+	ami = <%=ami %>;
+	ied = <%=ied %>;
 
 	var z1button = $('#z_zzim_1');
 	var z2button = $('#z_join1');
@@ -211,6 +227,53 @@ if(id ==null){
 	function joinme(){
 		//alert($('#form3').children('input').val());
 		$('#form3').submit();
+	}
+	function outme(){
+		var confirmE = confirm("탈퇴 버튼을 누르면 일주일(148시간)의 유예 기간을 거친 후 탈퇴 처리됩니다.<br> 유예 기간 동안에 탈퇴 신청을 취소할 수 있습니다. 계속하시겠습니까?");
+		if(confirmE){
+			$('#form4').submit();
+		}
+	}
+	
+	
+	setTimeout(goinTFs(),1000);
+	
+	function goinTFs(){
+		if(ami){
+			goingoutTF();	//탈퇴중인가
+			//alert('여기여기??');
+		}
+		if(ied){
+			goinginTF();	//가입중인가.
+			//alert('여기 오나?');
+		}
+	}
+	// if(ami){
+	//	setTimeout(goingoutTF(),1000);	
+	// }
+	// if(ied){
+	//	setTimeout(goinginTF(),1000);	//가입중인가.
+	// }
+	
+	
+	function goingoutTF(){
+		if(ami){
+			$('button#z_join1').html("탈퇴 중 <img src='img/star_black34.png'>");
+			$('button#z_join1').attr('onclick','outme_cancle()');
+		}
+		else{
+			$('button#z_join1').html("탈퇴하기 <img src='img/star_black34.png'>");
+			$('button#z_join1').attr('onclick','outme()');
+		}
+	}
+	function goinginTF(){
+		if(ied){
+			$('button#z_join1').html("가입심사 중.. "); //<img src='img/star34.png'>
+			//$('button#z_join1').attr('onclick','');
+		}
+		else{
+
+		}
 	}
 
 	// function zzim1(){

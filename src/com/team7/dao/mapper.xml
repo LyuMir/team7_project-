@@ -109,6 +109,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delete_enroll">
 		delete from team7.team7_club_enroll where club = '${club}' AND wanttobe = '${wanttobe}'
 	</delete>
+	
+	<select id="select_amiInClub" resultType="com.team7.vo.CmemberBean" >
+		select * from team7.team7_cmember where club = ${club} AND cmember = '${cmember}'
+	</select>
+	<update id="update_letmeoutClub">
+		update team7.team7_cmember set outatdate = ${outatdate} where id = ${id}
+	</update>
+	<update id="update_outClubCancle">
+		update team7.team7_cmember set outatdate = null where id = ${id}
+	</update>
 
 
 

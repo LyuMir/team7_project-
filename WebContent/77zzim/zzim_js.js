@@ -31,13 +31,17 @@ counters.each(function(index,item){
 
             const inc = target / speed;
 
-            if(count < target -10){
+            if(count < target -30){
                 $(item).text(count + inc);
                 setTimeout(updateCount,40);
             }
-            else if(count < target){
+            else if(count < target-10){
                 $(item).text(count + inc);
                 setTimeout(updateCount,90);
+            }
+            else if(count < target){
+                $(item).text(count + inc);
+                setTimeout(updateCount,180);
             }
             else{
                 $(item).text(target);
