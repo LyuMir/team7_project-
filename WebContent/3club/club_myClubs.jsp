@@ -6,7 +6,7 @@
 <!-- <html>
 <head>
 	<title>소모임 전체보기...</title> -->
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?version=55">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
 <!-- </head>
 <body> -->
 	<!-- 바디... main만 있어도 됨.  -->
@@ -82,17 +82,17 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 					<img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
 				</div>
 				<div class="card__content fleft">
-					<div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
+					<div class="card__idhere" id="<%=rlist2.get(i).getNo()%>"></div>
 					<div class="card__header"><%=rlist2.get(i).getName() %></div>
 					<div class="card__tag00 content_now"><%=rlist2.get(i).getMemberJoin() %></div>
 					<div class="card__tag00 content_what"> 운동 : <span><%=rlist2.get(i).getE_type() %></span></div>
 					<div class="card__tag00 content_where"> 장소 : <span><%=rlist2.get(i).getArea() %></span></div>
 					<div class="card__tag00 content_when"> 시간 : <span><%=rlist2.get(i).getMeetingDate() %></span></div>
 					<div class="card__heart"> 
-						<div class="zzimSystem" onclick="Zzimshow_club(this)" data-id="<%=rlist.get(i).getNo()%>">
+						<div class="zzimSystem" onclick="Zzimshow_club(this)" data-id="<%=rlist2.get(i).getNo()%>">
 							<img src="img/heart034.png"> <span class="counter" data-target="">0  </span> 
 						</div>
-						<img src="img/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
+						<img src="img/star22.png">  <span><%=rlist2.get(i).getMemberNum() %></span>
 					</div>
 				</div>
 				<div class="card__bottomContent">

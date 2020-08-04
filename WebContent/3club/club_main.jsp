@@ -200,7 +200,7 @@ if(id ==null){
 
 
 
-	<script type="text/javascript" src="77zzim/zzim_js.js?ver=3"></script>
+	<script type="text/javascript" src="77zzim/zzim_js.js?ver=4"></script>
 	<script type="text/javascript" src="js/photo_modal00.js"></script>
 <script type="text/javascript">
 

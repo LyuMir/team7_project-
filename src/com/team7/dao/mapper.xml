@@ -162,6 +162,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_zzim3" resultType="com.team7.vo.ZZIMBean" >
 		select * from team7.team7_zzim3 where club = ${club}
 	</select>
+	<select id="select_zzim3_ALL" resultType="com.team7.vo.ZZIMBean" >
+		select * from team7.team7_zzim3
+	</select>
 	
 	
 	
