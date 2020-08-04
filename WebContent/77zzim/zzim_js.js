@@ -4,19 +4,47 @@
 
 setTimeout(zzimshow3(),1000);
 
-setTimeout(zzimshow3_button(),1100);
+// setTimeout(zzimshow3_button(),1100);
 
 
 function zzimshow3(){
     //alert('여기 실행?');
+    // $('.zzimSystem').each(function(index,item){
+    //     Zzimshow_club($(item));
+    // });
+    var arrid = new Array();
+    var arrcount = new Array();
+    var arrzzimed = new Array();
+    var datasss = Zzimshow_club();
+
+    for(var i = 0 ; i < datasss.children('div').length; i++){
+        arrid[i] = datasss.children('div').eq(i).attr('id');
+        arrcount[i] = datasss.children('div').eq(i).data('count');
+        arrzzimed[i] = datasss.children('div').eq(i).data('zzimed');
+    }
+
+
     $('.zzimSystem').each(function(index,item){
-        Zzimshow_club($(item));
+
+        for(var i = 0 ; i < arrid.length; i++){
+            if($(item).data('id') == arrid[i]){
+
+                if(arrzzimed[i] == 1){
+                    changeHTMLs($(item),1);
+                }
+
+
+                if($(item).children('span') !=null){
+                    $(item).children('span').data('target',arrcount[i] + 50);
+                }
+            }
+        }
     });
 }
 
 function zzimshow3_button(){
     $('#z_zzim1').each(function(index,item){
-        Zzimshow_club($(item));
+        Zzimbuttonshow_club($(item));
     });
 }
 
@@ -83,9 +111,24 @@ counters.each(function(index,item){
 //     updateCount();
 // }); // https://morioh.com/p/bd6b4702d394
 
-function Zzimshow_club(req){
+function Zzimshow_club(){
     var url = "club.zzimshow";
-    //alert('실행'+$(req).data('id'));
+    var datasss;
+    $.ajax({
+        type:"GET",
+        url:url,
+        async:false,
+        dataType:"html",
+        success : function(data){
+            datasss = $(data);
+        }
+    })
+    return datasss;
+}
+
+
+function Zzimbuttonshow_club(req){
+    var url = "clubbutton.zzimshow";
     var zzimnumber =0;
     var zzimpeople ="";
     var youzzim = false;

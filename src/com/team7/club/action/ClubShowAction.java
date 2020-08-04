@@ -23,12 +23,11 @@ public class ClubShowAction implements Action{
 		//List<ClubBean> rlist = new ClubService().club_selectorAll2(pageInfo);
 		List<ClubBean> rlist = new ClubService().club_selectorAll();
 		
-		for(int i = 0 ; i < rlist.size(); i++) {
-			clubBean.setNo(rlist.get(i).getNo());
-			List<CmemberBean> memberlist = new CMemberService().cmember_selector(clubBean);
-			rlist.get(i).setMemberNum(memberlist.size());
-		}
-		
+//		for(int i = 0 ; i < rlist.size(); i++) {
+//			clubBean.setNo(rlist.get(i).getNo());
+//			List<CmemberBean> memberlist = new CMemberService().cmember_selector(clubBean);
+//			rlist.get(i).setMemberNum(memberlist.size());
+//		}
 		
 		request.setAttribute("rlist", rlist);
 		

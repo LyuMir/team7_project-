@@ -8,6 +8,9 @@ public class ZZIMBean {
 	private int trainer; //트레이너(고유번호)	<team7_zzim2
 	private int club;	//소모임(고유번호)	<team7_zzim3
 	
+	private int count;
+	private int zzimed;
+	
 	
 	public int getId() {
 		return id;
@@ -38,5 +41,17 @@ public class ZZIMBean {
 	}
 	public void setClub(int club) {
 		this.club = club;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public int getZzimed() {
+		return zzimed;
+	}
+	public void setZzimed(int zzimed) {
+		this.zzimed = zzimed;
 	}
 }

@@ -2,6 +2,7 @@ package com.team7.zzim.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,5 +47,45 @@ public class Zzim_Show_Actions {
 		out.print("\" >");
 		out.print("</div>");
 		out.close();
+	}
+	
+	public void club_show_count_nolog(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		List<ZZIMBean> zzim = new ZzimService().select_clubs_count();
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		out.print("<div class='datasss'><div id = \"");
+		for(int i = 0 ; i < zzim.size(); i++) {
+			int club = zzim.get(i).getClub();
+			int count = zzim.get(i).getCount();
+			out.print(club);
+			out.print("\" data-count=");
+			out.print(count);
+			out.print(" ></div>  <div id =\"");
+		}
+		out.print("nothing..\"></div></div>");
+		
+	}
+	
+	public void club_show_count(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		String person = (String) session.getAttribute("LOG_ID");
+		
+		List<ZZIMBean> zzim = new ZzimService().select_clubs_count2(person);
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		out.print("<div class='datasss'><div id = \"");
+		for(int i = 0 ; i < zzim.size(); i++) {
+			int club = zzim.get(i).getClub();
+			int count = zzim.get(i).getCount();
+			int zzimed = zzim.get(i).getZzimed();
+			out.print(club);
+			out.print("\" data-count=");
+			out.print(count);
+			out.print(" data-zzimed=");
+			out.print(zzimed);
+			out.print(" ></div>  <div id =\"");
+		}
+		out.print("nothing..\"></div></div>");
 	}
 }

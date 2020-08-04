@@ -74,4 +74,71 @@ public class ZzimService {
 		return rlist;
 	}
 	
+	
+
+	public List<ZZIMBean> select_gyms_ALL(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist = sqlsession.selectList("select_zzim1_ALL");
+		sqlsession.close();
+		return rlist;
+	}
+	public List<ZZIMBean> select_trainer_ALL(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist = sqlsession.selectList("select_zzim2_ALL");
+		sqlsession.close();
+		return rlist;
+	}
+	public List<ZZIMBean> select_clubs_ALL(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist = sqlsession.selectList("select_zzim3_ALL");
+		sqlsession.close();
+		return rlist;
+	}
+	
+
+	public List<ZZIMBean> select_gyms_count(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist = sqlsession.selectList("select_zzim1_withCount");
+		sqlsession.close();
+		return rlist;
+	}
+	public List<ZZIMBean> select_trainer_count(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist = sqlsession.selectList("select_zzim2_withCount");
+		sqlsession.close();
+		return rlist;
+	}
+	public List<ZZIMBean> select_clubs_count(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist = sqlsession.selectList("select_zzim3_withCount");
+		sqlsession.close();
+		return rlist;
+	}
+	
+	
+
+	public List<ZZIMBean> select_gyms_count2(String id){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setPerson(id);
+		List<ZZIMBean> rlist = sqlsession.selectList("select_zzim1_withCount2",zzim);
+		sqlsession.close();
+		return rlist;
+	}
+	public List<ZZIMBean> select_trainer_count2(String id){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setPerson(id);
+		List<ZZIMBean> rlist = sqlsession.selectList("select_zzim2_withCount2",zzim);
+		sqlsession.close();
+		return rlist;
+	}
+	public List<ZZIMBean> select_clubs_count2(String id){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setPerson(id);
+		List<ZZIMBean> rlist = sqlsession.selectList("select_zzim3_withCount2",zzim);
+		sqlsession.close();
+		return rlist;
+	}
 }

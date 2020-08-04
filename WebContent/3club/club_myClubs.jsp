@@ -25,6 +25,8 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
 		(List<ClubBean>) request.getAttribute("rlist");
 
+	String realFolder = "Files/clubsphoto/"+rlist.get(0).getAdmin()+"/";
+	String basicFolder = "img/exc";
 
 		List<ClubBean> rlist2 = (List<ClubBean>)request.getAttribute("rlist2");
 %>
@@ -40,6 +42,28 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 
 		   
      <% for(int i = 0; i < rlist.size(); i++){ %>
+
+
+<%
+String photo1 ="";
+String photo2 ="";
+
+      if(rlist.get(i).getPhoto1() ==null || rlist.get(i).getPhoto1().equals("")){
+    	  photo1 = basicFolder+"/"+"surf1.jpg";
+    	 // photo1 = rlist.get(i).getPhoto1();
+      }
+      else{
+    	  photo1 = realFolder+"main/"+rlist.get(i).getPhoto1();
+      }
+      if(rlist.get(i).getPhoto2() ==null || rlist.get(i).getPhoto2().equals("")){
+    	  photo2 = basicFolder+"/"+"soccer1.jpg";
+    	 // photo1 = rlist.get(i).getPhoto1();
+      }
+      else{
+    	  photo2 = realFolder+"profile/"+rlist.get(i).getPhoto2();
+      }
+
+%>
 		<article class="grid__item">
 			<div class="wrapEn0">
 				<div class="overray0 manageit" onclick="manageClub(this)">소모임 관리하기</div>
@@ -59,9 +83,9 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 							<div class="card__heart"> 
 								            <!-- heart zzim의 관계 설정.  -->
 					            <div class="zzimSystem" onclick="Zzimshow_club(this)" data-id="<%=rlist.get(i).getNo()%>">
-					              <img src="img/heart034.png"> <span class="counter" data-target="">0  </span> 
+					              <img src="img/heart_and_star/heart034.png"> <span class="counter" data-target="">0  </span> 
 					            </div>
-								<img src="img/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
+								<img src="img/heart_and_star/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
 							</div>
 						</div>
 						<div class="card__bottomContent">
@@ -90,9 +114,9 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 					<div class="card__tag00 content_when"> 시간 : <span><%=rlist2.get(i).getMeetingDate() %></span></div>
 					<div class="card__heart"> 
 						<div class="zzimSystem" onclick="Zzimshow_club(this)" data-id="<%=rlist2.get(i).getNo()%>">
-							<img src="img/heart034.png"> <span class="counter" data-target="">0  </span> 
+							<img src="img/heart_and_star/heart034.png"> <span class="counter" data-target="">0  </span> 
 						</div>
-						<img src="img/star22.png">  <span><%=rlist2.get(i).getMemberNum() %></span>
+						<img src="img/heart_and_star/star22.png">  <span><%=rlist2.get(i).getMemberNum() %></span>
 					</div>
 				</div>
 				<div class="card__bottomContent">

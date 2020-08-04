@@ -50,8 +50,10 @@ public class ClubPageAction implements Action{
 		List<C_enroll_Bean> didi = new CEnrollService().c_enroll_selector(clubBean);
 		boolean ami = false;
 		boolean ied = false;
-		if(ami0.size() !=0) {
-			ami = true;
+		if(ami0 !=null && ami0.size() !=0) {
+			if(ami0.get(0).getOutatdate() !=null) {
+				ami = true;
+			}
 		}
 		for(int i = 0 ; i < didi.size(); i++) {
 			if(didi.get(i).getWanttobe().equals(id0)) {

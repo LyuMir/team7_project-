@@ -1,25 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<html>
-<head>
-	<title>소모임 개설 페이지 _ 연</title>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/mainmain88.css">
 	<link rel="stylesheet" type="text/css" href="css/checkbox__.css">
 
 
-<link rel="stylesheet" type="text/css" href="css/club_Create.css">
+<link rel="stylesheet" type="text/css" href="css/club_Create.css?ver=35">
 <!-- <script type="text/javascript" src="js/club_Create_js.js?v=<%=System.currentTimeMillis()%>"></script> -->
-</head>
-<body>
+
 	<!-- 사실 우리에게 필요한 것은 메인만 -->
 
+<% String id = (String)session.getAttribute("LOG_ID"); %>
 	<main>
-		<form class="" enctype="multipart/form-data" action="create.club" method="post" id="club_creator_form">
 			<table>
+		<form class="" action="create.club" method="post" id="club_creator_form">
 				<tr>
 					<td>소모임 이름</td>
 					<td>
-						<input id="club_name" type="text" name="club_name" maxlength="25" placeholder="소모임 이름">
+						<input id="club_name" type="text" name="club_name" maxlength="25" placeholder="소모임 이름" value="<%=id%>의 소모임">
 						<div id="output01">이름을 입력하세요. </div><!-- <span class="white000">.</span> -->
 					</td>
 				</tr>
@@ -192,22 +190,28 @@
 						<textarea rows="2" placeholder="150자 이내" name="club_profileText"></textarea>
 					</td>
 				</tr>
+
+		</form>
 				<tr>
 					<td>소모임 사진</td>
 					<td>
 						<!-- 소모임 프로필 사진 : b ... 소모임 대표 사진 : b // 현재 사진 올리기 기능이 제한되어 있습니다. 문의사항 : 이재형 0720 -->
-						<input type="file" name="photo1"> 메인 사진 (대문 사진) <br>
-						<input type="file" name="photo2"> 메인 프로필 사진 
+
+		<form id="photo_upload" enctype="multipart/form-data" accept-charset="UTF-8" method="post" action="photo_upload.club">
+						<input type="file" id="photo1" name="photo1" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 메인 사진 (대문 사진)
+		</form> <button onclick="photo_upload()">사진 업로드</button>
+
+
+		<form id="photo_upload2" enctype="multipart/form-data" accept-charset="UTF-8" method="post" action="photo_upload2.club">
+						<input type="file" id="photo2" name="photo2" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 메인 프로필 사진
+		</form> 	 <button onclick="photo_upload2()">사진 업로드</button>
 					</td>
 				</tr>
 			</table>
-		</form>
 			<div class="button00">
-				<button onclick="formSender()">소모임 개설하기 </button>		
+				<button onclick="formSender()">소모임 개설하기 </button>	
 			</div>
 	</main>
-</body>
 
-<script type="text/javascript" src="js/club_CRU.js?version=22"></script>
 
-</html>
+<script type="text/javascript" src="js/club_CRU.js?version=33"></script>

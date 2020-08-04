@@ -63,7 +63,7 @@ if(id ==null){
 		<% } %>
 				</select>
 				<select>
-					<option>(소모임)과 가까운 소모임</option>
+					<option><%=rlist.get(0).getName()%>과 가까운 소모임</option>
 		<% for(int i = 0 ; i < tlist.size(); i++){ %>
 					<option data-id="<%= tlist.get(i).getNo() %>"><%=tlist.get(i).getName() %></option>
 		<% } %>
@@ -81,18 +81,18 @@ if(id ==null){
 				</div>
 	<% if(adminyn == 1){ %>
 				<div class="zzim">
-					<button id="z_zzim_1" onclick="managego()">관리하기 <img src="img/heart34.png"></button>
-					<button id="z_join_1" onclick="joinmanagego()">가입관리 <img src="img/star34.png"></button>
+					<button id="z_zzim_1" onclick="managego()">관리하기 <img src="img/heart_and_star/heart34.png"></button>
+					<button id="z_join_1" onclick="joinmanagego()">가입관리 <img src="img/heart_and_star/star34.png"></button>
 				</div>
 	<% }else if(joinyn == 1){ %>
 				<div class="zzim">
-					<button id="z_zzim1" onclick="Zzim_club(this)" data-id="<%=rlist.get(0).getNo()%>">찜하기 <img src='img/heart034.png'></button>
-					<button id="z_join1" onclick="outme()">탈퇴하기 <img src="img/star_black34.png"></button>
+					<button id="z_zzim1" onclick="Zzim_club(this)" data-id="<%=rlist.get(0).getNo()%>">찜하기 <img src='img/heart_and_star/heart034.png'></button>
+					<button id="z_join1" onclick="outme()">탈퇴하기 <img src="img/heart_and_star/star_black34.png"></button>
 				</div>
 	<% }else{ %>
 				<div class="zzim">
-					<button id="z_zzim1" onclick="Zzim_club(this)" data-id="<%=rlist.get(0).getNo()%>">찜하기 <img src='img/heart034.png'></button>
-					<button id="z_join1" onclick="joinme()">가입신청 <img src="img/star34.png"></button>
+					<button id="z_zzim1" onclick="Zzim_club(this)" data-id="<%=rlist.get(0).getNo()%>">찜하기 <img src='img/heart_and_star/heart034.png'></button>
+					<button id="z_join1" onclick="joinme()">가입신청 <img src="img/heart_and_star/star34.png"></button>
 				</div>
 	<% } %>
 				<!-- <div class="zzim">
@@ -229,7 +229,7 @@ if(id ==null){
 		$('#form3').submit();
 	}
 	function outme(){
-		var confirmE = confirm("탈퇴 버튼을 누르면 일주일(148시간)의 유예 기간을 거친 후 탈퇴 처리됩니다.<br> 유예 기간 동안에 탈퇴 신청을 취소할 수 있습니다. 계속하시겠습니까?");
+		var confirmE = confirm("탈퇴 버튼을 누르면 일주일(148시간)의 유예 기간을 거친 후 탈퇴 처리됩니다. 유예 기간 동안 탈퇴 신청을 취소할 수 있습니다. 계속하시겠습니까?");
 		if(confirmE){
 			$('#form4').submit();
 		}
@@ -258,11 +258,11 @@ if(id ==null){
 	
 	function goingoutTF(){
 		if(ami){
-			$('button#z_join1').html("탈퇴 중 <img src='img/star_black34.png'>");
+			$('button#z_join1').html("탈퇴 중 <img src='img/heart_and_star/star_black34.png'>");
 			$('button#z_join1').attr('onclick','outme_cancle()');
 		}
 		else{
-			$('button#z_join1').html("탈퇴하기 <img src='img/star_black34.png'>");
+			$('button#z_join1').html("탈퇴하기 <img src='img/heart_and_star/star_black34.png'>");
 			$('button#z_join1').attr('onclick','outme()');
 		}
 	}

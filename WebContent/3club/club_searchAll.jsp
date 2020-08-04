@@ -4,7 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.team7.vo.ClubBean" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=3">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=4">
 	<!-- 바디... main만 있어도 됨.  -->
 <%
 request.setCharacterEncoding("UTF-8");
@@ -19,6 +19,26 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
 
+//		ServletContext context = request.getServletContext();
+//		String realFolder=context.getRealPath("/clubsphoto/"+rlist.get(0).getAdmin());
+//		String basicFolder=context.getRealPath("/img/exc");
+	String realFolder = "Files/clubsphoto/"+rlist.get(0).getAdmin()+"/";
+	String basicFolder = "img/exc";
+//String photo1 ="";
+//String photo2 ="";
+//      if(rlist.get(0).getPhoto1() !=null){
+//    	  photo1 = realFolder+"main/"+rlist.get(0).getPhoto1();
+//      }
+//      else{
+//    	  photo1 = basicFolder+"/"+"surf1.jpg";
+//      }
+//      if(rlist.get(0).getPhoto2() !=null){
+//    	  photo2 = realFolder+"profile/"+rlist.get(0).getPhoto2();
+//      }
+//      else{
+//    	  photo2 = basicFolder+"/"+"soccer1.jpg";
+//      }
+
 %>
 
 <main id="main000" class="mainwrap">
@@ -31,11 +51,25 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 
     <div class="grid">    
      <% for(int i = 0; i < rlist.size(); i++){ %>
+     
+     
+     	<%
+     	String photo1 ="";
+  
+     	      if(rlist.get(i).getPhoto1() ==null || rlist.get(i).getPhoto1().equals("")){
+     	    	  photo1 = basicFolder+"/"+"surf1.jpg";
+     	    	 // photo1 = rlist.get(i).getPhoto1();
+     	      }
+     	      else{
+     	    	  photo1 = realFolder+"main/"+rlist.get(i).getPhoto1();
+     	      }
+     	
+     	%>
 		<article class="grid__item" onclick="gotoClub2(this)">
     <!-- <article class="grid__item" > -->
 			<div class="card">
 				<div class="card__img00 fright">
-					<img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
+					<img class="card__img01" src="<%=photo1 %>">
 				</div>
 				<div class="card__content fleft">
 					<div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
@@ -47,9 +81,9 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 					<div class="card__heart"> 
             <!-- heart zzim의 관계 설정. ... onclick="Zzimshow_club(this)" -->
             <div class="zzimSystem"  data-id="<%=rlist.get(i).getNo()%>">
-              <img src="img/heart034.png"> <span class="counter" data-target="">0  </span> 
+              <img src="img/heart_and_star/heart034.png"> <span class="counter" data-target="">0  </span> 
             </div>
-						<img src="img/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
+						<img src="img/heart_and_star/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
 					</div>
 				</div>
 				<div class="card__bottomContent">
@@ -72,6 +106,16 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
   
 <!-- <script type="text/javascript" src="js/club_whereto.js"></script> -->
 <script type="text/javascript" src="77zzim/zzim_js.js"></script>
+<!-- <script type="text/javascript" src="js/grid_move.js"></script> -->
+<script type="text/javascript">
+  $('.card__img01').each(function(index,item){
+    var pheight = $(item).parent().height();
+    var height = $(item).height();
+    console.log(pheight);
+    $(item).css('bottom',(height - pheight)/2);
+  });
+
+</script>
 <script type="text/javascript">
 
 

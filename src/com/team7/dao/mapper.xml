@@ -57,11 +57,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<insert id="insert_CCMember" parameterType="String">
-		insert into team7.team7_cmember values(default,${no},'${admin}')
+		insert into team7.team7_cmember values(default,${no},'${admin}',null)
 	</insert>
 	
 	<select id="ClubselectAll" resultType="com.team7.vo.ClubBean" >
-		select * from team7.team7_club
+		select * , count(cmember) as count from team7.team7_club, team7.team7_cmember where team7_club.no = team7_cmember.club group by team7_cmember.club
 	</select>
 
 	<select id="ClubselectAll2" resultType="com.team7.vo.ClubBean" >
@@ -101,7 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from team7.team7_cmember where club = ${no}
 	</select>
 	<insert id="insert_cmem" parameterType="String">
-		insert into team7.team7_cmember values(default, ${club}, '${cmember}')
+		insert into team7.team7_cmember values(default, ${club}, '${cmember}', null)
 	</insert>
 	<insert id="insert_enroll" parameterType="String">
 		insert into team7.team7_club_enroll values(default, NOW(), ${club},'${wanttobe}','${etime}','${wanttodo}','${memo}')
@@ -126,8 +126,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<insert id="insert_PICTURE" parameterType="String">
-		insert into team7.team7_picture_data values('${id}', '${picture}')
+		insert into team7.team7_picture_data values(default, '${id}', '${picture}')
 	</insert>
+	<delete id="delete_rePICTURE">
+		delete from team7.team7_picture_data where id = '${id}'
+	</delete>
+	<select id="select_club_mainphotos" resultType="com.team7.vo.PhotoBean" >
+		select * from team7.team7_picture_data where id like '${id}\_club\_%'
+	</select>
 	
 	
 	
@@ -154,19 +160,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="select_zzim1" resultType="com.team7.vo.ZZIMBean" >
-		select * from team7.team7_zzim3 where gym = ${gym}
+		select * from team7.team7_zzim1 where gym = ${gym}
 	</select>
 	<select id="select_zzim2" resultType="com.team7.vo.ZZIMBean" >
-		select * from team7.team7_zzim3 where trainer = ${trainer}
+		select * from team7.team7_zzim2 where trainer = ${trainer}
 	</select>
 	<select id="select_zzim3" resultType="com.team7.vo.ZZIMBean" >
 		select * from team7.team7_zzim3 where club = ${club}
+	</select>
+	<select id="select_zzim1_ALL" resultType="com.team7.vo.ZZIMBean" >
+		select * from team7.team7_zzim1
+	</select>
+	<select id="select_zzim2_ALL" resultType="com.team7.vo.ZZIMBean" >
+		select * from team7.team7_zzim2
 	</select>
 	<select id="select_zzim3_ALL" resultType="com.team7.vo.ZZIMBean" >
 		select * from team7.team7_zzim3
 	</select>
 	
+	<select id="select_zzim1_withCount" resultType="com.team7.vo.ZZIMBean" >
+		select gym, count(gym) as count from team7.team7_zzim1 group by gym
+	</select>
+	<select id="select_zzim2_withCount" resultType="com.team7.vo.ZZIMBean" >
+		select trainer,count(trainer) as count from team7.team7_zzim2 group by trainer
+	</select> 
+	<select id="select_zzim3_withCount" resultType="com.team7.vo.ZZIMBean" >
+		select club, count(club) as count from team7.team7_zzim3 group by club
+	</select>
 	
+	<select id="select_zzim1_withCount2" resultType="com.team7.vo.ZZIMBean" >
+		select gym, count(gym) as count, case when ('${person}' = person) then 1 else 0 end as 'zzimed' from team7.team7_zzim1 group by gym
+	</select>
+	<select id="select_zzim2_withCount2" resultType="com.team7.vo.ZZIMBean" >
+		select trainer, count(trainer) as count, case when ('${person}' = person) then 1 else 0 end as 'zzimed' from team7.team7_zzim2 group by trainer
+	</select> 
+	<select id="select_zzim3_withCount2" resultType="com.team7.vo.ZZIMBean" >
+		select club, count(club) as count, case when ('${person}' = person) then 1 else 0 end as 'zzimed' from team7.team7_zzim3 group by club
+	</select>
 	
 	
 	

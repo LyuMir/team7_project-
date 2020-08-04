@@ -203,7 +203,7 @@ main *{
   height: 13rem;
   overflow: hidden;
   object-fit: cover;
-
+  position: relative;
 }
 img.card__img {
   transition: .3s ease;

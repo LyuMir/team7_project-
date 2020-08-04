@@ -76,6 +76,17 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/photo_upload.club")){
+			new com.team7.club.action.ClubPhotoAction().upload1(request, response );
+//			try {
+//				forward=action.execute(request, response );
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+		}
+		else if(command.equals("/photo_upload2.club")){
+			new com.team7.club.action.ClubPhotoAction().upload2(request, response );
+		}
 		else if(command.equals("/create.club")){
 			action  = new com.team7.club.action.ClubCreateAction();
 			try {
@@ -145,6 +156,15 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/outme.club")){
+			action  = new com.team7.club.action.ClubOutmeAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 //		else if(command.equals("/clubName.club")){
 //			action  = new com.team7.club.action.ClubNameAction();

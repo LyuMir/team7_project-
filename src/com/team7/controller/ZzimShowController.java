@@ -31,13 +31,25 @@ public class ZzimShowController extends javax.servlet.http.HttpServlet
 //		System.out.println(contextPath);
 
 		HttpSession session = request.getSession(true);
-
+		int logined =0;
+		if(session.getAttribute("LOG_STATUS") ==null) {}
+		else {
+			logined=(Integer) session.getAttribute("LOG_STATUS");
+		}
 //		System.out.println("여기까지 오나??");
 		
 		
 		if(command.equals("/club.zzimshow")) {
-			System.out.println("클럽 찜 보여줘."+request.getParameter("clubid"));
-			new Zzim_Show_Actions().club_show(request, response);;
+			if(logined == 1) {
+				new Zzim_Show_Actions().club_show_count(request, response);
+			}
+			else {
+				new Zzim_Show_Actions().club_show_count_nolog(request, response);
+			}
+			//new Zzim_Show_Actions().club_show(request, response);;
+		}
+		else if(command.equals("/clubbutton.zzimshow")) {
+			new Zzim_Show_Actions().club_show(request, response);
 		}
 //		else if(command.equals("/club_drop.zzimshow")) {
 //			System.out.println("클럽 찜 취소");
