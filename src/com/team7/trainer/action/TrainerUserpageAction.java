@@ -35,6 +35,7 @@ public class TrainerUserpageAction implements Action{
 		List<Trainer_info> traineronelist = new ArrayList<Trainer_info>();
 		
 		traineronelist = tser.getTrainerOneinfo(info);
+
 	
 		
 

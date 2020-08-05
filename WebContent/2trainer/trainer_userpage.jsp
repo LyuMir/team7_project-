@@ -13,8 +13,6 @@
 request.setCharacterEncoding("UTF-8");
 List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
 
-//request.setAttribute("no", tser.get(0).getNo());
-
 %>
 
 	<main class="mainwrap_club">
@@ -68,12 +66,29 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 
 <hr class="line1">
 
+
+<%
+
+String imsimajors = tser.get(0).getTmajor() ;
+String [] major = imsimajors.split(",");
+
+for (int i=0 ; i < major.length ; i ++) { 
+
+	if(major[i].equals("")){
+	
+	}
+	else{
+
+%>
+
 <div class="hero__btn">
-	요가
+<%= major[i] %>
 </div>
-<div class="hero__btn">
-	재활
-</div>
+
+<%}} %>
+
+
+
 <div class="hero__text">
 	<%=tser.get(0).getTbigtext() %>
 </div>
@@ -87,13 +102,72 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 <img src="img/time.png" class="littleimg">	<p class="label">수업지역</p>
 </div>
 
+
+
+
+<p style="font-size: 13px; margin:0 0;">●<%= tser.get(0).getTwhere() %></p>
+
+
+
+
 <div>
 <img src="img/effect.png" class="littleimg">	<p class="label">수업효과</p>
 </div>
 
+<%
+
+String majors = tser.get(0).getTmajor() ;
+String [] majorss = majors.split(",");
+
+for (int i=0 ; i < major.length ; i ++) { 
+
+String majorinfo ="";
+
+	if(majorss[i].equals("filates")){
+		majorinfo += ", 올바른 자세와 코어 강화";
+	}
+	if(majorss[i].equals("yoga")){
+		majorinfo += ", 집중력 향상을 통한 바디 밸런스";
+	}
+	if(majorss[i].equals("rehab")){
+		majorinfo += ", 몸의 근본원인 치유를 통한 재활강화";
+	}
+	if(majorss[i].equals("weight")){
+		majorinfo += ", 근육 강화를 통한 몸의 균형적인 기능 심화";
+		
+	}
+	majorinfo = majorinfo.substring(1);
+%>
+
+
+<p style="font-size: 13px; margin:0 0;">● <%= majorinfo %></p>
+
+
+<% } %>
+
 <div>
 <img src="img/when.png" class="littleimg">	<p class="label">수업가능시간</p>
 </div>
+
+<%
+
+String imsitimes = tser.get(0).getTtime() ;
+String [] time = imsitimes.split(",");
+
+for (int i=0 ; i < time.length ; i ++) { 
+
+	if(time[i].equals("")){
+	
+	}
+	else{
+
+%>
+
+
+<p style="font-size: 13px; margin:0 0;">● <%= time[i] %></p>
+
+
+<% }} %>
 <br>
 
 </div>
@@ -120,16 +194,9 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 	<p class="hg" id="coach1">코치정보</p>
 	<img class="profile_img2" src="img/trainer.jpeg">
 	<div class="profile_name">
-		<h3 class="hero__info">Jeniffer 코치</h3>
-		<span class="a_text">(데이터베이스) 몸과 마음의 조화찾아가기</span><br>
-		<span class="a_text1"> 자기소개가 들어갑니다!!!!!!!!!!! 자기소개가 들어갑니다!!!!!!!!!!!
-		 자기소개가 들어갑니다!!!!!!!!!!!
-	  자기소개가 들어갑니다!!!!!!!!!!!
-	 자기소개가 들어갑니다!!!!!!!!!!!
-  자기소개가 들어갑니다!!!!!!!!!!!
- 자기소개가 들어갑니다!!!!!!!!!!!
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-자기소개입니다</span>
+		<h3 class="hero__info"><%= tser.get(0).getTname() %> 코치</h3>
+		<span class="a_text"><%= tser.get(0).getTsmalltext() %> </span><br>
+		<span class="a_text1"><%= tser.get(0).getTstory() %> </span>
 	</div>
 
 </div>
@@ -138,15 +205,7 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 <div class="career info" >
 	<p class="hg2" id="coach2">코치경력사항 * 활동내용</p><br>
 	<p>
-		*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-			*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-				*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-					*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-						*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-							*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-								*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-									*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-										*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
+		<%= tser.get(0).getTcareer() %>
 
 	</p>
 </div>
@@ -154,15 +213,7 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 <div class="cert info" >
 	<p class="hg2" >보유자격증</p><br>
 	<p>
-		*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-			*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-				*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-					*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-						*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-							*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-								*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-									*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-										*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
+	<%= tser.get(0).getTcerti() %>
 
 	</p>
 </div>
@@ -170,19 +221,7 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 <div class="cert info" >
 	<p class="hg" id="program">프로그램소개</p><br>
 	<p>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
-		산후롲=ㅁㄴㅇ라ㅣㄴ뭉ㄹ;ㅏㅣㄴ무ㅏ이군ㄱ;ㅏㅣㅁㄴㄱㄴasfdasdfsadfsa<br>
+	<%= tser.get(0).getTprofile() %>
 
 	</p>
 </div>

@@ -28,15 +28,17 @@ public class TrainerCreateAction implements Action{
 		String ttime ="";
 		String [] ttimeimsi = request.getParameterValues("availabeltime");
 		for(int i=0 ; i<=ttimeimsi.length-1; i++) {
-		ttime = ttime+","+ttimeimsi[i];
+		ttime = ttimeimsi[i]+","+ttime;
 		}
 		String tmajor="";
 		String [] majorimsi = request.getParameterValues("major");
 		for(int i=0 ; i<=majorimsi.length-1 ; i++) {
-			tmajor = tmajor+","+majorimsi[i];
+			tmajor = majorimsi[i]+","+tmajor;
 		}// 스플릿으로 빼온다. 자동으로 나온 배열 i 넣는다. 
 		
-		String twhere = request.getParameter("trainerarea"+" "+"contry"); //셀렉트박스
+		
+		
+		String twhere = request.getParameter("trainerarea"); //셀렉트박스
 		String bigtext =request.getParameter("bigtext");
 		String smalltext =request.getParameter("smalltext");
 		String tcareer = request.getParameter("coachcareer");
