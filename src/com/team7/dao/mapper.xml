@@ -227,11 +227,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	
 	<insert id="insert_Trainer" parameterType="String">
-	insert into team7.team7_trainer values(default, '${id}', '${tname}' , '${sex}', '${tphone}', ${tbirth}, '${temail}', '${twhere}', '${tmajor}', '${tcareer}', '${tprofile}', '${tcerti}', '${tstory}', '${tsns}', '${thowjoin}', 1, '${bigtext}','${smalltext}');
+
+	insert into team7.team7_trainer values(default, '${id}', '${tname}' , '${sex}', '${tphone}',' ${tbirth}', '${temail}', '${ttime}', '${twhere}', '${tmajor}', '${tcareer}', '${tprofile}', '${tcerti}', '${tstory}', '${tsns}', '${thowjoin}', 1, '${tbigtext}','${tsmalltext}');
+
 	</insert>
 	
+	
 	<select id="selectall_Trainer" resultType="com.team7.vo.Trainer_info" >
-		select * from team7.team7_club
+		select * from team7.team7_trainer
+	</select>
+	
+	<select id="selectOne_Trainer" resultType="com.team7.vo.Trainer_info" >
+		select * from team7.team7_trainer where no = ${no}
+	</select>
+	
+	
+	
+	
+	<insert id="insert_Gym" parameterType="String">
+
+	insert into team7.team7_gym values(default, '${owner}', '${gname}' , '${address_num}', '${address}',' ${gphone}', '${opentime}', '${gprice}', '${gtype}', '${contents}', '${gpage}', '${gcerti}', '${gprogram}', '${gsmalltext}', '사진하나', '사진둘');
+
+	</insert>
+	
+	<select id="selectall_Gym" resultType="com.team7.vo.Gym_info" >
+		select * from team7.team7_gym
+	</select>
+	
+	<select id="selectOne_Gym" resultType="com.team7.vo.Gym_info" >
+		select * from team7.team7_gym where id = ${id}
 	</select>
 	
 	
@@ -239,6 +263,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
+	
+	<select id="select_C_enrolls" resultType="com.team7.vo.C_enroll_Bean" >
+		select * from team7.team7_club_enroll where club = ${no}
+	</select>
+	
+	<select id="select_C_members" resultType="com.team7.vo.CmemberBean" >
+		select * from team7.team7_cmember where club = ${no}
+	</select>
 
 
 

@@ -33,6 +33,7 @@ public class MypageAction implements Action{
 		MemberLogInfo id = new MemberLogInfo();
 		id.setId((String)session.getAttribute("LOG_ID"));
 		List<ClubBean> rlist2 = new ClubService().club_selector_cmember(id);
+
 //		for(int i = 0 ; i < rlist2.size(); i++) {
 //			clubBean.setNo(rlist2.get(i).getNo());
 //			List<CmemberBean> memberlist = new CMemberService().cmember_selector(clubBean);

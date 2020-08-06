@@ -12,17 +12,33 @@ import com.team7.vo.PageInfo;
 
 public class TrainerShowAllService {
 
-	public List<Trainer_info> getTrianerinfo(int page) {
+	public List<Trainer_info> getTrainerinfo() {
 
-		PageInfo pageinfo = new PageInfo();
-		pageinfo.setPage(page);
-		
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<Trainer_info> rlist= sqlsession.selectList("selectall_Trainer", pageinfo);
+		
+		List<Trainer_info> tser = sqlsession.selectList("selectall_Trainer");
+		
+		
+		
+		
+		System.out.print("¿©±â´Â?");
+//		for (int i=0 ; i < tser.size() ; i ++) {
+//		String imsi = tser.get(i).getTmajor();
+//		String [] major = imsi.split(",");
+//		System.out.println(major[i]);
+//		
+//		}
+		
+//		 for(int i =0 ; i < tser.size() ; i++){
+//			 
+//			 int a = tser.get(0).getNo();
+////		
+//		 }
 		sqlsession.close();
 		
 		
-		return rlist;
+		return tser;
+		
 	}
 	
 	

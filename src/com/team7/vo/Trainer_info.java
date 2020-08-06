@@ -12,16 +12,23 @@ public class Trainer_info {
 	String temail;
 	String twhere;
 	String tmajor;
-	String tcareer; //코치 경력*활동
-	String tprofile; //코치 프로그램소개
-	String tcerti; //코치 자격증
-	String tstory; //코치자기소개
+	String tcareer; 
+	String tprofile; 
+	String tcerti; 
+	String tstory; 
 	String tsns; 
 	String thowjoin;
-	String bigtext;
+	String tbigtext;
 	String tsmalltext;
+	String ttime;
 	
 	
+	public String getTtime() {
+		return ttime;
+	}
+	public void setTtime(String ttime) {
+		this.ttime = ttime;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -83,17 +90,18 @@ public class Trainer_info {
 		this.tcareer = tcareer;
 	}
 	public String getTprofile() {
-		return tprofile;
+		return tprofile;  
 	}
 	public void setTprofile(String tprofile) {
 		this.tprofile = tprofile;
 	}
 	public String getTcerti() {
 		return tcerti;
+
 	}
 	public void setTcerti(String tcerti) {
 		this.tcerti = tcerti;
-	}
+	} 
 	public String getTstory() {
 		return tstory;
 	}
@@ -112,11 +120,12 @@ public class Trainer_info {
 	public void setThowjoin(String thowjoin) {
 		this.thowjoin = thowjoin;
 	}
-	public String getBigtext() {
-		return bigtext;
+
+	public String getTbigtext() {
+		return tbigtext;
 	}
-	public void setBigtext(String bigtext) {
-		this.bigtext = bigtext;
+	public void setTbigtext(String tbigtext) {
+		this.tbigtext = tbigtext;
 	}
 	public String getTsmalltext() {
 		return tsmalltext;
