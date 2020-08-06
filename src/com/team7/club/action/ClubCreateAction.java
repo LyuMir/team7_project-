@@ -67,23 +67,29 @@ public class ClubCreateAction implements Action{
 		PhotoBean photoBean = new PhotoBean();
 		photoBean.setId((String)multi.getParameter("club_name"));
 		System.out.println(multi.getParameter("club_name")+"이라는 이름으로...");
-		photoBean.setPicture(multi.getOriginalFileName((String)multi.getFileNames().nextElement()));
-		if (multi.getFileNames() ==null) {
-			System.out.println("파일 없음. ");
-		}
-		else {
-			SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-			sqlsession.insert("insert_PICTURE", photoBean); // 변수이름값, 변수값  ... 불러올 id , 보내줄 dto인듯. 
-			sqlsession.commit();
-			sqlsession.close();
-			if(multi.getFileNames().nextElement() !=null) {
-				sqlsession = new Class_DAO().get_conn().openSession();
-				photoBean.setPicture(multi.getOriginalFileName(multi.getFileNames().toString()));
-				sqlsession.insert("insert_PICTURE", photoBean);
-				sqlsession.commit();
-				sqlsession.close();
-			}
-		}
+//		if(multi.getFileNames().nextElement() ==null) {
+//			System.out.println("파일없음.");
+//		}
+//		else {
+//			System.out.println(multi.getFileNames().toString()+"라는 이름으로. ");
+//			photoBean.setPicture(multi.getOriginalFileName(multi.getFileNames().toString()));
+//			if (multi.getFileNames().nextElement() ==null) {
+//				System.out.println("파일 없음. ");
+//			}
+//			else {
+//				SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+//				sqlsession.insert("insert_PICTURE", photoBean); // 변수이름값, 변수값  ... 불러올 id , 보내줄 dto인듯. 
+//				sqlsession.commit();
+//				sqlsession.close();
+//				if(multi.getFileNames().nextElement() !=null) {
+//					sqlsession = new Class_DAO().get_conn().openSession();
+//					photoBean.setPicture(multi.getOriginalFileName(multi.getFileNames().toString()));
+//					sqlsession.insert("insert_PICTURE", photoBean);
+//					sqlsession.commit();
+//					sqlsession.close();
+//				}
+//			}
+//		}
 		String club_name = multi.getParameter("club_name");
 		String club_publicity = multi.getParameter("club_publicity");
 		String club_memberJoin = multi.getParameter("club_memberJoin");
@@ -154,6 +160,8 @@ public class ClubCreateAction implements Action{
 
 //		System.out.println(k+"사진넣기");
 //		System.out.println(k1+"사진넣기");
+		
+		
 		
 		ActionForward forward= new ActionForward();
 		forward.setPath("id_Mng.club");
