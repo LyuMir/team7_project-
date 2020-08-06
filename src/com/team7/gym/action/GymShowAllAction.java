@@ -23,18 +23,16 @@ public class GymShowAllAction implements Action{
 //		DTO_Notice notice = new DTO_Notice();
 //		notice.setNo(no);
 		System.out.println("쇼 올 액션까지왔을까요?");
-		
+	
 		GymShowAllService gser = new GymShowAllService();
 		
 		List<Gym_info> gymlist = new ArrayList<Gym_info>();
-
+ 
 		gymlist = gser.getGyminfo();
-		System.out.println(gymlist.get(0).getId());
 		
-
 		ActionForward forward= new ActionForward();
-		request.setAttribute("tser", gymlist);
-		forward.setPath("/_FORWHERE.jsp?forwhere=2trainer/GymShowAll.jsp");
+		request.setAttribute("gser", gymlist);
+		forward.setPath("/_FORWHERE.jsp?forwhere=4health/GymShowAll.jsp");
 		return forward;
 		
 	}

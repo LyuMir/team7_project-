@@ -18,6 +18,9 @@ public class TrainerShowAllService {
 		
 		List<Trainer_info> tser = sqlsession.selectList("selectall_Trainer");
 		
+		
+		
+		
 		System.out.print("¿©±â´Â?");
 //		for (int i=0 ; i < tser.size() ; i ++) {
 //		String imsi = tser.get(i).getTmajor();

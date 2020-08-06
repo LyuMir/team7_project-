@@ -1,7 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
+<%@ page import="org.apache.ibatis.session.SqlSession" %>
+<%@ page import="com.team7.vo.Gym_info" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>¼Ò¸ðÀÓÀÇ ¼Ò¸ðÀÓ</title>
+	<title>íŠ¸ë ˆì´ë„ˆ ê°œì¸íŽ˜ì´ì§€</title>
+
+<%
+request.setCharacterEncoding("UTF-8");
+List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); 
+
+%>
 
 
 
@@ -14,12 +27,12 @@
 
 		<section class="mainwrap">
 			<div class="main_head">
-				<!-- »çÁø Å©°Ô ³ÖÀ»°ÅÀÓ. ...»çÁø µÉ±î? -->
+				<!-- ì‚¬ì§„ í¬ê²Œ ë„£ì„ê±°ìž„. ...ì‚¬ì§„ ë ê¹Œ? -->
 				<img class="ImageForModal" src="img/gym.png" onclick="ImageClickFunction(this)">
 
 				<div class="modal">
 					<img class="modal-content">
-					<div class="caption">***Æ®·¹ÀÌ³Ê´ÔÀÇ »çÁøÀÔ´Ï´Ù. </div>
+					<div class="caption">***íŠ¸ë ˆì´ë„ˆë‹˜ì˜ ì‚¬ì§„ìž…ë‹ˆë‹¤. </div>
 				</div>
 			</div>
 
@@ -27,41 +40,45 @@
 <div>
 
 <div class="div1">
+
+<% String imsigtype = gser.get(0).getGtype();
+   String [] gtype = imsigtype.split(",");
+   
+   for(int i =0 ; i< gtype.length ; i++){
+	   
+   
+
+%>
+
+
 			 <div class="hero__btn">
-				»þ¿ö
+				<%= gtype %>
 				</div>
-			<div class="hero__btn">
-				¿îµ¿º¹
-			</div>
-			<div class="hero__btn">
-				G.X
-			</div>
-			<div class="hero__btn">
-				¿þÀÌÆ®
-			</div>
+		
+	<%} %>		
+			
 			<div class="hero__text">
-				µ¥ÀÏ¸® Çï½ºÀå
+				<%= gser.get(0).getGname() %>
 			</div>
 			<p class="a_text">
-			°­³²¿ª 4¹øÃâ±¸ 5ºÐ°Å¸®¿¡ À§Ä¡ÇÑ ½Å¼³ Çï½ºÀåÀÔ´Ï´Ù.<br>
-			ÃÖ°íÀÇ Æ®·¹ÀÌ³ÊµéÀÌ ÀÖ½À´Ï´Ù!
+			<%= gser.get(0).getGsmalltext() %>
 			</p>
 			<div class="info">
 
 
 			<div>
-			<img src="img/time.png" class="littleimg">	<p class="label">Çï½ºÀå ÁÖ¼Ò</p>
-			<br>
+			<img src="img/time.png" class="littleimg">	<p class="label">í—¬ìŠ¤ìž¥ ì£¼ì†Œ</p>
+			<br><p style="font-size: 13px; margin:0 0;"><%= gser.get(0).getAddress() %></p>
 			</div>
 
 			<div>
-			<img src="img/effect.png" class="littleimg">	<p class="label">Çï½ºÀå ÀüÈ­¹øÈ£</p>
-	<br>
+			<img src="img/effect.png" class="littleimg">	<p class="label">í—¬ìŠ¤ìž¥ ì „í™”ë²ˆí˜¸</p>
+	<br><p style="font-size: 13px; margin:0 0;"><%= gser.get(0).getGphone() %></p>	
 			</div>
 
 			<div>
-			<img src="img/when.png" class="littleimg">	<p class="label">Çï½ºÀå ¿î¿µ½Ã°£</p>
-	<br>
+			<img src="img/when.png" class="littleimg">	<p class="label">í—¬ìŠ¤ìž¥ ìš´ì˜ì‹œê°„</p>
+	<br><p style="font-size: 13px; margin:0 0;"><%= gser.get(0).getOpentime() %></p>
 			</div>
 			</div>
 			<br>
@@ -71,104 +88,78 @@
 	</section>
 
 	<div class="btnnew">
-				<button class="hero__btn1">Çï½ºÀå »ó´ã¿äÃ» </button>
-				<button class="hero__btn1">¹Ù·Î µî·ÏÇÏ±â</button>
+				<button class="hero__btn1">í—¬ìŠ¤ìž¥ ìƒë‹´ìš”ì²­ </button>
+				<button class="hero__btn1">ë°”ë¡œ ë“±ë¡í•˜ê¸°</button>
 	</div>
 <div class="divclean">
 	<div class="container1">
-	* ¾Æ·¡¿¡ ±âÀçÇØÁÖ½Å°ÍµéÀº ¾îÂ¼°íÀúÂ¼°íÀúÀú Ü°í°í°í¿À~<br>
-	* ¾Æ·¡¿¡ ±âÀçÇØÁÖ½Å°ÍµéÀº ¾îÂ¼°íÀúÂ¼°íÀúÀú Ü°í°í°í¿À~<br>
-	* ¾Æ·¡¿¡ ±âÀçÇØÁÖ½Å°ÍµéÀº ¾îÂ¼°íÀúÂ¼°íÀúÀú Ü°í°í°í¿À~<br>
+	* ì•„ëž˜ì— ê¸°ìž¬í•´ì£¼ì‹ ê²ƒë“¤ì€ ì–´ì©Œê³ ì €ì©Œê³ ì €ì €ì¡²ê³ ê³ ê³ ì˜¤~<br>
+	* ì•„ëž˜ì— ê¸°ìž¬í•´ì£¼ì‹ ê²ƒë“¤ì€ ì–´ì©Œê³ ì €ì©Œê³ ì €ì €ì¡²ê³ ê³ ê³ ì˜¤~<br>
+	* ì•„ëž˜ì— ê¸°ìž¬í•´ì£¼ì‹ ê²ƒë“¤ì€ ì–´ì©Œê³ ì €ì©Œê³ ì €ì €ì¡²ê³ ê³ ê³ ì˜¤~<br>
 	</div>
 
 </div>
 	<nav id="findnav" class="bottomupline findwhere">
 	<ul >
-		<li><a href="#coach1">ÄÚÄ¡Á¤º¸</a></li>
-		<li><a href="#coach2">°æ·Â»çÇ×%È°µ¿</a></li>
-		<li><a href="#program">ÇÁ·Î±×·¥¼Ò°³</a></li>
-		<li><a href="#review">ÈÄ±â</a></li>
+		<li><a href="#coach1">ì½”ì¹˜ì •ë³´</a></li>
+		<li><a href="#coach2">ê²½ë ¥ì‚¬í•­%í™œë™</a></li>
+		<li><a href="#program">í”„ë¡œê·¸ëž¨ì†Œê°œ</a></li>
+		<li><a href="#review">í›„ê¸°</a></li>
 	</ul>
 	</nav>
 
 	<div class="coachprofile info">
 		<br><br>
-		<p class="hg" id="coach1">Çï½ºÀåÁ¤º¸</p>
- <span class="a_text">(µ¥ÀÌÅÍº£ÀÌ½º) ³»°¡ Ã£´ø ±×°÷!</span><br><br><br>
+		<p class="hg" id="coach1">í—¬ìŠ¤ìž¥ì •ë³´</p>
+ <span class="a_text"><%= gser.get(0).getGsmalltext() %></span><br><br><br>
 
 		<img class="profile_img2" src="img/trainer.jpeg">
 		<img class="profile_img2" src="img/trainer.jpeg">
 
 	<img class="profile_img2" src="img/trainer.jpeg">
 		<div class="profile_name">
-			<h3 class="hero__info">µ¥ÀÏ¸® Çï½ºÀÇ ¼Ò°³</h3>
-			<span class="a_text">(µ¥ÀÌÅÍº£ÀÌ½º) ¸ö°ú ¸¶À½ÀÇ Á¶È­Ã£¾Æ°¡±â</span><br>
-			<span class="a_text1"> ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!! ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-			 ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-		  ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-		 ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-	  ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-	 ÀÚ±â¼Ò°³°¡ µé¾î°©´Ï´Ù!!!!!!!!!!!
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	ÀÚ±â¼Ò°³ÀÔ´Ï´Ù</span>
+			<h3 class="hero__info">ë°ì¼ë¦¬ í—¬ìŠ¤ì˜ ì†Œê°œ</h3>
+			<span class="a_text"><%= gser.get(0).getGsmalltext() %></span><br>
+			<span class="a_text1"> 
+			<%= gser.get(0).getContents() %>
+			</span>
 		</div>
 
 	</div>
 
 	<br>
 	<div class="career info" >
-		<p class="hg2" id="coach2">Çï½ºÀå ÀÚ°ÝÁõ</p><br>
+		<p class="hg2" id="coach2">í—¬ìŠ¤ìž¥ ìžê²©ì¦</p><br>
 		<p>
-			*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-				*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-					*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-						*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-							*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-								*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-									*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-										*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
-											*{aaaaaaaaaaaaaaaaaaaaaaaaaaaa}<br>
+			<%= gser.get(0).getGcerti() %>
 
 		</p>
 	</div>
 
 	<div class="cert info" >
 
-		<p class="hg2" > Çï½ºÀå °¡°Ý</p><br>
-		<p class="a_text2">1°³¿ù±Ç  : 	</p><br>
-		<p class="a_text2">3°³¿ù±Ç  : 	</p><br>
-		<p class="a_text2">6°³¿ù±Ç  : 	</p><br>
-		<p class="a_text2">12°³¿ù±Ç : 	</p><br>
+		<p class="hg2" > í—¬ìŠ¤ìž¥ ê°€ê²©</p><br>
+		<p class="a_text2">1ê°œì›”ê¶Œ  : 	</p><br>
+		<p class="a_text2">3ê°œì›”ê¶Œ  : 	</p><br>
+		<p class="a_text2">6ê°œì›”ê¶Œ  : 	</p><br>
+		<p class="a_text2">12ê°œì›”ê¶Œ : 	</p><br>
 
 	</div>
 
 	<div class="cert info" >
-		<p class="hg" id="program">ÇÁ·Î±×·¥¼Ò°³</p><br>
+		<p class="hg" id="program">í”„ë¡œê·¸ëž¨ì†Œê°œ</p><br>
 		<p>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-			»êÈÄŽî=¤±¤¤¤·¶ó¤Ó¤¤¹¶¤©;¤¿¤Ó¤¤¹«¤¿ÀÌ±º¤¡;¤¿¤Ó¤±¤¤¤¡¤¤asfdasdfsadfsa<br>
-
+			<%= gser.get(0).getGprogram() %>
 		</p>
 	</div>
 
 
 	<div class="cert info" ><br>
-		<p class="hg" id="review">ÀÌ¿ëÈÄ±â</p><br>
+		<p class="hg" id="review">ì´ìš©í›„ê¸°</p><br>
 		<p class="container1">
-			¡Ø Çï½ºÀå¿¡ °üÇÑ ¹®ÀÇ»çÇ×À» ¶Ç´Â ÈÄ±â¸¦ ÀÚÀ¯·Ó°Ô ³²°ÜÁÖ¼¼¿ä ^^<br>
-   ¡Ø±Ù°Å¾ø´Â ºñ¹æÀº »óÀÇ¾øÀÌ »èÁ¦Á¶Ä¡µÊÀ» ¾Ë·Áµå¸³´Ï´Ù.
-		¡Ø»çÁøÈÄ±â¸¦ ¿Ã¸±½Ã¿¡´Â »çÁøÆÄÀÏÀÌ 2m ¹ÙÀÌÆ®°¡ ³ÑÁö¾Êµµ·Ï ÁÖÀÇÇÏ¿©ÁÖ¼¼¿ä
+			â€» í—¬ìŠ¤ìž¥ì— ê´€í•œ ë¬¸ì˜ì‚¬í•­ì„ ë˜ëŠ” í›„ê¸°ë¥¼ ìžìœ ë¡­ê²Œ ë‚¨ê²¨ì£¼ì„¸ìš” ^^<br>
+   â€»ê·¼ê±°ì—†ëŠ” ë¹„ë°©ì€ ìƒì˜ì—†ì´ ì‚­ì œì¡°ì¹˜ë¨ì„ ì•Œë ¤ë“œë¦½ë‹ˆë‹¤.
+		â€»ì‚¬ì§„í›„ê¸°ë¥¼ ì˜¬ë¦´ì‹œì—ëŠ” ì‚¬ì§„íŒŒì¼ì´ 2m ë°”ì´íŠ¸ê°€ ë„˜ì§€ì•Šë„ë¡ ì£¼ì˜í•˜ì—¬ì£¼ì„¸ìš”
 
 
 	</p><br>
@@ -183,44 +174,44 @@
 
 
 				<article class="new_write">
-					<!-- ¿©±â¿¡ »õ °Ô½Ã±Û ¿Ã¸± ¼ö ÀÖµµ·Ï.  -->
+					<!-- ì—¬ê¸°ì— ìƒˆ ê²Œì‹œê¸€ ì˜¬ë¦´ ìˆ˜ ìžˆë„ë¡.  -->
 					<form style="width:800px">
-						<textarea placeholder="¹®ÀÇ»çÇ×À» ³²°ÜÁÖ¼¼¿ä!!"></textarea>
+						<textarea placeholder="ë¬¸ì˜ì‚¬í•­ì„ ë‚¨ê²¨ì£¼ì„¸ìš”!!"></textarea>
 						<div class="fleft">
-							<button onclick="post_photo(); return false;">»çÁø¾÷·Îµå</button>
+							<button onclick="post_photo(); return false;">ì‚¬ì§„ì—…ë¡œë“œ</button>
 						</div>
 						<div class="fright">
-							<button type="reset">¸®¼Â</button>
-							<button onclick="postgo(); return false;">ÀúÀå</button>
+							<button type="reset">ë¦¬ì…‹</button>
+							<button onclick="postgo(); return false;">ì €ìž¥</button>
 						</div>
 						<div class="fclear"></div>
 					</form>
 				</article>
 				<div class="posts">
 					<!-- <article class="post"> -->
-						<!-- Æ÷½ºÆ®µéÀÌ ÀÚ²Ù ³ª¿Â´Ù  -->
+						<!-- í¬ìŠ¤íŠ¸ë“¤ì´ ìžê¾¸ ë‚˜ì˜¨ë‹¤  -->
 					<!-- </article> -->
 					<article>
-						¿©±â¼­ºÎÅÍ Æ÷½ºÆ® ½ÃÀÛ
+						ì—¬ê¸°ì„œë¶€í„° í¬ìŠ¤íŠ¸ ì‹œìž‘
 						<div class="post_img">
-							<img class="ImageForModal" src="img/ÀÌ»ÛÀÌ¹ÌÁö3.jpg" onclick="ImageClickFunction(this)">
+							<img class="ImageForModal" src="img/ì´ìœì´ë¯¸ì§€3.jpg" onclick="ImageClickFunction(this)">
 							<div class="modal">
 							  <img class="modal-content">
-							  <div class="caption">È®´ë»çÁø </div>
+							  <div class="caption">í™•ëŒ€ì‚¬ì§„ </div>
 							</div>
 						</div>
 						<div class="post_text">
-						´ñ±ÛÀÌ½áÁý´Ï´Ù <br>
-						¹«´Ï¹«´Ï ³ª¹«´Ì
+						ëŒ“ê¸€ì´ì¨ì§‘ë‹ˆë‹¤ <br>
+						ë¬´ë‹ˆë¬´ë‹ˆ ë‚˜ë¬´ëŠ¬
 						</div>
 						<div class="fclear" id="info"></div>
 					</article>
-					<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-					<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-					<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-					<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-					<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
-					<article>ÀÌ·± Æ÷½ºÆ®µéÀÌ °è¼Ó ³ª¿À´Â°ÅÀÓ. </article>
+					<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+					<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+					<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+					<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+					<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
+					<article>ì´ëŸ° í¬ìŠ¤íŠ¸ë“¤ì´ ê³„ì† ë‚˜ì˜¤ëŠ”ê±°ìž„. </article>
 
 				</div>
 			</section>
@@ -362,7 +353,7 @@
 		content: '';
 		display: inline-block;
 		clear: both;
-	} ¿Ö ¾ÈµÊ???*/
+	} ì™œ ì•ˆë¨???*/
 
 
 
@@ -425,9 +416,9 @@
 
 
 
-	// ±âÁ¸ css¿¡¼­ ÇÃ·ÎÆÃ ¹è³Ê À§Ä¡(top)°ªÀ» °¡Á®¿Í ÀúÀåÇÑ´Ù.
+	// ê¸°ì¡´ cssì—ì„œ í”Œë¡œíŒ… ë°°ë„ˆ ìœ„ì¹˜(top)ê°’ì„ ê°€ì ¸ì™€ ì €ìž¥í•œë‹¤.
 	var floatPosition = $('#findnav').offset().top;
-	// 250px ÀÌ·±½ÄÀ¸·Î °¡Á®¿À¹Ç·Î ¿©±â¼­ ¼ýÀÚ¸¸ °¡Á®¿Â´Ù. parseInt( °ª );
+	// 250px ì´ëŸ°ì‹ìœ¼ë¡œ ê°€ì ¸ì˜¤ë¯€ë¡œ ì—¬ê¸°ì„œ ìˆ«ìžë§Œ ê°€ì ¸ì˜¨ë‹¤. parseInt( ê°’ );
 
 		 $(window).scroll(function(){
 		 var scrollTop = $(window).scrollTop();
@@ -445,21 +436,21 @@
 
 	}).scroll();
 
-	//."z_zzim1">ÂòÇÏ±â  id="z_join1" °¡ÀÔÇÏ±â
+	//."z_zzim1">ì°œí•˜ê¸°  id="z_join1" ê°€ìž…í•˜ê¸°
 	//$('#')
 	// $('#z_zzim1').click(zzimed());
 	$('#z_zzim1').on('click', function(){
-		//$(this).html('Âò!');
+		//$(this).html('ì°œ!');
 		$(this).zzimed();
 
-		// $(this).zzimed(); ³ñ
+		// $(this).zzimed(); ë†‰
 	});
 
 	function zzimed(){
-		$(this).html('Âò!<img src="img/heart34.png">');
+		$(this).html('ì°œ!<img src="img/heart34.png">');
 	}
 	function zzimc(){
-		$(this).html('ÂòÇÏ±â <img src="img/heart34.png">');
+		$(this).html('ì°œí•˜ê¸° <img src="img/heart34.png">');
 	}
 
 	function post_photo(){
