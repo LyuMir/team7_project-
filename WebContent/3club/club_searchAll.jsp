@@ -22,22 +22,8 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 //		ServletContext context = request.getServletContext();
 //		String realFolder=context.getRealPath("/clubsphoto/"+rlist.get(0).getAdmin());
 //		String basicFolder=context.getRealPath("/img/exc");
-	String realFolder = "Files/clubsphoto/"+rlist.get(0).getAdmin()+"/";
+	String realFolder = "Files/clubsphoto/";//+rlist.get(0).getAdmin()+"_";
 	String basicFolder = "img/exc";
-//String photo1 ="";
-//String photo2 ="";
-//      if(rlist.get(0).getPhoto1() !=null){
-//    	  photo1 = realFolder+"main/"+rlist.get(0).getPhoto1();
-//      }
-//      else{
-//    	  photo1 = basicFolder+"/"+"surf1.jpg";
-//      }
-//      if(rlist.get(0).getPhoto2() !=null){
-//    	  photo2 = realFolder+"profile/"+rlist.get(0).getPhoto2();
-//      }
-//      else{
-//    	  photo2 = basicFolder+"/"+"soccer1.jpg";
-//      }
 
 %>
 
@@ -57,11 +43,36 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
      	String photo1 ="";
   
      	      if(rlist.get(i).getPhoto1() ==null || rlist.get(i).getPhoto1().equals("")){
-     	    	  photo1 = basicFolder+"/"+"surf1.jpg";
-     	    	 // photo1 = rlist.get(i).getPhoto1();
+
+     	    	  String theme = rlist.get(i).getE_type();
+     	    	  if(theme.contains("축구")){
+     	    		  photo1 = basicFolder+"/soccer1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("농구")){
+     	    		  photo1 = basicFolder+"/basketball1.png";
+     	    	  }
+     	    	  else if(theme.contains("등산")){
+     	    		  photo1 = basicFolder+"/hiking1.jpg";
+     	    	  }
+     	    	  if(theme.contains("스케이트")){
+     	    		  photo1 = basicFolder+"/skate1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("요가")){
+     	    		  photo1 = basicFolder+"/yoga1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("자전거")){
+     	    		  photo1 = basicFolder+"/cycling1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("야구")){
+     	    		  photo1 = basicFolder+"/baseball2.jpg";
+     	    	  }
+     	    	  
+     	    	  if(photo1.equals("")){
+     	    		 photo1 = basicFolder+"/"+"surf1.jpg";
+     	    	  }
      	      }
      	      else{
-     	    	  photo1 = realFolder+"main/"+rlist.get(i).getPhoto1();
+     	    	  photo1 = realFolder+rlist.get(i).getAdmin()+"_"+rlist.get(i).getNo()+"/main/"+rlist.get(i).getPhoto1();
      	      }
      	
      	%>
@@ -105,7 +116,7 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
   </section>
   
 <!-- <script type="text/javascript" src="js/club_whereto.js"></script> -->
-<script type="text/javascript" src="77zzim/zzim_js.js"></script>
+<script type="text/javascript" src="77zzim/zzim_js.js?ver=4"></script>
 <!-- <script type="text/javascript" src="js/grid_move.js"></script> -->
 <script type="text/javascript">
   $('.card__img01').each(function(index,item){

@@ -6,6 +6,8 @@
 <%@ page import="com.team7.vo.CPostBean" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+
 
     <link rel="stylesheet" type="text/css" href="css/club_main.css?ver=67">
 	<link rel="stylesheet" type="text/css" href="css/photo_modal00.css">
@@ -29,6 +31,16 @@ boolean ied = (boolean) request.getAttribute("ied");	//가입신청중 tf
 List<CPostBean> cposts = (List<CPostBean>) request.getAttribute("cposts");
 List<PhotoBean> cpphotos = (List<PhotoBean>) request.getAttribute("cpphotos");
 int j = cpphotos.size() -1 ;
+ArrayList<Integer> ppnum = new ArrayList<Integer>();
+ArrayList<Integer> pp00 = new ArrayList<Integer>();
+int u = j;
+for(int k = j ; k >=0 ; k--){
+	String pid = cpphotos.get(k).getId();
+	int last0 = pid.lastIndexOf("_");
+	pid = pid.substring(last0 + 1);
+	ppnum.add(Integer.parseInt(pid));
+	pp00.add(u--); 
+}
 
 int mypostnumber = (Integer) session.getAttribute("mypostnumber");
 
@@ -173,7 +185,7 @@ if(id ==null){
 <% }else{ %>
 			<article class="new_write">
 				<div>
-					<textarea id="plzjoin_00" placeholder="당신의 운동을 써보세요!"></textarea>
+					<textarea id="plzjoin_00" readonly="true" placeholder="당신의 운동을 써보세요!"></textarea>
 				</div>
 			</article>
 <% } %>
@@ -184,6 +196,8 @@ if(id ==null){
 				<article> 아무도 포스트를 쓰지 않았어요... 당신의 도움이 필요해요! </article>
 
 <% }else{ 
+	out.print("oㅐ"+cposts.size());
+
 		for(int i = cposts.size()-1 ; i>=0; i--){
 			boolean showme = false;	
 			int shst = 0;
@@ -205,16 +219,21 @@ if(id ==null){
 					<div class="post_title"><%= cposts.get(i).getTitle() %></div>
 					
 	<% if(cpphotos.size() >0){ %>
-		<% if(Integer.parseInt( cpphotos.get(j).getId().substring(id.length()+9) ) == i+1){ %>
+		<% 
+		out.print(i+"번째 포스트..");
+		for(int k = 0 ;  k < ppnum.size(); k ++){
+		out.print(pp00.get(k));	
+		
+			if(ppnum.get(k) == i ){ %>
 					<div class="post_img">
-						<img class="ImageForModal" src="Files/clubpost/club_<%=rlist.get(0).getNo() %>/<%=i+1 %>/<%=cpphotos.get(j).getPicture() %>" onclick="ImageClickFunction(this)">
+						<img class="ImageForModal" src="Files/clubpost/club_<%=rlist.get(0).getNo() %>/<%=i %>/<%=cpphotos.get(pp00.get(k)).getPicture() %>" onclick="ImageClickFunction(this)">
 						<div class="modal">
 						  <img class="modal-content">
-						  <div class="caption"><%=cpphotos.get(j).getPicture() %> </div>
+						  <div class="caption"><%=cpphotos.get(pp00.get(k)).getPicture() %> </div>
 						</div>
 					</div>
-	<% ; j--; %> 
-	<%}} %>
+	<%   } %> 
+	<%} }%>
 					<div class="post_text">
 						<%=cposts.get(i).getContents() %>
 					</div>
@@ -232,7 +251,7 @@ if(id ==null){
 					<div class="fclear"></div>
 				</article>
 
-<% } } } %>
+<% } } }  %>
 
 
 			</div>

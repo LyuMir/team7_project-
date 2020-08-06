@@ -54,9 +54,9 @@ public class PhotoService {
 		}
 		
 		//중복데이터 삭제...
-//		String id = (String) request.getSession().getAttribute("LOG_ID");
+		String id = (String) request.getSession().getAttribute("LOG_ID");
 		int clubid = (Integer) request.getSession().getAttribute("clubid");
-		List<PhotoBean> oldphoto = getfilenames_clubmains(clubid);
+		List<PhotoBean> oldphoto = getfilenames_clubmains(id,clubid);
 		for(int i = 0 ; i <oldphoto.size();i++) {
 			if(oldphoto.get(i).getId().contains("_main")) {
 				String oldone = oldphoto.get(i).getPicture();
@@ -124,9 +124,9 @@ public class PhotoService {
 		}
 		
 		//중복데이터 삭제...
-//		String id = (String) request.getSession().getAttribute("LOG_ID");
+		String id = (String) request.getSession().getAttribute("LOG_ID");
 		int clubid = (Integer) request.getSession().getAttribute("clubid");
-		List<PhotoBean> oldphoto = getfilenames_clubmains(clubid);
+		List<PhotoBean> oldphoto = getfilenames_clubmains(id, clubid);
 		for(int i = 0 ; i <oldphoto.size();i++) {
 			if(oldphoto.get(i).getId().contains("_profile")) {
 				String oldone = oldphoto.get(i).getPicture();
@@ -161,9 +161,10 @@ public class PhotoService {
 
 	}
 	
-	public List<PhotoBean> getfilenames_clubmains(int clubid) {
+	public List<PhotoBean> getfilenames_clubmains(String id, int clubid) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		PhotoBean pb = new PhotoBean();
+		pb.setId(id);
 		pb.setNo(clubid);
 		List<PhotoBean> photos = sqlsession.selectList("select_club_mainphotos",pb);
 		sqlsession.close();

@@ -10,7 +10,9 @@
 
 	<!-- 사실 우리에게 필요한 것은 메인만 -->
 
-<% String id = (String)session.getAttribute("LOG_ID"); %>
+<% String id = (String)session.getAttribute("LOG_ID");
+	session.setAttribute("clubid", 000);
+%>
 	<main>
 			<table>
 		<form class="" action="create.club" method="post" id="club_creator_form">

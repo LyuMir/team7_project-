@@ -42,11 +42,11 @@ function zzimshow3(){
     });
 }
 
-function zzimshow3_button(){
-    $('#z_zzim1').each(function(index,item){
-        Zzimbuttonshow_club($(item));
-    });
-}
+// function zzimshow3_button(){
+//     $('#z_zzim1').each(function(index,item){
+//         Zzimbuttonshow_club($(item));
+//     });
+// }
 
 const counters = $('.counter');
 const speed = 1000;
@@ -127,40 +127,40 @@ function Zzimshow_club(){
 }
 
 
-function Zzimbuttonshow_club(req){
-    var url = "clubbutton.zzimshow";
-    var zzimnumber =0;
-    var zzimpeople ="";
-    var youzzim = false;
-    $.ajax({
-        type:"GET",
-        url:url,
-        async:false,
-        dataType:"html",
-        data:{
-          clubid : $(req).data('id'),
-          person : $(req).data('person')
-        },
-        success : function(data){
-            //alert('ajax GET 통신 성공'+data);
-            // alert($(data).data('number'));
-            // alert($(data).data('people'))
-            zzimnumber= $(data).data('number');
-            zzimpeople= $(data).data('people');
-            youzzim = $(data).data('youzzim');
-        },
-    })
+// function Zzimbuttonshow_club(req){
+//     var url = "clubbutton.zzimshow";
+//     var zzimnumber =0;
+//     var zzimpeople ="";
+//     var youzzim = false;
+//     $.ajax({
+//         type:"GET",
+//         url:url,
+//         async:false,
+//         dataType:"html",
+//         data:{
+//           clubid : $(req).data('id'),
+//           person : $(req).data('person')
+//         },
+//         success : function(data){
+//             //alert('ajax GET 통신 성공'+data);
+//             // alert($(data).data('number'));
+//             // alert($(data).data('people'))
+//             zzimnumber= $(data).data('number');
+//             zzimpeople= $(data).data('people');
+//             youzzim = $(data).data('youzzim');
+//         },
+//     })
 
-    if(youzzim){
-        changeHTMLs($(req),1);
-    }
-    else if(!youzzim){
-        changeHTMLs($(req),0);
-    }
+//     if(youzzim){
+//         changeHTMLs($(req),1);
+//     }
+//     else if(!youzzim){
+//         changeHTMLs($(req),0);
+//     }
 
-    if($(req).children('span') !=null)
-        $(req).children('span').data('target',zzimnumber+50);
-}
+//     if($(req).children('span.counter') !=null)
+//         $(req).children('span').data('target',zzimnumber+50);
+// }
 
 
 function changeHTMLs(req,go =1){

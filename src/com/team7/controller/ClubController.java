@@ -27,7 +27,6 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		String command=RequestURI.substring(contextPath.length()); //앞에 글자 지움 : boardList.bo
 		//즉 '/'이후 맨 마지막만. 
 		
-		
 		ActionForward forward=null;	//forward : 갈 곳 지정 
 		Action action=null;			//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
 

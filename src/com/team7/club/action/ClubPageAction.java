@@ -88,6 +88,7 @@ public class ClubPageAction implements Action{
 				mypostnumber++;
 		}
 		System.out.println(mypostnumber+1);
+		System.out.println(cposts.size());
 		mypostnumber++;
 		
 		request.getSession().setAttribute("clubid", rlist.get(0).getNo());

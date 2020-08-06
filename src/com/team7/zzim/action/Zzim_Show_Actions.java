@@ -52,6 +52,9 @@ public class Zzim_Show_Actions {
 	public void club_show_count_nolog(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		List<ZZIMBean> zzim = new ZzimService().select_clubs_count();
+		
+		System.out.println("몇번이나 오는거냐.");
+		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		out.print("<div class='datasss'><div id = \"");
