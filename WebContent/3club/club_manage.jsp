@@ -16,6 +16,7 @@ List<ClubBean> rlist = (List<ClubBean>) request.getAttribute("rlist");
 List<C_enroll_Bean> rlist_e = (List<C_enroll_Bean>) request.getAttribute("rlist_e");
 List<CmemberBean> rlist_m = (List<CmemberBean>) request.getAttribute("rlist_m");
 
+session.setAttribute("clubid",rlist.get(0).getNo());
 %>
 
 
@@ -85,12 +86,12 @@ List<CmemberBean> rlist_m = (List<CmemberBean>) request.getAttribute("rlist_m");
 		<tr>
 			<td><%=rlist_e.get(i) %></td>
 			<td><%=rlist_e.get(i).getWanttobe() %></td>
-			<td><%=rlist_e.get(i) %> </td>
-			<td><%= %></td>
-			<td><%= %></td>
+			<td><%=rlist_e.get(i).getEtime()%></td>
+			<td><%=rlist_e.get(i).getWanttodo() %></td>
+			<td><%=rlist_e.get(i).getMemo() %></td>
 			<td>
-				<input class="jok" type="checkbox" name="YouJoin:<%= %>">
-				<input class="jno" type="checkbox" name="Decline:<%= %>">
+				<input class="jok" name="jok" type="checkbox" value="YouJoin:<%=rlist_e.get(i).getWanttobe() %>">
+				<input class="jno" name="jno" type="checkbox" value="Decline:<%=rlist_e.get(i).getWanttobe() %>">
 			</td>
 		</tr>
 		<% }  %>
@@ -168,7 +169,7 @@ List<CmemberBean> rlist_m = (List<CmemberBean>) request.getAttribute("rlist_m");
 		text-align: center;
 	}
 	th{
-		min-width: 110px;
+		/*min-width: 110px;*/
 		/*border: 2px solid blue;*/
 		max-width: 200px;
 	}

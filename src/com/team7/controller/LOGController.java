@@ -41,12 +41,6 @@ public class LOGController extends javax.servlet.http.HttpServlet
 		}
 		else if(command.equals("/login.log")){
 			
-//			if(request.getParameter("log_id2").equals("")) {
-//				System.out.println("안썻음 ㅡㅡ");
-//				forward=new ActionForward();
-//				forward.setPath("Join_and_LogIn.jsp");
-//				//return;	//빠짐 
-//			}
 			action  = new com.team7.member.action.LoginAction();
 			try {
 				forward=action.execute(request, response );
@@ -72,26 +66,18 @@ public class LOGController extends javax.servlet.http.HttpServlet
 		}
 
 		if(forward != null){	//가야할 곳이 있다면 보냄. \
-			if(forward.getPath()==null) {
-				forward.setPath("/index.jsp");
-			}
-			if(forward.getPath().equals("")) {
-				forward.setPath("/index.jsp");
-			}
-			if(forward.getPath().startsWith("\\")) {
-				forward.setPath(forward.getPath().substring(1));
-				System.out.println(forward.getPath()+"필요 할까?");
-			}
+			//안보냄. 새로고침 시킬거임. 
 
-			System.out.println(forward.getPath()+"으로 갑니다...");
-			
-			if(forward.isRedirect()){
-				response.sendRedirect(forward.getPath());
-			}else{
-				RequestDispatcher dispatcher=
-						request.getRequestDispatcher(forward.getPath());
-				dispatcher.forward(request, response);
-			}
+//			response.setContentType("text/html;charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>");
+////			out.println("alert('잘못된 경로 : 이미 가입되어있는 소모임입니다. ')");
+////			out.println("location.reload(true);");
+//			out.println("history.back();");
+//			
+//			out.println("</script>");
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
 		}
 	}
 	

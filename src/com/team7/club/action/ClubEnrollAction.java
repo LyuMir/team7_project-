@@ -16,7 +16,7 @@ import com.team7.club.service.CEnrollService;
 import com.team7.club.service.CMemberService;
 import com.team7.club.service.ClubService;
 import com.team7.dao.Class_DAO;
-import com.team7.photo.service.PhotoUploadService;
+import com.team7.photo.service.PhotoService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.C_enroll_Bean;
 import com.team7.vo.ClubBean;
@@ -32,11 +32,15 @@ public class ClubEnrollAction implements Action{
 		
 		ClubBean clubBean = new ClubBean();
 		clubBean.setNo(Integer.parseInt(clubid));
+		
+		
+		List<ClubBean> rlist = new ClubService().club_selector_no(clubBean);
 		List<C_enroll_Bean> rlist_e = new CEnrollService().c_enroll_selector(clubBean);
 
 		List<CmemberBean> rlist_m = new CMemberService().cmember_selector(clubBean);
 		
-		
+
+		request.setAttribute("rlist", rlist);
 		request.setAttribute("rlist_e", rlist_e);
 		request.setAttribute("rlist_m", rlist_m);
 		

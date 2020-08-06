@@ -6,31 +6,37 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.team7.notice.service.*;
+import com.team7.trainer.service.*;
+import com.team7.trainer.service.TrainerShowAllService;
 import com.team7.vo.ActionForward;
-import com.team7.vo.NoticeBean;
+import com.team7.vo.Trainer_info;
 import com.team7.vo.PageInfo;
+import com.team7.vo.Trainer_info;
 
 
 public class TrainerShowAllAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 		
-		
-		int no = Integer.parseInt(request.getParameter("notice_no"));
 //		DTO_Notice notice = new DTO_Notice();
 //		notice.setNo(no);
-			
+		System.out.println("액션까지왔을까요?");
 		
-		NoticeShowService nser = new NoticeShowService();
-		List<NoticeBean> noticeList = new ArrayList<NoticeBean>();
-		noticeList = nser.getNotice(no);
+		TrainerShowAllService tser = new TrainerShowAllService();
 		
+		List<Trainer_info> trainerlist = new ArrayList<Trainer_info>();
+
+		trainerlist = tser.getTrainerinfo();
+		System.out.println(trainerlist.get(0).getNo());
+		
+
 		ActionForward forward= new ActionForward();
-		request.setAttribute("rlist", noticeList);
-		forward.setPath("/_FORWHERE.jsp?forwhere=5notice/notice_thatone.jsp");
+		request.setAttribute("tser", trainerlist);
+		forward.setPath("/_FORWHERE.jsp?forwhere=2trainer/TrainerShowAll.jsp");
 		return forward;
+		
 	}
 
 }

@@ -61,6 +61,7 @@ public class JoinAction implements Action{
 		}
 		else {
 			forward.setPath("/Join_and_LogIn.jsp?fail=회원가입실패");
+			request.setAttribute("fail", "회원가입 실패");
 		}
 
 		return forward;

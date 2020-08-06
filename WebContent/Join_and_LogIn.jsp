@@ -65,8 +65,8 @@
 				<h2 style="height: 46px;">주소를 입력해주세요. </h2>
 				<div class="form_adress">
 					<div class="oneline_plz">
-						<input type="text" id="sample4_postcode" placeholder="우편번호" maxlength="6" class="input00" style="width: 50%; height: 40px; margin: 0; position: relative; top: -1px;" name="sample4_postcode">
-						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="input00" style="width: 48%; height: 40px; margin: 0; padding:5px;">
+						<input type="text" id="sample4_postcode" placeholder="우편번호" maxlength="6" class="input00" style="width: 50%; height: 40px; margin: 0; position: relative; t o p : - 1 p x; float: left;" name="sample4_postcode">
+						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="input00" style="width: 48%; height: 40px; margin: 0; padding:5px; float: right;">
 					</div>
 					<input type="text" id="sample4_roadAddress" placeholder="도로명주소" readonly="true" class="sample4_roadAddress input00" name="adress">
 					<input type="text" id="sample4_jibunAddress" placeholder="지번주소" readonly="true" class="sample4_jibunAddress input00" name="adress">
@@ -81,7 +81,7 @@
 			<div class="innerwrap">
 				<h1>일반 사용자 </h1> <!-- 왼쪽  -->
 				<span>마지막 페이지! <br>회원까지 한 걸음 남았어요...!</span>
-				<h2 style="height:46px;"><Br>관심 분야를 선택해주세요.  </h2>
+				<h2 style="he ight:46px;"><Br>관심 분야를 선택해주세요.  </h2>
 				<div class="oneline_plz" style="margin-top: 0;">
 					<table class="mytable00">
 						<tr>

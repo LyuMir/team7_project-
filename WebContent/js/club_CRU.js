@@ -1,6 +1,13 @@
 	
 
 
+setTimeout(fo(),1000);
+
+function fo(){
+	$('#club_name').focus();
+	// $('#club_name').focusout();
+	$('#club_name').blur();
+}
 var meeting_pubText = "";
 var meeting_memGet = $('#meeting_memGet');
 var meetinghtml = "";
@@ -10,6 +17,9 @@ var greentogo0 = 0;
 var greentogo1 = 0;
 var greentogo2 = 0;
 var greentogo3 = 0;
+var photoed1 = 0;
+var photoed2 = 0;
+var photook = 0 ;
 // var outputs = $(".output01");
 
 var inputs = $('input');
@@ -40,7 +50,7 @@ $(document).ready(function(){
 	$('#meeting_publicity').change(function(){
 		greentogo2 = 1;
 		if($(this).val() == "open"){
-			meeting_pubText = "소모임을 공개합니다. 데일리헬스에 회원은 누구나 볼 수 있습니다.  ";
+			meeting_pubText = "소모임을 공개합니다. 데일리헬스에 존재하는 회원은 누구나 볼 수 있습니다.  ";
 		}
 		else if($(this).val() == "local_open"){
 			meeting_pubText = "같은 지역의 회원에게 소모임을 공개합니다.  ";
@@ -79,7 +89,11 @@ $(document).ready(function(){
 		greentogo3=1;
 	});
 
+	// $('input[type="file"]').each(function(index,item){
+	// 	$(item).change(function(){
 
+	// 	});
+	// });
 
 	$('#club_name').focusout(function(){
 		greentogo0 = 0 ;
@@ -160,6 +174,16 @@ $(document).ready(function(){
 
 		greentogo = greentogo3 * greentogo2 * greentogo1 * greentogo0;
 
+
+		if(photook != 1){
+			alert('..');
+			var confirm0 = confirm('사진을 채우지 않고 계속하시겠습니까? 사진을 올린 후 포토 업로드 버튼 누르기를 잊지 마세요. ');
+			if(!confirm0){
+				return;
+			}
+			
+		}
+
 		if( greentogo== 1 ){
 			$('#club_creator_form').submit();
 		}
@@ -213,3 +237,28 @@ $(document).ready(function(){
 	// 	//$(this).is(":checked");
 	// });
 
+	function photo_upload(){
+		var photo1 = $('#photo1');
+		// var photo2 = $('#photo2');
+		if((photo1.val() ==null || photo1.val() =="") ){
+
+			alert("사진을 넣어주세요!");
+			// var confirm0 = confirm('사진을 채우지 않고 계속하시겠습니까?');
+			// if(!confirm0){
+			// 	return;
+			// }
+		}
+			$('#photo_upload').submit();
+			photook=1;
+	}
+
+
+	function photo_upload2(){
+		// var photo1 = $('#photo1');
+		var photo2 = $('#photo2');
+		if((photo2.val() ==null || photo2.val() =="") ){
+
+			alert("사진을 넣어주세요!");
+		}
+		$('#photo_upload2').submit();
+	}

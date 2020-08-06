@@ -25,6 +25,12 @@ input{
 	border-bottom: 1.5px solid silver;
 	padding-left: 15px;
 }
+input[type="file"]{
+	height: unset;
+	border-bottom: unset;
+	display: inline-block;
+	width: 240px;
+}
 form{
 	min-width: 200px;
 }

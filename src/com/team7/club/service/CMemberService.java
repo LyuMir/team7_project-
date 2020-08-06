@@ -21,6 +21,40 @@ public class CMemberService {
 		
 	}
 	
+	public void member_toCLUB(CmemberBean cmember) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.insert("insert_cmem",cmember);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	
+	public void c_letme(C_enroll_Bean enroll) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.insert("insert_enroll",enroll);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	
+	
+	public List<CmemberBean> amiinclub(CmemberBean cmember){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<CmemberBean> members = sqlsession.selectList("select_amiInClub",cmember);
+		sqlsession.close();
+		return members;
+	}
+	public void letmeout(CmemberBean cmember) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.update("update_letmeoutClub",cmember);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	public void letmeoutcancle(CmemberBean cmember) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.update("update_outClubCancle",cmember);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	
 	
 //	public List<C_enroll_Bean> c_enroll_selector(ClubBean clubBean){
 //		SqlSession sqlsession = new Class_DAO().get_conn().openSession();

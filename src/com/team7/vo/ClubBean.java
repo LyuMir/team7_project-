@@ -22,6 +22,8 @@ private 	String profile ;	//소모임 소개
 private 	String photo1;
 private 	String photo2;
 
+//추가 db적 요인 
+private		int memberNum;
 	
 	public int getNo() {
 		return no;
@@ -94,6 +96,12 @@ private 	String photo2;
 	}
 	public void setPhoto2(String photo2) {
 		this.photo2 = photo2;
+	}
+	public int getMemberNum() {
+		return memberNum;
+	}
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
 	}
 	
 	

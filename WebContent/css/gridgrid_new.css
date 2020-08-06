@@ -141,7 +141,10 @@ main *{
   border-radius: 0 10px 5px 0;
 }
 
-
+#buttons{
+  
+  width: calc(100% - 35px);
+}
 .grid {
   display: grid; 
   max-width: 900px;
@@ -173,6 +176,9 @@ main *{
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.zzimSystem{
+  display: inline-block;
+}
 
 
 .card__img00{
@@ -197,7 +203,7 @@ main *{
   height: 13rem;
   overflow: hidden;
   object-fit: cover;
-
+  position: relative;
 }
 img.card__img {
   transition: .3s ease;

@@ -34,17 +34,22 @@
 
         }
       });
+		var log_status ;
+		<%
 
+			int log_status = (Integer) session.getAttribute("LOG_STATUS");
+		%>
+		log_status = <%= log_status%>;
 
     </script>
 
 
 <%
 request.setCharacterEncoding("UTF-8");
-    String fail2 =request.getParameter("fail");
-    String log_id = (String) session.getAttribute("LOG_ID");
+//    String fail2 =request.getParameter("fail");	//흠...
+//    String log_id = (String) session.getAttribute("LOG_ID");
     Integer log_st = (Integer) session.getAttribute("LOG_STATUS");
-    String whatdo = request.getParameter("whatdo");
+//    String whatdo = request.getParameter("whatdo");	//흠.....2
 
 
     String forwhere = request.getParameter("forwhere");
@@ -54,14 +59,21 @@ request.setCharacterEncoding("UTF-8");
 //    } //ㅋㅋ 이런 꼼수 너무 좋아... ...근데 안되네..
     
 
-    if(log_st==null){log_st = 0; session.setAttribute("LOG_STATUS",0);
-      //response.sendRedirect("team_main.jsp"); //꼭 이렇게 해야 할까?
-      //아직 모름 .
+    if(log_st==null){
+    	log_st = 0; 
+    	session.setAttribute("LOG_STATUS",0);
+   %>
+   
+   <%@ include file="0frame/header.jsp" %>
+	<%@ include file="Join_and_LogIn_forModal.jsp" %>
+   
+   <%
   }
   else if(log_st==0)  { //?? 안 먹나?
   %>
 <!-- 헤더를 include로 해봅시다. : 로그인 안 되어있을 시  -->
 <%@ include file="0frame/header.jsp" %>
+<%@ include file="Join_and_LogIn_forModal.jsp" %>
 
 <%
   }
@@ -75,12 +87,7 @@ request.setCharacterEncoding("UTF-8");
 
 
 
-<!-- <%=log_id%> -->
-  <script type="text/javascript">
-    var fail2 = "<%=fail2%>";
-    var log_id = "<%=log_id%>";
-    var whatdo = "<%=whatdo%>";
-  </script>
+
 
 
 <!-- 네비도 include로 할겁니다.  -->
