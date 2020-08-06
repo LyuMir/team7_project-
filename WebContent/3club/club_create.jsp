@@ -77,7 +77,7 @@
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="자전거"><label>자전거</label></div>
 						<div class="checkme"><input type="checkbox" name="club_exc_type" value="맨손 체조"><label>맨손 체조</label></div>
 						<div>
-							소모임에서 주로 하는 운동을 선택해주세요. 
+							소모임에서 주로 하는 운동을 선택해주세요. (복수 선택 가능)
 						</div>
 					</td>
 				</tr>

@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 
-<html>
-<head>
-	<title></title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/joinpage00.css">
-	<link rel="stylesheet" type="text/css" href="css/mainmain88.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/joinpage00.css?ver=355">
+	<!-- <link rel="stylesheet" type="text/css" href="css/mainmain88.css"> -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -15,13 +11,11 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
 
-</head>
-<body>
-
+<div class="my_middler my_joiner disnoneR" id="my_joiner">
 	<div class="logo_loc">
-		 <a href="index.jsp"><img src="img/logo1.png"> </a>
+		 <img src="img/logo1.png">
+		 <div class="closeModal"><img id="closeModal" src="img/icons/close33.png"></div>
 	</div>
-<div class="my_middler my_joiner">
 	<div class="joiner_container" id="joiner_container">
 		<form method="post" action="join.log" id="joinerForm">
 		<div class="form-joiner_container joiner_container_picture">
@@ -66,7 +60,7 @@
 				<div class="form_adress">
 					<div class="oneline_plz">
 						<input type="text" id="sample4_postcode" placeholder="우편번호" maxlength="6" class="input00" style="width: 50%; height: 40px; margin: 0; position: relative; t o p : - 1 p x; float: left;" name="sample4_postcode">
-						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="input00" style="width: 48%; height: 40px; margin: 0; padding:5px; float: right;">
+						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="input00" style="width: 47%; height: 40px; margin: 0; padding:5px; float: right;">
 					</div>
 					<input type="text" id="sample4_roadAddress" placeholder="도로명주소" readonly="true" class="sample4_roadAddress input00" name="adress">
 					<input type="text" id="sample4_jibunAddress" placeholder="지번주소" readonly="true" class="sample4_jibunAddress input00" name="adress">
@@ -81,7 +75,7 @@
 			<div class="innerwrap">
 				<h1>일반 사용자 </h1> <!-- 왼쪽  -->
 				<span>마지막 페이지! <br>회원까지 한 걸음 남았어요...!</span>
-				<h2 style="he ight:46px;"><Br>관심 분야를 선택해주세요.  </h2>
+				<h2 style="hei ght:46px;"><Br>관심 분야를 선택해주세요.  </h2>
 				<div class="oneline_plz" style="margin-top: 0;">
 					<table class="mytable00">
 						<tr>
@@ -168,16 +162,22 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-    String fail2 =request.getParameter("fail");
-    String log_id = (String) session.getAttribute("LOG_ID");
-    String whatdo = request.getParameter("whatdo");
+     // String fail2 =request.getParameter("fail");
+// String fail2 = (String) request.getAttribute("fail");
+	String fail2 = (String) session.getAttribute("fail");
+	// String fail2 = (String) session.getAttribute("fail2");
+		String log_id = (String) session.getAttribute("LOG_ID");
+//String whatdo = (String) request.getAttribute("whatdo");
+     String whatdo = request.getParameter("whatdo");
     // String fromwhere = request.getParameter("fromwhere");
     // response.setHeader("fromwhere", );
+
+
 %>
-		<form action="login.log" method="post" id="LOGINFormplz">
+		<form action="login.log" method="post" id="LOGINFormplz" >
 			<input type="hidden" name="log_id2" id="log_id2">
 			<input type="hidden" name="log_pw2" id="log_pw2">
-			<!--  fromwhere%>" -->
+			
 		</form>
 		
 		
@@ -189,8 +189,10 @@ request.setCharacterEncoding("UTF-8");
 		var fail2 = "<%=fail2%>";
 		var log_id = "<%=log_id%>";
 		var whatdo = "<%=whatdo%>";
+		//alert(fail2 + log_id + whatdo);
+
 	</script>
 
+<% session.removeAttribute("fail"); %>
+
 <script type="text/javascript" src="js/joinjoin99.js?v=<%=System.currentTimeMillis()%>"></script>
-</body>
-</html>

@@ -61,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="ClubselectAll" resultType="com.team7.vo.ClubBean" >
-		select * , count(cmember) as count from team7.team7_club, team7.team7_cmember where team7_club.no = team7_cmember.club group by team7_cmember.club
+		select * , count(cmember) as memberNum from team7.team7_club, team7.team7_cmember where team7_club.no = team7_cmember.club group by team7_cmember.club
 	</select>
 
 	<select id="ClubselectAll2" resultType="com.team7.vo.ClubBean" >
@@ -132,8 +132,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from team7.team7_picture_data where id = '${id}'
 	</delete>
 	<select id="select_club_mainphotos" resultType="com.team7.vo.PhotoBean" >
-		select * from team7.team7_picture_data where id like '${id}\_club\_%'
+		select * from team7.team7_picture_data where id like '${no}\_club\_%'
 	</select>
+	<select id="select_cpost_myphoto" resultType="com.team7.vo.PhotoBean" >
+		select * from team7.team7_picture_data where id like '${id}\_clubpost\_${no}'
+	</select>
+	<select id="select_cpost_photo" resultType="com.team7.vo.PhotoBean" >
+		select * from team7.team7_picture_data where id like '${no}\_clubpost\_%'
+	</select>
+	
+	
+	
+	<insert id="insert_CPOST" parameterType="String">
+		insert into team7.team7_cpost values(${club}, default, '${title}','${writer}','${contents}','${pkind}','${pcon}')
+	</insert>
+	<select id="select_CPOST_by_Clubno" resultType="com.team7.vo.CPostBean" >
+		select * from team7.team7_cpost where club = ${no}
+	</select>
+	
 	
 	
 	

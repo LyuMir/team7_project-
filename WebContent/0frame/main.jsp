@@ -48,21 +48,26 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-    String fail2 =request.getParameter("fail");
-    String log_id = (String) session.getAttribute("LOG_ID");
+//    String fail2 =request.getParameter("fail");
+    //String log_id = (String) session.getAttribute("LOG_ID");
     Integer log_st = (Integer) session.getAttribute("LOG_STATUS");
-    String whatdo = request.getParameter("whatdo");
+    //String whatdo = request.getParameter("whatdo");
 
     if(log_st==null){
       log_st = 0; 
       session.setAttribute("LOG_STATUS",0);
-      //response.sendRedirect("main.jsp"); //꼭 이렇게 해야 할까?
-      //모름
+      %>
+      
+      <%@ include file="header.jsp" %>
+   	<%@ include file="../Join_and_LogIn_forModal.jsp" %>
+      
+      <%
   }
   else if(log_st==0)  { //?? 안 먹나?
   %>
 <!-- 헤더를 include로 해봅시다. : 로그인 안 되어있을 시  -->
 <%@ include file="header.jsp" %>
+   	<%@ include file="../Join_and_LogIn_forModal.jsp" %>
 
 <%
   }
@@ -74,12 +79,6 @@ request.setCharacterEncoding("UTF-8");
   }
 %>
 
-<!-- <%=log_id%> -->
-  <script type="text/javascript">
-    var fail2 = "<%=fail2%>";
-    var log_id = "<%=log_id%>";
-    var whatdo = "<%=whatdo%>";
-  </script>
 
 
 <!-- 네비도 include로 할겁니다.  -->

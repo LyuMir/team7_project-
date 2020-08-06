@@ -50,7 +50,7 @@ $(document).ready(function(){
 	$('#meeting_publicity').change(function(){
 		greentogo2 = 1;
 		if($(this).val() == "open"){
-			meeting_pubText = "소모임을 공개합니다. 데일리헬스에 회원은 누구나 볼 수 있습니다.  ";
+			meeting_pubText = "소모임을 공개합니다. 데일리헬스에 존재하는 회원은 누구나 볼 수 있습니다.  ";
 		}
 		else if($(this).val() == "local_open"){
 			meeting_pubText = "같은 지역의 회원에게 소모임을 공개합니다.  ";

@@ -85,7 +85,22 @@
 .new_write{
 	max-width: 500px;
 	width: 100%;
-	margin : 0 0 25px 0;
+	margin : 10px 0 25px 0;
+}
+.new_write .inputclass{
+	width: 70%;
+	height: 37px;
+	border: 2px solid silver;
+	font-size: 17px;
+	padding: 3px;
+
+	position: relative;
+	top: -3px;
+
+}
+.new_write select.selectclass{
+	width: 14%;
+	border: 2px solid silver;
 }
 .new_write textarea{
 	width: 100%;
@@ -106,18 +121,32 @@
 	padding: 10px;
 	margin: 10px 0 ;
 }
-
 .posts img{
 	max-height: 350px;
 	max-width: 100%;
 
 		object-fit: cover; 
 }
+.post_title{
+	font-size: 17px;
+	margin-left: 14px;
+}
+.post_img{
+
+}
+.post_text{
+
+}
+.post_writer{
+	font-size: 12px;
+	margin-right: 10px;
+}
+
 .post_like{
 	/*border: 1px solid silver;*/
 	/*background-color: var(--silver-color-6);*/
 	/*color: var(--silver-color-1);*/
-	border-bottom: 1px solid silver;
+	/*border-bottom: 1px solid silver;*/
 	padding: 2px 4px;
 
 	cursor: pointer;

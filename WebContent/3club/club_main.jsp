@@ -3,9 +3,11 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.ClubBean" %>
 <%@ page import="com.team7.vo.CmemberBean" %>
+<%@ page import="com.team7.vo.CPostBean" %>
+<%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="java.util.List" %>
 
-    <link rel="stylesheet" type="text/css" href="css/club_main.css">
+    <link rel="stylesheet" type="text/css" href="css/club_main.css?ver=67">
 	<link rel="stylesheet" type="text/css" href="css/photo_modal00.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,6 +25,13 @@ List<ClubBean> rlist00 =  (List<ClubBean>) request.getAttribute("rlist00");
 List<ClubBean> tlist = (List<ClubBean>) request.getAttribute("tlist");
 boolean ami = (boolean) request.getAttribute("ami");	//탈퇴 중 tf
 boolean ied = (boolean) request.getAttribute("ied");	//가입신청중 tf
+
+List<CPostBean> cposts = (List<CPostBean>) request.getAttribute("cposts");
+List<PhotoBean> cpphotos = (List<PhotoBean>) request.getAttribute("cpphotos");
+int j = cpphotos.size() -1 ;
+
+int mypostnumber = (Integer) session.getAttribute("mypostnumber");
+
 //if(id.equals("null")){
 	//out.println(rlist);
 	//out.println(rlist00.get(0));
@@ -132,48 +141,99 @@ if(id ==null){
 				</div>
 			</article>
 			<hr>
+				<!-- 여기에 새 게시글 올릴 수 있도록. 가입자만!! joinyn  -->
+<% if(joinyn == 1){ %>
 			<article class="new_write">
-				<!-- 여기에 새 게시글 올릴 수 있도록.  -->
-				<form>
-					<textarea placeholder="당신의 운동을 써보세요!"></textarea>
+					<div>
+						<input type="text" name="title" class="inputclass" placeholder="제목">
+						<select class="selectclass">
+							<option value="000" style="color: red;">종류</option>
+							<option value="모집">모집</option>
+							<option value="후기">후기</option>
+							<option value="자랑">자랑</option>
+						</select>
+						<select class="selectclass" >
+							<option value="001" style="color: red;">공개성</option>
+							<option value="전체공개" selected="true">전체 공개</option>
+							<option value="모임공개">모임공개</option>
+							<option value="관리자만">소모임 관리자만</option>
+						</select>
+					</div>
+					<textarea id="imtext" placeholder="당신의 운동을 써보세요!"></textarea>
 					<div class="fleft">
-						<button onclick="post_photo(); return false;">사진업로드</button>
+						<button onclick="post_photo();">사진업로드</button>
+						<span id="photoname"></span>
 					</div>
 					<div class="fright">
 						<button type="reset">리셋</button>
-						<button onclick="postgo(); return false;">저장</button>
+						<button onclick="postgo();">저장</button>
 					</div>
 					<div class="fclear"></div>
-				</form>
 			</article>
+<% }else{ %>
+			<article class="new_write">
+				<div>
+					<textarea id="plzjoin_00" placeholder="당신의 운동을 써보세요!"></textarea>
+				</div>
+			</article>
+<% } %>
 			<div class="posts">
-				<!-- <article class="post"> -->
-					<!-- 포스트들이 자꾸 나온다  -->
-				<!-- </article> -->
+<% 
+	if(cposts ==null || cposts.size() <1){
+%>
+				<article> 아무도 포스트를 쓰지 않았어요... 당신의 도움이 필요해요! </article>
+
+<% }else{ 
+		for(int i = cposts.size()-1 ; i>=0; i--){
+			boolean showme = false;	
+			int shst = 0;
+		
+				if(cposts.get(i).getPcon().contains("관리자만")){
+					shst = 3;
+					if(adminyn == 1)
+						showme = true;
+				}else if(cposts.get(i).getPcon().contains("모임")){
+					shst = 2;
+					if(joinyn == 1)
+						showme = true;
+				}else{
+					showme = true;
+				}
+		if(showme){
+%>
 				<article>
-					여기서부터 포스트 시작 
+					<div class="post_title"><%= cposts.get(i).getTitle() %></div>
+					
+	<% if(cpphotos.size() >0){ %>
+		<% if(Integer.parseInt( cpphotos.get(j).getId().substring(id.length()+9) ) == i+1){ %>
 					<div class="post_img">
-						<img class="ImageForModal" src="img/이쁜이미지3.jpg" onclick="ImageClickFunction(this)">
+						<img class="ImageForModal" src="Files/clubpost/club_<%=rlist.get(0).getNo() %>/<%=i+1 %>/<%=cpphotos.get(j).getPicture() %>" onclick="ImageClickFunction(this)">
 						<div class="modal">
 						  <img class="modal-content">
-						  <div class="caption">이미지가 정말 이쁘쥬? 조보아씨! 여기 등산해봐유! </div>
+						  <div class="caption"><%=cpphotos.get(j).getPicture() %> </div>
 						</div>
 					</div>
+	<% ; j--; %> 
+	<%}} %>
 					<div class="post_text">
-						김밥 한 줄 놓고 갑니다~~~ 오홍홍 @@@@@@@@@@))))))))))); <br>
-						김밥 한 줄 놓고 갑니다~~~ 오홍홍 @@@@@@@@@@)))))))))))12345; 
+						<%=cposts.get(i).getContents() %>
 					</div>
-					<div class="post_like">
-						<img src="img/heart35.png"> 3543
+					<div class="post_like fright">
+						<img src="img/heart_and_star/heart35.png"> 0
 					</div>
+					<div class="post_writer fright"> by <%= cposts.get(i).getWriter() %></div>
+		<% if(shst == 3){ %>
+					<div class="post_conceal fright">관리자에게만 공개된 포스트. <img src="img/icons/password18.png"> </div>
+		<% }else if(shst == 2){ %>
+					<div class="post_conceal fright">모임 회원에게만 공개된 포스트입니다. <img src="img/icons/password18.png"> </div>
+		<% }else{ %>
+					<div class="post_conceal fright">전체 공개된 포스트. </div>
+		<% } %>
 					<div class="fclear"></div>
 				</article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
+
+<% } } } %>
+
 
 			</div>
 		</section>
@@ -196,11 +256,28 @@ if(id ==null){
 <form id="form4" action="outme.club" method="post" style="display: none;">
 	<input type="hidden" name="clubid" value="<%=rlist.get(0).getNo()%>">
 </form>
+
+<form id="postPicture" enctype="multipart/form-data" accept-charset="UTF-8" action="clubPostPhoto.post" method="post" style="display: none;">
+	<input type="text" name="mypostnumber" value="111">
+	<input type="file" name="photo"  accept=".jpg,.jpeg,.png,.gif,.bmp,.webm">
+</form>
+
+<form id="postForm" action="clubPost.post" method="post" style="display: none;">
+	<input type="hidden" name="clubid" value="<%=rlist.get(0).getNo()%>">
+	<input type="" name="mypostnumber" value="111">
+	<input type="text" id="ptitle" name="title" value="">
+	<!-- 타이틀, 작성자, 컨텐츠, 포스트 종류, 포스트 공개성 끝.  -->
+	<textarea name="contents"></textarea>
+	<input type="text" id="ppkind" name="pkind" value="">
+	<input type="text" id="ppcon" name="pcon" value="">
+</form>
+
+
 	</main>
 
 
 
-	<script type="text/javascript" src="77zzim/zzim_js.js?ver=4"></script>
+	<script type="text/javascript" src="77zzim/zzim_js.js?ver=5"></script>
 	<script type="text/javascript" src="js/photo_modal00.js"></script>
 <script type="text/javascript">
 
@@ -208,15 +285,26 @@ if(id ==null){
 	//nyn %>; // 0과 1입니다. 
 	var ami = false;
 	var ied = false;
-	
+	var id ="";
+	var joinyn = 0;
+
+	id = "<%= id%>";
 	ami = <%=ami %>;
 	ied = <%=ied %>;
+	joinyn = <%=joinyn%>;
 
 	var z1button = $('#z_zzim_1');
 	var z2button = $('#z_join1');
 
 	var sender0 = $('#sender0');
 	var forwhere = $('#forwhere');
+
+var form000 = $('.new_write');
+var postpic = $('#postPicture');
+var picpic = postpic.children('input[type="file"]');
+var photoname = $('#photoname');
+var postpost00 = $('#postForm');
+var plzjoin_00 = $('#plzjoin_00');
 
 	function managego(){
 		$('#form1').submit();
@@ -247,6 +335,14 @@ if(id ==null){
 			goinginTF();	//가입중인가.
 			//alert('여기 오나?');
 		}
+
+
+		picpic.change(function(){
+			var pname = picpic.val().split('/').pop().split('\\').pop();
+			photoname.text(pname);
+		});
+			var pname = picpic.val().split('/').pop().split('\\').pop();
+			photoname.text(pname);
 	}
 	// if(ami){
 	//	setTimeout(goingoutTF(),1000);	
@@ -276,46 +372,87 @@ if(id ==null){
 		}
 	}
 
-	// function zzim1(){
-	// 	if(adminyn ==1){
-	// 		sender0.children('#forwhere').val('club_createNedit.jsp');
-	// 		sender0.submit();
-	// 	}
-	// 	else{
-	// 		//sender0.
-	// 		// 이건 ajax로 찜 연결 ㅇㅇ. 
-	// 	}
-	// }
 	function zzim2(){
 
 	}
 
-	//."z_zzim1">찜하기  id="z_join1" 가입하기 
-	//$('#')
-	// $('#z_zzim1').click(zzimed());
-	// $('#z_zzim1').on('click', function(){
-	// 	//$(this).html('찜!');
-	// 	$(this).zzimed();
-
-	// 	// $(this).zzimed(); 놉
-	// });
-
-	// function zzimed(){
-	// 	$(this).html('찜!<img src="img/heart34.png">');
-	// }
-	// function zzimc(){
-	// 	$(this).html('찜하기 <img src="img/heart34.png">');
-	// }
-
 	function post_photo(){
-		
+
+		if(picpic.val() ==null || picpic.val()==""){
+			picpic.click();
+		}
+		else{
+			var confirm0 = confirm('새 사진을 올리면 이전 사진은 지워집니다. 계속 하시겠습니까?');
+			if(confirm0){
+				picpic.click();
+			}
+			else{
+				return;
+			}
+		}
+
+		post_photo2();
+
+	}
+	// picpic.change(function(){
+	// 	post_photo2();
+	// });
+	function post_photo2(){
+		picpic.change(function(){
+			var pname = picpic.val().split('/').pop().split('\\').pop();
+			photoname.text(pname);
+			 postpic.submit();
+		});
+				 // setTimeout(postpic.submit(),1000);
+
 	}
 
 	function postgo(){
-		
+
+		var title00 = form000.find('input').val();
+		var select1 = form000.find('select').eq(0).val();
+		var select2 = form000.find('select').eq(1).val();
+		var text00 = form000.find('textarea').val();
+		// alert(text00);
+		postpost00.children('#ptitle').val(title00);
+		postpost00.children('#ppkind').val(select1);
+		postpost00.children('#ppcon').val(select2);
+		postpost00.children('textarea').val(text00);
+
+		if(select1=="000"){
+			alert('포스트 종류를 선택하세요!');
+			return;
+		}
+		if(select2 =="001"){
+			alert('포스트 공개여부를 선택하세요!');
+			return;
+		}
+
+
+		if(title00=="" && text00==""){
+			alert('제목과 내용을 입력해주세요. ');
+			return;
+		}
+		if(picpic.val() ==null || picpic.val()==""){
+			var confirm0 = confirm('사진을 올리지 않고 진행하시겠습니까?');
+			if(!confirm0){
+				return;
+			}
+		}
+
+		postpost00.submit();
 	}
 
-	// var mainSecHeight = $('section.club_main').outerHeight(true);
-	// alert(mainSecHeight);
+	plzjoin_00.click(function(){
+		//plzjoin_00.focusout();
+		if(id==null || id==""|| id=="null"){
+			loginModalgo("글쓰기는 로그인이 필요한 기능입니다.");
+		}
+		else if(joinyn != 1){
+			alert('글을 쓰시려면 소모임에 가입하셔야 합니다!');
+		}
+		// alert('글을 쓰시려면 소모임에 가입하셔야 합니다!');
+	});
+
 
 </script>

@@ -31,11 +31,20 @@
 	var good_to_go_5 = "0";
 	var good_to_go_6 = "0";
 
+
+		var closeModal = $('#closeModal');
+		var modalSystem = $('#my_joiner');
+
 	function goodtogo(){
 		good_to_go_1 = go0* go1*go2*go3*go4;
 	}
-
-
+// function refresh00(){
+// 	document.refresh();
+// }
+// function ref22(){
+// 	alert('과연?');
+// 	document.refresh();
+// }
 
 		nEXTSTEP11.addEventListener('click', () => {
 			goodtogo();
@@ -563,10 +572,26 @@ function checkEmail(str)
 
 
 	$(window).resize(function(){
-		var height0 = $(window).height();
+		// var height0 = $(window).height();
+		var height0 = $('#my_joiner').height();
 		var height1 = height0 - 10;
-		$(".my_middler").css('height',height1);
-		$(window).width();
+		// $(".my_middler").css('height',height1);
+		// $(".my_middler").css('height',height1);
+
+
+		// var width0 = $(window).width();
+		var width0 = $(window).width();
+		var width1 = ((width0 - 820) /2);
+		var height2 = (((height0 - 600) /2) - 30);
+
+		if(width1 > 0){
+			$('.logo_loc').css('right',width1);
+		}
+		else{
+			$('.logo_loc').css('right',0);
+		}
+		$('.logo_loc').css('top',height2);
+		$('#joiner_container').css('top',height2 + 45);
 
 	});
 	// window.function(){
@@ -575,30 +600,48 @@ function checkEmail(str)
 
 	var output011s =  $(".output011");
 
-	window.onload = function(){
-		var height0 = $(window).height();
+	// window.onload = function(){	///huh??
+		var width0 = $(window).width();
+		var width1 = ((width0 - 820) /2);
+		// var height0 = $(window).height();
+		var height0 = $('#my_joiner').height();
+		var height2 = (((height0 - 600) /2) - 30);
 		var height1 = height0 - 10;
-		$(".my_middler").css('height',height1);
+		// $(".my_middler").css('height',height1);
+		// var height00 = $('#my_joiner').height();
+		// $(".my_middler").css('height',height00);
 
-		$(".logo_loc").css('top','100px');
-		$(".logo_loc").css('left','90px');
+		$('.logo_loc').css('top',height2);
+		$('#joiner_container').css('top',height2 + 45);
+		if(width1 > 0){
+			$('.logo_loc').css('right',width1);
+		}
+		else{
+			$('.logo_loc').css('right',0);
+		}
+		var height555 = (($('#my_joiner').height() - 600) /2);
+		// $('#joiner_container').css('top',height555);
 
 		//alert(fail2);
 	//	alert(log_id+"<로그인된 아이디");
 
 		if(fail2 !="null"){
-			alert(fail2);
-			$('#TOLOGIN').click();
-			var i = 5;
-			dontgo(i);
-			noBecause(fail2,i);
+			loginModalgo(fail2);
+			// alert(fail2);
+			// modalSystem.removeClass('disnoneR');
+			// $('#TOLOGIN').click();
+			// var i = 5;
+			// dontgo(i);
+			// noBecause(fail2,i);
 		}
 		if(whatdo !="null"){
 			if(whatdo == "join"){
 
 			}
 			else{
-				$('#TOLOGIN').click();
+				joinModalgo();
+				// modalSystem.removeClass('disnoneR');
+				// $('#TOLOGIN').click();
 			}
 		}
 		// if(fail2 !="null"){
@@ -617,9 +660,28 @@ function checkEmail(str)
 		// 	dontgo(i);
 		// 	noBecause(fail2,i);
 		// }
-	};
+	// };
 
 
+		closeModal.click(function(){
+			modalSystem.addClass('disnoneR');
+		});
+
+		function loginModalgo(fail = ""){
+			modalSystem.removeClass('disnoneR');
+					if(fail != ""){
+						alert(fail);
+						$('#TOLOGIN').click();
+						var i = 5;
+						dontgo(i);
+						noBecause(fail,i);
+					}
+			setTimeout( $('#TOLOGIN').click() , 1500);
+		}
+		function joinModalgo(){
+			modalSystem.removeClass('disnoneR');
+			setTimeout( $('#toJoin').click() , 1500);
+		}
 
 
 

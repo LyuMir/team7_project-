@@ -165,15 +165,15 @@ function Zzimbuttonshow_club(req){
 
 function changeHTMLs(req,go =1){
     if(go ==1){
-        $('button#z_zzim1:contains("찜하기 ")').html("찜 취소 <img src='img/heart34.png'>");
-        $(req).children('img').attr('src','img/heart34.png');
+        $('button#z_zzim1:contains("찜하기 ")').html("찜 취소 <img src='img/heart_and_star/heart34.png'>");
+        $(req).children('img').attr('src','img/heart_and_star/heart34.png');
         $(req).removeAttr("onclick");
         $(req).attr('onclick',"Zzim_cancle_club(this)");
 
     }
     else{
-        $('button#z_zzim1:contains("취소")').html("찜하기 <img src='img/heart034.png'>"); //여기서 하는게 아닌가...?
-        $(req).children('img').attr('src','img/heart034.png');
+        $('button#z_zzim1:contains("취소")').html("찜하기 <img src='img/heart_and_star/heart034.png'>"); //여기서 하는게 아닌가...?
+        $(req).children('img').attr('src','img/heart_and_star/heart034.png');
         $(req).removeAttr("onclick");
         $(req).attr('onclick',"Zzim_club(this)");
 
@@ -227,8 +227,8 @@ function Zzim_club(req){
             },
         })
 
+        changeHTMLs($(req),1);
     }
-    changeHTMLs($(req),1);
 }
 
 function Zzim_cancle_club(req){
