@@ -1,8 +1,8 @@
 body {
     margin: 0;
     --color-text: #644B47;
-    /*--color-bg: #F2FFED;  연한색입니다. */
-    --color-bg: rgb(225,225,225);  /*회색임*/
+    /*--color-bg: #F2FFED;  �뿰�븳�깋�엯�땲�떎. */
+    --color-bg: rgb(225,225,225);  /*�쉶�깋�엫*/
     --color-link: #C72F7A;
     /*--color-link-hover: #3d3637;*/
     --color-link-hover: black;
@@ -135,6 +135,8 @@ float: left;
 
   /*min-height: 100%;*/
   min-height: 1000px;
+  
+  margin:0;
 
 }
 
@@ -196,7 +198,7 @@ float: left;
   z-index: 3;
 }*/
 
-/* dddddddddddddddddddddddddd메뉴ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ*/
+/* dddddddddddddddddddddddddd硫붾돱�뀪�뀪�뀪�뀪�뀪�뀪�뀪�뀪�뀪�뀪*/
 
 .col{
   display: table;
@@ -206,13 +208,13 @@ float: left;
   margin-right: 25px;
 }
 
-/* 더보기 */
+/* �뜑蹂닿린 */
 .showmemore{
   /*display: inline-flex;*/
   position: relative;
   top: -35px;
   /*left: 50px;*/
-  /* 제이쿼리 처리됨 */
+  /* �젣�씠荑쇰━ 泥섎━�맖 */
 
   /*align-items: center;*/
 }
@@ -290,7 +292,7 @@ h3{
 }
 
 /* Caption of Modal Image */
-.caption {  /*  id 말고!! class로!! */
+.caption {  /*  id 留먭퀬!! class濡�!! */
   margin: auto;
   display: block;
   width: 90%;
@@ -338,7 +340,7 @@ h3{
   text-decoration: none;
   cursor: pointer;
 } */
-/*  x 말고 다른 곳도 클릭하면 ? 닫 기 */
+/*  x 留먭퀬 �떎瑜� 怨노룄 �겢由��븯硫� ? �떕 湲� */
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
@@ -376,7 +378,7 @@ h3{
   padding: 5px;
   /*width:100%;*/
   width:calc( 100% - 170px );
-  /*와!!! 가능!!!!!*/
+  /*��!!! 媛��뒫!!!!!*/
   /*font-size: var(--font-size-text);*/
   font-size: 16px;
   /*font-size: var(--font-size-medium);*/
@@ -390,7 +392,7 @@ h3{
   padding: 5px;
   width:calc( 100% - 20px );
 
-  /*자동 늘어나기 ㄱ */
+  /*�옄�룞 �뒛�뼱�굹湲� �꽦 */
 
 }
 

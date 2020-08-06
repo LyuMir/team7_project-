@@ -47,6 +47,10 @@ public class ClubController extends javax.servlet.http.HttpServlet
 			return;	//여기에 걸리면 밑에 구문들은 실행하지 않습니다... sendRedirect라서 어차피 실행 안되겠지만, 혹시 모르니까. 
 		}
 		
+
+      //  <% for(int j=0; j< major.length; j++){ %>
+   		//<%=major[j]%>
+		
 		
 		if(command.equals("/MainInfo.club")){
 			forward = new ActionForward();

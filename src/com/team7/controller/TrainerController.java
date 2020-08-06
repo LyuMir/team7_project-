@@ -30,9 +30,22 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		
 		//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
 		
+		
+//		HttpSession session = request.getSession(true);
+//		int logined =0;
+//		if(session.getAttribute("LOG_STATUS") ==null) {}
+//		else {
+//			logined=(Integer) session.getAttribute("LOG_STATUS");
+//		}
+//		
+		
 		HttpSession session = request.getSession(true);
 		int logined= (Integer)session.getAttribute("LOG_STATUS"); //오브젝트형식으로있다
 		System.out.print("로그인최초확인");
+		
+		
+		
+		
 		if(command.startsWith("/id_") && logined !=1) {
 			response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
 			return;
@@ -46,23 +59,41 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
 		  
 		}
-		else if(command.equals("/id_trainerapply.trainer")) {
+		 if(command.equals("/id_trainerapply.trainer")) {
 			action  = new com.team7.trainer.action.TrainerCreateAction();
+			System.out.print("d");
 			try {
 				forward=action.execute(request, response); //메서드실행함
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			
 		}  //할거 담기
 		
-		if(command.equals("/Search.trainer")){	
-			action  = new com.team7.trainer.action.TrainerCreateAction();
-			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
-			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/TrainerShowAll.jsp");
-		  
+		 if(command.equals("/Search.trainer")){	
+			System.out.print("트레이너 서치 클릭됩니까");
+			action  = new com.team7.trainer.action.TrainerShowAllAction();
+			try {
+				forward=action.execute(request, response); //메서드실행함
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+//		  
 		}
-
 		
+		 if(command.equals("/trainerUserpage.trainer")){	
+				System.out.println("트레이너 개인페이지 클릭됩니까");
+				action  = new com.team7.trainer.action.TrainerUserpageAction();
+				try {
+					forward=action.execute(request, response); //메서드실행함
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+//			  
+			}System.out.print("dddddd");
+
+		System.out.println(command+"...dla..임");
 		if(forward != null){
 			
 			if(forward.isRedirect()){
@@ -73,6 +104,18 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			}
 			
 		}//가서 페이지 보내기
+		
 
-}
+	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8"); //내가 추가함
+		doProcess(request,response);
+	}  	
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8"); //내가 추가함
+		doProcess(request,response);
+	}   
 }
