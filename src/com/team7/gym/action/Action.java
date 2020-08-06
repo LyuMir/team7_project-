@@ -1,4 +1,4 @@
-package com.team7.health.action;
+package com.team7.gym.action;
 
 import javax.servlet.http.*;
 

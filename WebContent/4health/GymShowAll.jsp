@@ -1,12 +1,12 @@
 "_FORWHERE.jsp?forwhere=4health/gym_Apply.jsp"<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="com.team7.vo.Trainer_info" %>
+<%@ page import="com.team7.vo.Gym_info" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
 
     <meta charset="utf-8">
-    <title>코치찾기</title>
+    <title>헬스장찾기</title>
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
       <link rel="stylesheet" href="css/styleyuncard.css" />
       <link rel="stylesheet" href="css/normalizeyuncard.css">
@@ -17,7 +17,7 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); %>
+List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); %>
 
 
 
@@ -26,8 +26,8 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); %>
 <div class="container00">
   <img src="img\main3look.jpg" class="pic_000">
   <div class="text00">
-    <h1 class="hero__look">지역과 프로그램을 선택하세요</h1>
-    <p class="hero__snippet">당신에게 딱 맞는 코치진을 보여드립니다!</p>
+    <h1 class="hero__look">태그에 맞춰 헬스장을 검색하세요!</h1>
+    <p class="hero__snippet">당신에게 딱 맞는 헬스장을 추천해드립니다!</p>
       <a class="btn00" href="">사용 방법</a>
 
   </div>
@@ -57,7 +57,7 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); %>
           <div >
 
             <div class="containertext">
-          <h3 > 맞춤 코치찾기 </h3>
+          <h3 > 맞춤 헬스장찾기 </h3>
           <p class="hero__snippet">  가격 정찰제를 통한 신뢰! </p>
         </div>
       </div>
@@ -70,23 +70,23 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); %>
 
                 <div class="grid">
 
-     <% for(int i =0 ; i < tser.size() ; i++){ %>
+     <% for(int i =0 ; i < gser.size() ; i++){ %>
 
-                  <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>">
+                  <article class="grid__item" data-tags="<%= gser.get(i).getGname() %>">
                     <div class="card">
                       <div class="card__img">
-                      <a href = "trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>"> <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains"></a> 
+                      <a href = "trainerUserpage.trainer?number=<%= gser.get(i).getOwner()%>"> <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains"></a> 
                       </div>
                     <div class="card__content">
-                      <div class="card__tag00"> <%=tser.get(i).getTname() %></div>
-                      <div class="card__header"><%=tser.get(i).getTbigtext() %> </div>
-                      <p class="card__text"><%=tser.get(i).getTsmalltext() %></p>
+                      <div class="card__tag00"> <%=gser.get(i).getGname() %></div>
+                      <div class="card__header"><%=gser.get(i).getGsmalltext() %> </div>
+                      <p class="card__text"><%=gser.get(i).getGsmalltext() %></p>
                      <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
                     </div>
                   </div>
                   </article>
 
-                 <input type="hidden" name="number" value="<%= tser.get(i).getNo() %>">
+                 <input type="hidden" name="number" value="<%= gser.get(i).getId() %>">
            <%} %>
 
 
