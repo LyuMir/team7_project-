@@ -26,6 +26,8 @@
 		dto.setNo(Integer.parseInt(id));
 
 		List<ClubBean> theclub = new ClubService().club_selector_no(dto);
+		
+		session.setAttribute("clubid", theclub.get(0).getNo());
 	%>
 
 	<main>

@@ -53,6 +53,7 @@ public class ClubCreateAction implements Action{
 		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("LOG_ID");
+		int clubid = (Integer) session.getAttribute("clubid");
 		int Limit = 150;
 		if(club_memLimit == null) {
 			
@@ -97,7 +98,7 @@ public class ClubCreateAction implements Action{
 		clubBean.setPublicity(club_publicity);
 		
 		String photo1 =null , photo2 = null;
-		List<PhotoBean> photos = new PhotoService().getfilenames_clubmains(id);
+		List<PhotoBean> photos = new PhotoService().getfilenames_clubmains(id,clubid);
 		
 		for(int i = 0 ; i <photos.size(); i++) {
 			if(photos.get(i).getId().contains("_main")) {
@@ -111,12 +112,6 @@ public class ClubCreateAction implements Action{
 		clubBean.setPhoto1(photo1);
 		clubBean.setPhoto2(photo2);
 		new ClubService().club_creator(clubBean);
-//		new PhotoUploadService().upload(request, "/Files/Photos", "clubMainPhoto");
-//		new PhotoUploadService().upload(request, "/Files/Photos", "clubProfile");
-
-//		System.out.println(k+"사진넣기");
-//		System.out.println(k1+"사진넣기");
-		
 		
 		
 		ActionForward forward= new ActionForward();

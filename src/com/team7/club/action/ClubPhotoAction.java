@@ -12,7 +12,8 @@ public class ClubPhotoAction {
 
 	public void upload1(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String id = (String) request.getSession().getAttribute("LOG_ID");
-		new PhotoService().upload_club_main(request, "/clubsphoto/"+id+"/main", id+"_club");
+		int clubid = (Integer) request.getSession().getAttribute("clubid");
+		new PhotoService().upload_club_main(request, "/clubsphoto/"+id+"_"+clubid+"/main", id+"_club_"+clubid);
 
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -23,7 +24,8 @@ public class ClubPhotoAction {
 
 	public void upload2(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String id = (String) request.getSession().getAttribute("LOG_ID");
-		new PhotoService().upload_club_profile(request, "/clubsphoto/"+id+"/profile", id+"_club");
+		int clubid = (Integer) request.getSession().getAttribute("clubid");
+		new PhotoService().upload_club_profile(request, "/clubsphoto/"+id+"_"+clubid+"/profile", id+"_club_"+clubid);
 
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();

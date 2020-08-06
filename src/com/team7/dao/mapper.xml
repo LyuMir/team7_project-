@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from team7.team7_picture_data where id = '${id}'
 	</delete>
 	<select id="select_club_mainphotos" resultType="com.team7.vo.PhotoBean" >
-		select * from team7.team7_picture_data where id like '${no}\_club\_%'
+		select * from team7.team7_picture_data where id like '${id}\_club\_${clubid}\_%'
 	</select>
 	<select id="select_cpost_myphoto" resultType="com.team7.vo.PhotoBean" >
 		select * from team7.team7_picture_data where id like '${id}\_clubpost\_${no}'
