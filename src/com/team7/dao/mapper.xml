@@ -263,15 +263,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
-	
-	<select id="select_C_enrolls" resultType="com.team7.vo.C_enroll_Bean" >
-		select * from team7.team7_club_enroll where club = ${no}
-	</select>
-	
-	<select id="select_C_members" resultType="com.team7.vo.CmemberBean" >
-		select * from team7.team7_cmember where club = ${no}
-	</select>
-
 
 
 
