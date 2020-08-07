@@ -84,12 +84,12 @@ input:focus {
 
 /* Table styles */
 
-table {
+/*table {
   margin: 0 auto;
   width: 780px;
-}
+}*/
 
-table#rates { width: 380px; }
+/*table#rates { width: 380px; }
 
 th, td {
   border-radius: 3px;
@@ -112,11 +112,11 @@ table.sortable th:hover { cursor: pointer; }
 th.ascending, th.descending, table.sortable th:hover {
   background-color: #00cccc;
   color: #fff;
-}
+}*/
 
 /* Arrows for table sorting */
 
-th.ascending:after {
+/*th.ascending:after {
   font-size: 60%;
   content: '\25B2';
   float: left;
@@ -128,7 +128,7 @@ th.descending:after {
   content: '\25BC';
   float: left;
   padding: 4px 5px 0 0;
-}
+}*/
 
 .about {
   width: 780px;
