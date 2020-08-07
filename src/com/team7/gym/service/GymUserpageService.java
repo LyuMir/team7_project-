@@ -18,7 +18,7 @@ public class GymUserpageService {
 		
 		List<Gym_info> tser = sqlsession.selectList("selectOne_Gym",info);
 		
-		System.out.println(tser.get(0).getId());
+//		System.out.println(tser.get(0).getId());
 		
 		
 //		String imsimajors = tser.get(0).getTmajor() ;
