@@ -4,34 +4,83 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.team7.vo.ClubBean" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=4">
 	<!-- 바디... main만 있어도 됨.  -->
 <%
 request.setCharacterEncoding("UTF-8");
 
 //String whichNum = request.getParameter("whichNum"); 
 // 아직 12345 목록 크기 정하지 않았습니다. 
+// if(session.getAttribute("LOG_ID"))
+// String id = (String) session.getAttribute("LOG_ID");
 
 List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 			=(List<ClubBean>) request.getAttribute("rlist");
 
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
 
+//		ServletContext context = request.getServletContext();
+//		String realFolder=context.getRealPath("/clubsphoto/"+rlist.get(0).getAdmin());
+//		String basicFolder=context.getRealPath("/img/exc");
+	String realFolder = "Files/clubsphoto/";//+rlist.get(0).getAdmin()+"_";
+	String basicFolder = "img/exc";
+
 %>
 
 <main id="main000" class="mainwrap">
 
   <section>
+    <div id="buttons"></div>
 	  <div class="sticky_side_bar fright">
 	  	ꓥ  &nbsp; &nbsp; 1 2 3 4 5  … 12 &nbsp; &nbsp;  ꓦ
 	  </div>
 
     <div class="grid">    
      <% for(int i = 0; i < rlist.size(); i++){ %>
+     
+     
+     	<%
+     	String photo1 ="";
+  
+     	      if(rlist.get(i).getPhoto1() ==null || rlist.get(i).getPhoto1().equals("")){
+
+     	    	  String theme = rlist.get(i).getE_type();
+     	    	  if(theme.contains("축구")){
+     	    		  photo1 = basicFolder+"/soccer1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("농구")){
+     	    		  photo1 = basicFolder+"/basketball1.png";
+     	    	  }
+     	    	  else if(theme.contains("등산")){
+     	    		  photo1 = basicFolder+"/hiking1.jpg";
+     	    	  }
+     	    	  if(theme.contains("스케이트")){
+     	    		  photo1 = basicFolder+"/skate1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("요가")){
+     	    		  photo1 = basicFolder+"/yoga1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("자전거")){
+     	    		  photo1 = basicFolder+"/cycling1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("야구")){
+     	    		  photo1 = basicFolder+"/baseball2.jpg";
+     	    	  }
+     	    	  
+     	    	  if(photo1.equals("")){
+     	    		 photo1 = basicFolder+"/"+"surf1.jpg";
+     	    	  }
+     	      }
+     	      else{
+     	    	  photo1 = realFolder+rlist.get(i).getAdmin()+"_"+rlist.get(i).getNo()+"/main/"+rlist.get(i).getPhoto1();
+     	      }
+     	
+     	%>
 		<article class="grid__item" onclick="gotoClub2(this)">
+    <!-- <article class="grid__item" > -->
 			<div class="card">
 				<div class="card__img00 fright">
-					<img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
+					<img class="card__img01" src="<%=photo1 %>">
 				</div>
 				<div class="card__content fleft">
 					<div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
@@ -41,7 +90,11 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 					<div class="card__tag00 content_where"> 장소 : <span><%=rlist.get(i).getArea() %></span></div>
 					<div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
 					<div class="card__heart"> 
-						<img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
+            <!-- heart zzim의 관계 설정. ... onclick="Zzimshow_club(this)" -->
+            <div class="zzimSystem"  data-id="<%=rlist.get(i).getNo()%>">
+              <img src="img/heart_and_star/heart034.png"> <span class="counter" data-target="">0  </span> 
+            </div>
+						<img src="img/heart_and_star/star22.png">  <span><%=rlist.get(i).getMemberNum() %></span>
 					</div>
 				</div>
 				<div class="card__bottomContent">
@@ -63,6 +116,17 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
   </section>
   
 <!-- <script type="text/javascript" src="js/club_whereto.js"></script> -->
+<script type="text/javascript" src="77zzim/zzim_js.js?ver=4"></script>
+<!-- <script type="text/javascript" src="js/grid_move.js"></script> -->
+<script type="text/javascript">
+  $('.card__img01').each(function(index,item){
+    var pheight = $(item).parent().height();
+    var height = $(item).height();
+    console.log(pheight);
+    $(item).css('bottom',(height - pheight)/2);
+  });
+
+</script>
 <script type="text/javascript">
 
 
@@ -141,7 +205,6 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
   });
 
 }());
-
 
 </script>
 </main>

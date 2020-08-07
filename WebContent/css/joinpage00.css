@@ -16,25 +16,43 @@
 
 }
 .logo_loc{
-	position: fixed;
-	top: 50px;
-
+	/*position: fixed;*/
+	position: absolute;
+	/*top: 50px;*/
+	z-index: 6000000;
+	/*background:rgba(255,255,255,0.6);*/
+	padding: 2px 17px;
+	top: 0px;
+	right: 0px;
 }
-
+.closeModal{
+	position: relative;
+	left: 267px;
+	/*top: 35px;*/
+}
 
 .my_middler {
 	/*background: #f6f5f7;*/
-	display: flex;
+	/*display: flex;*/
 	justify-content: center;
 	align-items: center;
+	transition: transform 80ms ease-in;
 	/*flex-direction: column;*/
 	/*font-family: 'Montserrat', sans-serif;*/
 	/*height: 100vh; 이걸로 강제로 맞추고 있었군. */
 	/*margin: -20px 0 50px;*/
 }
 .my_joiner{
-
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
 	transition: transform 80ms ease-in;
+	background: rgba(255,255,255,0.5);
+	z-index: 678000;
+}
+.disnoneR{
+	display: none;
 }
 
 .my_joiner h1 {
@@ -136,7 +154,7 @@
 	/*height: 550px;*/
 	min-height: 600px;
 	text-align: center;
-	min-width: 300px;
+	min-width: 140px;
 }
 .my_joiner .innerwrap span{
 	margin-bottom: 15px;
@@ -226,6 +244,7 @@
 	max-width: 100%;
 	min-height: 600px;
 	transition: all 0.6s ease-in-out;
+	margin: auto;
 }
 
 .oneline_plz{
@@ -347,6 +366,7 @@
 	transform: translateX(-100%);
 	z-index: 19;/*
 	animation: show 0.6s;*/
+	background: 
 }
 .dismiss{
 	/*z-index: 10;*/
@@ -503,4 +523,27 @@
 .backgound00{
 	background-color: black;
 	border: 5px solid black;
+}
+
+
+@media screen and (max-width: 665px){
+	.joiner_container_picture{
+		display: none;
+	}
+	.dismiss{
+		display: none;
+	}
+	.joiner_container{
+		width: 90%;
+		min-width: 300px;
+	}
+	.joiner_container00{
+
+	}
+	.form-joiner_container{
+		width: 100% !important;
+		left:0px !important;
+	}
+
+
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import com.team7.vo.ActionForward;
 import com.team7.vo.ClubBean;
+import com.team7.vo.CmemberBean;
 import com.team7.vo.PageInfo;
 import com.team7.club.service.*;
 
@@ -16,9 +17,12 @@ public class ClubShowAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		PageInfo pageInfo = new PageInfo();
+//		PageInfo pageInfo = new PageInfo();
+		ClubBean clubBean = new ClubBean();
 
-		List<ClubBean> rlist = new ClubService().club_selectorAll2(pageInfo);
+		//List<ClubBean> rlist = new ClubService().club_selectorAll2(pageInfo);
+		List<ClubBean> rlist = new ClubService().club_selectorAll();
+		
 		
 		request.setAttribute("rlist", rlist);
 		

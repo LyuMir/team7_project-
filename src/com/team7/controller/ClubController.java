@@ -1,6 +1,7 @@
 package com.team7.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,6 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		String command=RequestURI.substring(contextPath.length()); //앞에 글자 지움 : boardList.bo
 		//즉 '/'이후 맨 마지막만. 
 		
-		
 		ActionForward forward=null;	//forward : 갈 곳 지정 
 		Action action=null;			//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
 
@@ -36,14 +36,19 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		else {
 			logined=(Integer) session.getAttribute("LOG_STATUS");
 		}
+		//해당 jsp에서 처리...!!!
 		if(command.startsWith("/id_") && logined !=1) {
-			//id가 필요하며 login이 안 되어있을시
-			response.setCharacterEncoding("utf-8");
-			//response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
-			// sendRe 의 한글깨짐문제. 
-			RequestDispatcher dispatcher=
-					request.getRequestDispatcher("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
-			dispatcher.forward(request, response);
+
+			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다!");
+//			request.setAttribute("fail", "로그인이 필요한 서비스입니다!");
+//			response.setContentType("text/html;charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>");
+//			out.println("history.back();");
+//			out.println("</script>");
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
+			
 			return;	//여기에 걸리면 밑에 구문들은 실행하지 않습니다... sendRedirect라서 어차피 실행 안되겠지만, 혹시 모르니까. 
 		}
 		
@@ -80,6 +85,17 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/photo_upload.club")){
+			new com.team7.club.action.ClubPhotoAction().upload1(request, response );
+//			try {
+//				forward=action.execute(request, response );
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+		}
+		else if(command.equals("/photo_upload2.club")){
+			new com.team7.club.action.ClubPhotoAction().upload2(request, response );
+		}
 		else if(command.equals("/create.club")){
 			action  = new com.team7.club.action.ClubCreateAction();
 			try {
@@ -113,6 +129,15 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/managePro.club")){
+			action  = new com.team7.club.action.ClubEnrollProAction();	//clubid
+			//System.out.println("sdfsd");
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		else if(command.equals("/toClubMain.club")){
 			action  = new com.team7.club.action.ClubPageAction();
@@ -122,16 +147,34 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/id_joinme.club")){
+			action  = new com.team7.club.action.ClubJoinMeFormAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+//			forward = new ActionForward();
+//			forward.setPath("_FORWHERE.jsp?forwhere=3club/club_enroll.jsp");
+		}
+		else if(command.equals("/enrollgo.club")){
+			action  = new com.team7.club.action.ClubJoinMeAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/outme.club")){
+			action  = new com.team7.club.action.ClubOutmeAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
-//		else if(command.equals("/clubName.club")){
-//			action  = new com.team7.club.action.ClubNameAction();
-//			System.out.println("여기는?");
-//			try {
-//				forward=action.execute(request, response );
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
+
 
 		if(forward != null){	//가야할 곳이 있다면 보냄. \
 			if(forward.getPath()==null) {
