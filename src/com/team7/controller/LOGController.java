@@ -31,6 +31,22 @@ public class LOGController extends javax.servlet.http.HttpServlet
 		
 		ActionForward forward=null;	//forward : 갈 곳 지정 
 		Action action=null;			//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
+		HttpSession session = request.getSession();
+		int logyn =0;
+		if(session.getAttribute("LOG_STATUS") ==null) {}
+		else {
+			logyn=(Integer) session.getAttribute("LOG_STATUS");
+		}
+		
+		if(command.contains("myinfo") && logyn !=1) {
+
+			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다!");
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
+			
+			return;
+		}
+		
 		
 		if(command.equals("/join.log")){	// 그 일 요청받은 거면 다음을 해라.
 			action  = new com.team7.member.action.JoinAction();

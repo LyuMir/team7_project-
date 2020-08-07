@@ -87,9 +87,9 @@ public class ClubPageAction implements Action{
 //			if(cposts.get(i).getWriter().equals(id0))	//내꺼만 전제하지 않습니다. 그냥 포스트 갯수로.
 				mypostnumber++;
 		}
-		System.out.println(mypostnumber+1);
+//		System.out.println(mypostnumber+1);
 		System.out.println(cposts.size());
-		mypostnumber++;
+//		mypostnumber++;
 		
 		request.getSession().setAttribute("clubid", rlist.get(0).getNo());
 		request.getSession().setAttribute("mypostnumber", mypostnumber);	//바꿀것!!!

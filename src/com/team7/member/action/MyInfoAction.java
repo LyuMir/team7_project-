@@ -34,14 +34,30 @@ public class MyInfoAction {
 		
 
 		RequestDispatcher dispatcher=
-				request.getRequestDispatcher("8others/Personal_infomations.jsp");
+				request.getRequestDispatcher("_FORWHERE.jsp?forwhere=8others/Personal_infomations.jsp");
 		dispatcher.forward(request, response);
 		
 		
 	}
 	
-	public void infoEdit(HttpServletRequest request, HttpServletResponse response) {
+	public void infoEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
+		String postcode = request.getParameter("sample4_postcode22");
+		String adress = request.getParameter("adress");
+		String dadress = request.getParameter("sample4_detailAddress");
+		String interest = request.getParameter("interest");
 		
+		MemberInfo1 minfo = new MemberInfo1();
+		minfo.setAddress(adress+dadress);
+		minfo.setAddress_num(postcode);
+		minfo.setName(name);
+		minfo.setInterest(interest);
+		
+		new MyInfoService().myinfoedit(minfo);
+
+		RequestDispatcher dispatcher=
+				request.getRequestDispatcher("myinfo.log");
+		dispatcher.forward(request, response);
 	}
 
 }

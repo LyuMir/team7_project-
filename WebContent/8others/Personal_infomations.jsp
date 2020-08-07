@@ -6,6 +6,7 @@
 	<title>회원정보</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<script type="text/javascript" src="js/DAUM_adress.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <%
 
@@ -47,20 +48,21 @@ List<CPostBean> cposts = (List<CPostBean>) request.getAttribute("cposts");
 		<div class="buttondiv" id="foredit">수정</div>
 	</div>
 
-	<div class="infos edits" id="editmyinfo.log">
-		<form id="editform" method="post" action="edit.log">
+	<div class="infos edits" id="editmyinfo">
+		<form id="editform" method="post" action="editmyinfo.log">
 			<div class="leftInfo">이름  </div>
 			<input type="" name="name" value="<%=minfo.get(0).getName()%>">
-			<div class="leftInfo">아이디</div>
+			<!-- <div class="leftInfo">아이디</div>
 			<input type="" name="id" readonly="true" value="<%=minfo.get(0).getId()%>">
 			<div class="leftInfo">이메일 </div>
-			<input type="" name="email" readonly="true" value="<%=minfo.get(0).getEmail()%>">
+			<input type="" name="email" readonly="true" value="<%=minfo.get(0).getEmail()%>"> 
+			아이디와 이메일은 수정할 수 없습니다. -->
 			<div class="leftInfo">주소</div><div class="rightInfo">
 			현재 우편번호 : <%=minfo.get(0).getAddress_num() %>
 			<br>
 			현재 주소 : <%=minfo.get(0).getAddress() %>
 			<br>
-			<input type="text" id="sample4_postcode22" placeholder="우편번호" maxlength="6" class="input00" name="sample4_postcode22">
+			<input type="text" id="sample4_postcode" placeholder="우편번호" maxlength="6" class="input00" name="sample4_postcode22">
 			<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="input00" >
 					<input type="text" id="sample4_roadAddress" placeholder="도로명주소" readonly="true" class="sample4_roadAddress input00" name="adress">
 					<input type="text" id="sample4_jibunAddress" placeholder="지번주소" readonly="true" class="sample4_jibunAddress input00" name="adress">
@@ -120,6 +122,10 @@ List<CPostBean> cposts = (List<CPostBean>) request.getAttribute("cposts");
 
 
 		function editgo(){
+			var confirm01 = confirm('개인정보 수정 저장하시겠습니까?');
+			if(confirm01){
+				$('#editform').submit();
+			}
 
 		}
 
