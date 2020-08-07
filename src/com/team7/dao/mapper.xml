@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from team7.team7_picture_data where id = '${id}'
 	</delete>
 	<select id="select_club_mainphotos" resultType="com.team7.vo.PhotoBean" >
-		select * from team7.team7_picture_data where id like '${id}\_club\_${clubid}\_%'
+		select * from team7.team7_picture_data where id like '${id}\_club\_${no}\_%'
 	</select>
 	<select id="select_cpost_myphoto" resultType="com.team7.vo.PhotoBean" >
 		select * from team7.team7_picture_data where id like '${id}\_clubpost\_${no}'
@@ -255,23 +255,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectOne_Gym" resultType="com.team7.vo.Gym_info" >
-		select * from team7.team7_gym where id = ${id}
+		select * from team7.team7_gym where gid = '${id}'
 	</select>
 	
 	
 	
 	
-	
-	
-	
-	<select id="select_C_enrolls" resultType="com.team7.vo.C_enroll_Bean" >
-		select * from team7.team7_club_enroll where club = ${no}
-	</select>
-	
-	<select id="select_C_members" resultType="com.team7.vo.CmemberBean" >
-		select * from team7.team7_cmember where club = ${no}
-	</select>
-
 
 
 

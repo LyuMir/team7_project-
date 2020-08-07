@@ -1,4 +1,4 @@
-"_FORWHERE.jsp?forwhere=4health/gym_Apply.jsp"<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.Gym_info" %>
@@ -13,7 +13,17 @@
       <!-- <link rel="stylesheet" href="css/mainyun.css"> -->
       <link rel="stylesheet" type="text/css" href="css/gridgrid88yuncard.css">
       <link rel="stylesheet" type="text/css" href="css/picpiccard.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	21d928db4da229461e099041921f1bbc"></script>
+<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
 
+		var map = new kakao.maps.Map(container, options);
+		
+	</script>
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -22,7 +32,30 @@ List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); %>
 
 
 <body id="top">
+<hr>
+<div id="map" style="width:100%;height:350px;"></div>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+</script>
 <div class="container00">
   <img src="img\main3look.jpg" class="pic_000">
   <div class="text00">
@@ -38,6 +71,7 @@ List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); %>
 </div>
 <div class="dicclean">
 </div>
+
 
       <hr>
       <div class="ycontainertxt">
