@@ -21,4 +21,5 @@ public class LogMatchService {
 		
 		return ok;
 	}
+
 }
