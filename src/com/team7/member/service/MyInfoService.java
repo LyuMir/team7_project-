@@ -8,18 +8,16 @@ import com.team7.dao.Class_DAO;
 import com.team7.vo.MemberInfo1;
 import com.team7.vo.MemberLogInfo;
 
-public class LogMatchService {
-
-	public boolean Login(MemberLogInfo loginfo) {
-		boolean ok = false;
-		
+public class MyInfoService {
+	
+	public List<MemberInfo1> myinfo(MemberLogInfo loginfo) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<MemberInfo1> rlist= sqlsession.selectList("select_login", loginfo); 
+		List<MemberInfo1> minfo = sqlsession.selectList("",loginfo);
 		sqlsession.close();
 		
-		if(rlist.size()>0)	ok =true;
-		
-		return ok;
+		if(minfo.size() >0) {
+			minfo.get(0).setPw(null);
+		}
+		return minfo;
 	}
-
 }

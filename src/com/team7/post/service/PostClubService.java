@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.team7.dao.Class_DAO;
 import com.team7.vo.CPostBean;
 import com.team7.vo.ClubBean;
+import com.team7.vo.MemberLogInfo;
 
 public class PostClubService {
 
@@ -24,6 +25,16 @@ public class PostClubService {
 		ClubBean clubBean = new ClubBean();
 		clubBean.setNo(clubno);
 		List<CPostBean> cposts = sqlsession.selectList("select_CPOST_by_Clubno",clubBean);
+		sqlsession.close();
+		return cposts;
+	}
+	
+
+	public List<CPostBean> getMyCPOSTs(String id){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		MemberLogInfo lin = new MemberLogInfo();
+		lin.setId(id);
+		List<CPostBean> cposts = sqlsession.selectList("select_CPOST_by_writer",lin);
 		sqlsession.close();
 		return cposts;
 	}

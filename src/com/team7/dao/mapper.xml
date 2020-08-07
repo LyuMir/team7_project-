@@ -149,6 +149,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_CPOST_by_Clubno" resultType="com.team7.vo.CPostBean" >
 		select * from team7.team7_cpost where club = ${no}
 	</select>
+	<select id="select_CPOST_by_writer" resultType="com.team7.vo.CPostBean" >
+		select * from team7.team7_cpost where writer = '${id}'
+	</select>
 	
 	
 	
