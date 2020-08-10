@@ -13,7 +13,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.team7.club.service.ClubService;
 import com.team7.dao.Class_DAO;
-import com.team7.photo.service.PhotoService;
+import com.team7.photo.service.PhotoClubService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.ClubBean;
 import com.team7.vo.PhotoBean;

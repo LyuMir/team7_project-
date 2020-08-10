@@ -143,6 +143,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_cpost_photo" resultType="com.team7.vo.PhotoBean" >
 		select * from team7.team7_picture_data where id like '${no}\_clubpost\_%'
 	</select>
+	<select id="select_trainer_photo_all" resultType="com.team7.vo.PhotoBean" >
+		select * from team7.team7_picture_data where id like '${id}\_trainer\_%'
+	</select>
+	<select id="select_trainer_photo" resultType="com.team7.vo.PhotoBean" >
+		select * from team7.team7_picture_data where id like '${id}\_trainer\_${no}'
+	</select>
+	<select id="select_gym_photo_all" resultType="com.team7.vo.PhotoBean" >
+		select * from team7.team7_picture_data where id like '${id}\_gym\_${no}\_%'
+	</select>
+	<select id="select_gym_photo" resultType="com.team7.vo.PhotoBean" >
+		select * from team7.team7_picture_data where id like '${id}\_gym\_${no}\_${picture}'
+	</select>
+	<select id="select_Entire_trainer_photos" resultType="com.team7.vo.PhotoBean" >
+		select * from team7.team7_picture_data where id like '%\_trainer\_%'
+	</select>
+	<select id="select_Entire_gym_photos" resultType="com.team7.vo.PhotoBean" >
+		select * from team7.team7_picture_data where id like '%\_gym\_%'
+	</select>
 	
 	
 	
@@ -158,6 +176,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
+	<insert id="insert_GPOST" parameterType="String">
+		insert into team7.team7_gpost values(${gym}, default, '${title}','${writer}','${contents}','${pkind}','${pcon}')
+	</insert>
+	<insert id="insert_TPOST" parameterType="String">
+		insert into team7.team7_tpost values(${trainer}, default, '${title}','${writer}','${contents}','${pkind}','${pcon}')
+	</insert>
 	
 	
 	<insert id="insert_ZGym" parameterType="String">
@@ -239,25 +263,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	
-	<select id="selectall_Trainer" resultType="com.team7.vo.Trainer_info" >
+	<select id="selectall_Trainer2" resultType="com.team7.vo.Trainer_info" >
 		select * from team7.team7_trainer
 	</select>
+	<select id="selectall_Trainer" resultType="com.team7.vo.Trainer_info" >
+		select * from team7_trainer, team7_picture_data  where  team7_picture_data.id like concat(team7_trainer.id,'_trainer%' )
+	</select>
 	
-	<select id="selectOne_Trainer" resultType="com.team7.vo.Trainer_info" >
+	<select id="selectOne_Trainer2" resultType="com.team7.vo.Trainer_info" >
 		select * from team7.team7_trainer where no = ${no}
 	</select>
 	
+	<select id="selectOne_Trainer" resultType="com.team7.vo.Trainer_info" >
+		select * from team7.team7_trainer, team7_picture_data  where  team7_picture_data.id like concat(team7_trainer.id,'_trainer_1' )  AND team7_trainer.no = ${no}
+	</select>
 	
 	
 	
 	<insert id="insert_Gym" parameterType="String">
 
-	insert into team7.team7_gym values(default, '${owner}', '${gname}' , '${address_num}', '${address}',' ${gphone}', '${opentime}', '${gprice}', '${gtype}', '${contents}', '${gpage}', '${gcerti}', '${gprogram}', '${gsmalltext}', '사진하나', '사진둘');
+	insert into team7.team7_gym values(default, '${owner}', '${gname}' , '${address_num}', '${address}',' ${gphone}', '${opentime}', '${gprice}', '${gtype}', '${contents}', '${gpage}', '${gcerti}', '${gprogram}', '${gsmalltext}');
 
 	</insert>
 	
 	<select id="selectall_Gym" resultType="com.team7.vo.Gym_info" >
-		select * from team7.team7_gym
+		select * from team7.team7_gym, team7_picture_data where team7_picture_data.id like concat(team7_gym.owner,'_gym_%_1')
 	</select>
 	
 	<select id="selectOne_Gym" resultType="com.team7.vo.Gym_info" >
