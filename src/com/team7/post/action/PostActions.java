@@ -8,17 +8,31 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
-import com.team7.photo.service.PhotoService;
-import com.team7.post.service.PostClubService;
+import com.team7.photo.service.PhotoClubService;
+import com.team7.post.service.PostService;
 import com.team7.vo.CPostBean;
 
-public class PostClubActions {
+public class PostActions {
 
 	public void posts(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 
 		request.setCharacterEncoding("utf-8");
 		String writer = (String) request.getSession().getAttribute("LOG_ID");
-		int clubid = Integer.parseInt(request.getParameter("clubid"));
+		int clubid =0, trainerid=0, gymid=0;
+		String cid = request.getParameter("clubid");
+		String tid = request.getParameter("trainerid");
+		String gid = request.getParameter("gymid");
+		System.out.println(gid+tid);
+		if(cid !=null) {
+			clubid = Integer.parseInt(cid);
+		}
+		else if(tid !=null) {
+			trainerid = Integer.parseInt(tid);
+		}
+		else if(gid !=null) {
+			gymid = Integer.parseInt(gid);
+		}
+//		int clubid = Integer.parseInt(request.getParameter("clubid"));
 //		int cpostid = Integer.parseInt(request.getParameter("mypostnumber"));  //너는 여기서 필요 없다. 
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
@@ -27,13 +41,20 @@ public class PostClubActions {
 		
 		CPostBean pbean = new CPostBean();
 		pbean.setClub(clubid);
+		pbean.setGym(gymid);
+		pbean.setTrainer(trainerid);
 		pbean.setContents(contents);
 		pbean.setPcon(pcon);
 		pbean.setPkind(pkind);
 		pbean.setTitle(title);
 		pbean.setWriter(writer);
 		
-		new PostClubService().cpostPOST(pbean);
+		if(clubid != 0)
+			new PostService().cpostPOST(pbean);
+		if(trainerid != 0)
+			new PostService().tpostPOST(pbean);
+		if(gymid != 0)
+			new PostService().gpostPOST(pbean);
 		
 		// refresh 시킬것. 
 	}
@@ -48,7 +69,7 @@ public class PostClubActions {
 		String bywhom = (String) session.getAttribute("LOG_ID");	//이걸 안 쓰게 되는 겁니다...
 		
 		
-		PhotoService pser = new PhotoService();
+		PhotoClubService pser = new PhotoClubService();
 		pser.upload_post_photo(request, "clubpost/club_"+clubid+"/"+cpostid, clubid+"_clubpost_"+cpostid);
 		// 네 . 경로는 Files clubpost club_클럽넘버 포스트넘버  고요,  아이디는  클럽아이디 _ clubpost _ 번째 입니다. 
 

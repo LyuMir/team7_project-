@@ -71,23 +71,24 @@ if(id ==null){
 	<main class="mainwrap_club">
 		<section class="club_left">
 			<article class="left_top">
-				<select>
+				<select id="goclub1" onchange="gotoClub(this)">
 					<option>내가 속한 소모임</option>
 		<% for(int i = 0 ; i < mylist.size(); i++){ %>
 					<option data-id="<%= mylist.get(i).getNo() %>"><%=mylist.get(i).getName() %></option>
 		<% } %>
 				</select>
-				<select>
+				<select id="goclub2" onchange="gotoClub(this)">
 					<option>내가 찜한 소모임</option>
 		<% for(int i = 0 ; i < mylist2.size(); i++){ %>
 					<option data-id="<%= mylist2.get(i).getNo() %>"><%=mylist2.get(i).getName() %></option>
 		<% } %>
 				</select>
-				<select>
+				<select id="goclub3" onchange="gotoClub(this)">
 					<option><%=rlist.get(0).getName()%>과 가까운 소모임</option>
-		<% for(int i = 0 ; i < tlist.size(); i++){ %>
+		<% for(int i = 0 ; i < tlist.size(); i++){ 
+				if(tlist.get(i).getNo() == rlist.get(0).getNo()){}else{%>
 					<option data-id="<%= tlist.get(i).getNo() %>"><%=tlist.get(i).getName() %></option>
-		<% } %>
+		<% } }%>
 					<!-- <option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 </option>
 					<option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 2</option>
 					<option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 3</option> -->
@@ -452,12 +453,12 @@ var plzjoin_00 = $('#plzjoin_00');
 			alert('제목과 내용을 입력해주세요. ');
 			return;
 		}
-		if(picpic.val() ==null || picpic.val()==""){
-			var confirm0 = confirm('사진을 올리지 않고 진행하시겠습니까?');
-			if(!confirm0){
-				return;
-			}
-		}
+		// if(picpic.val() ==null || picpic.val()==""){
+		// 	var confirm0 = confirm('사진을 올리지 않고 진행하시겠습니까?');
+		// 	if(!confirm0){
+		// 		return;
+		// 	}
+		// }
 
 		postpost00.submit();
 	}
@@ -473,5 +474,15 @@ var plzjoin_00 = $('#plzjoin_00');
 		// alert('글을 쓰시려면 소모임에 가입하셔야 합니다!');
 	});
 
+	function gotoClub(select){
+		var goto000 = $(select).children('option:selected').val();
+		var gotour = $(select).children('option:selected').data('id');
+		// alert(goto000+gotour);
+		var confirm000 = confirm(goto000+'로 이동합니다. 계속하시겠습니까?');
+		var url = "toClubMain.club?clubid="+gotour;
+		if (confirm000) {
+			location.href=url;
+		}
+	}
 
 </script>

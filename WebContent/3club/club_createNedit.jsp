@@ -41,7 +41,7 @@ String id = (String) session.getAttribute("LOG_ID");
 			내가 속한 소모임 수 : (##개) , (나열)<br>
 		</div>
 		<div class="turnitoffPlz">
-			<img src="img/star.png" style="width: 50px;">
+			<img src="img/heart_and_star/star.png" style="width: 50px;">
 		</div>
 		
 	</div>
@@ -67,7 +67,7 @@ String id = (String) session.getAttribute("LOG_ID");
 							<div class="card__tag00 content_where"> 장소 : <span>...</span></div>
 							<div class="card__tag00 content_when"> 시간 : <span>...</span></div>
 							<div class="card__heart"> 
-								<img src="img/heart35.png"> <span>5000  </span>  &nbsp;<img src="img/star22.png">  <span>7000</span>
+								<img src="img/heart_and_star/heart35.png"> <span>5000  </span>  &nbsp;<img src="img/heart_and_star/star22.png">  <span>7000</span>
 							</div>
 						</div>
 						<div class="card__bottomContent">
@@ -99,7 +99,7 @@ String id = (String) session.getAttribute("LOG_ID");
 							<div class="card__tag00 content_where"> 장소 : <span><%=rlist.get(i).getArea() %></span></div>
 							<div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
 							<div class="card__heart"> 
-								<img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
+								<img src="img/heart_and_star/heart35.png"> <span>000  </span>  &nbsp;<img src="img/heart_and_star/star22.png">  <span>00</span>
 							</div>
 						</div>
 						<div class="card__bottomContent">

@@ -18,7 +18,7 @@ import com.team7.vo.ClubBean;
 import com.team7.vo.PhotoBean;
 
 
-public class PhotoService {
+public class PhotoClubService {
 	
 	//Files / clubsphoto / 'id' / main / 'id'_club_main
 	public MultipartRequest upload_club_main(HttpServletRequest request, String savefolder, String photoid) throws IOException {
