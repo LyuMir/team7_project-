@@ -21,7 +21,8 @@ import com.team7.vo.PhotoBean;
 public class PhotoTrainerService {
 	
 	//Files / clubsphoto / 'id' / main / 'id'_club_main
-	public MultipartRequest upload_trainer_s(HttpServletRequest request, String savefolder, String photoid, int photonum) throws IOException {
+	public MultipartRequest upload_trainer_s
+	(HttpServletRequest request, String savefolder, String photoid, int photonum) throws IOException {
 //		System.out.println("사진 넣어봅시다. ");
 		
 //		boolean ok = false;
@@ -55,15 +56,15 @@ public class PhotoTrainerService {
 		
 		//중복데이터 삭제...
 		String id = (String) request.getSession().getAttribute("LOG_ID");
-		int gymid = (Integer) request.getSession().getAttribute("gymid");
-		List<PhotoBean> oldphoto = getfilenames_gymphoto(id,gymid,photonum);
+		List<PhotoBean> oldphoto = getfilenames_trainerphoto(id,photonum);
 		for(int i = 0 ; i <oldphoto.size();i++) {
-			if(oldphoto.get(i).getId().contains("_main")) {
+			if(oldphoto.get(i).getId().contains("_trainer_")) {
 				String oldone = oldphoto.get(i).getPicture();
 				
 				File deleteTHIS = new File(realFolder+"/"+oldone);
-				boolean t =deleteTHIS.delete();	
-				System.out.println("예전에 있던 사진 지웁니다...."+t);
+				if(deleteTHIS.isFile()) {
+					boolean t =deleteTHIS.delete();	
+				System.out.println("예전에 있던 사진 지웁니다...."+t);}
 				System.out.println(deleteTHIS.getPath());
 			}
 		}
@@ -75,16 +76,16 @@ public class PhotoTrainerService {
 		
 		PhotoBean photoBean = new PhotoBean();
 		SqlSession sqlsession;
-		photoBean.setId(photoid+"_gym");
+		photoBean.setId(photoid);
 //		photoBean.setPicture(multi.getOriginalFileName((String)multi.getFileNames().nextElement()));
-
+		
 		String ddd= multi.getOriginalFileName((String)multi.getFileNames().nextElement());
 		photoBean.setPicture(ddd);
 		
 		sqlsession = new Class_DAO().get_conn().openSession();
 		sqlsession.delete("delete_rePICTURE",photoBean); 	//중복 데이터 삭제...
-		sqlsession.insert("insert_PICTURE", photoBean); // 변수이름값, 변수값  ... 불러올 id , 보내줄 dto인듯. 
-
+		int r = sqlsession.insert("insert_PICTURE", photoBean); // 변수이름값, 변수값  ... 불러올 id , 보내줄 dto인듯. 
+System.out.println(ddd+r+"개 db에 넣기 완료 (서버에 파일과는 다른) ");
 		sqlsession.commit();
 		sqlsession.close();
 
@@ -92,19 +93,18 @@ public class PhotoTrainerService {
 	}
 	
 
-	public List<PhotoBean> getfilenames_trainerphoto(String id, int gymid,int photonum) {
+	public List<PhotoBean> getfilenames_trainerphoto(String id, int num) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		PhotoBean pb = new PhotoBean();
 		List<PhotoBean> photos;
 		pb.setId(id);
-		pb.setPicture(((Integer)photonum).toString());	//나의 스
-		pb.setNo(gymid);
-		if(photonum == -1) {
+		pb.setNo(num);
+		if(num == -1) {
 			//전체
-			photos = sqlsession.selectList("",pb);
+			photos = sqlsession.selectList("select_trainer_photo_all",pb);
 		}
 		else {
-			photos = sqlsession.selectList("",pb);
+			photos = sqlsession.selectList("select_trainer_photo",pb);
 		}
 		
 //		List<PhotoBean> photos = sqlsession.selectList("select_club_mainphotos",pb);
@@ -112,6 +112,13 @@ public class PhotoTrainerService {
 		return photos;
 	}
 	
-	
+
+	public List<PhotoBean> entire_trainerphoto(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<PhotoBean> photos = sqlsession.selectList("select_Entire_trainer_photos");
+		sqlsession.close();
+		return photos;
+		
+	}
 	
 }

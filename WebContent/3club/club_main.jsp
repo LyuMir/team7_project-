@@ -453,12 +453,12 @@ var plzjoin_00 = $('#plzjoin_00');
 			alert('제목과 내용을 입력해주세요. ');
 			return;
 		}
-		if(picpic.val() ==null || picpic.val()==""){
-			var confirm0 = confirm('사진을 올리지 않고 진행하시겠습니까?');
-			if(!confirm0){
-				return;
-			}
-		}
+		// if(picpic.val() ==null || picpic.val()==""){
+		// 	var confirm0 = confirm('사진을 올리지 않고 진행하시겠습니까?');
+		// 	if(!confirm0){
+		// 		return;
+		// 	}
+		// }
 
 		postpost00.submit();
 	}

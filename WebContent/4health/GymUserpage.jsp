@@ -2,6 +2,7 @@
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.Gym_info" %>
+<%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
 
@@ -13,6 +14,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); 
+List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 
 %>
 
@@ -28,7 +30,7 @@ List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser");
 		<section class="mainwrap">
 			<div class="main_head">
 				<!-- 사진 크게 넣을거임. ...사진 될까? -->
-				<img class="ImageForModal" src="img/gym.png" onclick="ImageClickFunction(this)">
+				<img class="ImageForModal" src="Files/gym/<%=gser.get(0).getOwner()%>/1/<%=photoBean.get(0).getPicture() %>" onclick="ImageClickFunction(this)">
 
 				<div class="modal">
 					<img class="modal-content">
@@ -46,10 +48,7 @@ List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser");
    
    for(int i =0 ; i< gtype.length ; i++){
 	   
-   
-
 %>
-
 
 			 <div class="hero__btn">
 				<%= gtype %>
@@ -112,11 +111,12 @@ List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser");
 		<br><br>
 		<p class="hg" id="coach1">헬스장정보</p>
  <span class="a_text"><%= gser.get(0).getGsmalltext() %></span><br><br><br>
-
-		<img class="profile_img2" src="img/trainer.jpeg">
-		<img class="profile_img2" src="img/trainer.jpeg">
-
-	<img class="profile_img2" src="img/trainer.jpeg">
+ 	<% for(int i = 0 ; i < photoBean.size();i++){ 
+ 				String pid = photoBean.get(i).getId();
+ 				String pidn = pid.substring(pid.lastIndexOf("_")+1);
+ 	%>
+		<img class="profile_img2" src="Files/gym/<%=gser.get(0).getOwner()%>/<%=pidn%>/<%=photoBean.get(i).getPicture() %>">
+	<% } %>
 		<div class="profile_name">
 			<h3 class="hero__info">데일리 헬스의 소개</h3>
 			<span class="a_text"><%= gser.get(0).getGsmalltext() %></span><br>

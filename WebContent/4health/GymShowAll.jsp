@@ -75,7 +75,9 @@ List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); %>
      <article class="grid__item" data-tags="<%= gser.get(i).getGname() %>">
       <div class="card">
         <div class="card__img">
-          <a href = "GymUserpage.health?number=<%=gser.get(i).getGid()%>"> <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains"></a> 
+          <a href = "GymUserpage.health?number=<%=gser.get(i).getGid()%>"> 
+          	<img class="card__img" src="Files/gym/<%=gser.get(i).getOwner()%>/1/<%=gser.get(i).getPicture() %>" alt="<%=gser.get(i).getPicture() %>">
+          </a> 
         </div>
         <div class="card__content">
           <div class="card__tag00"> <%=gser.get(i).getGid()%></div>

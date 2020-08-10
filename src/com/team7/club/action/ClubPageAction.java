@@ -11,7 +11,7 @@ import com.team7.club.service.CMemberService;
 import com.team7.club.service.ClubService;
 import com.team7.controller.ClubController;
 import com.team7.photo.service.PhotoClubService;
-import com.team7.post.service.PostClubService;
+import com.team7.post.service.PostService;
 import com.team7.vo.*;
 import com.team7.zzim.controller.ZzimService;
 
@@ -66,7 +66,7 @@ public class ClubPageAction implements Action{
 			}
 		}
 		
-		List<CPostBean> cposts = new PostClubService().getCPOSTs(Integer.parseInt(club_id));
+		List<CPostBean> cposts = new PostService().getCPOSTs(Integer.parseInt(club_id));
 		List<PhotoBean> cpphotos = new PhotoClubService().getPs_cpost(Integer.parseInt(club_id));
 		
 		request.setAttribute("mylist", mylist);

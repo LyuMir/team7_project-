@@ -99,7 +99,7 @@ public class GymCreateAction implements Action{
 		
 		
 		ActionForward forward= new ActionForward();
-		forward.setPath("_FORWHERE.jsp?forwhere=index.jsp");
+		forward.setPath("Search.health");
 		return forward;
 	} 
 

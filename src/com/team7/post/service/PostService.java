@@ -9,11 +9,27 @@ import com.team7.vo.CPostBean;
 import com.team7.vo.ClubBean;
 import com.team7.vo.MemberLogInfo;
 
-public class PostClubService {
+public class PostService {
 
 	public void cpostPOST(CPostBean pbean) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		sqlsession.insert("insert_CPOST",pbean);
+		sqlsession.commit();
+		sqlsession.close();
+		
+	}
+
+	public void gpostPOST(CPostBean pbean) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.insert("insert_GPOST",pbean);
+		sqlsession.commit();
+		sqlsession.close();
+		
+	}
+
+	public void tpostPOST(CPostBean pbean) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.insert("insert_TPOST",pbean);
 		sqlsession.commit();
 		sqlsession.close();
 		

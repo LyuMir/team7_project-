@@ -3,19 +3,12 @@
     
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
     <meta charset="utf-8">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
       <link rel="stylesheet" type="text/css" href="css/gymform.css">
 
-    <title></title>
-  </head>
-  <body>
 
     <div class="ycontainer">
       <h2 class="hero__text ">나의 헬스장 등록하기 </h2>
@@ -26,7 +19,7 @@
  * 아래에 기재해주신것들은 어쩌고저쩌고저저졲고고고오~<br>
  * 아래에 기재해주신것들은 어쩌고저쩌고저저졲고고고오~<br>
     </div>
-<form action="id_gymcreate.health" method="post">
+<form action="id_gymcreate.health" method="post" id="form00">
   <br><br>
 <span class="question">  등록후 최소 6개월간은 데일리 헬스에서 활동을 해주셔야합니다. 동의하십니까?</span><br>
 <input type="radio" name="agree"> 네, 동의합니다
@@ -185,24 +178,107 @@
 
 <br><br>
 
-<input type="file" name="photos" >
+</form>
 
+
+<form id="photogo" formenctype="multipart/form-data" accept-charset="UTF-8" method="post">
+  <input type="file" id="photo1" name="photo1" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 
+  <input type="hidden" name="num" value="11">
+  <input type="hidden" name="photonum" value="1">
+</form> <button onclick="photo_upload(1)">사진 업로드</button>
+
+<form id="photogo2" formenctype="multipart/form-data" accept-charset="UTF-8" method="post">
+  <input type="file" id="photo1" name="photo1" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 
+  <input type="hidden" name="num" value="11">
+  <input type="hidden" name="photonum" value="2">
+</form> <button onclick="photo_upload(2)">사진 업로드</button>
+<form id="photogo3" formenctype="multipart/form-data" accept-charset="UTF-8" method="post">
+  <input type="file" id="photo1" name="photo1" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 
+  <input type="hidden" name="num" value="11">
+  <input type="hidden" name="photonum" value="3">
+</form> <button onclick="photo_upload(3)">사진 업로드</button>
 
 <br><br>
 
 아래 보내기 버튼 클릭 시  <a href="ddd" class="href">이용약관</a> 및  <a href="ddd" class="href">취급방침</a>에 동의한 것으로 간주합니다.
 <br><br><br>
 
-<button class="btn" type="submit" name="button">보내기</button>
+<button class="btn" type="" name="button" id="button11">보내기</button>
 
-</form>
 
 
 
     </div>
 
-  </body>
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="js/DAUM_adress.js"></script>
   <script>
+
+    var button11 = $('#button11');
+
+  var photogo = $('#photogo');
+  var photo1 = $('#photo1');
+  // var data = new FormData();
+
+  button11.click(function(){
+    if(true){ // 무엇을 쓰고, 저것을 하고, 이걸 채워야지 서밋 가능함. < 으로 해주세요. 
+
+      form00.submit();
+    }
+  });
+    // button11.click(function(){
+
+    //   if(true){ //조건을 달성해야만 다음으로 넘어갈 수 있게 해주세요. <
+    //     form00.submit();
+    //   }
+    // });
+
+  function photo_upload(pp){
+  var pform; 
+  var pdata; 
+    if(pp == 1){
+      pform = $('#photogo')[0];
+      pdata = new FormData(pform);
+    }
+    else if(pp == 2){
+      pform = $('#photogo2')[0];
+      pdata = new FormData(pform);
+    }
+    else if(pp == 3){
+      pform = $('#photogo3')[0];
+      pdata = new FormData(pform);
+    }
+    $.ajax({
+        url : 'gymUpload.photo', //문서 위치. 
+
+        data : pdata,
+
+        type : 'post',
+
+        method : 'post',
+
+        enctype:'multipart/form-data',
+
+        processData:false,
+        contentType:false,
+        cache:false,
+        timeout:600000,
+
+
+        success : function(data){
+          // alert(data);
+        },
+        error:function(data){
+          alert('지정하지 않은 형식이거나 파일 크기가 5mb를 넘었습니다. ');
+        }
+        
+      });
+  }
+
+    var button11 = $('button#button11');
+    var form00 = $('#form00');
+
 
 
   $(document).ready(function(){
@@ -238,4 +314,3 @@
 
 
   </script>
-</html>

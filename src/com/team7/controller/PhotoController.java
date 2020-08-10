@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team7.club.action.Action;
+import com.team7.photo.action.GymPhotoAction;
+import com.team7.photo.action.TrainerPhotoAction;
 import com.team7.photo.service.PhotoClubService;
 import com.team7.post.action.PostActions;
 import com.team7.vo.ActionForward;
 
-@WebServlet("*.post")
-public class PostController extends javax.servlet.http.HttpServlet 
+@WebServlet("*.photo")
+public class PhotoController extends javax.servlet.http.HttpServlet 
 {
 
 	
@@ -39,34 +41,36 @@ public class PostController extends javax.servlet.http.HttpServlet
 		else {
 			logined=(Integer) session.getAttribute("LOG_STATUS");
 		}
-		
-		boolean gobackRefresh = false;
-		//action은 그냥 시켜시켜..
-		if(command.equals("/clubPostPhoto.post")){
-			new PostActions().photoposts(request, response);
-		}
-		else if(command.equals("/clubPost.post")){
-			new PostActions().posts(request, response);
-			gobackRefresh = true;
-		}
-		else if(command.equals("/trainerPost.post")){
-			new PostActions().posts(request, response);
-			gobackRefresh = true;
-		}
+		System.out.println("여기다 여기ㅣㅣ");
 
-		//가야할 곳은 바로 거기임.. 
-		if(gobackRefresh) {	//새로고침
-			String referer = request.getHeader("Referer");
-			response.sendRedirect(referer);	// 자! 다시 새로고침!
-			
+		if(command.equals("/trainerUpload.photo")){
+			new TrainerPhotoAction().photoUpload(request, response);
 		}
-		else {		//그냥 뒤로만. 
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("history.back();");
-			out.println("</script>");
+		else if(command.equals("/gymUpload.photo")) {
+			new GymPhotoAction().photoUpload(request, response);
 		}
+		else if(command.equals("/trainerSelect.photo")) {
+			new TrainerPhotoAction().photoget(request, response);
+		}
+		else if(command.equals("/gymSelect.photo")) {
+			new TrainerPhotoAction().photoget(request, response);
+		}
+		
+
+//		//가야할 곳은 바로 거기임.. 
+//		if(gobackRefresh) {	//새로고침
+//			String referer = request.getHeader("Referer");
+//			response.sendRedirect(referer);	// 자! 다시 새로고침!
+//			
+//		}
+//		else {		//그냥 뒤로만. 
+//			response.setContentType("text/html;charset=UTF-8");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>");
+//			out.println("history.back();");
+//			out.println("</script>");
+//		}
+		//ajax라서 안 쓸걸...?
 		
 	}
 	

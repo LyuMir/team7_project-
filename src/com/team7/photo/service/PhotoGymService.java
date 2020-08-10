@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -21,21 +22,26 @@ import com.team7.vo.PhotoBean;
 public class PhotoGymService {
 	
 	//Files / clubsphoto / 'id' / main / 'id'_club_main
-	public MultipartRequest upload_gym_main(HttpServletRequest request, String savefolder, String photoid) throws IOException {
-//		System.out.println("사진 넣어봅시다. ");
+	public MultipartRequest upload_gym_main
+	(HttpServletRequest request) throws IOException {
 		
-//		boolean ok = false;
-		String realFolder="";
-//		String saveFolder="/abc";
-		if(savefolder ==null) {
-			return null;
-		}
-		if(!savefolder.startsWith("/")) {
-			savefolder = "/"+savefolder;
-		}
-		savefolder = "/Files"+savefolder;
-		
+        HttpSession session = request.getSession();
+		String bywhom = (String) session.getAttribute("LOG_ID");
 		int fileSize=5*1024*1024;
+		
+		
+		MultipartRequest multif=new MultipartRequest(request,
+				request.getServletContext().getRealPath("Files/dump"),
+				fileSize,
+				"UTF-8",
+				new DefaultFileRenamePolicy());	//임시로 세워뒀어요. 이후에 옮기든지 하라고. 
+		String num = multif.getParameter("num");
+		String photonum = multif.getParameter("photonum");
+		System.out.println(num+"그리고"+photonum);
+		String photoid = bywhom+"_gym_"+num+"_"+photonum;
+		String savefolder = "Files/gym/"+bywhom+"/"+photonum;
+		String realFolder="";
+		
 		ServletContext context = request.getServletContext();
 		realFolder=context.getRealPath(savefolder);
 		File Folder = new File(realFolder);	
@@ -55,10 +61,9 @@ public class PhotoGymService {
 		
 		//중복데이터 삭제...
 		String id = (String) request.getSession().getAttribute("LOG_ID");
-		int gymid = (Integer) request.getSession().getAttribute("gymid");
-		List<PhotoBean> oldphoto = getfilenames_gymphoto(id,gymid);
+		List<PhotoBean> oldphoto = getfilenames_gymphoto(id,Integer.parseInt(num),Integer.parseInt(photonum));
 		for(int i = 0 ; i <oldphoto.size();i++) {
-			if(oldphoto.get(i).getId().contains("_main")) {
+			if(oldphoto.get(i).getId().contains("_gym_")) {
 				String oldone = oldphoto.get(i).getPicture();
 				
 				File deleteTHIS = new File(realFolder+"/"+oldone);
@@ -67,19 +72,22 @@ public class PhotoGymService {
 				System.out.println(deleteTHIS.getPath());
 			}
 		}
-		MultipartRequest multi=new MultipartRequest(request,
-				realFolder,
-				fileSize,
-				"UTF-8",
-				new DefaultFileRenamePolicy());
+		String filename= multif.getOriginalFileName((String)multif.getFileNames().nextElement());
+		File moveTHIS = new File(context.getRealPath("Files/dump")+"/"+filename);
+		boolean t = moveTHIS.renameTo(new File(realFolder+"/"+filename));
+		System.out.println("옮기기 : "+t);
+		
+//		MultipartRequest multi=new MultipartRequest(request,
+//				realFolder,
+//				fileSize,
+//				"UTF-8",
+//				new DefaultFileRenamePolicy());
 		
 		PhotoBean photoBean = new PhotoBean();
 		SqlSession sqlsession;
-		photoBean.setId(photoid+"_gym");
-//		photoBean.setPicture(multi.getOriginalFileName((String)multi.getFileNames().nextElement()));
+		photoBean.setId(photoid);
 
-		String ddd= multi.getOriginalFileName((String)multi.getFileNames().nextElement());
-		photoBean.setPicture(ddd);
+		photoBean.setPicture(filename);
 		
 		sqlsession = new Class_DAO().get_conn().openSession();
 		sqlsession.delete("delete_rePICTURE",photoBean); 	//중복 데이터 삭제...
@@ -88,20 +96,32 @@ public class PhotoGymService {
 		sqlsession.commit();
 		sqlsession.close();
 
-		return multi;
+		return multif;
 	}
 	
 
-	public List<PhotoBean> getfilenames_gymphoto(String id, int gymid) {
+	public List<PhotoBean> getfilenames_gymphoto(String id, int gymnum, Integer photonum) {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		PhotoBean pb = new PhotoBean();
 		pb.setId(id);
-		pb.setNo(gymid);
-//		List<PhotoBean> photos = sqlsession.selectList("select_club_mainphotos",pb);
+		pb.setNo(gymnum);
+		pb.setPicture(photonum.toString());
+		List<PhotoBean> photos;
+		if(photonum == -1) {
+			photos = sqlsession.selectList("select_gym_photo_all",pb);
+		}
+		else {
+			photos = sqlsession.selectList("select_gym_photo",pb);
+		}
 		sqlsession.close();
 		return photos;
 	}
 	
-	
-	
+	public List<PhotoBean> entire_gymphoto(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<PhotoBean> photos = sqlsession.selectList("select_Entire_gym_photos");
+		sqlsession.close();
+		return photos;
+		
+	}
 }
