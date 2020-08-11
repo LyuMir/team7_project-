@@ -56,9 +56,20 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 				
 			
 			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+			forward.setPath("_FORWHERE.jsp?forwhere=4health/introhealth.jsp");
+		  
+	}
+			if(command.equals("/gymapply.health")){	
+			String id = (String)session.getAttribute("LOGIN");
+				
+			System.out.print("어플라이페이지 클릭됩니까?");
+			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
 			forward.setPath("_FORWHERE.jsp?forwhere=4health/gym_Apply.jsp");
 		  
 		}
+		
+		
+		
 		 if(command.equals("/id_gymcreate.health")) {
 			action  = new com.team7.gym.action.GymCreateAction();
 			System.out.print("d");
