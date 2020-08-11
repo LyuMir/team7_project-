@@ -38,7 +38,7 @@
 
 			<tr>
 				<td>소모임 이름</td>
-				<td><input readonly="true" id="club_name" type="text" name="club_name" maxlength="25" placeholder="소모임 이름" value="<%=theclub.get(0).getName()%>">
+				<td><input readonly="true" id="" type="text" name="" maxlength="25" placeholder="소모임 이름" value="<%=theclub.get(0).getName()%>">
 					<div id="output01">이름은 바꿀 수 없습니다...</div>
 					<!-- <span class="white000">.</span> --></td>
 			</tr>
