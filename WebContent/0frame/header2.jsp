@@ -5,8 +5,8 @@
   <div class="wrap_big_00">
     <div class="top_left00 fleft"><a href="index.jsp"><img src="img/logo1.png"></a></div>
     <div class="top_right00 fright">
- 		<a><%=id %></a>
-      <a href="logout.log">로그아웃</a>
+ 		<a><%=id %><img src="welcom.png"></a>
+      <a href="logout.log"><img src="logout.png"></a>
       <!-- <a href="">마이 페이지</a>-->
       <a href="id_MainToApply.trainer">코치지원</a>
     </div>

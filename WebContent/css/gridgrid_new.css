@@ -142,8 +142,38 @@ main *{
 }
 
 #buttons{
-  
   width: calc(100% - 35px);
+}
+#buttons #buttons0{
+
+}
+#buttons #buttons1{
+
+}
+#buttons #buttons2{
+
+}
+#buttons button{
+  width: 90px;
+  height: 29px;
+  border: none;
+
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+#buttons button:hover{
+  background-color: rgb(133,210,185);
+}
+#buttons0 button{
+  width: 100px;
+}
+#buttons1 button{
+  background-color: #3b898b;
+  color: white;
+}
+#buttons2 button{
+  background-color: #5d9c94 ;
+  color: white;
 }
 .grid {
   display: grid; 
@@ -162,7 +192,6 @@ main *{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.2s;
-
 }
 .grid__item:hover {
   /*transform: translateY(-1%);*/

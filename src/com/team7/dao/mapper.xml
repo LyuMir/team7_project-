@@ -167,7 +167,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_CPOST_by_Clubno" resultType="com.team7.vo.PostBean" >
 		select * from team7.team7_cpost where club = ${no}
 	</select>
+<<<<<<< HEAD
 
+=======
+	<select id="select_CPOST_by_writer" resultType="com.team7.vo.PostBean" >
+		select * from team7.team7_cpost where writer = '${id}'
+	</select>
+	
+>>>>>>> branch 'master' of https://github.com/LyuMir/team7_project-.git
 	
 	
 	<insert id="insert_GPOST" parameterType="String">
