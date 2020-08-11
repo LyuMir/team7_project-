@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>데일리 헬스</title>
     <!--  넌 문제 맞음... main -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css?ver=3">
     <link rel="stylesheet" type="text/css" href="css/mainmain88.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css\grt-responsive-menu.css">

@@ -31,7 +31,7 @@
   var boxs = $('.boarddiv');
 
  
-// function postGetter(){
+function postGetter(){
     var url = "indexPosts.post";
     var datasss;
     $.ajax({
@@ -43,10 +43,8 @@
             datasss = $(data);
         }
     })
-    // return datasss;
-// }
-
-  var text550 = datasss.children('div').eq(0).data('author')+'님, ' +datasss.children('div').eq(0).text();
+    return datasss;
+  var text550 = datasss.children('div').eq(0).data('author')+'님, ' + datasss.children('div').eq(0).text();
 
 
   boTs.eq(0).text(datasss.children('div').eq(0).data('title'));
@@ -56,6 +54,10 @@
   boxs.eq(0).text(text550);
   boxs.eq(1).text(datasss.children('div').eq(1).text());
   boxs.eq(2).text(datasss.children('div').eq(2).text());
+}
+postGetter();
+
+
 
 
 
