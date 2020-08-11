@@ -51,7 +51,7 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			return;
 		}
 		System.out.print("로그인체크");
-		if(command.equals("/id_Mng.health")){	
+		if(command.equals("/Mng.health")){	
 			String id = (String)session.getAttribute("LOGIN");
 				
 			
@@ -59,7 +59,7 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			forward.setPath("_FORWHERE.jsp?forwhere=4health/introhealth.jsp");
 		  
 	}
-			if(command.equals("/gymapply.health")){	
+			if(command.equals("/id_gymapply.health")){	
 			String id = (String)session.getAttribute("LOGIN");
 				
 			System.out.print("어플라이페이지 클릭됩니까?");

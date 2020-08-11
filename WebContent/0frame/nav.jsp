@@ -37,8 +37,8 @@
             <li class="grt-dropdown" ><a href="noticeshow.notice"><img src="img/pro.png"></a>
               <ul class="grt-dropdown-list">
                 <li><a href="id_profInfo.notice">전문가 등록이란</a></li>
-                <li><a href="id_Mng.health">헬스장 등록/관리</a></li>
-                <li><a href="id_Mng.trainer">트레이너 등록/관리</a></li>
+                <li><a href="Mng.health">헬스장 등록/관리</a></li>
+                <li><a href="Mng.trainer">트레이너 등록/관리</a></li>
                 <li><a href="id_MngRev.rev">예약 확인</a></li>
                 
               </ul>

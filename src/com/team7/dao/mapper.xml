@@ -272,6 +272,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from team7.team7_trainer, team7_picture_data  where  team7_picture_data.id like concat(team7_trainer.id,'_trainer_1' )  AND team7_trainer.no = ${no}
 	</select>
 	
+	<select id="selectMy_Trainer" resultType="com.team7.vo.Trainer_info" >
+		select * from team7.team7_trainer where id = '${id}'
+	</select>
+	
+	
 	
 	
 	<insert id="insert_Gym" parameterType="String">

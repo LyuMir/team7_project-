@@ -44,17 +44,19 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		System.out.print("로그인최초확인");
 		
 		
-		
-		
 		if(command.startsWith("/id_") && logined !=1) {
 			response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
 			return;
 		}
 		System.out.print("로그인체크");
-		if(command.equals("/id_MainToApply.trainer")){	
+		if(command.equals("/Mng.trainer")){	
+			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/introtrainer.jsp");
+		  
+		}
+		if(command.equals("/id_coachapply.trainer")){	
 			String id = (String)session.getAttribute("LOGIN");
-				
-			
+			System.out.println("트레이너등록버튼누름");
 			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
 		  
@@ -70,6 +72,21 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			
 			
 		}  //할거 담기
+		 if(command.equals("/id_trainermypage.trainer")) {
+			 String id = (String)session.getAttribute("LOGIN");
+			 
+			 System.out.println("트레이너 마이페이지눌렀음");
+			 action  = new com.team7.trainer.action.TrainerMypageAction();
+				try {
+					forward=action.execute(request, response); //메서드실행함
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+//				forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
+				
+				
+			}
 		
 		 if(command.equals("/Search.trainer")){	
 			System.out.print("트레이너 서치 클릭됩니까");
@@ -94,6 +111,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			}System.out.print("dddddd");
 
 		System.out.println(command+"...dla..임");
+		
 		if(forward != null){
 			
 			if(forward.isRedirect()){
