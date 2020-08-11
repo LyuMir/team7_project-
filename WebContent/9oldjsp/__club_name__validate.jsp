@@ -7,7 +7,7 @@
 		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			cx = DriverManager.getConnection("jdbc:mysql://localhost:3306/team7","root","34811005");
+			cx = DriverManager.getConnection("jdbc:mysql://localhost:3306/team7","team7_id","1234");
 			if( cx ==null)
 				throw new Exception("! 데이터베이스 연결 불가!"); 
 

@@ -26,9 +26,9 @@ header {
 	right:0;
 }
 
-header.scrolled {
+/*header.scrolled {
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px 0px;
-}
+}*/
 
 /* header nav {
 	clear:both;
