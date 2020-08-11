@@ -38,6 +38,9 @@ public class TrainerMypageAction implements Action{
 		List<Trainer_info> traineronelist = new ArrayList<Trainer_info>();
 		
 		traineronelist = tser.getTrainerMyinfo(info);
+		System.out.println(traineronelist.get(0).getNo()+"안웅ㅇ기까지온건가요?");
+		
+		
 		String tid =	traineronelist.get(0).getId();
 		List<PhotoBean> photos = new PhotoTrainerService().getfilenames_trainerphoto(tid, -1);
 		

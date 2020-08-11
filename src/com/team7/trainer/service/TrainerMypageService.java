@@ -17,25 +17,15 @@ public class TrainerMypageService {
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		System.out.print("겟 트레이너인포입니다");
 		
+		
 		List<Trainer_info> tser = sqlsession.selectList("selectMy_Trainer",info);
+		
+		
+		
 		
 		System.out.println(tser.get(0).getId() +"된건가");
 		System.out.println(tser.get(0).getTbigtext()+"된건가?");
 		
-//		String imsimajors = tser.get(0).getTmajor() ;
-//		String [] major = imsimajors.split(",");
-//		
-//		for (int i=0 ; i < major[i].length()-1 ; i ++) {
-//
-//			System.out.println(major[i]);
-//			if(major[i].equals("filates")){
-//				major[i] = "dd";
-//			
-//			}
-//			else{
-//			
-//			}
-//		
 		
 		System.out.println(tser.get(0).getTtime());
 		

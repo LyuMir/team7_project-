@@ -62,6 +62,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		  
 		}
 		 if(command.equals("/id_trainerapply.trainer")) {
+			 System.out.print("d");
 			action  = new com.team7.trainer.action.TrainerCreateAction();
 			System.out.print("d");
 			try {
