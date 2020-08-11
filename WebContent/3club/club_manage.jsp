@@ -97,6 +97,32 @@ session.setAttribute("clubid",rlist.get(0).getNo());
 		<% }  %>
 	</table>
 </form>
+<form>
+	<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>가입일</th>
+				<th>이름</th>
+				<th>경고 주기</th>
+				<th>탈퇴시키기</th>
+			</tr>
+		</thead>
+<% for(int i = 0 ;  i <rlist_m.size(); i++){ %>
+		<tr>
+			<td><%=i+1 %></td>
+			<td>"</td>
+			<td><%=rlist_m.get(i).getCmember() %></td>
+			<td>
+				<input class="gg123" type="checkbox" name="gg123" value="<%=i%>">
+			</td>
+			<td>
+				<input class="bb123" type="checkbox" name="bb123" value="<%=i%>">
+			</td>
+		</tr>
+<%} %>
+	</table>
+</form>
 
 
 	<button onclick="saveit()">저장</button>
@@ -108,6 +134,9 @@ session.setAttribute("clubid",rlist.get(0).getNo());
 <script type="text/javascript">
 	var joks = $('input.jok');
 	var jnos = $('input.jno');
+	
+	var gg123 = $('input.gg123');
+	var bb123 = $('input.bb123');
 
 	joks.each(function(idex,item){
 		$(item).click(function(){
@@ -122,6 +151,21 @@ session.setAttribute("clubid",rlist.get(0).getNo());
 				$(this).prev().prop("checked",false);
 			}
 		})
+	});
+
+	gg123.each(function(index,item){
+		$(item).change(function(){
+			if(this.checked){
+				alert('그런가?');
+				var con1= confirm('를 ..하시겠습니까?');
+				if(con1){
+					
+				}
+				else{
+					this.prop("checked",false);
+				}
+			}
+		});
 	});
 
 

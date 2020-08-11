@@ -68,6 +68,7 @@ public class ClubPageAction implements Action{
 		
 		List<PostBean> cposts = new PostService().getCPOSTs(Integer.parseInt(club_id));
 		List<PhotoBean> cpphotos = new PhotoClubService().getPs_cpost(Integer.parseInt(club_id));
+		List<PhotoBean> clubphoto = new PhotoClubService().getfilenames_clubmains(rlist.get(0).getAdmin(), Integer.parseInt(club_id));
 		
 		request.setAttribute("mylist", mylist);
 		request.setAttribute("mylist2", mylist2);
@@ -81,6 +82,7 @@ public class ClubPageAction implements Action{
 				System.out.println(rlist.get(0).getMeetingDate());
 		request.setAttribute("cposts", cposts);
 		request.setAttribute("cpphotos", cpphotos);
+		request.setAttribute("clubphoto", clubphoto);
 		
 		int mypostnumber = 0 ; 
 		for(int i = 0 ; i < cposts.size(); i ++) {

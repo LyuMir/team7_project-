@@ -9,7 +9,7 @@
 <%@ page import="java.util.ArrayList" %>
 
 
-    <link rel="stylesheet" type="text/css" href="css/club_main.css?ver=67">
+    <link rel="stylesheet" type="text/css" href="css/club_main.css?ver=68">
 	<link rel="stylesheet" type="text/css" href="css/photo_modal00.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -26,6 +26,25 @@ List<ClubBean> rlist00 =  (List<ClubBean>) request.getAttribute("rlist00");
 List<ClubBean> tlist = (List<ClubBean>) request.getAttribute("tlist");
 boolean ami = (boolean) request.getAttribute("ami");	//탈퇴 중 tf
 boolean ied = (boolean) request.getAttribute("ied");	//가입신청중 tf
+
+List<PhotoBean> clubphoto = (List<PhotoBean>)request.getAttribute("clubphoto");
+boolean cpho = true,  cp1 = false, cp2 = false; 
+String pdir1 = "",pdir2="";
+if(clubphoto == null){
+		cpho = false;
+}
+else{
+	for(int i = 0; i < clubphoto.size(); i++){
+		if(clubphoto.get(i).getId().contains("main")){
+			pdir1="Files/clubsphoto/"+rlist.get(0).getAdmin()+"_"+rlist.get(0).getNo()+"/main/"+clubphoto.get(i).getPicture();
+			cp1= true;
+		}
+		if(clubphoto.get(i).getId().contains("profile")){
+			pdir2="Files/clubsphoto/"+rlist.get(0).getAdmin()+"_"+rlist.get(0).getNo()+"/profile/"+clubphoto.get(i).getPicture();
+			cp2=true;
+		}
+	}
+}
 
 List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 List<PhotoBean> cpphotos = (List<PhotoBean>) request.getAttribute("cpphotos");
@@ -96,14 +115,18 @@ if(id ==null){
 			<hr>
 			<article class="left_main">
 				<!-- <div class="profile_img"><img src=""></div> -->
-				<img class="profile_img" src="img/이쁜이미지1.jpg">
+	<% if(cp2){ %>
+				<img class="profile_img" src="<%=pdir2%>">
+	<%}else{ %>
+				<img class="profile_img" src="img/exc/basketball4.jpg">
+	<%} %>
 				<div class="profile_name">
 					<%=rlist.get(0).getName() %>
 				</div>
 	<% if(adminyn == 1){ %>
 				<div class="zzim">
-					<button id="z_zzim_1" onclick="managego()">관리하기 <img src="img/heart_and_star/heart34.png"></button>
-					<button id="z_join_1" onclick="joinmanagego()">가입관리 <img src="img/heart_and_star/star34.png"></button>
+					<button id="z_zzim_1" onclick="managego()">모임 관리 <img src="img/heart_and_star/heart34.png"></button>
+					<button id="z_join_1" onclick="joinmanagego()">회원 관리 <img src="img/heart_and_star/star34.png"></button>
 				</div>
 	<% }else if(joinyn == 1){ %>
 				<div class="zzim">
@@ -146,7 +169,11 @@ if(id ==null){
 		<section class="club_main">
 			<article class="main_head">
 				<!-- 사진 크게 넣을거임. ...사진 될까? -->
-				<img class="ImageForModal" src="img/이쁜이미지2.jpg" onclick="ImageClickFunction(this)">
+	<% if(cp1){ %>
+				<img class="ImageForModal" src="<%=pdir1 %>" onclick="ImageClickFunction(this)">
+	<%}else{ %>
+				<img class="ImageForModal" src="img/exc/hiking77.jpg" onclick="ImageClickFunction(this)">
+	<%} %>
 				<div class="modal">
 					<img class="modal-content">
 					<div class="caption">***소모임의 메인 이미지입니다. </div>
