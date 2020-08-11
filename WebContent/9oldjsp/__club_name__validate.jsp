@@ -4,12 +4,12 @@
 
 		Connection cx = null;
 		Statement smt = null;
-		
+
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			cx = DriverManager.getConnection("jdbc:mysql://localhost:3306/team7","root","34811005");
+			cx = DriverManager.getConnection("jdbc:mysql://localhost:3306/team7","team7_id","1234");
 			if( cx ==null)
-				throw new Exception("! 데이터베이스 연결 불가!"); 
+				throw new Exception("! 데이터베이스 연결 불가!");
 
 
 			smt = cx.createStatement();
@@ -21,7 +21,7 @@
 		}
 		finally{
 			try{
-				smt.close(); //클로즈는 꼭 해줍시다. 
+				smt.close(); //클로즈는 꼭 해줍시다.
 			}
 			catch(Exception ignored){}
 			try{

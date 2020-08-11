@@ -21,6 +21,7 @@ public class Trainer_info {
 	String tbigtext;
 	String tsmalltext;
 	String ttime;
+	private String picture; // this one is for selecting
 	
 	
 	public String getTtime() {
@@ -132,6 +133,12 @@ public class Trainer_info {
 	}
 	public void setTsmalltext(String tsmalltext) {
 		this.tsmalltext = tsmalltext;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 	
 

@@ -5,6 +5,11 @@
 <!DOCTYPE html>
 
 
+<%
+ 	session.setAttribute("num", 1);
+
+%>
+
 
       <link rel="stylesheet" type="text/css" href="css/writing.css">
 
@@ -17,7 +22,7 @@
  * 한번 글을 작성한 뒤에는 수정이 번거롭습니다. <br>
  * 작성하실때 주의를 기울여서 작성해주시길 바랍니다. <br>
     </div>
-<form action="id_trainerapply.trainer" method="post">
+<form action="id_trainerapply.trainer" method="post" id="applyer">
   <br><br>
 <span class="question">  등록후 최소 6개월간은 데일리 헬스에서 활동을 해주셔야합니다. 동의하십니까?</span><br>
 <input type="radio" name="agree"> 네, 동의합니다
@@ -180,8 +185,11 @@
 
 <br><br>
 
-<input type="file" name="photos" >
-
+</form>
+<form id="photogo" formenctype="multipart/form-data" accept-charset="UTF-8" method="post">
+	<input type="file" id="photo1" name="photo1" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 
+	<!-- <input type="hidden" name="num" value="1">-->
+</form> <button onclick="photo_upload()">사진 업로드</button>
 
 <br><br>
 
@@ -189,10 +197,59 @@
 <br><br><br>
 
 
-<button class="btn" type="submit" name="button">보내기</button>
+<button class="btn" type="" name="button" id="button11">보내기</button>
 
 
-</form>
 
     </div>
-<script type="text/javascript" src="js/club_CRU.js?version=22"></script>
+
+<script type="text/javascript">
+
+
+	var button = $('button#button11');
+
+
+	var aform = $('#appler');
+
+	var photogo = $('#photogo');
+	var photo1 = $('#photo1');
+	// var data = new FormData();
+
+	button.click(function(){
+		if(true){ // 무엇을 쓰고, 저것을 하고, 이걸 채워야지 서밋 가능함. < 으로 해주세요. 
+
+			aform.submit();
+		}
+	});
+
+	function photo_upload(){
+	var pform = $('#photogo')[0];
+	var pdata = new FormData(pform);
+		$.ajax({
+				url : 'trainerUpload.photo', //문서 위치. 
+
+				data : pdata,
+
+				type : 'post',
+
+				method : 'post',
+
+				enctype:'multipart/form-data',
+
+				processData:false,
+				contentType:false,
+				cache:false,
+				timeout:600000,
+
+
+				success : function(data){
+					alert('사진 올리기 완료 :'+pform.val());
+				}
+				
+			});
+
+	}
+
+
+</script>
+<!-- <script type="text/javascript" src="js/trainerapply.js"></script> -->

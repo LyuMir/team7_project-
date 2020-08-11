@@ -6,7 +6,7 @@
 <!-- <html>
 <head>
 	<title>소모임 전체보기...</title> -->
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=5">
 <!-- </head>
 <body> -->
 	<!-- 바디... main만 있어도 됨.  -->
@@ -167,7 +167,7 @@ var kk = 0 ;
 		$('#manageClub').submit();
 	}
 </script>
-<script type="text/javascript" src="77zzim/zzim_js.js"></script>
+<script type="text/javascript" src="77zzim/zzim_js.js?ver=3"></script>
 
 <!-- 
 </body>
