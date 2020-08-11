@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.team7.photo.service.PhotoClubService;
 import com.team7.post.service.PostService;
-import com.team7.vo.CPostBean;
+import com.team7.vo.PostBean;
 
 public class PostActions {
 
@@ -22,7 +22,7 @@ public class PostActions {
 		String cid = request.getParameter("clubid");
 		String tid = request.getParameter("trainerid");
 		String gid = request.getParameter("gymid");
-		System.out.println(gid+tid);
+		System.out.println(gid+tid+"의 포스트 포스트 감지. ");
 		if(cid !=null) {
 			clubid = Integer.parseInt(cid);
 		}
@@ -39,7 +39,7 @@ public class PostActions {
 		String pkind = request.getParameter("pkind");
 		String pcon = request.getParameter("pcon");
 		
-		CPostBean pbean = new CPostBean();
+		PostBean pbean = new PostBean();
 		pbean.setClub(clubid);
 		pbean.setGym(gymid);
 		pbean.setTrainer(trainerid);

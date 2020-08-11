@@ -29,14 +29,14 @@ $(function(){	//js를 상단에!
 
 
 	// Add fixed class on scroll after 60px
-	$(window).scroll(function(e){
-	   if ($(this).scrollTop() > 20){
-	       $('header').addClass('scrolled');
-	   } else {
-	       $('header').removeClass('scrolled');
+	// $(window).scroll(function(e){
+	//    if ($(this).scrollTop() > 20){
+	//        $('header').addClass('scrolled');
+	//    } else {
+	//        $('header').removeClass('scrolled');
 
-	   }
-	});
+	//    }
+	// });	//더 이상 헤더로 내려오지 않습니다. 
 
 	// Prevent a href clicks on dropdown category item
 	$('li.grt-dropdown > a').on('click', function(e){

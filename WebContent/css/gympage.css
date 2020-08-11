@@ -422,14 +422,14 @@ h3{
   text-align: left;
 }
 
-.hero__text {
+/*.hero__text {
   margin: 50px 0 10px;
   font-size: 30px;
   color:#555;
   font-weight: lighter;
 
 
-}
+}*/
 
 .hero__info {
   margin: 0px 0 10px;
@@ -510,11 +510,11 @@ margin-left: 7px;
 }
 
 
-.coachprofile{
+/*.coachprofile{
   margin: 0px 0 10px;
   width: 800px;
 
-}
+}*/
 
 /*@media screen and (max-width: 800px) {
   .hero__title {
@@ -546,9 +546,9 @@ margin-left: 7px;
 
 font-weight: 900;
 display: inline-block;
-vertical-align: top;
-width: 120px;
-max-width: 28%;
+/*vertical-align: top;*/
+/*width: 120px;*/
+/*max-width: 28%;*/
 color: #666;
 font-size: 15px;
 }
@@ -566,34 +566,36 @@ font-size: 15px;
 background-color: rgba(0,0,0,0.7);
 text-align: center;
 }
-
+/*
 .littleimg{
 margin-top: 13px;
 
-}
+}*/
 
 #findnav{
 
+max-width: 800%;
+width: 100%;
 
 
 }
 
 .scrolled{
   position: fixed;
-  top: 0;
+  top: 40px;
   z-index: 100;
 }
 
 .findwhere{
 
-width: 800px;
+/*width: 800px;*/
+width: 100%;
 height: 50px;
 list-style: none;
 margin: 10px 0;
-padding: 0px;
 background-color: rgba(240,240,240,0.96);
 border-radius: 3px;
-padding: 2px;
+padding: 5px;
 font-size: 15px;
 font-weight: bold;
 border-right: 1px soild white;
@@ -646,7 +648,7 @@ border-bottom: 1px solid #efefef;
 background-color: silver;
 }
 
-.btnnew{
+/*.btnnew{
   padding-top: 20px;
   position: absolute;
   top: 10px;
@@ -655,7 +657,7 @@ background-color: silver;
   padding: 20px 16px;
   border-radius: 10px;
 }
-
+*/
 .btn-list {
   margin: 0 auto;
   padding: 0;
@@ -748,7 +750,7 @@ background-color: silver;
 }
 
 
-.container1 {
+.container1_1 {
   height: 80px;
   width: 800px;
   /* max-width: 1400px; */
@@ -756,7 +758,7 @@ background-color: silver;
 
   position: relative;
   border-radius: 10px;
-  font-size: 12.8px;
+  font-size: 12px;
   color: #5b7589;
   border: 1px solid #c8def0;
   padding: 14px 14px;

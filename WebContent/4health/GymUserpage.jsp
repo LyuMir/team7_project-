@@ -3,27 +3,34 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.Gym_info" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
+<%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
 
 <!DOCTYPE html>
-<html>
-<head>
-	<title>트레이너 개인페이지</title>
+	<title>헬스장 페이지</title>
 
 <%
+String id = (String) session.getAttribute("LOG_ID");
+if(id ==null){
+	id="";
+}
+
+
 request.setCharacterEncoding("UTF-8");
 List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); 
 List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
+List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
 
+int imgymOwner = 0;
+if(id.equals(gser.get(0).getOwner())){
+	imgymOwner=1;
+}
 %>
 
 
 
-    <link rel="stylesheet" type="text/css" href="css/gympage.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="css/gympage.css?ver=6">
 
 	<main class="mainwrap_club">
 
@@ -49,10 +56,9 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
    for(int i =0 ; i< gtype.length ; i++){
 	   
 %>
-
-			 <div class="hero__btn">
-				<%= gtype %>
-				</div>
+<div class="hero__btn">
+	<%= gtype[i] %>
+</div>
 		
 	<%} %>		
 			
@@ -81,35 +87,36 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 			</div>
 			</div>
 			<br>
+	<div class="btnnew">
+				<button class="hero__btn1">헬스장 상담요청 </button>
+				<button class="hero__btn1">바로 등록하기</button>
+	</div>
 
 </div>
 </div>
 	</section>
 
-	<div class="btnnew">
-				<button class="hero__btn1">헬스장 상담요청 </button>
-				<button class="hero__btn1">바로 등록하기</button>
-	</div>
 <div class="divclean">
-	<div class="container1">
+	<!-- <div class="container1"> -->
 	* 아래에 기재해주신것들은 어쩌고저쩌고저저졲고고고오~<br>
 	* 아래에 기재해주신것들은 어쩌고저쩌고저저졲고고고오~<br>
 	* 아래에 기재해주신것들은 어쩌고저쩌고저저졲고고고오~<br>
-	</div>
+	<!-- </div> -->
 
 </div>
 	<nav id="findnav" class="bottomupline findwhere">
 	<ul >
-		<li><a href="#coach1">코치정보</a></li>
-		<li><a href="#coach2">경력사항%활동</a></li>
+		<li><a href="#health1">헬스장 정보</a></li>
+		<!-- <li><a href="#health2">경력사항%활동</a></li> -->
 		<li><a href="#program">프로그램소개</a></li>
-		<li><a href="#review">후기</a></li>
+		<li><a href="#review">이용 후기</a></li>
+		<!-- <li><a href="#qna">문의사항</a></li> -->
 	</ul>
 	</nav>
 
-	<div class="coachprofile info">
+	<div class="coachprofile info" id="health1">
 		<br><br>
-		<p class="hg" id="coach1">헬스장정보</p>
+		<p class="hg">헬스장정보</p>
  <span class="a_text"><%= gser.get(0).getGsmalltext() %></span><br><br><br>
  	<% for(int i = 0 ; i < photoBean.size();i++){ 
  				String pid = photoBean.get(i).getId();
@@ -128,8 +135,8 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 	</div>
 
 	<br>
-	<div class="career info" >
-		<p class="hg2" id="coach2">헬스장 자격증</p><br>
+	<div class="career info"  id="health2">
+		<p class="hg2">헬스장 자격증</p><br>
 		<p>
 			<%= gser.get(0).getGcerti() %>
 
@@ -154,12 +161,13 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 	</div>
 
 
-	<div class="cert info" ><br>
-		<p class="hg" id="review">이용후기</p><br>
-		<p class="container1">
-			※ 헬스장에 관한 문의사항을 또는 후기를 자유롭게 남겨주세요 ^^<br>
-   ※근거없는 비방은 상의없이 삭제조치됨을 알려드립니다.
-		※사진후기를 올릴시에는 사진파일이 2m 바이트가 넘지않도록 주의하여주세요
+	<div class="cert info"  id="review"><br>
+		<p class="hg">이용후기</p><br>
+		<!-- <p class="container1"> -->
+			<p class="container1_1">
+	※ 헬스장에 관한 문의사항을 또는 후기를 자유롭게 남겨주세요 ^^<br>
+   	※ 근거없는 비방은 통보없이 삭제조치될 수 있습니다. 	<br>
+	※ 사진후기를 올릴시에는 사진파일이 2m 바이트가 넘지않도록 주의하여주세요.
 
 
 	</p><br>
@@ -174,44 +182,81 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 
 
 				<article class="new_write">
-					<!-- 여기에 새 게시글 올릴 수 있도록.  -->
-					<form style="width:800px">
-						<textarea placeholder="문의사항을 남겨주세요!!"></textarea>
-						<div class="fleft">
-							<button onclick="post_photo(); return false;">사진업로드</button>
-						</div>
+					<form id="wForm" method="post" action="gymPost.post">
+						<!-- <div > -->
+							<input id="imtitle1" type="text" name="title" class="inputclass" placeholder="제목">
+							<input type="hidden" name="gymid" value="<%=gser.get(0).getGid()%>">
+							<input type="hidden" name="pkind" value="" id="pki1">
+							<input type="hidden" name="pcon" value="" id="pco1">
+							<select class="selectclass" >
+								<option value="문의사항">문의사항</option>
+								<option value="후기">후기</option>
+							</select>
+							<select class="selectclass" >
+								<option value="전체공개">전체공개</option>
+								<option value="비밀글">트레이너에게만 공개</option>
+							</select>
+						<!-- </div> -->
+						<textarea id="imtext1" placeholder="문의사항 혹은 후기를 남겨주세요!" name="contents"></textarea>
+					</form>
 						<div class="fright">
-							<button type="reset">리셋</button>
-							<button onclick="postgo(); return false;">저장</button>
+							<!-- <button type="reset">리셋</button> -->
+							<button onclick="postgo1();">저장</button>
 						</div>
 						<div class="fclear"></div>
-					</form>
 				</article>
 				<div class="posts">
-					<!-- <article class="post"> -->
-						<!-- 포스트들이 자꾸 나온다  -->
-					<!-- </article> -->
-					<article>
-						여기서부터 포스트 시작
-						<div class="post_img">
-							<img class="ImageForModal" src="img/이쁜이미지3.jpg" onclick="ImageClickFunction(this)">
-							<div class="modal">
-							  <img class="modal-content">
-							  <div class="caption">확대사진 </div>
-							</div>
-						</div>
-						<div class="post_text">
-						댓글이써집니다 <br>
-						무니무니 나무늬
-						</div>
-						<div class="fclear" id="info"></div>
-					</article>
-					<article>이런 포스트들이 계속 나오는거임. </article>
-					<article>이런 포스트들이 계속 나오는거임. </article>
-					<article>이런 포스트들이 계속 나오는거임. </article>
-					<article>이런 포스트들이 계속 나오는거임. </article>
-					<article>이런 포스트들이 계속 나오는거임. </article>
-					<article>이런 포스트들이 계속 나오는거임. </article>
+				<!--  포스트 쓰기 여기  --> 
+<% 
+	if(posts ==null || posts.size() <1){
+%>
+				<article> 아무도 포스트를 쓰지 않았어요... 당신의 도움이 필요해요! </article>
+				<br><br>
+
+<% }else{ %>
+
+		<div class="posts">
+<%
+		for(int i = 0 ; i < posts.size(); i++){
+			int pcon = 99;
+			String pc = posts.get(i).getPcon();
+				if(pc.equals("전체공개"))
+					pcon = 1;
+				else if(pc.equals("비밀글"))
+					pcon = 0;
+			int showme = 0;
+			if(imgymOwner ==1 ){
+				showme = 1;
+			}
+			if(pcon ==0){
+				showme = 1;
+			}
+			
+			if(showme == 1){
+%>
+			<article>
+				<div class="post_title fleft"><%= posts.get(i).getTitle() %></div>
+				<div class="fright"><%=posts.get(i).getPkind() %></div>
+				<div class="post_text fclear">
+					<%=posts.get(i).getContents() %>
+				</div>
+				<div class="post_like fright">
+					<img src="img/heart_and_star/heart35.png"> 0
+				</div>
+				<div class="post_writer fright"> by <%= posts.get(i).getWriter() %></div>
+			<% if(pcon == 1){ %>
+				<div class="post_conceal fright">전체 공개된 포스트. </div>
+			<%}else if(pcon==0){ %>
+				<div class="post_conceal fright">비공개 포스트. </div>
+			<%} %>
+				<div class="fclear"></div>
+			</article>
+<%}} %>
+
+		</div>
+<%} %>					
+
+
 
 				</div>
 			</section>
@@ -221,9 +266,8 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 	</main>
 
 
-</body>
-
 	<script type="text/javascript" src="js/trainerpagejs.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/club_main.css">
 
 <style type="text/css">
 	*{
@@ -300,8 +344,9 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 	}
 
 	.new_write{
-		width: 500px;
+		width: 800px;
 		margin : 0 0 25px 0;
+		max-width: unset;
 	}
 	.new_write textarea{
 		width: 800px;
@@ -320,6 +365,7 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 		border: 1px solid silver;
 		padding: 10px;
 		margin: 10px 0 ;
+		font-size: 13px;
 	}
 
 	.posts img{
@@ -377,7 +423,8 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 		width: 100%;
 	}
 	button{
-		background-color: white;
+		/*background-color: white;*/
+		background-color: lightgray;
 		padding: 8px 15px;
 		transition: all 0.2s;
 		border-radius: 20px;
@@ -460,7 +507,29 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 	function postgo(){
 
 	}
+
+
+		function postgo1(){
+			// alert('여기 오지..?');
+			var wForm = $('#wForm');
+			var ti = $('#imtitle1').val();
+			var tx = $('#imtext1').val();
+			var pco1 = $('#pco1');
+			var pki1 = $('#pki1');
+
+			if(ti == null || ti ==""){
+				alert('제목을 써 주세요. ');
+				return;
+			}
+			else if(tx == null || tx == ""){
+				alert('내용을 써 주세요. ');
+				return;
+			}
+			var dd = wForm.find('select').eq(0).val();
+			var dd1 = wForm.find('select').eq(1).val();
+			pki1.val(dd);
+			pco1.val(dd1);
+			wForm.submit();
+
+		}
 </script>
-
-
-</html>

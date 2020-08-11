@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.team7.vo.MemberInfo1" %>
-<%@ page import="com.team7.vo.CPostBean" %>
+<%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="java.util.List" %>
 
 	<title>회원정보</title>
@@ -9,16 +9,13 @@
 <script type="text/javascript" src="js/DAUM_adress.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <%
-
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 
 
 
 List<MemberInfo1> minfo = (List<MemberInfo1>) request.getAttribute("minfo");
 
-List<CPostBean> cposts = (List<CPostBean>) request.getAttribute("cposts");
-
-
+List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 %>
 
 	<div class="headtitle00">
