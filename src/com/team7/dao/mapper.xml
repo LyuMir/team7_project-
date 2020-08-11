@@ -164,18 +164,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert_CPOST" parameterType="String">
 		insert into team7.team7_cpost values(${club}, default, '${title}','${writer}','${contents}','${pkind}','${pcon}')
 	</insert>
-	<select id="select_CPOST_by_Clubno" resultType="com.team7.vo.CPostBean" >
+	<select id="select_CPOST_by_Clubno" resultType="com.team7.vo.PostBean" >
 		select * from team7.team7_cpost where club = ${no}
 	</select>
-	
+
 	
 	
 	<insert id="insert_GPOST" parameterType="String">
 		insert into team7.team7_gpost values(${gym}, default, '${title}','${writer}','${contents}','${pkind}','${pcon}')
 	</insert>
+	<select id="select_GPOST_by_gymno" resultType="com.team7.vo.PostBean" >
+		select * from team7.team7_gpost where gym = ${no} order by no desc
+	</select>
 	<insert id="insert_TPOST" parameterType="String">
 		insert into team7.team7_tpost values(${trainer}, default, '${title}','${writer}','${contents}','${pkind}','${pcon}')
 	</insert>
+	<select id="select_TPOST_by_trainerno" resultType="com.team7.vo.PostBean" >
+		select * from team7.team7_tpost where trainer = ${no} order by no desc
+	</select>
 	
 	
 	<insert id="insert_ZGym" parameterType="String">

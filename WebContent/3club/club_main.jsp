@@ -3,7 +3,7 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.ClubBean" %>
 <%@ page import="com.team7.vo.CmemberBean" %>
-<%@ page import="com.team7.vo.CPostBean" %>
+<%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -14,8 +14,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%
-
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 	String id = (String) session.getAttribute("LOG_ID");
 	
 	int adminyn=0, joinyn=0;
@@ -28,7 +27,7 @@ List<ClubBean> tlist = (List<ClubBean>) request.getAttribute("tlist");
 boolean ami = (boolean) request.getAttribute("ami");	//탈퇴 중 tf
 boolean ied = (boolean) request.getAttribute("ied");	//가입신청중 tf
 
-List<CPostBean> cposts = (List<CPostBean>) request.getAttribute("cposts");
+List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 List<PhotoBean> cpphotos = (List<PhotoBean>) request.getAttribute("cpphotos");
 int j = cpphotos.size() -1 ;
 ArrayList<Integer> ppnum = new ArrayList<Integer>();
@@ -55,7 +54,7 @@ if(id ==null){
 	}
 	for(int i = 0 ; i < mylist.size(); i++){
 		if(mylist.get(i).getNo() == rlist.get(0).getNo()){
-			joinyn = 1;
+	joinyn = 1;
 		}
 	}
 }

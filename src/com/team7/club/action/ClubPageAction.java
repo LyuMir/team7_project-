@@ -66,7 +66,7 @@ public class ClubPageAction implements Action{
 			}
 		}
 		
-		List<CPostBean> cposts = new PostService().getCPOSTs(Integer.parseInt(club_id));
+		List<PostBean> cposts = new PostService().getCPOSTs(Integer.parseInt(club_id));
 		List<PhotoBean> cpphotos = new PhotoClubService().getPs_cpost(Integer.parseInt(club_id));
 		
 		request.setAttribute("mylist", mylist);

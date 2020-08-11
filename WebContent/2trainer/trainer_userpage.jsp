@@ -4,18 +4,26 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.Trainer_info" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
+<%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
     
 
-    <link rel="stylesheet" type="text/css" href="css/coachprofile.css">
+    <link rel="stylesheet" type="text/css" href="css/coachprofile.css?ver=3">
     <link rel="stylesheet" type="text/css" href="css/club_main.css"><!-- 흠... -->
 <%
 request.setCharacterEncoding("UTF-8");
 List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
 List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
+List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
 
-
+String id = (String) session.getAttribute("LOG_ID");
+int imtrainer = 0;
+if(id ==null){
+	id="";
+}
+if(id.equals(tser.get(0).getId()))
+	imtrainer = 1;
 
 String picSource1 = "img/aaas.jpeg";
 if(photoBean !=null && photoBean.size()>0)
@@ -55,8 +63,8 @@ if(photoBean !=null && photoBean.size()>1){
 					<span> </span>
 				</div>
 				<div class="zzim">
-					<button class="hero__btn1">1:1 상담요청 <img src="img/heart34.png"></button>
-					<button class="hero__btn1">바로 등록하기 <img src="img/star34.png"></button>
+					<button class="hero__btn1">1:1 상담요청 <img src="img/heart_and_star/heart34.png"></button>
+					<button class="hero__btn1">바로 등록하기 <img src="img/heart_and_star/star34.png"></button>
 				</div>
 				<div class="profile_text">
 				</div>
@@ -116,7 +124,7 @@ for (int i=0 ; i < major.length ; i ++) {
 <div class="info">
 
 
-<div>
+<div class="detail_pan">
 <img src="img/time.png" class="littleimg">	<p class="label">수업지역</p>
 </div>
 
@@ -128,7 +136,7 @@ for (int i=0 ; i < major.length ; i ++) {
 
 
 
-<div>
+<div class="detail_pan">
 <img src="img/effect.png" class="littleimg">	<p class="label">수업효과</p>
 </div>
 
@@ -163,7 +171,7 @@ String majorinfo ="";
 
 <% } %>
 
-<div>
+<div class="detail_pan">
 <img src="img/when.png" class="littleimg">	<p class="label">수업가능시간</p>
 </div>
 
@@ -200,9 +208,9 @@ for (int i=0 ; i < time.length ; i ++) {
 <nav id="findnav">
 <ul class="findwhere">
 	<li><a href="#coach1">코치정보</a></li>
-	<li><a href="#coach2">경력사항%활동</a></li>
+	<li><a href="#coach2">경력사항 및 활동</a></li>
 	<li><a href="#program">프로그램소개</a></li>
-	<li><a href="#review">후기</a></li>
+	<li><a href="#review">후기 및 문의사항</a></li>
 </ul>
 </nav>
 
@@ -246,84 +254,112 @@ for (int i=0 ; i < time.length ; i ++) {
 
 
 <div class="cert info" ><br>
-	<p class="hg" id="review">Q n A</p><br>
+	<p class="hg" id="review">후기 및 문의사항</p><br>
+		<!-- 포스트는 여기 뒤에.  -->
+<% 
+	if(posts ==null || posts.size() <1){
+%>
+				<article> 아무도 포스트를 쓰지 않았어요... 당신의 도움이 필요해요! </article>
+				<br><br>
+
+<% }else{ %>
+
+		<div class="posts">
+<%
+		for(int i = 0 ; i < posts.size(); i++){
+			int pcon = 99;
+			String pc = posts.get(i).getPcon();
+				if(pc.equals("전체공개"))
+					pcon = 1;
+				else if(pc.equals("비밀글"))
+					pcon = 0;
+			int showme = 0;
+			if(imtrainer ==1 ){
+				showme = 1;
+			}
+			if(pcon ==0){
+				showme = 1;
+			}
+			
+			if(showme == 1){
+%>
+			<article>
+				<div class="post_title fleft"><%= posts.get(i).getTitle() %></div>
+				<div class="fright"><%=posts.get(i).getPkind() %></div>
+				<div class="post_text fclear">
+					<%=posts.get(i).getContents() %>
+				</div>
+				<div class="post_like fright">
+					<img src="img/heart_and_star/heart35.png"> 0
+				</div>
+				<div class="post_writer fright"> by <%= posts.get(i).getWriter() %></div>
+			<% if(pcon == 1){ %>
+				<div class="post_conceal fright">전체 공개된 포스트. </div>
+			<%}else if(pcon==0){ %>
+				<div class="post_conceal fright">트레이너에게만 공개된 포스트. </div>
+			<%} %>
+				<div class="fclear"></div>
+			</article>
+<%}} %>
+
+		</div>
+<%} %>
+</div>
 	<p class="container1">
-		※ 1회 체험에 관한 문의사항을 자유롭게 남겨주세요 ^^<br>
+	※ 1회 체험에 관한 문의사항을 자유롭게 남겨주세요 ^^<br>
 	※코치님이 확인후 연락을드립니다!<br>
 	※댓글확인에서 연락까지는 최대 영업일 기준 5일이 소요될수있습니다
 
 
 </p><br>
-</div>
-
-
-
-
-
-</article>
-
-
-
-<!-- 			<article class="new_write">
-				<form>
-					<textarea placeholder="문의사항을 남겨주세요!!"></textarea>
-					<div class="fleft">
-						<button onclick="post_photo(); return false;">사진업로드</button>
-					</div>
-					<div class="fright">
-						<button type="reset">리셋</button>
-						<button onclick="postgo(); return false;">저장</button>
-					</div>
-					<div class="fclear"></div>
-				</form>
-			</article> -->
 			<button onclick="wf1()">문의사항 남기기</button>
+			<div id="wf1">
+				<article class="new_write">
+					<form id="wForm1" method="post" action="trainerPost.post">
+						<div >
+							<input id="imtitle1" type="text" name="title" class="inputclass" placeholder="제목">
+							<input type="hidden" name="trainerid" value="<%=tser.get(0).getNo()%>">
+							<input type="hidden" name="pkind" value="문의사항">
+							<input type="hidden" name="pcon" value="" id="pco1">
+							<select class="selectclass" style="width: 25%;">
+								<option value="전체공개">전체공개</option>
+								<option value="비밀글">트레이너에게만 공개</option>
+							</select>
+						</div>
+						<textarea id="imtext1" placeholder="문의사항을 남겨주세요!" name="contents"></textarea>
+					</form>
+						<div class="fright">
+							<!-- <button type="reset">리셋</button> -->
+							<button onclick="postgo1();">저장</button>
+						</div>
+						<div class="fclear"></div>
+				</article>
+			</div>
 			<button onclick="wf2()">후기 남기기</button>
-			<article class="new_write" id="wf1">
-				<form id="wForm1" method="post" action="trainerPost.post">
-					<div >
-						<input id="imtitle1" type="text" name="title" class="inputclass" placeholder="제목">
-						<input type="hidden" name="trainerid" value="<%=tser.get(0).getNo()%>">
-						<input type="hidden" name="pkind" value="문의사항">
-						<input type="hidden" name="pcon" value="" id="pco1">
-						<select class="selectclass" style="width: 25%;">
-							<option value="전체공개">전체공개</option>
-							<option value="비밀글">트레이너에게만 공개</option>
-						</select>
-					</div>
-					<textarea id="imtext1" placeholder="문의사항을 남겨주세요!" name="contents"></textarea>
-				</form>
-					<div class="fright">
-						<button type="reset">리셋</button>
-						<button onclick="postgo1();">저장</button>
-					</div>
-					<div class="fclear"></div>
-			</article>
-			<article class="new_write" id="wf2">
-				<form id="wForm2" method="post" action="trainerPost.post">
-					<div >
-						<input id="imtitle2" type="text" name="title" class="inputclass" placeholder="제목">
-						<input type="hidden" name="trainerid" value="<%=tser.get(0).getNo()%>">
-						<input type="hidden" name="pkind" value="후기">
-						<input type="hidden" name="pcon" value="" id="pco2">
-						<select class="selectclass" style="width: 25%;">
-							<option value="전체공개">전체공개</option>
-							<option value="비밀글">트레이너에게만 공개</option>
-						</select>
-					</div>
-					<textarea id="imtext2" placeholder="트레이너에게 원하시는게 있나요? 감동받은 사항은요? 후기를 남겨주세요!" name="contents"></textarea>
-				</form>
-					<div class="fright">
-						<button type="reset">리셋</button>
-						<button onclick="postgo2();">저장</button>
-					</div>
-					<div class="fclear"></div>
-			</article>
-			<div class="posts">
-				<article>이런 포스트들이 계속 나오는거임. </article>
+			<div id="wf2">
+				<article class="new_write">
+					<form id="wForm2" method="post" action="trainerPost.post">
+						<div >
+							<input id="imtitle2" type="text" name="title" class="inputclass" placeholder="제목">
+							<input type="hidden" name="trainerid" value="<%=tser.get(0).getNo()%>">
+							<input type="hidden" name="pkind" value="후기">
+							<input type="hidden" name="pcon" value="" id="pco2">
+							<select class="selectclass" style="width: 25%;">
+								<option value="전체공개">전체공개</option>
+								<option value="비밀글">트레이너에게만 공개</option>
+							</select>
+						</div>
+						<textarea id="imtext2" placeholder="트레이너에게 원하시는게 있나요? 감동받은 사항은요? 후기를 남겨주세요!" name="contents"></textarea>
+					</form>
+						<div class="fright">
+							<!-- <button type="reset">리셋</button> -->
+							<button onclick="postgo2();">저장</button>
+						</div>
+						<div class="fclear"></div>
+				</article>
 			</div>
 		</section>
-
+</article>
 	</main>
 
 
@@ -331,6 +367,7 @@ for (int i=0 ; i < time.length ; i ++) {
 
 	<script type="text/javascript">
 
+		$('#wf1').slideToggle(300);
 		$('#wf2').slideToggle(300);
 
 		function wf1(){
@@ -341,9 +378,9 @@ for (int i=0 ; i < time.length ; i ++) {
 		}
 
 		function postgo1(){
-			var wForm1 = $('wForm1');
-			var ti = $('imtitle1');
-			var tx = $('imtext1');
+			var wForm1 = $('#wForm1');
+			var ti = $('#imtitle1').val();
+			var tx = $('#imtext1').val();
 
 			if(ti == null || ti ==""){
 				alert('제목을 써 주세요. ');
@@ -353,18 +390,18 @@ for (int i=0 ; i < time.length ; i ++) {
 				alert('내용을 써 주세요. ');
 				return;
 			}
-			var dd = wForm1.find('select').eq(0).val();
+			var dd = wForm1.find('select').val();
 			wForm1.find('input').eq(3).val(dd);
-			alert(dd);
-			alert($('#pco1').val());
-			alert('???');
+			// alert(dd);
+			// alert($('#pco1').val());
+			// alert('???');
 			wForm1.submit();
 
 		}
 		function postgo2(){
-			var wForm2 = $('wForm2');
-			var ti = $('imtitle2');
-			var tx = $('imtext2');
+			var wForm2 = $('#wForm2');
+			var ti = $('#imtitle2').val();
+			var tx = $('#imtext2').val();
 
 			if(ti == null || ti ==""){
 				alert('제목을 써 주세요. ');
@@ -374,8 +411,9 @@ for (int i=0 ; i < time.length ; i ++) {
 				alert('내용을 써 주세요. ');
 				return;
 			}
-			var dd = wForm2.find('select').eq(3).val();
-			wForm2.find('input').val(dd);
+			var dd = wForm2.find('select').val();
+			wForm2.find('input').eq(3).val(dd);
+			// alert(dd);
 			wForm2.submit();
 		}
 
@@ -388,6 +426,9 @@ for (int i=0 ; i < time.length ; i ++) {
 	.mainwrap_club{
 		width: 1000px;
 		margin: 0 auto;
+	}
+	.detail_pan{
+		margin-top: 15px;
 	}
 
 	.club_right{
@@ -452,28 +493,35 @@ for (int i=0 ; i < time.length ; i ++) {
 		width: 600px;
 		max-height: 700px;
 		    height: 595px;
-		margin-top: 50px;
+		margin-top: 40px;
   		object-fit: cover;
 	}
 
 	.new_write{
-		width: 500px;
-		margin : 0 0 25px 0;
+		/*width: 500px;
+		margin : 0 0 25px 0;*/
+		max-width: unset;
+		width: 100%;
 	}
 	.new_write textarea{
-		width: 600px;
+		/*width: 600px;*/
+		width: 100%;
 		height: 100px;
 		border: 3px solid silver;
 		resize: none;
 
 	}
 	.posts{
-		width: 500px;
+		/*width: 500px;*/
 		/*border: 1px solid silver;*/
+		width: unset;
+		max-width: unset;
 	}
 	.posts article{
 
-		width: 600px;
+		/*width: 600px;*/
+		width: unset;
+		max-width: unset;
 		border: 1px solid silver;
 		padding: 10px;
 		margin: 10px 0 ;
@@ -493,7 +541,7 @@ for (int i=0 ; i < time.length ; i ++) {
 		padding: 2px 4px;
 
 		cursor: pointer;
-		float: left;
+		/*float: left;*/
 		transition: all ease 1s;
 	}
 	.post_like img{
@@ -513,6 +561,12 @@ for (int i=0 ; i < time.length ; i ++) {
 	} 왜 안됨???*/
 
 
+	#wf1{
+		transition: all 0.3s;
+	}
+	#wf2{
+		transition: all 0.3s;
+	}
 
 
 
@@ -534,10 +588,12 @@ for (int i=0 ; i < time.length ; i ++) {
 		width: 100%;
 	}
 	button{
-		background-color: white;
+		all:unset;
+		background-color: silver;
 		padding: 8px 15px;
 		transition: all 0.2s;
 		border-radius: 20px;
+		margin: 5px;
 	}
 	button img{
 		transition: all 0.2s;

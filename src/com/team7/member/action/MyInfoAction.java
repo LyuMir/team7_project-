@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.team7.member.service.MyInfoService;
 import com.team7.post.service.PostService;
 import com.team7.vo.ActionForward;
-import com.team7.vo.CPostBean;
+import com.team7.vo.PostBean;
 import com.team7.vo.MemberInfo1;
 import com.team7.vo.MemberLogInfo;
 
@@ -27,7 +27,7 @@ public class MyInfoAction {
 		
 		List<MemberInfo1> minfo = new MyInfoService().myinfo(l);
 		
-		List<CPostBean> cposts = new PostService().getMyCPOSTs(id);
+		List<PostBean> cposts = new PostService().getMyCPOSTs(id);
 		
 		request.setAttribute("minfo", minfo);
 		request.setAttribute("cposts", cposts);
