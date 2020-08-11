@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team7.member.service.MyInfoService;
-import com.team7.post.service.PostClubService;
+import com.team7.post.service.PostService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.CPostBean;
 import com.team7.vo.MemberInfo1;
@@ -27,7 +27,7 @@ public class MyInfoAction {
 		
 		List<MemberInfo1> minfo = new MyInfoService().myinfo(l);
 		
-		List<CPostBean> cposts = new PostClubService().getMyCPOSTs(id);
+		List<CPostBean> cposts = new PostService().getMyCPOSTs(id);
 		
 		request.setAttribute("minfo", minfo);
 		request.setAttribute("cposts", cposts);

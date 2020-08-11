@@ -4,6 +4,7 @@ public class CPostBean {
 	private int club, no;
 	private String title,writer,contents, pkind, pcon;
 	
+	private int gym, trainer;	// 포스트 통합 빈이 되었습니다. 
 	
 	public int getClub() {
 		return club;
@@ -46,6 +47,18 @@ public class CPostBean {
 	}
 	public void setPcon(String pcon) {
 		this.pcon = pcon;
+	}
+	public int getGym() {
+		return gym;
+	}
+	public void setGym(int gym) {
+		this.gym = gym;
+	}
+	public int getTrainer() {
+		return trainer;
+	}
+	public void setTrainer(int trainer) {
+		this.trainer = trainer;
 	}
 	
 }

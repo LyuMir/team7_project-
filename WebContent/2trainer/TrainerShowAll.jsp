@@ -1,6 +1,7 @@
 "_FORWHERE.jsp?forwhere=4health/gym_Apply.jsp"<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
+<%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="com.team7.vo.Trainer_info" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
@@ -17,7 +18,8 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); %>
+List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
+List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
 
 
 
@@ -75,7 +77,7 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); %>
                   <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>">
                     <div class="card">
                       <div class="card__img">
-                      <a href = "trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>"> <img class="card__img" src="img/park_11.jpg" alt="Snowy Mountains"></a> 
+                      <a href = "trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>"> <img class="card__img" src="Files/trainer/<%=tser.get(i).getId() %>/1/<%=tser.get(i).getPicture() %>" alt="Snowy Mountains"></a> 
                       </div>
                     <div class="card__content">
                       <div class="card__tag00"> <%=tser.get(i).getTname() %></div>

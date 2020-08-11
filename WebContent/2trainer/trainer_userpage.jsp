@@ -3,16 +3,31 @@
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.Trainer_info" %>
+<%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
     
 
     <link rel="stylesheet" type="text/css" href="css/coachprofile.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/club_main.css"><!-- 흠... -->
 <%
 request.setCharacterEncoding("UTF-8");
 List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
+List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 
+
+
+String picSource1 = "img/aaas.jpeg";
+if(photoBean !=null && photoBean.size()>0)
+	picSource1 = "Files/trainer/"+tser.get(0).getId()+"/1/"+photoBean.get(0).getPicture();
+String picSource2 = null;
+String picSource3 = null;
+if(photoBean !=null && photoBean.size()>1){
+	picSource2 = "Files/trainer/"+tser.get(0).getId()+"/1/"+photoBean.get(1).getPicture();
+	if(photoBean.size()>2){
+		picSource3 = "Files/trainer/"+tser.get(0).getId()+"/1/"+photoBean.get(2).getPicture();
+	}
+}
 %>
 
 	<main class="mainwrap_club">
@@ -28,7 +43,11 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 			<article class="left_main">
 				<hr>
 				<!-- <div class="profile_img"><img src=""></div> -->
+				<% if(picSource2 !=null){ %>
+				<img class="profile_img" src="<%=picSource2%>">
+				<%}else{ %>
 				<img class="profile_img" src="img/trainer.jpeg">
+				<%} %>
 				<div class="profile_name">
 					<h3><%=tser.get(0).getTname() %> 코치</h3>
 					<hr>
@@ -50,7 +69,7 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 		<section class="">
 			<article class="main_head">
 				<!-- 사진 크게 넣을거임. ...사진 될까? -->
-				<img class="ImageForModal" src="img/aaas.jpeg" onclick="ImageClickFunction(this)">
+				<img class="ImageForModal" src="<%=picSource1 %>" onclick="ImageClickFunction(this)">
 
 				<div class="modal">
 					<img class="modal-content">
@@ -68,7 +87,6 @@ List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 
 
 <%
-
 String imsimajors = tser.get(0).getTmajor() ;
 String [] major = imsimajors.split(",");
 
@@ -191,8 +209,8 @@ for (int i=0 ; i < time.length ; i ++) {
 
 <div class="coachprofile info">
 	<br><br>
-	<p class="hg" id="coach1">코치정보</p>
-	<img class="profile_img2" src="img/trainer.jpeg">
+	<p class="hg" id="coach1">코치정보</p> <!-- 11111111111111111111111111111111111 -->
+	<img class="profile_img2" src="<%=picSource1%>">
 	<div class="profile_name">
 		<h3 class="hero__info"><%= tser.get(0).getTname() %> 코치</h3>
 		<span class="a_text"><%= tser.get(0).getTsmalltext() %> </span><br>
@@ -232,7 +250,7 @@ for (int i=0 ; i < time.length ; i ++) {
 	<p class="container1">
 		※ 1회 체험에 관한 문의사항을 자유롭게 남겨주세요 ^^<br>
 	※코치님이 확인후 연락을드립니다!<br>
-	※댓글확인에서 연락까지는 최대 영업기준 5일이 소요될수있습니다
+	※댓글확인에서 연락까지는 최대 영업일 기준 5일이 소요될수있습니다
 
 
 </p><br>
@@ -246,9 +264,8 @@ for (int i=0 ; i < time.length ; i ++) {
 
 
 
-			<article class="new_write">
-				<!-- 여기에 새 게시글 올릴 수 있도록.  -->
-				<form style="width:600px">
+<!-- 			<article class="new_write">
+				<form>
 					<textarea placeholder="문의사항을 남겨주세요!!"></textarea>
 					<div class="fleft">
 						<button onclick="post_photo(); return false;">사진업로드</button>
@@ -259,33 +276,51 @@ for (int i=0 ; i < time.length ; i ++) {
 					</div>
 					<div class="fclear"></div>
 				</form>
+			</article> -->
+			<button onclick="wf1()">문의사항 남기기</button>
+			<button onclick="wf2()">후기 남기기</button>
+			<article class="new_write" id="wf1">
+				<form id="wForm1" method="post" action="trainerPost.post">
+					<div >
+						<input id="imtitle1" type="text" name="title" class="inputclass" placeholder="제목">
+						<input type="hidden" name="trainerid" value="<%=tser.get(0).getNo()%>">
+						<input type="hidden" name="pkind" value="문의사항">
+						<input type="hidden" name="pcon" value="" id="pco1">
+						<select class="selectclass" style="width: 25%;">
+							<option value="전체공개">전체공개</option>
+							<option value="비밀글">트레이너에게만 공개</option>
+						</select>
+					</div>
+					<textarea id="imtext1" placeholder="문의사항을 남겨주세요!" name="contents"></textarea>
+				</form>
+					<div class="fright">
+						<button type="reset">리셋</button>
+						<button onclick="postgo1();">저장</button>
+					</div>
+					<div class="fclear"></div>
+			</article>
+			<article class="new_write" id="wf2">
+				<form id="wForm2" method="post" action="trainerPost.post">
+					<div >
+						<input id="imtitle2" type="text" name="title" class="inputclass" placeholder="제목">
+						<input type="hidden" name="trainerid" value="<%=tser.get(0).getNo()%>">
+						<input type="hidden" name="pkind" value="후기">
+						<input type="hidden" name="pcon" value="" id="pco2">
+						<select class="selectclass" style="width: 25%;">
+							<option value="전체공개">전체공개</option>
+							<option value="비밀글">트레이너에게만 공개</option>
+						</select>
+					</div>
+					<textarea id="imtext2" placeholder="트레이너에게 원하시는게 있나요? 감동받은 사항은요? 후기를 남겨주세요!" name="contents"></textarea>
+				</form>
+					<div class="fright">
+						<button type="reset">리셋</button>
+						<button onclick="postgo2();">저장</button>
+					</div>
+					<div class="fclear"></div>
 			</article>
 			<div class="posts">
-				<!-- <article class="post"> -->
-					<!-- 포스트들이 자꾸 나온다  -->
-				<!-- </article> -->
-				<article>
-					여기서부터 포스트 시작
-					<div class="post_img">
-						<img class="ImageForModal" src="img/이쁜이미지3.jpg" onclick="ImageClickFunction(this)">
-						<div class="modal">
-						  <img class="modal-content">
-						  <div class="caption">확대사진 </div>
-						</div>
-					</div>
-					<div class="post_text">
-					댓글이써집니다 <br>
-					무니무니 나무늬
-					</div>
-					<div class="fclear" id="info"></div>
-				</article>
 				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-				<article>이런 포스트들이 계속 나오는거임. </article>
-
 			</div>
 		</section>
 
@@ -293,6 +328,58 @@ for (int i=0 ; i < time.length ; i ++) {
 
 
 	<script type="text/javascript" src="js/photo_modal00.js"></script>
+
+	<script type="text/javascript">
+
+		$('#wf2').slideToggle(300);
+
+		function wf1(){
+			$('#wf1').slideToggle(300);
+		}
+		function wf2(){
+			$('#wf2').slideToggle(300);
+		}
+
+		function postgo1(){
+			var wForm1 = $('wForm1');
+			var ti = $('imtitle1');
+			var tx = $('imtext1');
+
+			if(ti == null || ti ==""){
+				alert('제목을 써 주세요. ');
+				return;
+			}
+			else if(tx == null || tx == ""){
+				alert('내용을 써 주세요. ');
+				return;
+			}
+			var dd = wForm1.find('select').eq(0).val();
+			wForm1.find('input').eq(3).val(dd);
+			alert(dd);
+			alert($('#pco1').val());
+			alert('???');
+			wForm1.submit();
+
+		}
+		function postgo2(){
+			var wForm2 = $('wForm2');
+			var ti = $('imtitle2');
+			var tx = $('imtext2');
+
+			if(ti == null || ti ==""){
+				alert('제목을 써 주세요. ');
+				return;
+			}
+			else if(tx == null || tx == ""){
+				alert('내용을 써 주세요. ');
+				return;
+			}
+			var dd = wForm2.find('select').eq(3).val();
+			wForm2.find('input').val(dd);
+			wForm2.submit();
+		}
+
+	</script>
 
 <style type="text/css">
 	*{
@@ -516,19 +603,5 @@ for (int i=0 ; i < time.length ; i ++) {
 		// $(this).zzimed(); 놉
 	});
 
-	function zzimed(){
-		$(this).html('찜!<img src="img/heart34.png">');
-	}
-	function zzimc(){
-		$(this).html('찜하기 <img src="img/heart34.png">');
-	}
-
-	function post_photo(){
-
-	}
-
-	function postgo(){
-
-	}
 </script>
 
