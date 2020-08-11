@@ -4,7 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.team7.vo.ClubBean" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=4">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=8">
 	<!-- 바디... main만 있어도 됨.  -->
 <%
 request.setCharacterEncoding("UTF-8");
@@ -30,7 +30,11 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 <main id="main000" class="mainwrap">
 
   <section>
-    <div id="buttons"></div>
+    <div id="buttons">
+      <div id="buttons0"></div>
+      <div id="buttons1"></div>
+      <div id="buttons2"></div>
+    </div>
 	  <div class="sticky_side_bar fright">
 	  	ꓥ  &nbsp; &nbsp; 1 2 3 4 5  … 12 &nbsp; &nbsp;  ꓦ
 	  </div>
@@ -145,8 +149,11 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
  (function() {
 
   var $articles = $('.grid article.grid__item');  // Store all 아티클 --images
-  var $buttons = $('#buttons');                   // Store buttons element
+  var $buttons0 = $('#buttons0');                   // Store buttons element
+  var $buttons1 = $('#buttons1');
+  var $buttons2 = $('#buttons2');
   var tagged = {};                                // Create tagged object
+  var tagged2= {};
 
   $articles.each(function() {                         // Loop through 아티클이라니까images and
     var article = this;                               // Store img in variable
@@ -169,15 +176,15 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
     if (tags2) {                                   // If the element had tags
       tags2.split(',').forEach(function(tagName) { // Split at comma and
 
-        if (tagged[tagName] == null) {            // If object doesn't have tag
-          tagged[tagName] = [];                   // Add empty array to object
+        if (tagged2[tagName] == null) {            // If object doesn't have tag
+          tagged2[tagName] = [];                   // Add empty array to object
         }
-        tagged[tagName].push(article);                // Add the image to the array
+        tagged2[tagName].push(article);                // Add the image to the array
       });
     }
   });
   $('<button/>', {                                 // Create empty button
-    text: 'Show All',                              // Add text 'show all'
+    text: '전체보기',                               // Add text 'show all'
     class: 'active',                               // Make it active
     click: function() {                            // Add onclick handler to
       $(this)                                      // Get the clicked on button
@@ -186,7 +193,7 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
         .removeClass('active');                    // Remove active from siblings
       $articles.hide(500).slideDown(500);                 // Show all images
     }
-  }).appendTo($buttons);                           // Add to buttons
+  }).appendTo($buttons0);                           // Add to buttons
 
   $.each(tagged, function(tagName) {               // For each tag name
     $('<button/>', {                               // Create empty button
@@ -201,7 +208,22 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
           .filter(tagged[tagName])                 // Find ones with this tag
           .fadeIn(300);                                // Show just those images
       }
-    }).appendTo($buttons);                         // Add to the buttons
+    }).appendTo($buttons1);                         // Add to the buttons
+  });
+  $.each(tagged2, function(tagName) {               // For each tag name
+    $('<button/>', {                               // Create empty button
+      text: tagName + ' (' + tagged2[tagName].length + ')', // Add tag name
+      click: function() {                          // Add click handler
+        $(this)                                    // The button clicked on
+          .addClass('active')                      // Make clicked item active
+          .siblings()                              // Get its siblings
+          .removeClass('active');                  // Remove active from siblings
+        $articles                                      // With all of the images
+          .hide(500)                                  // Hide them
+          .filter(tagged2[tagName])                 // Find ones with this tag
+          .fadeIn(300);                                // Show just those images
+      }
+    }).appendTo($buttons2);                         // Add to the buttons
   });
 
 }());
