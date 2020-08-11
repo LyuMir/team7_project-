@@ -13,6 +13,7 @@ import com.team7.vo.PageInfo;
 public class GymShowAllService {
 
 	public List<Gym_info> getGyminfo() {
+		
 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		

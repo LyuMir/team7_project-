@@ -13,9 +13,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from team7.team7_member where id = '${id}' AND pw = '${pw}'
 	</select>
 
-	<select id="select_log2" resultType="com.team7.vo.MemberInfo1" >
-		select * from team7.team7_member where id = '${id}' 
-	</select>
 
 	<insert id="insert_JOIN" parameterType="String">
 		insert into team7.team7_member values('${id}', '${name}', '${nickname}', '${email}', '${pw}', '${state}', '${address_num}' , '${address}', '${interest}', NOW(), NOW() ) 
@@ -297,10 +294,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectOne_Gym" resultType="com.team7.vo.Gym_info" >
-		select * from team7.team7_gym where gid = ${gid}
+		select * from team7.team7_gym where gid = '${id}'
 	</select>
-	
-	
 	
 	
 	

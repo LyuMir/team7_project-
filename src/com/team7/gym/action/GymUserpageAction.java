@@ -31,7 +31,7 @@ public class GymUserpageAction implements Action{
 		System.out.println("유저페이지 액션까지왔을까요?");
 		int no = Integer.parseInt(request.getParameter("number"));
 		
-		System.out.println(no);
+		System.out.println(no+"입니다!!");
 		
 		Gym_info info = new Gym_info();
 		info.setGid(no);
