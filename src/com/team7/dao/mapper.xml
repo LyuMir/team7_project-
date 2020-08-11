@@ -186,6 +186,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from team7.team7_tpost where trainer = ${no} order by no desc
 	</select>
 	
+	<select id="select_POST_for_index1" resultType="com.team7.vo.PostBean" >
+		select * from team7_cpost where pcon like '전체공개' limit 5
+	</select>
+	<select id="select_POST_for_index2" resultType="com.team7.vo.PostBean" >
+		select * from team7_tpost where pcon like '전체공개' limit 5
+	</select>
+	<select id="select_POST_for_index3" resultType="com.team7.vo.PostBean" >
+		select * from team7_gpost where pcon like '전체공개' limit 5
+	</select>
 	
 	<insert id="insert_ZGym" parameterType="String">
 		insert into team7.team7_zzim1 values( default, '${person}', ${gym} )
