@@ -30,24 +30,17 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		
 		//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
 		
-		
-//		HttpSession session = request.getSession(true);
-//		int logined =0;
-//		if(session.getAttribute("LOG_STATUS") ==null) {}
-//		else {
-//			logined=(Integer) session.getAttribute("LOG_STATUS");
-//		}
-//		
-		
 		HttpSession session = request.getSession(true);
-		int logined= (Integer)session.getAttribute("LOG_STATUS"); //오브젝트형식으로있다
-		System.out.print("로그인최초확인");
-		
-		
-		
+		int logined =0;
+		if(session.getAttribute("LOG_STATUS") ==null) {}
+		else {
+			logined=(Integer) session.getAttribute("LOG_STATUS");
+		}
 		
 		if(command.startsWith("/id_") && logined !=1) {
-			response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
+			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
 			return;
 		}
 		System.out.print("로그인체크");

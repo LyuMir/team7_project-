@@ -15,29 +15,8 @@ public class TrainerShowAllService {
 	public List<Trainer_info> getTrainerinfo() {
 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		
 		List<Trainer_info> tser = sqlsession.selectList("selectall_Trainer");
-		
-		String a = tser.get(0).getId();
-		System.out.println(a+"아이디를 말해죠");
-		
-		
-		System.out.print("여기는?");
-//		for (int i=0 ; i < tser.size() ; i ++) {
-//		String imsi = tser.get(i).getTmajor();
-//		String [] major = imsi.split(",");
-//		System.out.println(major[i]);
-//		
-//		}
-		
-//		 for(int i =0 ; i < tser.size() ; i++){
-//			 
-//			 int a = tser.get(0).getNo();
-////		
-//		 }
 		sqlsession.close();
-		
-		
 		return tser;
 		
 	}

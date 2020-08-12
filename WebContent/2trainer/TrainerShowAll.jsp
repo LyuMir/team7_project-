@@ -74,10 +74,10 @@ List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
 
      <% for(int i =0 ; i < tser.size() ; i++){ %>
 
-                  <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>">
+                  <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>" onclick="javascript:window.location.href='trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>'">
                     <div class="card">
                       <div class="card__img">
-                      <a href = "trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>"> <img class="card__img" src="Files/trainer/<%=tser.get(i).getId() %>/1/<%=tser.get(i).getPicture() %>" alt="Snowy Mountains"></a> 
+                      <img class="card__img" src="Files/trainer/<%=tser.get(i).getId() %>/1/<%=tser.get(i).getPicture() %>" alt="Snowy Mountains">
                       </div>
                     <div class="card__content">
                       <div class="card__tag00"> <%=tser.get(i).getTname() %></div>
@@ -88,36 +88,10 @@ List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
                   </div>
                   </article>
 
-                 <input type="hidden" name="number" value="<%= tser.get(i).getNo() %>">
+                 <!-- <input type="hidden" name="number" value="<%= tser.get(i).getNo() %>"> -->
            <%} %>
-
-
-
-
-
-                <!-- <img src="https://picsum.photos/600/450?image=776" data-tags="Blog" alt="Alt 1" />
-
-                <img src="https://picsum.photos/600/450?image=777" data-tags="Health & Beauty" alt="Alt 2" />
-
-                  <img src="https://picsum.photos/600/450?image=755" data-tags="Business" alt="Alt 3" />
-
-                  <img src="https://picsum.photos/600/450?image=778" data-tags="Blog,Health & Beauty" alt="Alt 4" />
-                  <img src="https://picsum.photos/600/450?image=764" data-tags="Business" alt="Alt 5" />
-
-                  <img src="https://picsum.photos/600/450?image=526" data-tags="Blog,Shop" alt="Alt 6" />
-
-                  <img src="https://picsum.photos/600/450?image=668" data-tags="Blog,Megazine" alt="Alt 7" />
-                  <img src="https://picsum.photos/600/450?image=660" data-tags="Blog" alt="Alt 8" />
-
-                  <img src="https://picsum.photos/600/450?image=659" data-tags="Blog,Portfolio" alt="Alt 9" />
-                  <img src="https://picsum.photos/600/450?image=513" data-tags="Business" alt="Alt 10" />
-                  <img src="https://picsum.photos/600/450?image=535" data-tags="Shop" alt="Alt 11" />
-                  <img src="https://picsum.photos/600/450?image=531" data-tags="Shop,Blog" alt="Alt 12" /> -->
-
-
               </div>
 
-          <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
           <script src="js/filter-tagscard.js"></script>
 
 

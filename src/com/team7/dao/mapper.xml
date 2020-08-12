@@ -324,7 +324,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectOne_Gym" resultType="com.team7.vo.Gym_info" >
-		select * from team7.team7_gym where id = '${id}'
+		select * from team7.team7_gym where gid = '${gid}'
 	</select>
 	
 	
