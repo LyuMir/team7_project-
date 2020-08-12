@@ -53,7 +53,7 @@ const speed = 1000;
 counters.each(function(index,item){
     var speed = $(item).data('target');
     // function counter00(){
-            function updateCount(){
+        function updateCount(){
             var target = +$(item).data('target');
             var count = +$(item).text();
 

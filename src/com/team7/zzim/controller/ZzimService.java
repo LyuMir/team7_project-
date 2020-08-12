@@ -141,4 +141,38 @@ public class ZzimService {
 		sqlsession.close();
 		return rlist;
 	}
+	
+	
+	public List<ZZIMBean> select_gym_Z_YN(String id, int gymno) {
+
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setGym(gymno);
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist= sqlsession.selectList("select_zzim1_YN", zzim);
+
+		return rlist;
+		
+	}	
+	public List<ZZIMBean> select_trainer_Z_YN(String id, int trainerno) {
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setTrainer(trainerno);
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist= sqlsession.selectList("select_zzim2_YN", zzim);
+
+		return rlist;
+		
+	}	
+	public List<ZZIMBean> select_club_Z_YN(String id, int clubno) {
+
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setClub(clubno);
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist= sqlsession.selectList("select_zzim3_YN", zzim);
+
+		return rlist;
+		
+	}
 }

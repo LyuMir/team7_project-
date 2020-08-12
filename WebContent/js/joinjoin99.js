@@ -583,8 +583,8 @@ function checkEmail(str)
         success : function(req){
             var dat00 = $(req);
             var ddd = dat00.children('div.mont').data('log');
-            alert(ddd+"라니깐.");
-            alert(dat00+"????");
+            // alert(ddd+"라니깐.");
+            // alert(dat00+"????");
             // console.log(ddd);
             // console.log(dat00);
 

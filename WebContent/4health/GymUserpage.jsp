@@ -4,10 +4,10 @@
 <%@ page import="com.team7.vo.Gym_info" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="com.team7.vo.PostBean" %>
+<%@ page import="com.team7.vo.ZZIMBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
 
-<!DOCTYPE html>
 	<title>헬스장 페이지</title>
 
 <%
@@ -21,6 +21,12 @@ request.setCharacterEncoding("UTF-8");
 List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); 
 List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
+
+List<ZZIMBean> zyn2 = (List<ZZIMBean>) request.getAttribute("zzimYN");
+boolean zyn = false;
+if(zyn2 !=null){
+	zyn = true;
+}
 
 int imgymOwner = 0;
 if(id.equals(gser.get(0).getOwner())){
@@ -88,6 +94,11 @@ if(id.equals(gser.get(0).getOwner())){
 			</div>
 			<br>
 	<div class="btnnew">
+	<% if(zyn){ %>
+				<button data-id2="<%=gser.get(0).getGid() %>" id="z_zzim1" class="hero__btn1" onclick="zzimThis1_C(this)">찜취소 <img src="img/heart_and_star/heart34.png"></button>
+	<% }else{ %>
+				<button data-id2="<%=gser.get(0).getGid() %>" class="hero__btn1" onclick="zzimThis1(this)">찜하기 <img src="img/heart_and_star/heart034.png"></button>
+	<% } %>
 				<button class="hero__btn1">헬스장 상담요청 </button>
 				<button class="hero__btn1">바로 등록하기</button>
 	</div>
@@ -267,6 +278,7 @@ if(id.equals(gser.get(0).getOwner())){
 
 
 	<script type="text/javascript" src="js/trainerpagejs.js"></script>
+	<script type="text/javascript" src="77zzim/zzim1_gymZzim.js?ver=16"></script>
 	<link rel="stylesheet" type="text/css" href="css/club_main.css">
 
 <style type="text/css">

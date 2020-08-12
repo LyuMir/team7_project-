@@ -13,6 +13,8 @@ import com.team7.trainer.service.*;
 import com.team7.trainer.service.TrainerUserpageService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.Trainer_info;
+import com.team7.vo.ZZIMBean;
+import com.team7.zzim.controller.ZzimService;
 import com.team7.vo.PageInfo;
 import com.team7.vo.PhotoBean;
 import com.team7.vo.PostBean;
@@ -44,11 +46,19 @@ public class TrainerUserpageAction implements Action{
 
 		List<PostBean> posts	= new PostService().getTPOSTs(no);
 
+
+		List<ZZIMBean> zzimYN = null;
+		String id = (String )request.getSession().getAttribute("LOG_ID");
+		if(id !=null)
+			zzimYN = new ZzimService().select_gym_Z_YN(id, no);
+		
+		
 		ActionForward forward= new ActionForward();
 		
 		request.setAttribute("tser", traineronelist);
 		request.setAttribute("photos", photos);
 		request.setAttribute("posts", posts);
+		request.setAttribute("zzimYN", zzimYN);
 		forward.setPath("/_FORWHERE.jsp?forwhere=2trainer/trainer_userpage.jsp");
 		return forward;
 		
