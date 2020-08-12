@@ -42,8 +42,11 @@ public class PostGetAction {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<div>");
-		for(int i = 0 ; i < texts.size() ; i++) {
-			out.println("<div data-title='"+titles.get(i)+"' data-type='"+types.get(i)+"'");
+		int size0;
+		size0 = Integer.min(Integer.min(titles.size(), texts.size()),authors.size());
+		System.out.println(size0);
+		for(int i = 0 ; i < size0 -1 ; i++) {
+			out.println("<div data-title='"+titles.get(i)+"' data-type='"+types.get(0)+"'");
 			out.println(" data-author='"+authors.get(i)+"'     >");
 			out.println(texts.get(i));
 			out.println("</div>");

@@ -564,10 +564,44 @@ function checkEmail(str)
 	//	wanttoL.val('loginplz22');
 	var login_id = $('#log_id').val();
 	var login_pw = $('#log_pw').val();
-		$('#log_id2').val(login_id);
-		$('#log_pw2').val(login_pw);
+		// $('#log_id2').val(login_id);
+		// $('#log_pw2').val(login_pw);
 
-		$('#LOGINFormplz').submit();
+		// $('#LOGINFormplz').submit();
+
+	var url = "login.log";
+	// alert("엥?");
+
+    $.ajax({
+        type:"GET",
+        url:url,
+        async:false,
+        timeout:3000,
+        dataType:"html",
+        data:{'log_id2':login_id,
+        		'log_pw2':login_pw},
+        success : function(req){
+            var dat00 = $(req);
+            var ddd = dat00.children('div.mont').data('log');
+            alert(ddd+"라니깐.");
+            alert(dat00+"????");
+            // console.log(ddd);
+            // console.log(dat00);
+
+			if(ddd.indexOf("성공") >=0){
+				location.reload();
+			}
+			else{
+				var ffail = "로그인 실패";
+				alert(ffail);
+				$('#TOLOGIN').click();
+				var i = 5;
+				dontgo(i);
+				noBecause(ffail,i);
+			}
+        }
+
+    });
 	};
 
 
