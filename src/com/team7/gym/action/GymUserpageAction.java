@@ -12,9 +12,11 @@ import com.team7.gym.service.*;
 import com.team7.gym.service.GymUserpageService;
 import com.team7.photo.action.GymPhotoAction;
 import com.team7.photo.service.PhotoGymService;
+import com.team7.post.service.PostService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.PageInfo;
 import com.team7.vo.PhotoBean;
+import com.team7.vo.PostBean;
 import com.team7.vo.Gym_info;
 
 
@@ -44,7 +46,8 @@ public class GymUserpageAction implements Action{
 		String gymO = Gymonelist.get(0).getOwner();
 		List<PhotoBean>photoBean = new PhotoGymService().getfilenames_gymphoto(gymO, 11, -1);
 		
-		
+//		int trainerno = Gymonelist.get(0).get
+		List<PostBean> posts	= new PostService().getGPOSTs(no);
 
 	
 		
@@ -53,6 +56,7 @@ public class GymUserpageAction implements Action{
 		
 		request.setAttribute("photoBean", photoBean);
 		request.setAttribute("gser", Gymonelist);
+		request.setAttribute("posts", posts);
 		forward.setPath("/_FORWHERE.jsp?forwhere=4health/GymUserpage.jsp");
 		return forward;
 		

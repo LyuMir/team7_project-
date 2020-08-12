@@ -1,6 +1,6 @@
 package com.team7.vo;
 
-public class CPostBean {
+public class PostBean {
 	private int club, no;
 	private String title,writer,contents, pkind, pcon;
 	

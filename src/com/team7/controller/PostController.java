@@ -53,6 +53,10 @@ public class PostController extends javax.servlet.http.HttpServlet
 			new PostActions().posts(request, response);
 			gobackRefresh = true;
 		}
+		else if(command.equals("/gymPost.post")){
+			new PostActions().posts(request, response);
+			gobackRefresh = true;
+		}
 
 		//가야할 곳은 바로 거기임.. 
 		if(gobackRefresh) {	//새로고침
