@@ -4,6 +4,7 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.Trainer_info" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
+<%@ page import="com.team7.vo.ZZIMBean" %>
 <%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
@@ -16,6 +17,13 @@ request.setCharacterEncoding("UTF-8");
 List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
 List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
+
+List<ZZIMBean> zyn2 = (List<ZZIMBean>) request.getAttribute("zzimYN");
+boolean zyn = false;
+if(zyn2 !=null){
+	zyn = true;
+}
+
 
 String id = (String) session.getAttribute("LOG_ID");
 int imtrainer = 0;
@@ -63,6 +71,11 @@ if(photoBean !=null && photoBean.size()>1){
 					<span> </span>
 				</div>
 				<div class="zzim">
+	<% if(zyn){ %>
+					<button data-id2="<%=tser.get(0).getNo() %>"  class="hero__btn1" onclick="zzimThis2_C(this)">찜 취소 <img src="img/heart_and_star/heart34.png"></button>
+	<% }else{ %>
+					<button data-id2="<%=tser.get(0).getNo() %>"  class="hero__btn1" onclick="zzimThis2(this)">찜하기 <img src="img/heart_and_star/heart034.png"></button>
+	<% } %>
 					<button class="hero__btn1">1:1 상담요청 <img src="img/heart_and_star/heart34.png"></button>
 					<button class="hero__btn1">바로 등록하기 <img src="img/heart_and_star/star34.png"></button>
 				</div>
@@ -364,6 +377,8 @@ for (int i=0 ; i < time.length ; i ++) {
 
 
 	<script type="text/javascript" src="js/photo_modal00.js"></script>
+
+	<script type="text/javascript" src="77zzim/zzim2_trainersZzim.js?ver=5"></script>
 
 	<script type="text/javascript">
 
