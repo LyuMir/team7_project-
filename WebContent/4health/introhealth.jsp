@@ -23,7 +23,7 @@
  
 
 
-      <div class="text">
+      <div class="text"> 
         <h1 class="hero__title">헬스장을 등록하세요!</h1>
         <p class="hero__snippet">즉각적인 홍보효과와 마케팅!</p>
         <ul class="btn-list">
