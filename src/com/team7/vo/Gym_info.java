@@ -2,7 +2,7 @@ package com.team7.vo;
 
 public class Gym_info {
 	
-	int gid;
+	int id;
 	String owner;
 	String gname;
 	String address_num;
@@ -24,11 +24,12 @@ public class Gym_info {
 	String gsmalltext;
 	String picture;
 
-	public int getGid() {
-		return gid;
+	
+	public int getId() {
+		return id;
 	}
-	public void setGid(int gid) {
-		this.gid = gid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getOwner() {
 		return owner;

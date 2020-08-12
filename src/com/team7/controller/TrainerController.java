@@ -83,7 +83,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+//				forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
 //				forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
 				
 				

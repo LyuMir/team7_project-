@@ -5,7 +5,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
 
-<<<<<<< HEAD
     <meta charset="utf-8">
     <title>헬스장찾기</title>
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -21,16 +20,6 @@
 			center: new kakao.maps.LatLng(33.450701, 126.570667),
 			level: 3
 		};
-=======
-<meta charset="utf-8">
-<title>헬스장찾기</title>
-<!-- <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> -->
-<link rel="stylesheet" href="css/styleyuncard.css" />
-<!-- <link rel="stylesheet" href="css/normalizeyuncard.css"> -->
-<!-- <link rel="stylesheet" href="css/mainyun.css"> -->
-<link rel="stylesheet" type="text/css" href="css/gridgrid88yuncard.css">
-<link rel="stylesheet" type="text/css" href="css/picpiccard.css">
->>>>>>> branch 'master' of https://github.com/LyuMir/team7_project-.git
 
 		var map = new kakao.maps.Map(container, options);
 		
@@ -46,7 +35,7 @@ List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); %>
 <hr>
 <div id="map" style="width:100%;height:350px;"></div>
 
-<<<<<<< HEAD
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -73,13 +62,6 @@ marker.setMap(map);
   <div class="text00">
     <h1 class="hero__look">태그에 맞춰 헬스장을 검색하세요!</h1>
     <p class="hero__snippet">당신에게 딱 맞는 헬스장을 추천해드립니다!</p>
-=======
-  <div class="container00">
-    <img src="img\main3look.jpg" class="pic_000">
-    <div class="text00">
-      <h1 class="hero__look">태그에 맞춰 헬스장을 검색하세요!</h1>
-      <p class="hero__snippet">당신에게 딱 맞는 헬스장을 추천해드립니다!</p>
->>>>>>> branch 'master' of https://github.com/LyuMir/team7_project-.git
       <a class="btn00" href="">사용 방법</a>
 
     </div>
@@ -87,18 +69,8 @@ marker.setMap(map);
 
 
 
-</div>
 <div class="dicclean">
 </div>
-
-<<<<<<< HEAD
-
-      <hr>
-      <div class="ycontainertxt">
-=======
-<hr>
-<div class="ycontainertxt">
->>>>>>> branch 'master' of https://github.com/LyuMir/team7_project-.git
 
   본 서비스는 어쩌고저쩌고 이렇게 진행이 됩니다알겠죠???   <a href="ddd" class="href">코치검증절차</a>
   <br>여기에다가 공개적인 문구를 넣어줍니다~~~~~~~~~~~~~~~~~~~
@@ -133,20 +105,22 @@ marker.setMap(map);
      <article class="grid__item" data-tags="<%= gser.get(i).getGname() %>">
       <div class="card">
         <div class="card__img">
-          <a href = "GymUserpage.health?number=<%=gser.get(i).getGid()%>"> 
+          <a href = "GymUserpage.health?number=<%=gser.get(i).getId() %>"> 
           	<img class="card__img" src="Files/gym/<%=gser.get(i).getOwner()%>/1/<%=gser.get(i).getPicture() %>" alt="<%=gser.get(i).getPicture() %>">
           </a> 
         </div>
         <div class="card__content">
-          <div class="card__tag00"> <%=gser.get(i).getGid()%></div>
+          <div class="card__tag00"> <%=gser.get(i).getId()%></div>
           <div class="card__header"><%=gser.get(i).getGname()%> </div>
           <p class="card__text"><%=gser.get(i).getGsmalltext()%></p>
           <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
         </div>
       </div>
     </article>
+    
+    
 
-    <input type="hidden" name="number" value="<%=gser.get(i).getGid()%>">
+    <input type="hidden" name="number" value="<%=gser.get(i).getId()%>">
     <%} %>
 
 

@@ -42,9 +42,9 @@ public class TrainerMypageAction implements Action{
 		
 		
 		String tid =	traineronelist.get(0).getId();
+		
 		List<PhotoBean> photos = new PhotoTrainerService().getfilenames_trainerphoto(tid, -1);
 		
-
 		ActionForward forward= new ActionForward();
 		
 		request.setAttribute("tser", traineronelist);

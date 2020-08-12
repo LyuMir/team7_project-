@@ -295,11 +295,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectall_Gym" resultType="com.team7.vo.Gym_info" >
+		select * from team7.team7_gym
+	</select>
+	
+	
+	<select id="selectall_Gym2" resultType="com.team7.vo.Gym_info" >
 		select * from team7.team7_gym, team7_picture_data where team7_picture_data.id like concat(team7_gym.owner,'_gym_%_1')
 	</select>
 	
 	<select id="selectOne_Gym" resultType="com.team7.vo.Gym_info" >
-		select * from team7.team7_gym where gid = '${id}'
+		select * from team7.team7_gym where id = '${id}'
 	</select>
 	
 	
