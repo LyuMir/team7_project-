@@ -20,7 +20,7 @@
       <p class="hero__snippet1"> 이미 등록되어있나요?</p>
   <a href="#about">▶헬스장관리</a>
 </div>
-
+ 
 
 
       <div class="text">
