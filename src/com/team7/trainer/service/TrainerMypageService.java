@@ -15,7 +15,7 @@ public class TrainerMypageService {
 	public List<Trainer_info> getTrainerMyinfo(Trainer_info info) {
 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		System.out.print("겟 트레이너인포입니다");
+		System.out.print("겟 트레이너 마이인포입니다");
 		
 		
 		List<Trainer_info> tser = sqlsession.selectList("selectMy_Trainer",info);

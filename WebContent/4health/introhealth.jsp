@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>타 이 틀 </title>
     <link rel="stylesheet" href="css/introhealth.css">
-</head>
+</head> 
 
 <body>
 <main role="main">

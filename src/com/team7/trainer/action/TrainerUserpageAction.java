@@ -27,7 +27,7 @@ public class TrainerUserpageAction implements Action{
 //		notice.setNo(no);
 		System.out.println("유저페이지 액션까지왔을까요?");
 		int no = Integer.parseInt(request.getParameter("number"));
-		
+		 
 		System.out.println(no);
 		
 		Trainer_info info = new Trainer_info();

@@ -32,7 +32,7 @@ public class TrainerMypageAction implements Action{
 		
 		Trainer_info info = new Trainer_info();
 		info.setId(id);
-
+ 
 		
 		TrainerMypageService tser = new TrainerMypageService();
 		List<Trainer_info> traineronelist = new ArrayList<Trainer_info>();

@@ -299,7 +299,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-
+ 
 
 	<select id="000000selectAll" resultType="com.team7.vo.DTO_ClubProperties" >
 		select * from mybatis_0714.new_table00
