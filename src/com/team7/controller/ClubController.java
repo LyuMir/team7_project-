@@ -173,6 +173,9 @@ public class ClubController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/outyou.club")){
+			new com.team7.club.action.ClubKickoutAction().kickout(request, response);
+		}
 		
 
 

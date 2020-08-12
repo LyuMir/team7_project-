@@ -97,7 +97,11 @@ session.setAttribute("clubid",rlist.get(0).getNo());
 		<% }  %>
 	</table>
 </form>
-<form>
+
+	<button onclick="saveit()">저장</button>
+	<button onclick="cancleit()">취소</button>
+소모임 인원 관리 : 
+<form id="f22" action="outyou.club" method="post">
 	<table>
 		<thead>
 			<tr>
@@ -108,7 +112,21 @@ session.setAttribute("clubid",rlist.get(0).getNo());
 				<th>탈퇴시키기</th>
 			</tr>
 		</thead>
-<% for(int i = 0 ;  i <rlist_m.size(); i++){ %>
+<% for(int i = 0 ;  i <rlist_m.size(); i++){ 
+		if(rlist_m.get(i).getCmember().equals(id)){
+			%>
+			<tr>
+				<td><%=i+1 %></td>
+				<td>"</td>
+				<td><%=rlist_m.get(i).getCmember() %> (나)</td>
+				<td>
+					-
+				</td>
+				<td>
+					-
+				</td>
+			</tr>
+<% }else{%>
 		<tr>
 			<td><%=i+1 %></td>
 			<td>"</td>
@@ -117,16 +135,15 @@ session.setAttribute("clubid",rlist.get(0).getNo());
 				<input class="gg123" type="checkbox" name="gg123" value="<%=i%>">
 			</td>
 			<td>
-				<input class="bb123" type="checkbox" name="bb123" value="<%=i%>">
+				<input data-member="<%=rlist_m.get(i).getCmember()%>" class="bb123" type="checkbox" name="bb123" value="<%=rlist_m.get(i).getCmember()%>">
 			</td>
 		</tr>
-<%} %>
+<%} }%>
 	</table>
 </form>
+	<button onclick="saveit2()">저장</button>
+	<button onclick="cancleit2()">취소</button>
 
-
-	<button onclick="saveit()">저장</button>
-	<button onclick="cancleit()">취소</button>
 
 	<!-- <button> 관리 페이지로 </button> -->
 
@@ -153,16 +170,16 @@ session.setAttribute("clubid",rlist.get(0).getNo());
 		})
 	});
 
-	gg123.each(function(index,item){
+	bb123.each(function(index,item){
 		$(item).change(function(){
-			if(this.checked){
-				alert('그런가?');
-				var con1= confirm('를 ..하시겠습니까?');
+			if($(this).is(":checked")){
+				var thatone = $(this).data('member');
+				var con1= confirm(thatone+'(을)를 탈퇴시키겠습니까?');
 				if(con1){
-					
+					// alert('짠 ');
 				}
 				else{
-					this.prop("checked",false);
+					$(this).prop("checked",false);
 				}
 			}
 		});
@@ -195,6 +212,24 @@ session.setAttribute("clubid",rlist.get(0).getNo());
 				$(this).prop("checked",false);
 			});
 			jnos.each(function(){
+				$(this).prop("checked",false);
+			});
+		}
+	}
+
+	function saveit2(){
+		var confirm22 = confirm("이대로 진행하시겠습니까?");
+		if(confirm22){
+			$(f22).submit();
+		}
+	}
+	function concleit2(){
+		var confirm22 = confirm("취소하시겠습니까?");
+		if(confirm22){
+			gg123.each(function(){
+				$(this).prop("checked",false);
+			});
+			bb123.each(function(){
 				$(this).prop("checked",false);
 			});
 		}

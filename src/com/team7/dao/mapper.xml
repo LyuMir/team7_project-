@@ -71,6 +71,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from team7.team7_club limit ${page}, 10
 	</select>
 
+	<select id="ClubMPhotoSelectAll" resultType="com.team7.vo.PhotoBean" >
+		SELECT team7_club.no, picture FROM team7.team7_club, team7_picture_data where team7_picture_data.id like concat(team7_club.admin,'_club_', team7_club.no,'_main')
+	</select>
+	
 	<select id="ClubselectNo" resultType="com.team7.vo.ClubBean" >
 		select * from team7.team7_club where no = ${no}
 	</select>
@@ -122,6 +126,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="update_outClubCancle">
 		update team7.team7_cmember set outatdate = null where id = ${id}
 	</update>
+	<delete id="delete_cmember">
+		delete from team7_cmember where club = ${club} AND cmember = '${cmember}'
+	</delete>
 
 
 

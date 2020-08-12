@@ -170,7 +170,7 @@ public class PhotoClubService {
 		sqlsession.close();
 		return photos;
 	}
-	
+//	public List<PhotoBean> getAllClub
 	
 	
 	
