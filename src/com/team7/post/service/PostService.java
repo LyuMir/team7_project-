@@ -1,5 +1,6 @@
 package com.team7.post.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -72,5 +73,19 @@ public class PostService {
 		List<PostBean> cposts = sqlsession.selectList("select_GPOST_by_gymno",clubBean);
 		sqlsession.close();
 		return cposts;
+	}
+	
+
+	public ArrayList<List<PostBean>> getPOSTsForIndex(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<PostBean> post1 = sqlsession.selectList("select_POST_for_index1");
+		List<PostBean> post2 = sqlsession.selectList("select_POST_for_index2");
+		List<PostBean> post3 = sqlsession.selectList("select_POST_for_index3");
+		ArrayList<List<PostBean>> posts = new ArrayList<List<PostBean>>();
+		posts.add(post1);
+		posts.add(post2);
+		posts.add(post3);
+		sqlsession.close();
+		return posts;
 	}
 }

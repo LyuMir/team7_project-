@@ -209,13 +209,14 @@
 	var button = $('button#button11');
 
 
-	var aform = $('#appler');
+	var aform = $('#applyer');
 
 	var photogo = $('#photogo');
 	var photo1 = $('#photo1');
 	// var data = new FormData();
 
 	button.click(function(){
+		alert('???여기는 오나?');
 		if(true){ // 무엇을 쓰고, 저것을 하고, 이걸 채워야지 서밋 가능함. < 으로 해주세요. 
 
 			aform.submit();

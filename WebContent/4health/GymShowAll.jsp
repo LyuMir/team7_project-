@@ -35,7 +35,6 @@ List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); %>
 <hr>
 <div id="map" style="width:100%;height:350px;"></div>
 
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -71,6 +70,10 @@ marker.setMap(map);
 
 <div class="dicclean">
 </div>
+
+
+<hr>
+<div class="ycontainertxt">
 
   본 서비스는 어쩌고저쩌고 이렇게 진행이 됩니다알겠죠???   <a href="ddd" class="href">코치검증절차</a>
   <br>여기에다가 공개적인 문구를 넣어줍니다~~~~~~~~~~~~~~~~~~~
