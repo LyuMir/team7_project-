@@ -3,6 +3,7 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.team7.vo.ClubBean" %>
+<%@ page import="com.team7.vo.PhotoBean" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=8">
 	<!-- 바디... main만 있어도 됨.  -->
@@ -16,6 +17,8 @@ request.setCharacterEncoding("UTF-8");
 
 List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 			=(List<ClubBean>) request.getAttribute("rlist");
+
+List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
 
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
 
@@ -45,8 +48,18 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
      
      	<%
      	String photo1 ="";
+     	String picture00="";
   
-     	      if(rlist.get(i).getPhoto1() ==null || rlist.get(i).getPhoto1().equals("")){
+     	boolean picYN = false;
+  for(int j = 0 ; j < plist.size(); j++){
+	  if(plist.get(j).getNo() == rlist.get(i).getNo()){
+		  picYN = true;
+		  picture00 =plist.get(j).getPicture();
+	  }
+  
+}
+
+     	      if(!picYN){
 
      	    	  String theme = rlist.get(i).getE_type();
      	    	  if(theme.contains("축구")){
@@ -76,7 +89,7 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
      	    	  }
      	      }
      	      else{
-     	    	  photo1 = realFolder+rlist.get(i).getAdmin()+"_"+rlist.get(i).getNo()+"/main/"+rlist.get(i).getPhoto1();
+     	    	  photo1 = realFolder+rlist.get(i).getAdmin()+"_"+rlist.get(i).getNo()+"/main/"+picture00;
      	      }
      	
      	%>

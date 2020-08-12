@@ -13,6 +13,7 @@ public class LogoutAction implements Action{
 		
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("LOG_ID");
+		session.removeAttribute("fail");
         session.setAttribute("LOG_STATUS",0);
 
 		ActionForward forward= new ActionForward();
