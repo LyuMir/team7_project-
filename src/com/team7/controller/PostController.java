@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.team7.club.action.Action;
 import com.team7.photo.service.PhotoClubService;
 import com.team7.post.action.PostActions;
+import com.team7.post.action.PostGetAction;
 import com.team7.vo.ActionForward;
 
 @WebServlet("*.post")
@@ -56,6 +57,10 @@ public class PostController extends javax.servlet.http.HttpServlet
 		else if(command.equals("/gymPost.post")){
 			new PostActions().posts(request, response);
 			gobackRefresh = true;
+		}
+		else if(command.equals("/indexPosts.post")){
+			new PostGetAction().indexGetter(request, response);
+			return; //안가. 
 		}
 
 		//가야할 곳은 바로 거기임.. 

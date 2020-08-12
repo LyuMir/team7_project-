@@ -74,7 +74,7 @@ public class LOGController extends javax.servlet.http.HttpServlet
 			}
 		}
 		else if(command.equals("/forgot.log")) {
-//			action  = new com.team7.member.action.FindAction();
+			new com.team7.member.action.PWFindAction().pwfinder(request, response);
 //			try {
 //				forward=action.execute(request, response );
 //			} catch (Exception e) {
