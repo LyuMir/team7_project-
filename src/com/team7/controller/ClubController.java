@@ -39,7 +39,7 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		//해당 jsp에서 처리...!!!
 		if(command.startsWith("/id_") && logined !=1) {
 
-			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다!");
+			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
 //			request.setAttribute("fail", "로그인이 필요한 서비스입니다!");
 //			response.setContentType("text/html;charset=UTF-8");
 //			PrintWriter out = response.getWriter();

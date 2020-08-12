@@ -1,5 +1,7 @@
 package com.team7.member.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,18 +22,26 @@ public class LoginAction implements Action{
 		
 		boolean loginGood = new LogMatchService().Login(loginfo);
 
-		ActionForward forward= new ActionForward();
+//		ActionForward forward= new ActionForward();
+		ActionForward forward = null;
+        PrintWriter out = response.getWriter();
+		javax.servlet.http.HttpSession session = request.getSession(true);
+//        System.out.println("뭐야 왜이래"+log_id2+loginGood);
+		out.println("<div><div class='mont' data-log='");
 		if(loginGood) {
-			javax.servlet.http.HttpSession session = request.getSession(true);
 			session.setAttribute("LOG_ID",log_id2);
 	        session.setAttribute("LOG_STATUS",1);
+	        session.removeAttribute("fail");
 //	        session.setAttribute("NAME",namedata);
-			forward.setPath("/index.jsp");
+//			forward.setPath("/index.jsp"); 	// 아 이제 포워드 없어요
+			out.println("성공");
 		}
 		else {
-			request.getSession().setAttribute("fail", "로그인 실패!");
-			forward.setPath("/Join_and_LogIn.jsp?fail=로그인 실패");
+			session.setAttribute("fail", "로그인 실패!");
+//			forward.setPath("/Join_and_LogIn.jsp?fail=로그인 실패");
+			out.println("실패");
 		}
+		out.println("'></div></div>");
 //		forward.setRedirect(true);
 		
    		return forward;
