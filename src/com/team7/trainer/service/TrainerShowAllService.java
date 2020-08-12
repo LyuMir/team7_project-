@@ -18,7 +18,8 @@ public class TrainerShowAllService {
 		
 		List<Trainer_info> tser = sqlsession.selectList("selectall_Trainer");
 		
-		
+		String a = tser.get(0).getId();
+		System.out.println(a+"아이디를 말해죠");
 		
 		
 		System.out.print("여기는?");
