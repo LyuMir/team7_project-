@@ -61,7 +61,7 @@ marker.setMap(map);
   <div class="text00">
     <h1 class="hero__look">태그에 맞춰 헬스장을 검색하세요!</h1>
     <p class="hero__snippet">당신에게 딱 맞는 헬스장을 추천해드립니다!</p>
-<<<<<<< HEAD
+
       <a class="btn00" href="">사용 방법</a>
 
     </div>
