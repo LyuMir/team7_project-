@@ -84,7 +84,7 @@ public class TrainerCreateAction implements Action{
 		
 		
 		ActionForward forward= new ActionForward();
-		forward.setPath("메인으로가면됨");
+		forward.setPath("index.jsp");
 		return forward;
 	} 
 

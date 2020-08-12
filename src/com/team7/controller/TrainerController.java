@@ -18,76 +18,63 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");	//ë‚´ê°€ ì¶”ê°€í•¨
-		String RequestURI=request.getRequestURI();	//req ê°€ì ¸ì˜´ :http://localhost:8080/WebProject0724_MVC2/boardList.bo
+		request.setCharacterEncoding("UTF-8");	//³»°¡ Ãß°¡ÇÔ
+		String RequestURI=request.getRequestURI();	//req °¡Á®¿È :http://localhost:8080/WebProject0724_MVC2/boardList.bo
 		String contextPath=request.getContextPath(); //http://localhost:8080/WebProject0724_MVC2/
-		String command=RequestURI.substring(contextPath.length()); //ì•ì— ê¸€ì ì§€ì›€ : boardList.bo
-		//ì¦‰ '/'ì´í›„ ë§¨ ë§ˆì§€ë§‰ë§Œ. 
+		String command=RequestURI.substring(contextPath.length()); //¾Õ¿¡ ±ÛÀÚ Áö¿ò : boardList.bo
+		//Áï '/'ÀÌÈÄ ¸Ç ¸¶Áö¸·¸¸. 
 		
 		
-		ActionForward forward=null;	//forward : ê°ˆ ê³³ ì§€ì • 
+		ActionForward forward=null;	//forward : °¥ °÷ ÁöÁ¤ 
 		Action action=null;	
 		
-		//action : í•  ì¼ ì§€ì •  ì •í™•íˆëŠ” action.execute()ë¡œ. (ì¸í„°í˜ì´ìŠ¤ë¡œ êµ¬ì„±í•¨)
+		//action : ÇÒ ÀÏ ÁöÁ¤  Á¤È®È÷´Â action.execute()·Î. (ÀÎÅÍÆäÀÌ½º·Î ±¸¼ºÇÔ)
 		
 		
+//		HttpSession session = request.getSession(true);
+//		int logined =0;
+//		if(session.getAttribute("LOG_STATUS") ==null) {}
+//		else {
+//			logined=(Integer) session.getAttribute("LOG_STATUS");
+//		}
+//		
 		
 		HttpSession session = request.getSession(true);
-
-		int logined =0;
-		if(session.getAttribute("LOG_STATUS") ==null) {}
-		else {
-			logined=(Integer) session.getAttribute("LOG_STATUS");
-		}
+		int logined= (Integer)session.getAttribute("LOG_STATUS"); //¿ÀºêÁ§Æ®Çü½ÄÀ¸·ÎÀÖ´Ù
+		System.out.print("·Î±×ÀÎÃÖÃÊÈ®ÀÎ");
+		
+		
 		
 		
 		if(command.startsWith("/id_") && logined !=1) {
-			response.sendRedirect("Join_and_LogIn.jsp?fail=ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤. ë¡œê·¸ì¸í•´ì£¼ì„¸ìš”. ");
-			String referer = request.getHeader("Referer");
-			response.sendRedirect(referer);
+			response.sendRedirect("Join_and_LogIn.jsp?fail=·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù. ·Î±×ÀÎÇØÁÖ¼¼¿ä. ");
 			return;
 		}
-
-		if(command.equals("/id_MainToApply.trainer")){	
+		System.out.print("·Î±×ÀÎÃ¼Å©");
+		if(command.equals("/Introtrainerapply.trainer")){	
 			String id = (String)session.getAttribute("LOGIN");
-			System.out.println("íŠ¸ë ˆì´ë„ˆë“±ë¡ë²„íŠ¼ëˆ„ë¦„");
-			forward = new ActionForward(); // ê·¸ ì¼ ìš”ì²­ë°›ì€ ê±°ë©´ ë‹¤ìŒì„ í•´ë¼.
-			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
+			forward = new ActionForward(); // ±× ÀÏ ¿äÃ»¹ŞÀº °Å¸é ´ÙÀ½À» ÇØ¶ó.
+			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/introtrainer.jsp");
 		  
 		}
 		 if(command.equals("/id_trainerapply.trainer")) {
-			 System.out.print("ë²„íŠ¼ì„ì•Œì•„ë³´ì•”ë†ë¼ã…£ã…ã„´ã…‡ê°€ã…£");
 			action  = new com.team7.trainer.action.TrainerCreateAction();
 			System.out.print("d");
 			try {
-				forward=action.execute(request, response); //ë©”ì„œë“œì‹¤í–‰í•¨
+				forward=action.execute(request, response); //¸Ş¼­µå½ÇÇàÇÔ
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
 			
-		}  //í• ê±° ë‹´ê¸°
-		 if(command.equals("/id_trainermypage.trainer")) {
-			 String id = (String)session.getAttribute("LOGIN");
-			 
-			 System.out.println("íŠ¸ë ˆì´ë„ˆ ë§ˆì´í˜ì´ì§€ëˆŒë €ìŒ");
-			 action  = new com.team7.trainer.action.TrainerMypageAction();
-				try {
-					forward=action.execute(request, response); //ë©”ì„œë“œì‹¤í–‰í•¨
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-//				forward = new ActionForward(); // ê·¸ ì¼ ìš”ì²­ë°›ì€ ê±°ë©´ ë‹¤ìŒì„ í•´ë¼.
-//				forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
-				
-				
-			}
+		}  //ÇÒ°Å ´ã±â
+		 
 		
 		 if(command.equals("/Search.trainer")){	
-			System.out.print("íŠ¸ë ˆì´ë„ˆ ì„œì¹˜ í´ë¦­ë©ë‹ˆê¹Œ");
+			System.out.print("Æ®·¹ÀÌ³Ê ¼­Ä¡ Å¬¸¯µË´Ï±î");
 			action  = new com.team7.trainer.action.TrainerShowAllAction();
 			try {
-				forward=action.execute(request, response); //ë©”ì„œë“œì‹¤í–‰í•¨
+				forward=action.execute(request, response); //¸Ş¼­µå½ÇÇàÇÔ
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -95,18 +82,29 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		}
 		
 		 if(command.equals("/trainerUserpage.trainer")){	
-				System.out.println("íŠ¸ë ˆì´ë„ˆ ê°œì¸í˜ì´ì§€ í´ë¦­ë©ë‹ˆê¹Œ");
+				System.out.println("Æ®·¹ÀÌ³Ê °³ÀÎÆäÀÌÁö Å¬¸¯µË´Ï±î");
 				action  = new com.team7.trainer.action.TrainerUserpageAction();
 				try {
-					forward=action.execute(request, response); //ë©”ì„œë“œì‹¤í–‰í•¨
+					forward=action.execute(request, response); //¸Ş¼­µå½ÇÇàÇÔ
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 //			  
 			}System.out.print("dddddd");
+			
+			if(command.equals("/id_mypage.trainer")) {
+				action  = new com.team7.trainer.action.TrainerMypageAction();
+				System.out.print("d");
+				try {
+					forward=action.execute(request, response); //¸Ş¼­µå½ÇÇàÇÔ
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				
+			} 
 
-		System.out.println(command+"...dla..ì„");
-		
+		System.out.println(command+"...dla..ÀÓ");
 		if(forward != null){
 			
 			if(forward.isRedirect()){
@@ -116,19 +114,19 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 				dispatcher.forward(request, response);
 			}
 			
-		}//ê°€ì„œ í˜ì´ì§€ ë³´ë‚´ê¸°
+		}//°¡¼­ ÆäÀÌÁö º¸³»±â
 		
 
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //ë‚´ê°€ ì¶”ê°€í•¨
+		response.setContentType("text/html; charset=utf-8"); //³»°¡ Ãß°¡ÇÔ
 		doProcess(request,response);
 	}  	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //ë‚´ê°€ ì¶”ê°€í•¨
+		response.setContentType("text/html; charset=utf-8"); //³»°¡ Ãß°¡ÇÔ
 		doProcess(request,response);
 	}   
 }
