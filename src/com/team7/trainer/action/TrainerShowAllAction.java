@@ -31,9 +31,11 @@ public class TrainerShowAllAction implements Action{
 		
 		System.out.println("1¹ø");
 		List<Trainer_info> trainerlist =tser.getTrainerinfo();
+		System.out.println("2¹ø");
 		List<PhotoBean> photos = new PhotoTrainerService().entire_trainerphoto();
-
+		System.out.println("3¹ø");
 //		trainerlist = tser.getTrainerinfo();
+		
 		System.out.println(trainerlist.get(0).getNo());
 		
 
