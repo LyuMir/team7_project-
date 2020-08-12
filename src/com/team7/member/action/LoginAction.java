@@ -29,6 +29,7 @@ public class LoginAction implements Action{
 			forward.setPath("/index.jsp");
 		}
 		else {
+			request.getSession().setAttribute("fail", "로그인 실패!");
 			forward.setPath("/Join_and_LogIn.jsp?fail=로그인 실패");
 		}
 //		forward.setRedirect(true);
