@@ -269,6 +269,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectall_Trainer2" resultType="com.team7.vo.Trainer_info" >
 		select * from team7.team7_trainer
 	</select>
+	
 	<select id="selectall_Trainer" resultType="com.team7.vo.Trainer_info" >
 		select * from team7_trainer, team7_picture_data  where  team7_picture_data.id like concat(team7_trainer.id,'_trainer%' )
 	</select>
