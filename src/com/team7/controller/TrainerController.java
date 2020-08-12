@@ -63,7 +63,6 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
 
-		  
 		}
 		if(command.equals("/id_coachapply.trainer")){	
 			String id = (String)session.getAttribute("LOGIN");
