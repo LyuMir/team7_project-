@@ -17,6 +17,8 @@ import com.team7.vo.ActionForward;
 import com.team7.vo.PageInfo;
 import com.team7.vo.PhotoBean;
 import com.team7.vo.PostBean;
+import com.team7.vo.ZZIMBean;
+import com.team7.zzim.controller.ZzimService;
 import com.team7.vo.Gym_info;
 
 
@@ -49,7 +51,11 @@ public class GymUserpageAction implements Action{
 //		int trainerno = Gymonelist.get(0).get
 		List<PostBean> posts	= new PostService().getGPOSTs(no);
 
-	
+		
+		List<ZZIMBean> zzimYN = null;
+		String id = (String )request.getSession().getAttribute("LOG_ID");
+		if(id !=null)
+			zzimYN = new ZzimService().select_gym_Z_YN(id, no);
 		
 
 		ActionForward forward= new ActionForward();
@@ -57,6 +63,7 @@ public class GymUserpageAction implements Action{
 		request.setAttribute("photoBean", photoBean);
 		request.setAttribute("gser", Gymonelist);
 		request.setAttribute("posts", posts);
+		request.setAttribute("zzimYN", zzimYN);
 		forward.setPath("/_FORWHERE.jsp?forwhere=4health/GymUserpage.jsp");
 		return forward;
 		

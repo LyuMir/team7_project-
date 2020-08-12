@@ -206,8 +206,10 @@ function deleteClub(req){
 	$('#deleteClub').children('#clubid2').val(id);
 	var confirmE = confirm("해당 소모임을 삭제하시겠습니까? 자신을 제외한 모임원이 존재하지 않아야 합니다.");
 	if(confirmE){
-		$('#deleteClub').submit();	//페이지 왔다갔다 하는 대신 ajax로 되나? 그런 귀찮은 짓을. 
-
+		var confirm33 = confirm('정말 삭제하십니까? 소모임의 모든 댓글과 사진이 영구히 삭제됩니다. ');
+		if(confirm33){
+			$('#deleteClub').submit();	//페이지 왔다갔다 하는 대신 ajax로 되나? 그런 귀찮은 짓을. 
+		}
 	}
 }
 function gotoClub(req){

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import com.team7.club.action.Action;
 import com.team7.vo.ActionForward;
+import com.team7.zzim.action.GymZAction;
+import com.team7.zzim.action.TrainerZAction;
 import com.team7.zzim.action.Zzim_Club_Actions;
 
 @WebServlet("*.zzim")
@@ -43,6 +45,7 @@ public class ZzimController extends javax.servlet.http.HttpServlet
 //			dispatcher.forward(request, response);
 //			return;	
 //		}
+		System.out.println("Âò±îÁö´Â ¿À³ª?");
 		
 		if(command.equals("/club.zzim")) {
 			System.out.println("Å¬·´ ÂòÇÕ´Ï´Ù. ");
@@ -60,22 +63,29 @@ public class ZzimController extends javax.servlet.http.HttpServlet
 			System.out.println("¼Ò¸ðÀÓ °Ô½Ã±Û Âò Ãë¼Ò");
 			
 		}
-		else if(command.equals("/")) {
-			System.out.println("");
-			
+		else if(command.equals("/trainer.zzim")) {
+			System.out.println("Æ®·¹ÀÌ³Ê Âò");
+			new TrainerZAction().tz(request, response);
 		}
-//		
-//		if(command.equals("/MainInfo.club")){
-//			forward = new ActionForward();
-//			forward.setPath("_FORWHERE.jsp?forwhere=3club/club_intro.jsp");
+		else if(command.equals("/trainerC.zzim")) {
+			System.out.println("Æ®·¹ÀÌ³Ê Âò Ãë¼Ò");;
+			new TrainerZAction().tzC(request, response);
+		}
+		else if(command.equals("/gym.zzim")) {
+			System.out.println("Çï½ºÀå Âò");
+			new GymZAction().gz(request, response);
+		}
+		else if(command.equals("/gymC.zzim")) {
+			System.out.println("Çï½ºÀå Âò Ãë¼Ò");;
+			new GymZAction().gzC(request, response);
+		}
+//		else if(command.equals("/gym.zzim")) {
+//			System.out.println("Çï½ºÀå Âò");
+//			new GymZAction().gz(request, response);
 //		}
-//		else if(command.equals("/Search.club")){	
-//			action  = new com.team7.club.action.ClubShowAction();
-//			try {
-//				forward=action.execute(request, response );
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
+//		else if(command.equals("/gymC.zzim")) {
+//			System.out.println("Çï½ºÀå Âò Ãë¼Ò");;
+//			new GymZAction().gzC(request, response);
 //		}
 
 			//ÇØ´ç ÆäÀÌÁö¿¡¼­¸¸ ³î°ÅÀÓ. 
