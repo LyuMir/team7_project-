@@ -21,7 +21,6 @@
 			level: 3
 		};
 
-
 		var map = new kakao.maps.Map(container, options);
 		
 	</script>
@@ -69,9 +68,9 @@ marker.setMap(map);
 
 
 
-</div>
 <div class="dicclean">
 </div>
+
 
 <hr>
 <div class="ycontainertxt">
@@ -109,20 +108,22 @@ marker.setMap(map);
      <article class="grid__item" data-tags="<%= gser.get(i).getGname() %>">
       <div class="card">
         <div class="card__img">
-          <a href = "GymUserpage.health?number=<%=gser.get(i).getGid()%>"> 
+          <a href = "GymUserpage.health?number=<%=gser.get(i).getId() %>"> 
           	<img class="card__img" src="Files/gym/<%=gser.get(i).getOwner()%>/1/<%=gser.get(i).getPicture() %>" alt="<%=gser.get(i).getPicture() %>">
           </a> 
         </div>
         <div class="card__content">
-          <div class="card__tag00"> <%=gser.get(i).getGid()%></div>
+          <div class="card__tag00"> <%=gser.get(i).getId()%></div>
           <div class="card__header"><%=gser.get(i).getGname()%> </div>
           <p class="card__text"><%=gser.get(i).getGsmalltext()%></p>
           <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
         </div>
       </div>
     </article>
+    
+    
 
-    <input type="hidden" name="number" value="<%=gser.get(i).getGid()%>">
+    <input type="hidden" name="number" value="<%=gser.get(i).getId()%>">
     <%} %>
 
 

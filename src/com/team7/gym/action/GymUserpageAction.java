@@ -34,7 +34,7 @@ public class GymUserpageAction implements Action{
 		System.out.println(no+"¿‘¥œ¥Ÿ!!");
 		
 		Gym_info info = new Gym_info();
-		info.setGid(no);
+		info.setId(no);
 		
 		
 		GymUserpageService gser = new GymUserpageService();

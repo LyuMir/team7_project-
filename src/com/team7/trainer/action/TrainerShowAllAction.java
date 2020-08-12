@@ -29,10 +29,11 @@ public class TrainerShowAllAction implements Action{
 		
 		TrainerShowAllService tser = new TrainerShowAllService();
 		
-		List<Trainer_info> trainerlist = new ArrayList<Trainer_info>();
+		System.out.println("1¹ø");
+		List<Trainer_info> trainerlist =tser.getTrainerinfo();
 		List<PhotoBean> photos = new PhotoTrainerService().entire_trainerphoto();
 
-		trainerlist = tser.getTrainerinfo();
+//		trainerlist = tser.getTrainerinfo();
 		System.out.println(trainerlist.get(0).getNo());
 		
 
