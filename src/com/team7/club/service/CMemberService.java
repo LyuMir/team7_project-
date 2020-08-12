@@ -54,6 +54,12 @@ public class CMemberService {
 		sqlsession.commit();
 		sqlsession.close();
 	}
+	public void deleteMember(CmemberBean cmember) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.delete("delete_cmember",cmember);
+		sqlsession.commit();
+		sqlsession.close();
+	}
 	
 	
 //	public List<C_enroll_Bean> c_enroll_selector(ClubBean clubBean){

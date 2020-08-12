@@ -69,6 +69,7 @@ public class TrainerCreateAction implements Action{
 		trainer.setTstory(tstory);
 		trainer.setThowjoin(thowjoin);
 		trainer.setTphone(tphone);
+		System.out.println("왜 안되는데?");
 		
 //		
 //		notice.setContent(content);
@@ -83,7 +84,7 @@ public class TrainerCreateAction implements Action{
 		
 		
 		ActionForward forward= new ActionForward();
-		forward.setPath("메인으로가면됨");
+		forward.setPath("index.jsp");
 		return forward;
 	} 
 

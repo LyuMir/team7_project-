@@ -12,6 +12,7 @@ import com.team7.vo.ActionForward;
 import com.team7.vo.ClubBean;
 import com.team7.vo.CmemberBean;
 import com.team7.vo.MemberLogInfo;
+import com.team7.vo.PhotoBean;
 
 public class MypageAction implements Action{
 
@@ -21,6 +22,10 @@ public class MypageAction implements Action{
 		ClubBean clubBean = new ClubBean();
 		HttpSession session = request.getSession();
 		clubBean.setAdmin((String)session.getAttribute("LOG_ID"));
+		
+		List<PhotoBean> plist = new ClubService().club_mainPselector();
+		
+		request.setAttribute("plist", plist);
 
 		List<ClubBean> rlist = new ClubService().club_selector_id(clubBean);
 //		for(int i = 0 ; i < rlist.size(); i++) {

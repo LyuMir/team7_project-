@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import com.team7.club.service.ClubService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.ClubBean;
+import com.team7.vo.PhotoBean;
 
 public class ClubManageAction implements Action{
 
@@ -23,6 +24,8 @@ public class ClubManageAction implements Action{
 		
 		List<ClubBean> rlist = new ClubService().club_selector_id(clubBean);
 		request.setAttribute("rlist", rlist);
+		List<PhotoBean> plist = new ClubService().club_mainPselector();
+		request.setAttribute("plist", plist);
 		
 		ActionForward forward= new ActionForward();
 		forward.setPath("_FORWHERE.jsp?forwhere=3club/club_createNedit.jsp");

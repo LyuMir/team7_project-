@@ -10,8 +10,8 @@ import com.team7.club.service.CEnrollService;
 import com.team7.club.service.CMemberService;
 import com.team7.club.service.ClubService;
 import com.team7.controller.ClubController;
-import com.team7.photo.service.PhotoService;
-import com.team7.post.service.PostClubService;
+import com.team7.photo.service.PhotoClubService;
+import com.team7.post.service.PostService;
 import com.team7.vo.*;
 import com.team7.zzim.controller.ZzimService;
 
@@ -66,8 +66,9 @@ public class ClubPageAction implements Action{
 			}
 		}
 		
-		List<CPostBean> cposts = new PostClubService().getCPOSTs(Integer.parseInt(club_id));
-		List<PhotoBean> cpphotos = new PhotoService().getPs_cpost(Integer.parseInt(club_id));
+		List<PostBean> cposts = new PostService().getCPOSTs(Integer.parseInt(club_id));
+		List<PhotoBean> cpphotos = new PhotoClubService().getPs_cpost(Integer.parseInt(club_id));
+		List<PhotoBean> clubphoto = new PhotoClubService().getfilenames_clubmains(rlist.get(0).getAdmin(), Integer.parseInt(club_id));
 		
 		request.setAttribute("mylist", mylist);
 		request.setAttribute("mylist2", mylist2);
@@ -81,15 +82,16 @@ public class ClubPageAction implements Action{
 				System.out.println(rlist.get(0).getMeetingDate());
 		request.setAttribute("cposts", cposts);
 		request.setAttribute("cpphotos", cpphotos);
+		request.setAttribute("clubphoto", clubphoto);
 		
 		int mypostnumber = 0 ; 
 		for(int i = 0 ; i < cposts.size(); i ++) {
 //			if(cposts.get(i).getWriter().equals(id0))	//내꺼만 전제하지 않습니다. 그냥 포스트 갯수로.
 				mypostnumber++;
 		}
-		System.out.println(mypostnumber+1);
+//		System.out.println(mypostnumber+1);
 		System.out.println(cposts.size());
-		mypostnumber++;
+//		mypostnumber++;
 		
 		request.getSession().setAttribute("clubid", rlist.get(0).getNo());
 		request.getSession().setAttribute("mypostnumber", mypostnumber);	//바꿀것!!!

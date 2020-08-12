@@ -31,34 +31,46 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 		//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
 		
 		
-//		HttpSession session = request.getSession(true);
-//		int logined =0;
-//		if(session.getAttribute("LOG_STATUS") ==null) {}
-//		else {
-//			logined=(Integer) session.getAttribute("LOG_STATUS");
-//		}
+		HttpSession session = request.getSession(true);
+		int logined =0;
+		if(session.getAttribute("LOG_STATUS") ==null) {}
+		else {
+			logined=(Integer) session.getAttribute("LOG_STATUS");
+		}
 //		
 		
-		HttpSession session = request.getSession(true);
-		int logined= (Integer)session.getAttribute("LOG_STATUS"); //오브젝트형식으로있다
-		System.out.print("로그인최초확인");
+//		HttpSession session = request.getSession(true);
+//		int logined= (Integer)session.getAttribute("LOG_STATUS"); //오브젝트형식으로있다
 		
 		
 		
 		
 		if(command.startsWith("/id_") && logined !=1) {
-			response.sendRedirect("Join_and_LogIn.jsp?fail=로그인이 필요한 서비스입니다. 로그인해주세요. ");
+			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
 			return;
 		}
 		System.out.print("로그인체크");
-		if(command.equals("/id_Mng.health")){	
+		if(command.equals("/Mng.health")){	
 			String id = (String)session.getAttribute("LOGIN");
 				
 			
 			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+			forward.setPath("_FORWHERE.jsp?forwhere=4health/introhealth.jsp");
+		  
+	}
+			if(command.equals("/id_gymapply.health")){	
+			String id = (String)session.getAttribute("LOGIN");
+				
+			System.out.print("어플라이페이지 클릭됩니까?");
+			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
 			forward.setPath("_FORWHERE.jsp?forwhere=4health/gym_Apply.jsp");
 		  
 		}
+		
+		
+		
 		 if(command.equals("/id_gymcreate.health")) {
 			action  = new com.team7.gym.action.GymCreateAction();
 			System.out.print("d");

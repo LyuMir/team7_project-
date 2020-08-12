@@ -4,6 +4,7 @@
 <%@ page import="com.team7.dao.Class_DAO" %>
 <%@ page import="com.team7.vo.DTO_ClubProperties" %>
 <%@ page import="com.team7.vo.ClubBean" %>
+<%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="com.team7.club.service.*" %>
 <%@ page import="java.util.List" %>
 
@@ -28,6 +29,9 @@ String id = (String) session.getAttribute("LOG_ID");
 //List<ClubBean> rlist  = //new ClubService().club_selector_id(dto);
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
 	List<ClubBean> rlist = 	(List<ClubBean>) request.getAttribute("rlist");
+	List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
+	String realFolder = "Files/clubsphoto/";//+rlist.get(0).getAdmin()+"_";
+	String basicFolder = "img/exc";
 %> 
 
 <main id="main000" class="mainwrap">
@@ -41,7 +45,7 @@ String id = (String) session.getAttribute("LOG_ID");
 			내가 속한 소모임 수 : (##개) , (나열)<br>
 		</div>
 		<div class="turnitoffPlz">
-			<img src="img/star.png" style="width: 50px;">
+			<img src="img/heart_and_star/star.png" style="width: 50px;">
 		</div>
 		
 	</div>
@@ -67,7 +71,7 @@ String id = (String) session.getAttribute("LOG_ID");
 							<div class="card__tag00 content_where"> 장소 : <span>...</span></div>
 							<div class="card__tag00 content_when"> 시간 : <span>...</span></div>
 							<div class="card__heart"> 
-								<img src="img/heart35.png"> <span>5000  </span>  &nbsp;<img src="img/star22.png">  <span>7000</span>
+								<img src="img/heart_and_star/heart35.png"> <span>5000  </span>  &nbsp;<img src="img/heart_and_star/star22.png">  <span>7000</span>
 							</div>
 						</div>
 						<div class="card__bottomContent">
@@ -82,6 +86,53 @@ String id = (String) session.getAttribute("LOG_ID");
  <% for(int i = 0; i < rlist.size(); i++){ %>
 
 
+     	<%
+     	String photo1 ="";
+     	String picture00="";
+  
+     	boolean picYN = false;
+  for(int j = 0 ; j < plist.size(); j++){
+	  if(plist.get(j).getNo() == rlist.get(i).getNo()){
+		  picYN = true;
+		  picture00 =plist.get(j).getPicture();
+	  }
+  
+}
+
+     	      if(!picYN){
+
+     	    	  String theme = rlist.get(i).getE_type();
+     	    	  if(theme.contains("축구")){
+     	    		  photo1 = basicFolder+"/soccer1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("농구")){
+     	    		  photo1 = basicFolder+"/basketball1.png";
+     	    	  }
+     	    	  else if(theme.contains("등산")){
+     	    		  photo1 = basicFolder+"/hiking1.jpg";
+     	    	  }
+     	    	  if(theme.contains("스케이트")){
+     	    		  photo1 = basicFolder+"/skate1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("요가")){
+     	    		  photo1 = basicFolder+"/yoga1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("자전거")){
+     	    		  photo1 = basicFolder+"/cycling1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("야구")){
+     	    		  photo1 = basicFolder+"/baseball2.jpg";
+     	    	  }
+     	    	  
+     	    	  if(photo1.equals("")){
+     	    		 photo1 = basicFolder+"/"+"surf1.jpg";
+     	    	  }
+     	      }
+     	      else{
+     	    	  photo1 = realFolder+rlist.get(i).getAdmin()+"_"+rlist.get(i).getNo()+"/main/"+picture00;
+     	      }
+     	
+     	%>
 		<article class="grid__item ">
 			<div class="wrapEn0">
 				<div class="overray0 editit" onclick="editClub(this)">소모임 수정하기</div>
@@ -89,7 +140,7 @@ String id = (String) session.getAttribute("LOG_ID");
 				<div class="wrapEntire" onclick="gotoClub(this)">
 					<div class="card">
 						<div class="card__img00 fright">
-							<img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
+							<img class="card__img01" src="<%=photo1 %>">
 						</div>
 						<div class="card__content fleft">
 							<div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
@@ -99,7 +150,7 @@ String id = (String) session.getAttribute("LOG_ID");
 							<div class="card__tag00 content_where"> 장소 : <span><%=rlist.get(i).getArea() %></span></div>
 							<div class="card__tag00 content_when"> 시간 : <span><%=rlist.get(i).getMeetingDate() %></span></div>
 							<div class="card__heart"> 
-								<img src="img/heart35.png"> <span>000  </span>  &nbsp;<img src="img/star22.png">  <span>00</span>
+								<img src="img/heart_and_star/heart35.png"> <span>000  </span>  &nbsp;<img src="img/heart_and_star/star22.png">  <span>00</span>
 							</div>
 						</div>
 						<div class="card__bottomContent">
@@ -153,9 +204,9 @@ function editClub(req){
 function deleteClub(req){
 	var id = $(req).parent('.wrapEn0').find('.card__idhere').attr('id');
 	$('#deleteClub').children('#clubid2').val(id);
-	var confirmE = confirm("해당 소모임을 삭제하시겠습니까?");
+	var confirmE = confirm("해당 소모임을 삭제하시겠습니까? 자신을 제외한 모임원이 존재하지 않아야 합니다.");
 	if(confirmE){
-		$('#deleteClub').submit();	//페이지 왔다갔다 하는 대신 ajax로 되나 한번 볼꺼임.
+		$('#deleteClub').submit();	//페이지 왔다갔다 하는 대신 ajax로 되나? 그런 귀찮은 짓을. 
 
 	}
 }

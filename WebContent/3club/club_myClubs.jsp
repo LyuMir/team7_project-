@@ -2,11 +2,12 @@
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.ClubBean" %>
+<%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="java.util.List" %>
 <!-- <html>
 <head>
 	<title>소모임 전체보기...</title> -->
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=5">
 <!-- </head>
 <body> -->
 	<!-- 바디... main만 있어도 됨.  -->
@@ -25,7 +26,13 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
 		(List<ClubBean>) request.getAttribute("rlist");
 
-	String realFolder = "Files/clubsphoto/"+rlist.get(0).getAdmin()+"/";
+List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
+
+
+	String realFolder = "";
+	if(rlist.size()>0){
+		realFolder = "Files/clubsphoto/"+rlist.get(0).getAdmin()+"_";//+rlist.get(0).getNo()+"/";
+	}
 	String basicFolder = "img/exc";
 
 		List<ClubBean> rlist2 = (List<ClubBean>)request.getAttribute("rlist2");
@@ -42,28 +49,53 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 
 		   
      <% for(int i = 0; i < rlist.size(); i++){ %>
-
-
 <%
-String photo1 ="";
-String photo2 ="";
+     	String photo1 ="";
+     	String picture00="";
+  
+     	boolean picYN = false;
+  for(int j = 0 ; j < plist.size(); j++){
+	  if(plist.get(j).getNo() == rlist.get(i).getNo()){
+		  picYN = true;
+		  picture00 =plist.get(j).getPicture();
+	  }
+  
+}
 
-      if(rlist.get(i).getPhoto1() ==null || rlist.get(i).getPhoto1().equals("")){
-    	  photo1 = basicFolder+"/"+"surf1.jpg";
-    	 // photo1 = rlist.get(i).getPhoto1();
-      }
-      else{
-    	  photo1 = realFolder+"main/"+rlist.get(i).getPhoto1();
-      }
-      if(rlist.get(i).getPhoto2() ==null || rlist.get(i).getPhoto2().equals("")){
-    	  photo2 = basicFolder+"/"+"soccer1.jpg";
-    	 // photo1 = rlist.get(i).getPhoto1();
-      }
-      else{
-    	  photo2 = realFolder+"profile/"+rlist.get(i).getPhoto2();
-      }
+     	      if(!picYN){
 
-%>
+     	    	  String theme = rlist.get(i).getE_type();
+     	    	  if(theme.contains("축구")){
+     	    		  photo1 = basicFolder+"/soccer1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("농구")){
+     	    		  photo1 = basicFolder+"/basketball1.png";
+     	    	  }
+     	    	  else if(theme.contains("등산")){
+     	    		  photo1 = basicFolder+"/hiking1.jpg";
+     	    	  }
+     	    	  if(theme.contains("스케이트")){
+     	    		  photo1 = basicFolder+"/skate1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("요가")){
+     	    		  photo1 = basicFolder+"/yoga1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("자전거")){
+     	    		  photo1 = basicFolder+"/cycling1.jpg";
+     	    	  }
+     	    	  else if(theme.contains("야구")){
+     	    		  photo1 = basicFolder+"/baseball2.jpg";
+     	    	  }
+     	    	  
+     	    	  if(photo1.equals("")){
+     	    		 photo1 = basicFolder+"/"+"surf1.jpg";
+     	    	  }
+     	      }
+     	      else{
+     	    	  photo1 = realFolder+rlist.get(i).getNo()+"/"+"main/"+picture00;
+     	      }
+     	
+     	%>
 		<article class="grid__item">
 			<div class="wrapEn0">
 				<div class="overray0 manageit" onclick="manageClub(this)">소모임 관리하기</div>
@@ -71,7 +103,7 @@ String photo2 ="";
 				<div class="wrapEntire" onclick="gotoClub2(this)">
 					<div class="card">
 						<div class="card__img00 fright">
-							<img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
+							<img class="card__img01" src="<%=photo1 %>" alt="Snowy Mountains">
 						</div>
 						<div class="card__content fleft">
 							<div class="card__idhere" id="<%=rlist.get(i).getNo()%>"></div>
@@ -99,11 +131,57 @@ String photo2 ="";
 
 		<br> 내가 속한 소모임 
 
-     <% for(int i = 0; i < rlist2.size(); i++){ %>
+     <% for(int i = 0; i < rlist2.size(); i++){ 
+      	String photo1 ="";
+      	String picture00="";
+   
+      	boolean picYN = false;
+   for(int j = 0 ; j < plist.size(); j++){
+ 	  if(plist.get(j).getNo() == rlist2.get(i).getNo()){
+ 		  picYN = true;
+ 		  picture00 =plist.get(j).getPicture();
+ 	  }
+   
+ }
+
+      	      if(!picYN){
+
+      	    	  String theme = rlist2.get(i).getE_type();
+      	    	  if(theme.contains("축구")){
+      	    		  photo1 = basicFolder+"/soccer1.jpg";
+      	    	  }
+      	    	  else if(theme.contains("농구")){
+      	    		  photo1 = basicFolder+"/basketball1.png";
+      	    	  }
+      	    	  else if(theme.contains("등산")){
+      	    		  photo1 = basicFolder+"/hiking1.jpg";
+      	    	  }
+      	    	  if(theme.contains("스케이트")){
+      	    		  photo1 = basicFolder+"/skate1.jpg";
+      	    	  }
+      	    	  else if(theme.contains("요가")){
+      	    		  photo1 = basicFolder+"/yoga1.jpg";
+      	    	  }
+      	    	  else if(theme.contains("자전거")){
+      	    		  photo1 = basicFolder+"/cycling1.jpg";
+      	    	  }
+      	    	  else if(theme.contains("야구")){
+      	    		  photo1 = basicFolder+"/baseball2.jpg";
+      	    	  }
+      	    	  
+      	    	  if(photo1.equals("")){
+      	    		 photo1 = basicFolder+"/"+"surf1.jpg";
+      	    	  }
+      	      }
+      	      else{
+      	    	  photo1 = realFolder+rlist2.get(i).getNo()+"/"+"main/"+picture00;
+      	      }
+
+      %>
 		<article class="grid__item" onclick="gotoClub2(this)">
 			<div class="card">
 				<div class="card__img00 fright">
-					<img class="card__img01" src="img/이쁜이미지1.jpg" alt="Snowy Mountains">
+					<img class="card__img01" src="<%=photo1 %>" alt="Snowy Mountains">
 				</div>
 				<div class="card__content fleft">
 					<div class="card__idhere" id="<%=rlist2.get(i).getNo()%>"></div>
@@ -167,7 +245,7 @@ var kk = 0 ;
 		$('#manageClub').submit();
 	}
 </script>
-<script type="text/javascript" src="77zzim/zzim_js.js"></script>
+<script type="text/javascript" src="77zzim/zzim_js.js?ver=3"></script>
 
 <!-- 
 </body>

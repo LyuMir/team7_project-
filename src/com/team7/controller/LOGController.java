@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team7.member.action.Action;
+import com.team7.member.action.MyInfoAction;
 import com.team7.vo.ActionForward;
 
 @WebServlet("*.log")
@@ -30,6 +31,22 @@ public class LOGController extends javax.servlet.http.HttpServlet
 		
 		ActionForward forward=null;	//forward : 갈 곳 지정 
 		Action action=null;			//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
+		HttpSession session = request.getSession();
+		int logyn =0;
+		if(session.getAttribute("LOG_STATUS") ==null) {}
+		else {
+			logyn=(Integer) session.getAttribute("LOG_STATUS");
+		}
+		
+		if(command.contains("myinfo") && logyn !=1) {
+
+			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다!");
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
+			
+			return;
+		}
+		
 		
 		if(command.equals("/join.log")){	// 그 일 요청받은 거면 다음을 해라.
 			action  = new com.team7.member.action.JoinAction();
@@ -57,13 +74,20 @@ public class LOGController extends javax.servlet.http.HttpServlet
 			}
 		}
 		else if(command.equals("/forgot.log")) {
-//			action  = new com.team7.member.action.FindAction();
+			new com.team7.member.action.PWFindAction().pwfinder(request, response);
 //			try {
 //				forward=action.execute(request, response );
 //			} catch (Exception e) {
 //				e.printStackTrace();
 //			}
 		}
+		else if(command.equals("/myinfo.log")) {
+			new MyInfoAction().toMyInfoPage(request, response);
+		}
+		else if(command.equals("/editmyinfo.log")) {
+			new MyInfoAction().infoEdit(request, response);
+		}
+
 
 		if(forward != null){	//가야할 곳이 있다면 보냄. \
 			//안보냄. 새로고침 시킬거임. 

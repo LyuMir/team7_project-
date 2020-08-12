@@ -9,6 +9,7 @@ import com.team7.vo.DTO_ClubProperties;
 import com.team7.vo.MemberLogInfo;
 import com.team7.vo.ClubBean;
 import com.team7.vo.PageInfo;
+import com.team7.vo.PhotoBean;
 
 public class ClubService {
 
@@ -35,6 +36,13 @@ public class ClubService {
 		List<ClubBean> rlist = sqlsession.selectList("ClubselectAll2", pageInfo);
 		sqlsession.close();
 		return rlist;
+	}
+	
+	public List<PhotoBean> club_mainPselector(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<PhotoBean> plist = sqlsession.selectList("ClubMPhotoSelectAll");
+		sqlsession.close();
+		return plist;		//클럽의 no와 picture(아이디) 밖에 없음!!
 	}
 	
 

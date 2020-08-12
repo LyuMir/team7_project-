@@ -12,6 +12,7 @@
 
 <% String id = (String)session.getAttribute("LOG_ID");
 	session.setAttribute("clubid", 000);
+	// session.removeAttribute("")
 %>
 	<main>
 			<table>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>데일리 헬스</title>
     <!--  넌 문제 맞음... main -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css?ver=3">
     <link rel="stylesheet" type="text/css" href="css/mainmain88.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css\grt-responsive-menu.css">
@@ -101,58 +101,25 @@ request.setCharacterEncoding("UTF-8");
       </div>
   </section>
 
-        <div class="container2">
-          <div >
+<div class="container2">
+  <div >
+    <div class="containertext">
+      <h6 class="ad_text">! 부담없이 ! </h6>
+      <p class="hero__snippet">  데일리 헬스와 함께 미리 보는 헬스장 </p>
+    </div>
+    <div class="imgleft">
+    </div>
+    <p align="center">거품 없는 가격 공개</p>
+    <div class="imgright">
+    </div>
+    <p align="center">복잡한 상담은 NO!</p>
+    <div class="imgleft">
+    </div>
+  </div>
+</div>
 
-            <div class="containertext">
-          <h6 class="ad_text">! 부담없이 ! </h6>
-          <p class="hero__snippet">  데일리 헬스와 함께 미리 보는 헬스장 </p>
-        </div>
-        <div class="imgleft">
-
-        </div>
-        <p align="center">거품 없는 가격 공개</p>
-
-        <div class="imgright">
-
-        </div>
-
-          <p align="center">복잡한 상담은 NO!</p>
-
-        <div class="imgleft">
-
-        </div>
-
-          </div>
-        </div>
-
-        <div class="container2">
-          <div class="ad_text text3"><img src="img/logo1.png"></div>
-          <ul >
-            <li class="board">
-              <div class="boardname">게시판제목</div>
-              <div class="boarddiv">
-                게시판내용
-              </div>
-            </li>
-            <li class="board">
-              <div class="boardname">게시판제목</div>
-              <div class="boarddiv">
-                게시판내용
-              </div>
-            </li>
-            <li class="board">
-              <div class="boardname">게시판제목</div>
-              <div class="boarddiv">
-                게시판내용
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-
-
+<!--  여기에 게시물들 incl로 -->
+<%@ include file="../6posts/Index_post.jsp" %>
 
 
     </main>

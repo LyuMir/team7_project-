@@ -21,6 +21,7 @@ private 	String area;	//소모임 장소
 private 	String profile ;	//소모임 소개 
 private 	String photo1;
 private 	String photo2;
+private 	String photo; 	// 추가됨.
 
 //추가 db적 요인 
 private		int memberNum;
@@ -102,6 +103,12 @@ private		int memberNum;
 	}
 	public void setMemberNum(int memberNum) {
 		this.memberNum = memberNum;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	
 	

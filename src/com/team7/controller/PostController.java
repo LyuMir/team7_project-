@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team7.club.action.Action;
-import com.team7.photo.service.PhotoService;
-import com.team7.post.action.PostClubActions;
+import com.team7.photo.service.PhotoClubService;
+import com.team7.post.action.PostActions;
+import com.team7.post.action.PostGetAction;
 import com.team7.vo.ActionForward;
 
 @WebServlet("*.post")
@@ -43,11 +44,23 @@ public class PostController extends javax.servlet.http.HttpServlet
 		boolean gobackRefresh = false;
 		//action은 그냥 시켜시켜..
 		if(command.equals("/clubPostPhoto.post")){
-			new PostClubActions().photoposts(request, response);
+			new PostActions().photoposts(request, response);
 		}
 		else if(command.equals("/clubPost.post")){
-			new PostClubActions().posts(request, response);
+			new PostActions().posts(request, response);
 			gobackRefresh = true;
+		}
+		else if(command.equals("/trainerPost.post")){
+			new PostActions().posts(request, response);
+			gobackRefresh = true;
+		}
+		else if(command.equals("/gymPost.post")){
+			new PostActions().posts(request, response);
+			gobackRefresh = true;
+		}
+		else if(command.equals("/indexPosts.post")){
+			new PostGetAction().indexGetter(request, response);
+			return; //안가. 
 		}
 
 		//가야할 곳은 바로 거기임.. 

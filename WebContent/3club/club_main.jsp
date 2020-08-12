@@ -3,19 +3,18 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.ClubBean" %>
 <%@ page import="com.team7.vo.CmemberBean" %>
-<%@ page import="com.team7.vo.CPostBean" %>
+<%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 
 
-    <link rel="stylesheet" type="text/css" href="css/club_main.css?ver=67">
+    <link rel="stylesheet" type="text/css" href="css/club_main.css?ver=68">
 	<link rel="stylesheet" type="text/css" href="css/photo_modal00.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%
-
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 	String id = (String) session.getAttribute("LOG_ID");
 	
 	int adminyn=0, joinyn=0;
@@ -28,7 +27,26 @@ List<ClubBean> tlist = (List<ClubBean>) request.getAttribute("tlist");
 boolean ami = (boolean) request.getAttribute("ami");	//탈퇴 중 tf
 boolean ied = (boolean) request.getAttribute("ied");	//가입신청중 tf
 
-List<CPostBean> cposts = (List<CPostBean>) request.getAttribute("cposts");
+List<PhotoBean> clubphoto = (List<PhotoBean>)request.getAttribute("clubphoto");
+boolean cpho = true,  cp1 = false, cp2 = false; 
+String pdir1 = "",pdir2="";
+if(clubphoto == null){
+		cpho = false;
+}
+else{
+	for(int i = 0; i < clubphoto.size(); i++){
+		if(clubphoto.get(i).getId().contains("main")){
+			pdir1="Files/clubsphoto/"+rlist.get(0).getAdmin()+"_"+rlist.get(0).getNo()+"/main/"+clubphoto.get(i).getPicture();
+			cp1= true;
+		}
+		if(clubphoto.get(i).getId().contains("profile")){
+			pdir2="Files/clubsphoto/"+rlist.get(0).getAdmin()+"_"+rlist.get(0).getNo()+"/profile/"+clubphoto.get(i).getPicture();
+			cp2=true;
+		}
+	}
+}
+
+List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 List<PhotoBean> cpphotos = (List<PhotoBean>) request.getAttribute("cpphotos");
 int j = cpphotos.size() -1 ;
 ArrayList<Integer> ppnum = new ArrayList<Integer>();
@@ -55,7 +73,7 @@ if(id ==null){
 	}
 	for(int i = 0 ; i < mylist.size(); i++){
 		if(mylist.get(i).getNo() == rlist.get(0).getNo()){
-			joinyn = 1;
+	joinyn = 1;
 		}
 	}
 }
@@ -71,23 +89,24 @@ if(id ==null){
 	<main class="mainwrap_club">
 		<section class="club_left">
 			<article class="left_top">
-				<select>
+				<select id="goclub1" onchange="gotoClub(this)">
 					<option>내가 속한 소모임</option>
 		<% for(int i = 0 ; i < mylist.size(); i++){ %>
 					<option data-id="<%= mylist.get(i).getNo() %>"><%=mylist.get(i).getName() %></option>
 		<% } %>
 				</select>
-				<select>
+				<select id="goclub2" onchange="gotoClub(this)">
 					<option>내가 찜한 소모임</option>
 		<% for(int i = 0 ; i < mylist2.size(); i++){ %>
 					<option data-id="<%= mylist2.get(i).getNo() %>"><%=mylist2.get(i).getName() %></option>
 		<% } %>
 				</select>
-				<select>
+				<select id="goclub3" onchange="gotoClub(this)">
 					<option><%=rlist.get(0).getName()%>과 가까운 소모임</option>
-		<% for(int i = 0 ; i < tlist.size(); i++){ %>
+		<% for(int i = 0 ; i < tlist.size(); i++){ 
+				if(tlist.get(i).getNo() == rlist.get(0).getNo()){}else{%>
 					<option data-id="<%= tlist.get(i).getNo() %>"><%=tlist.get(i).getName() %></option>
-		<% } %>
+		<% } }%>
 					<!-- <option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 </option>
 					<option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 2</option>
 					<option>엄청나게 긴 글씨가 다 들어가는지 확인하는 작업 3</option> -->
@@ -96,14 +115,18 @@ if(id ==null){
 			<hr>
 			<article class="left_main">
 				<!-- <div class="profile_img"><img src=""></div> -->
-				<img class="profile_img" src="img/이쁜이미지1.jpg">
+	<% if(cp2){ %>
+				<img class="profile_img" src="<%=pdir2%>">
+	<%}else{ %>
+				<img class="profile_img" src="img/exc/basketball4.jpg">
+	<%} %>
 				<div class="profile_name">
 					<%=rlist.get(0).getName() %>
 				</div>
 	<% if(adminyn == 1){ %>
 				<div class="zzim">
-					<button id="z_zzim_1" onclick="managego()">관리하기 <img src="img/heart_and_star/heart34.png"></button>
-					<button id="z_join_1" onclick="joinmanagego()">가입관리 <img src="img/heart_and_star/star34.png"></button>
+					<button id="z_zzim_1" onclick="managego()">모임 관리 <img src="img/heart_and_star/heart34.png"></button>
+					<button id="z_join_1" onclick="joinmanagego()">회원 관리 <img src="img/heart_and_star/star34.png"></button>
 				</div>
 	<% }else if(joinyn == 1){ %>
 				<div class="zzim">
@@ -146,7 +169,11 @@ if(id ==null){
 		<section class="club_main">
 			<article class="main_head">
 				<!-- 사진 크게 넣을거임. ...사진 될까? -->
-				<img class="ImageForModal" src="img/이쁜이미지2.jpg" onclick="ImageClickFunction(this)">
+	<% if(cp1){ %>
+				<img class="ImageForModal" src="<%=pdir1 %>" onclick="ImageClickFunction(this)">
+	<%}else{ %>
+				<img class="ImageForModal" src="img/exc/hiking77.jpg" onclick="ImageClickFunction(this)">
+	<%} %>
 				<div class="modal">
 					<img class="modal-content">
 					<div class="caption">***소모임의 메인 이미지입니다. </div>
@@ -452,12 +479,12 @@ var plzjoin_00 = $('#plzjoin_00');
 			alert('제목과 내용을 입력해주세요. ');
 			return;
 		}
-		if(picpic.val() ==null || picpic.val()==""){
-			var confirm0 = confirm('사진을 올리지 않고 진행하시겠습니까?');
-			if(!confirm0){
-				return;
-			}
-		}
+		// if(picpic.val() ==null || picpic.val()==""){
+		// 	var confirm0 = confirm('사진을 올리지 않고 진행하시겠습니까?');
+		// 	if(!confirm0){
+		// 		return;
+		// 	}
+		// }
 
 		postpost00.submit();
 	}
@@ -473,5 +500,15 @@ var plzjoin_00 = $('#plzjoin_00');
 		// alert('글을 쓰시려면 소모임에 가입하셔야 합니다!');
 	});
 
+	function gotoClub(select){
+		var goto000 = $(select).children('option:selected').val();
+		var gotour = $(select).children('option:selected').data('id');
+		// alert(goto000+gotour);
+		var confirm000 = confirm(goto000+'로 이동합니다. 계속하시겠습니까?');
+		var url = "toClubMain.club?clubid="+gotour;
+		if (confirm000) {
+			location.href=url;
+		}
+	}
 
 </script>
