@@ -405,7 +405,8 @@ html  {
 .boarddiv{
   width: 100%;
   height: 250px;
-  background-color: yellow;
+  /*background-color: yellow;*/
+  background-color: #f0f4ff;
 }
 
 

@@ -4,7 +4,9 @@
 <%@ page import="org.apache.ibatis.session.SqlSession"%>
 <%@ page import="com.team7.dao.Class_DAO" %>
 <%@ page import="com.team7.vo.DTO_ClubProperties" %>
+<%@ page import="com.team7.photo.service.*" %>
 <%@ page import="com.team7.vo.ClubBean" %>
+<%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="com.team7.club.service.*" %>
 <%@ page import="java.util.List"%>
 <script
@@ -19,6 +21,7 @@
 		request.setCharacterEncoding("UTF-8");
 
 		String id = request.getParameter("clubid");
+		session.setAttribute("clubid",id);
 		//String id = "3";
 		//Class_DTO_i clubid = new Class_DTO_i();
 		//clubid.setI(Integer.parseInt(id));
@@ -27,15 +30,31 @@
 
 		List<ClubBean> theclub = new ClubService().club_selector_no(dto);
 		
+		String myid = (String) session.getAttribute("LOG_ID");
+		
+		List<PhotoBean> cpho = new PhotoClubService().getfilenames_clubmains(myid, Integer.parseInt(id));
+		String cp1 = null;
+		String cp2 = null;
+		if(cpho.size()>0){
+			for(int i = 0 ; i < cpho.size(); i++){
+				if(cpho.get(i).getId().contains("main")){
+					cp1 = "Files/clubsphoto/"+myid+"_"+id+"/main"+cpho.get(i).getPicture();
+				}
+				if(cpho.get(i).getId().contains("profile")){
+					cp2 = "Files/clubsphoto/"+myid+"_"+id+"/profile"+cpho.get(i).getPicture();
+				}
+			}
+		}
+		
 		session.setAttribute("clubid", theclub.get(0).getNo());
 	%>
 
 	<main>
-	<form class="" action="edit.club" enctype="multipart/form-data"  method="post"	id="club_creator_form">
-		<input readonly="true" type="hidden" name="no" value="<%=id%>">
 		<table>
 			
 
+	<form class="" action="edit.club" enctype="multipart/form-data"  method="post"	id="club_creator_form">
+		<input readonly="true" type="hidden" name="no" value="<%=id%>">
 			<tr>
 				<td>소모임 이름</td>
 				<td><input readonly="true" id="" type="text" name="" maxlength="25" placeholder="소모임 이름" value="<%=theclub.get(0).getName()%>">
@@ -186,17 +205,39 @@
 				<td>소모임 소개</td>
 				<td><textarea rows="2" name="club_profileText"><%= theclub.get(0).getProfile() %></textarea></td>
 			</tr>
+	</form>
 			<tr>
 				<td>소모임 사진</td>
 				<td>소모임 프로필 사진 <!-- : b ... 소모임 대표 사진 : b // 현재 사진 올리기 기능이 제한되어
 					있습니다. 문의사항 : 이재형 0720 -->
+					  <span style="color: red; font-weight: 700;">(프로필 사진은 업로드 즉시 적용됩니다. 주의하세요!)</span>
 					<br>
-						<input type="file" name="photo1"> 메인 사진 (대문 사진) <br>
-						<input type="file" name="photo2"> 메인 프로필 사진 
+		<form id="photo_upload" enctype="multipart/form-data" accept-charset="UTF-8" method="post" action="photo_upload.club">
+				<input type="file" id="photo1" name="photo1" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 메인 사진 (대문 사진)
+		</form> <button onclick="photo_upload()">사진 업로드</button>
+
+
+		<form id="photo_upload2" enctype="multipart/form-data" accept-charset="UTF-8" method="post" action="photo_upload2.club">
+				<input type="file" id="photo2" name="photo2" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 메인 프로필 사진
+		</form> 	 <button onclick="photo_upload2()">사진 업로드</button>
+						<br>
+						현재 메인 사진 : 
+		<% if(cp1 ==null){ %>
+		설정되지 않음. (기본 사진 )
+		<%}else{ %>
+						<img src="<%=cp1%>">
+		<%} %>
+						<br>
+		<% if(cp2 ==null){ %>
+		설정되지 않음. (기본사진)
+		<%}else{ %>
+						<img src="<%=cp2%>">
+		<%} %>
+						프로필 :
+						
 				</td>
 			</tr>
 		</table>
-	</form>
 	<div class="button00">
 		<button onclick="formSender2()">소모임 수정하기</button>
 	</div>
