@@ -18,7 +18,7 @@
 
     <div class="sidenav">
       <p class="hero__snippet1"> 이미 등록되어있나요?</p>
-  <a href="id_trainermypage.trainer">▶트레이너 관리</a>
+  <a href="id_mypage.trainer">▶트레이너 관리</a>
 </div>
 
 
