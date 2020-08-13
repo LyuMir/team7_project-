@@ -25,12 +25,12 @@
 		};
 
 		var map = new kakao.maps.Map(container, options);
-		
+
 	</script>
 
 <%
 request.setCharacterEncoding("UTF-8");
-List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); 
+List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser");
 List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");
 %>
 
@@ -40,16 +40,16 @@ List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
 <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-// 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+// 마커가 표시될 위치입니다
+var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);
 
 // 마커를 생성합니다
 var marker = new kakao.maps.Marker({
@@ -100,7 +100,7 @@ marker.setMap(map);
   <div id="gallery">
 
 <!-- 태그버튼 여기  -->
-  <div id="buttons">    
+  <div id="buttons">
       <div id="buttons0"></div>
       <div id="buttons1"></div>
       <div id="buttons2"></div>
