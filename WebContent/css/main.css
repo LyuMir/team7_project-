@@ -39,7 +39,7 @@ html  {
 
 .j_follow_nav *{
 
-  vertical-align: middle;
+  vertical-align: bottom;
 }
 /*.j_follow_nav a{
   justify-content: space-around;

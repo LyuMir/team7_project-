@@ -40,7 +40,6 @@ public class NoticeController extends javax.servlet.http.HttpServlet
 		}
 		else if(command.equals("/showme.notice")) {
 			action  = new com.team7.notice.action.NoticeSelectedAction();
-			System.out.println("¿©±â±îÂî?");
 			try {
 				forward=action.execute(request, response );
 			} catch (Exception e) {
@@ -49,7 +48,6 @@ public class NoticeController extends javax.servlet.http.HttpServlet
 		}
 		else if(command.equals("/write.notice")) {
 			action  = new com.team7.notice.action.NoticeWriteAction();
-			System.out.println("¿©±â±îÂî?");
 			try {
 				forward=action.execute(request, response );
 			} catch (Exception e) {
@@ -71,6 +69,10 @@ public class NoticeController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		else if(command.equals("/qna.notice")) {
+			forward = new ActionForward();
+			forward.setPath("_FORWHERE.jsp?forwhere=8others/QnAs.jsp");
 		}
 		
 		
