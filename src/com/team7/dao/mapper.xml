@@ -335,9 +335,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOne_Gym" resultType="com.team7.vo.Gym_info" >
 		select * from team7.team7_gym where gid = '${gid}'
 	</select>
-	
-	
-	
+	<select id="select_GYM_by_Owner" resultType="com.team7.vo.Gym_info" >
+		select * from team7.team7_gym where owner = '${owner}'
+	</select>
 	
 
 

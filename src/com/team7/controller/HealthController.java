@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team7.gym.action.Action;
+import com.team7.gym.action.Gym_mng_mainAction;
+import com.team7.trainer.action.Trainer_mng_mainAction;
 import com.team7.vo.ActionForward;
 
 
@@ -57,8 +59,7 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			return;
 		}
 		else if(command.equals("/Mng.health")){	
-			forward = new ActionForward(); 
-			forward.setPath("_FORWHERE.jsp?forwhere=4health/introhealth.jsp");
+			forward = new Gym_mng_mainAction().toMngpage(request, response);
 		}
 		else if(command.equals("/id_gymapply.health")){
 			forward = new ActionForward(); 
