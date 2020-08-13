@@ -35,7 +35,7 @@
          </div> <!--//col-->
   </span>
 </div> <!--//menu-head-->
-<nav class="menu-container">
+<nav class="menu-containers">
 <ul class="menu-items">
 <li class="thisnow"><a href="#1"> <i class="material-icons">widgets</i>  나의 정보페이지 </a></li>
 <li><a href="#1"> <i class="material-icons">bar_chart</i> 최근 본 페이지 </a></li>
@@ -60,8 +60,9 @@
   <!--  이 아래부분만 바뀌면 됩니다 -->
 <menu class="myprofile">
   <p class="title">내가 즐겨찾기한 헬스장</p>
+  <input style="margin-left: 10px;" type="checkbox" name="" value=""> 
   <ul>
-    <li> <input style="margin-left: 10px;" type="checkbox" name="" value=""> </li>
+    <li> </li>
     <li>
         <div class="thunbox">
          <img class="profile_img2" src="a.jpeg">
@@ -125,8 +126,8 @@
         target = $(this);
 
 //Accessing DOM
-  jSide = $(".menu-container, .menu-head");
-  devHeight = $(window).height();
+  jSide = $(".menu-containers, .menu-head");
+  devHeight = $(".menu-containers").height();
   headHeight = $(".menu-head").height();
   dHeading = $(".dropdown-heading");
   menuTrigger = $(".menu-trigger");
@@ -199,7 +200,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 
 
 $(function(){
-$(".menu-container").jSideMenu({
+$(".menu-containers").jSideMenu({
     jSidePosition: "position-left", //possible options position-left or position-right
     jSideSticky: true, // menubar will be fixed on top, false to set static
     jSideSkin: "default-skin", // to apply custom skin, just put its name in this string

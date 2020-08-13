@@ -299,6 +299,7 @@ h4{
    border-bottom: 1px dotted rgba(255, 255, 255, 0.050);
        font-weight: 550;
    margin: 0;
+   width: 200px;
    cursor: pointer;
    user-select: none;
   -webkit-user-select: none;

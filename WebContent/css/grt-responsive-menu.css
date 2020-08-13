@@ -91,7 +91,7 @@ ul.grt-menu {
 	padding:0;
 	list-style-type: none;
 	align-items: center;
-
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
 
 }
 
@@ -164,7 +164,7 @@ ul.grt-menu li.grt-dropdown ul.grt-dropdown-list {
 
 ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li a {
 	display:block;
-	font-size:11px; /* 메뉴 안의 그 폰트 크기입ㄴ디ㅏ. */
+	font-size:11px; /* 硫붾돱 �븞�쓽 洹� �룿�듃 �겕湲곗엯�꽩�뵒�뀖. */
 	color: black;/*
 	-webkit-transition: all ease 0.8s;
 	-moz-transition: all ease 0.8s;

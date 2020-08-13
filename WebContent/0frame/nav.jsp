@@ -30,7 +30,7 @@
                  <li><a href="id_health.my">My 헬스장</a></li>
                 <li><a href="id_trainer.my">My 트레이너</a></li>
                 <li><a href="id_my.club">My 소모임</a></li>
-                <li><a href="myinfo.log">회원정보</a></li>
+                <li><a href="myinfo.mypage">회원정보</a></li>
                 
               </ul>
             </li>

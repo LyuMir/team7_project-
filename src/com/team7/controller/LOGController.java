@@ -81,9 +81,7 @@ public class LOGController extends javax.servlet.http.HttpServlet
 //				e.printStackTrace();
 //			}
 		}
-		else if(command.equals("/myinfo.log")) {
-			new MyInfoAction().toMyInfoPage(request, response);
-		}
+		
 		
 		else if(command.equals("/editmyinfo.log")) {
 			new MyInfoAction().infoEdit(request, response);

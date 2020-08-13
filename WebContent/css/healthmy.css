@@ -9,8 +9,11 @@
  */
 /* File: jquery.jside-menu.css */
 .grade a{
-  color: white;
-  text-decoration: none;
+     color: white;
+    font-size: 41px;
+    text-decoration: none;
+    margin: -12px 0px 0px -12px;
+    position: absolute;
 }
 
 .grade a:hover{
@@ -40,15 +43,15 @@
 
 
 .thunbox{
-  display: block;
-width: 600px;
-height: 170px;
-overflow: hidden;
-margin: 0 auto 0px auto;
-position: relative;
-border: 1px solid #e3e3e3;
-border-radius: 0 0 10px 10px;
-/* padding: 3px; */
+     display: block;
+    width: 600px;
+    height: 144px;
+    overflow: hidden;
+    margin: 0 auto 0px 20px;
+    position: relative;
+    border: 1px solid #e3e3e3;
+    /* border-radius: 0 0 10px 10px; */
+    /* padding: 3px;*/
 }
 
 .grade{
@@ -132,9 +135,7 @@ h4{
   border-bottom: 0.9px solid #c6c6c6;
 }
 
-ul li{
-  display: inline;
-}
+
 
 .btn{
 
@@ -242,7 +243,7 @@ ul li{
    left: 0;
 }
 
-.menu-container{
+.menu-containers{
   font-family: 'Questrial', sans-serif;
    overflow: auto;
    display: block;
@@ -250,19 +251,19 @@ ul li{
 
 }
 
-.menu-container::-webkit-scrollbar {
+.menu-containers::-webkit-scrollbar {
   width: 4px;
 }
 
-.menu-container::-webkit-scrollbar-track {
+.menu-containers::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.menu-container::-webkit-scrollbar-thumb {
+.menu-containers::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.11);
 }
 
-.menu-container::-webkit-scrollbar-thumb:hover {
+.menu-containers::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
@@ -281,7 +282,7 @@ ul li{
     right: 0;
 } */
 
-.menu-container,
+.menu-containers,
 .menu-head,
 .menu-left,
 .menu-left.open
@@ -294,12 +295,13 @@ ul li{
 
 }
 
-.menu-container,
+.menu-containers,
 .menu-head{
     background: var(--skin);
 
     z-index: 1000;
     width: 270px;
+    height:600px;
 
 }
 .menu-head .layer{
@@ -331,6 +333,7 @@ ul li{
    border-bottom: 1px dotted rgba(255, 255, 255, 0.050);
        font-weight: 550;
    margin: 0;
+   width: 200px;
    cursor: pointer;
    user-select: none;
   -webkit-user-select: none;

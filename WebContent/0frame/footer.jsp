@@ -2,7 +2,7 @@
 
 
 <footer>
-    <div class="container1-f">
+    <div >
       <ul style="margin:0">
       <li><img src="img/logo1.png" style="width: 250px; margin:20px;"></li>
         <li class="footer">　Copyright (c) 2020-07-02 <a href="">Daily Health</a><span class="top"><a href="#top">#top</a></span></li>
