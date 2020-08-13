@@ -136,6 +136,15 @@ List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
 <script type="text/javascript" src="77zzim/zzim_js.js?ver=4"></script>
 <!-- <script type="text/javascript" src="js/grid_move.js"></script> -->
 <script type="text/javascript">
+var kk = 0 ;
+    function gotoClub2(req){
+        //alert("112222");
+    var id =$(req).find('.card__idhere').attr('id');
+    //alert(id);
+    $('#gotoClub').find('#clubid3').val(id);
+    $('#gotoClub').submit();
+    
+}
   $('.card__img01').each(function(index,item){
     var pheight = $(item).parent().height();
     var height = $(item).height();

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/mainmain88.css">
+    <link rel="stylesheet" href="css/main.css?ver=3">
+    <link rel="stylesheet" type="text/css" href="css/mainmain88.css?ver=3">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="css\grt-responsive-menu.css">
+    <link rel="stylesheet" href="css\grt-responsive-menu.css?ver=7">
 
 <!-- Jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -51,6 +51,8 @@ request.setCharacterEncoding("UTF-8");
     Integer log_st = (Integer) session.getAttribute("LOG_STATUS");
 //    String whatdo = request.getParameter("whatdo");	//흠.....2
 
+	String fail3 = request.getParameter("fail3");
+
 
     String forwhere = request.getParameter("forwhere");
     
@@ -58,18 +60,13 @@ request.setCharacterEncoding("UTF-8");
  //   	forwhere = "3club\\"+forwhere;
 //    } //ㅋㅋ 이런 꼼수 너무 좋아... ...근데 안되네..
     
-
     if(log_st==null){
     	log_st = 0; 
-    	session.setAttribute("LOG_STATUS",0);
-   %>
-   
-   <%@ include file="0frame/header.jsp" %>
-	<%@ include file="Join_and_LogIn_forModal.jsp" %>
-   
-   <%
-  }
-  else if(log_st==0)  { //?? 안 먹나?
+    	session.setAttribute("LOG_STATUS",0); 
+   }
+
+  
+  if(log_st==0)  { //?? 안 먹나?
   %>
 <!-- 헤더를 include로 해봅시다. : 로그인 안 되어있을 시  -->
 <%@ include file="0frame/header.jsp" %>

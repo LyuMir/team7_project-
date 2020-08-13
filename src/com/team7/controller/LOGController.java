@@ -22,15 +22,15 @@ public class LOGController extends javax.servlet.http.HttpServlet
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");	//³»°¡ Ãß°¡ÇÔ
-		String RequestURI=request.getRequestURI();	//req °¡Á®¿È :http://localhost:8080/WebProject0724_MVC2/boardList.bo
+		request.setCharacterEncoding("UTF-8");	//ë‚´ê°€ ì¶”ê°€í•¨
+		String RequestURI=request.getRequestURI();	//req ê°€ì ¸ì˜´ :http://localhost:8080/WebProject0724_MVC2/boardList.bo
 		String contextPath=request.getContextPath(); //http://localhost:8080/WebProject0724_MVC2/
-		String command=RequestURI.substring(contextPath.length()); //¾Õ¿¡ ±ÛÀÚ Áö¿ò : boardList.bo
-		//Áï '/'ÀÌÈÄ ¸Ç ¸¶Áö¸·¸¸. 
+		String command=RequestURI.substring(contextPath.length()); //ì•ì— ê¸€ì ì§€ì›€ : boardList.bo
+		//ì¦‰ '/'ì´í›„ ë§¨ ë§ˆì§€ë§‰ë§Œ. 
 		
 		
-		ActionForward forward=null;	//forward : °¥ °÷ ÁöÁ¤ 
-		Action action=null;			//action : ÇÒ ÀÏ ÁöÁ¤  Á¤È®È÷´Â action.execute()·Î. (ÀÎÅÍÆäÀÌ½º·Î ±¸¼ºÇÔ)
+		ActionForward forward=null;	//forward : ê°ˆ ê³³ ì§€ì • 
+		Action action=null;			//action : í•  ì¼ ì§€ì •  ì •í™•íˆëŠ” action.execute()ë¡œ. (ì¸í„°í˜ì´ìŠ¤ë¡œ êµ¬ì„±í•¨)
 		HttpSession session = request.getSession();
 		int logyn =0;
 		if(session.getAttribute("LOG_STATUS") ==null) {}
@@ -38,17 +38,22 @@ public class LOGController extends javax.servlet.http.HttpServlet
 			logyn=(Integer) session.getAttribute("LOG_STATUS");
 		}
 		
-		if(command.contains("myinfo") && logyn !=1) {
+		if(command.contains("id_") && logyn !=1) {
 
-			request.getSession().setAttribute("fail", "·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù!");
 			String referer = request.getHeader("Referer");
+			if(referer.contains("/id_")) {
+				referer = "index.jsp";
+			}
+			else {
+				request.getSession().setAttribute("fail", "ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤, ë¡œê·¸ì¸í•´ì£¼ì„¸ìš”.");
+			}
 			response.sendRedirect(referer);
 			
 			return;
 		}
 		
 		
-		if(command.equals("/join.log")){	// ±× ÀÏ ¿äÃ»¹ŞÀº °Å¸é ´ÙÀ½À» ÇØ¶ó.
+		if(command.equals("/join.log")){	// ê·¸ ì¼ ìš”ì²­ë°›ì€ ê±°ë©´ ë‹¤ìŒì„ í•´ë¼.
 			action  = new com.team7.member.action.JoinAction();
 			try {
 				forward=action.execute(request, response );
@@ -81,22 +86,21 @@ public class LOGController extends javax.servlet.http.HttpServlet
 //				e.printStackTrace();
 //			}
 		}
-		else if(command.equals("/myinfo.log")) {
+		else if(command.equals("/id_myinfo.log")) {
 			new MyInfoAction().toMyInfoPage(request, response);
 		}
-		
-		else if(command.equals("/editmyinfo.log")) {
+		else if(command.equals("/id_editmyinfo.log")) {
 			new MyInfoAction().infoEdit(request, response);
 		}
 
 
-		if(forward != null){	//°¡¾ßÇÒ °÷ÀÌ ÀÖ´Ù¸é º¸³¿. \
-			//¾Èº¸³¿. »õ·Î°íÄ§ ½ÃÅ³°ÅÀÓ. 
+		if(forward != null){	//ê°€ì•¼í•  ê³³ì´ ìˆë‹¤ë©´ ë³´ëƒ„. \
+			//ì•ˆë³´ëƒ„. ìƒˆë¡œê³ ì¹¨ ì‹œí‚¬ê±°ì„. 
 
 //			response.setContentType("text/html;charset=UTF-8");
 //			PrintWriter out = response.getWriter();
 //			out.println("<script>");
-////			out.println("alert('Àß¸øµÈ °æ·Î : ÀÌ¹Ì °¡ÀÔµÇ¾îÀÖ´Â ¼Ò¸ğÀÓÀÔ´Ï´Ù. ')");
+////			out.println("alert('ì˜ëª»ëœ ê²½ë¡œ : ì´ë¯¸ ê°€ì…ë˜ì–´ìˆëŠ” ì†Œëª¨ì„ì…ë‹ˆë‹¤. ')");
 ////			out.println("location.reload(true);");
 //			out.println("history.back();");
 //			
@@ -108,13 +112,13 @@ public class LOGController extends javax.servlet.http.HttpServlet
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //³»°¡ Ãß°¡ÇÔ
+		response.setContentType("text/html; charset=utf-8"); //ë‚´ê°€ ì¶”ê°€í•¨
 		doProcess(request,response);
 	}  	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //³»°¡ Ãß°¡ÇÔ
+		response.setContentType("text/html; charset=utf-8"); //ë‚´ê°€ ì¶”ê°€í•¨
 		doProcess(request,response);
 	}   
 	

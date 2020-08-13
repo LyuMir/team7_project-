@@ -46,8 +46,13 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 		
 		
 		if(command.startsWith("/id_") && logined !=1) {
-			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
 			String referer = request.getHeader("Referer");
+			if(referer.contains("/id_")) {
+				referer = "index.jsp";
+			}
+			else {
+				request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
+			}
 			response.sendRedirect(referer);
 			return;
 		}
