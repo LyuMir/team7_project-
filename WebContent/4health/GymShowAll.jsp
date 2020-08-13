@@ -2,17 +2,20 @@
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.Gym_info" %>
+<%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
 
     <meta charset="utf-8">
     <title>헬스장찾기</title>
-    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-      <link rel="stylesheet" href="css/styleyuncard.css" />
-      <link rel="stylesheet" href="css/normalizeyuncard.css">
+    <!-- <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> -->
+      <!-- <link rel="stylesheet" href="css/styleyuncard.css" /> -->
+      <!-- <link rel="stylesheet" href="css/normalizeyuncard.css"> -->
       <!-- <link rel="stylesheet" href="css/mainyun.css"> -->
-      <link rel="stylesheet" type="text/css" href="css/gridgrid88yuncard.css">
-      <link rel="stylesheet" type="text/css" href="css/picpiccard.css">
+      <!-- <link rel="stylesheet" type="text/css" href="css/gridgrid88yuncard.css"> -->
+      <!-- <link rel="stylesheet" type="text/css" href="css/gridgrid88.css"> -->
+      <link rel="stylesheet" type="text/css" href="css/picpiccard.css"> 
+      <link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	21d928db4da229461e099041921f1bbc"></script>
 <script>
 		var container = document.getElementById('map');
@@ -22,12 +25,14 @@
 		};
 
 		var map = new kakao.maps.Map(container, options);
-		
+
 	</script>
 
 <%
 request.setCharacterEncoding("UTF-8");
-List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); %>
+List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser");
+List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");
+%>
 
 
 <hr>
@@ -35,16 +40,16 @@ List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); %>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
 <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-// 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+// 마커가 표시될 위치입니다
+var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);
 
 // 마커를 생성합니다
 var marker = new kakao.maps.Marker({
@@ -91,42 +96,87 @@ marker.setMap(map);
     </div>
   </div>
 
-  <div id="buttons"></div>
-
 
   <div id="gallery">
 
-    <div class="grid">
+<!-- 태그버튼 여기  -->
+  <div id="buttons">
+      <div id="buttons0"></div>
+      <div id="buttons1"></div>
+      <div id="buttons2"></div>
+  </div>
 
-     <% for(int i =0 ; i < gser.size() ; i++){ %>
+<div class="grid">
 
-     <article class="grid__item" data-tags="<%= gser.get(i).getGname() %>">
-      <div class="card">
-        <div class="card__img">
-          <a href = "GymUserpage.health?number=<%=gser.get(i).getGid() %>"> 
-          	<img class="card__img" src="Files/gym/<%=gser.get(i).getOwner()%>/1/<%=gser.get(i).getPicture() %>" alt="<%=gser.get(i).getPicture() %>">
-          </a> 
-        </div>
-        <div class="card__content">
-          <div class="card__tag00"> <%=gser.get(i).getGid()%></div>
-          <div class="card__header"><%=gser.get(i).getGname()%> </div>
-          <p class="card__text"><%=gser.get(i).getGsmalltext()%></p>
-          <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
-        </div>
+     <% for(int i =0 ; i < gser.size() ; i++){ 
+     
+     %>
+
+  <article class="grid__item" onclick="javascript:location.href='GymUserpage.health?number=<%=gser.get(i).getGid() %>'">
+    <div class="card">
+      <div class="card__img">
+<% 
+
+String picwhere = "";
+String picalt = "";
+	for(int j = 0 ; j < photos.size();j++){
+      if(photos.get(j).getId().contains(gser.get(i).getOwner()+"_")){ 
+        picwhere = "Files/gym/"+gser.get(i).getOwner()+"/1/"+photos.get(j).getPicture();
+        picalt = "gser.get(i).getPicture()";
+        break;
+      } else{ 
+      		int k = (int)(Math.random() * 4)+1;
+        picwhere = "img/exc/gym"+k+".jpg";
+      }
+	} %>
+        <img class="card__img" src="<%=picwhere %>" alt="<%=picalt %>">
       </div>
-    </article>
-    
-    
+      <div class="card__content2">
+        <!-- <div class="__tag00"> <%=gser.get(i).getGid()%></div> -->
+        <div class="content__header"><%=gser.get(i).getGname()%> </div>
+        <div class="content__text"><%=gser.get(i).getGsmalltext()%></div>
+        <div class="content_what"> <span><%= gser.get(i).getGtype() %></span></div>
+        <div class="content_where">장소 : <span><%=gser.get(i).getAddress()%></span></div>
+      </div>
+    </div>
+  </article>
+    <% }%>
+</div>
+</div>
 
-    <input type="hidden" name="number" value="<%=gser.get(i).getGid()%>">
-    <%} %>
+<style type="text/css">
+  #gallery{
+    width: 100%;
+    margin: 20px auto;
+    max-width: 900px;
+  }
+  .card__content2 *{
+    font-size: 12px;
+    margin: 2.5px;
+  }
+  .content__header{
+    font-size: 14px;
+  }
+  .grid{
+    all:unset;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+  }
 
+  @media only screen and (max-width: 600px){
+    .grid{
+      grid-template-columns: unset;
+      grid-template-columns: repeat(auto-fill,1fr);
+    }
+  }
 
-        </div>
+</style>
 
-        <script src="js/filter-tagscard.js"></script>
-
-
+<script src="js/taggings_jay.js?ver=3"></script>
+        <!-- <script src="js/filter-tagscard.js"></script> -->
+        <!-- <script type="text/javascript"></script> -->
+        <!-- <script src="js/" type="text/javascript"></script> -->
 
 
   </main>

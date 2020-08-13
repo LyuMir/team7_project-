@@ -26,20 +26,20 @@ public class TrainerUserpageAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		
+
 //		DTO_Notice notice = new DTO_Notice();
 //		notice.setNo(no);
-		System.out.println("À¯ÀúÆäÀÌÁö ¾×¼Ç±îÁö¿ÔÀ»±î¿ä?");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¼Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?");
 		int no = Integer.parseInt(request.getParameter("number"));
-		 
+
 		System.out.println(no);
-		
+
 		Trainer_info info = new Trainer_info();
 		info.setNo(no);
-		
+
 		TrainerUserpageService tser = new TrainerUserpageService();
 		List<Trainer_info> traineronelist = new ArrayList<Trainer_info>();
-		
+
 		traineronelist = tser.getTrainerOneinfo(info);
 		String tid =	traineronelist.get(0).getId();
 		List<PhotoBean> photos = new PhotoTrainerService().getfilenames_trainerphoto(tid, -1);
@@ -50,18 +50,18 @@ public class TrainerUserpageAction implements Action{
 		List<ZZIMBean> zzimYN = null;
 		String id = (String )request.getSession().getAttribute("LOG_ID");
 		if(id !=null)
-			zzimYN = new ZzimService().select_gym_Z_YN(id, no);
-		
-		
+			zzimYN = new ZzimService().select_trainer_Z_YN(id, no);
+
+
 		ActionForward forward= new ActionForward();
-		
+
 		request.setAttribute("tser", traineronelist);
 		request.setAttribute("photos", photos);
 		request.setAttribute("posts", posts);
 		request.setAttribute("zzimYN", zzimYN);
 		forward.setPath("/_FORWHERE.jsp?forwhere=2trainer/trainer_userpage.jsp");
 		return forward;
-		
+
 	}
 
 }

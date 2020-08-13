@@ -9,130 +9,108 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team7.trainer.action.Action;
+import com.team7.trainer.action.Trainer_mng_mainAction;
 import com.team7.vo.ActionForward;
 
 
 @WebServlet("*.trainer")
 public class TrainerController extends javax.servlet.http.HttpServlet  {
-	
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) 
+
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");	//³»°¡ Ãß°¡ÇÔ
-		String RequestURI=request.getRequestURI();	//req °¡Á®¿È :http://localhost:8080/WebProject0724_MVC2/boardList.bo
-		String contextPath=request.getContextPath(); //http://localhost:8080/WebProject0724_MVC2/
-		String command=RequestURI.substring(contextPath.length()); //¾Õ¿¡ ±ÛÀÚ Áö¿ò : boardList.bo
-		//Áï '/'ÀÌÈÄ ¸Ç ¸¶Áö¸·¸¸. 
-		
-		
-		ActionForward forward=null;	//forward : °¥ °÷ ÁöÁ¤ 
-		Action action=null;	
-		
-		//action : ÇÒ ÀÏ ÁöÁ¤  Á¤È®È÷´Â action.execute()·Î. (ÀÎÅÍÆäÀÌ½º·Î ±¸¼ºÇÔ)
-		
+
+		request.setCharacterEncoding("UTF-8");	//ï¿½ê¶¡åª›ï¿½ ç•°ë¶½ï¿½ï¿½ë¸¿
+		String RequestURI=request.getRequestURI();	//req åª›ï¿½ï¿½ì¡‡ï¿½ìƒ‚ :http://localhost:8080/WebProject0724_MVC2/boardList.bo
+		String contextPath=request.getContextPath(); 
+		String command=RequestURI.substring(contextPath.length()); 
+
+
+		ActionForward forward=null;	
+		Action action=null;
+
+
 		HttpSession session = request.getSession(true);
 		int logined =0;
 		if(session.getAttribute("LOG_STATUS") ==null) {}
 		else {
 			logined=(Integer) session.getAttribute("LOG_STATUS");
 		}
-		
+
 		if(command.startsWith("/id_") && logined !=1) {
-			request.getSession().setAttribute("fail", "·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù, ·Î±×ÀÎÇØÁÖ¼¼¿ä.");
 			String referer = request.getHeader("Referer");
+			if(referer.contains("/id_")) {
+				referer = "index.jsp";
+			}
+			else {
+				request.getSession().setAttribute("fail", "ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤, ë¡œê·¸ì¸í•´ì£¼ì„¸ìš”.");
+			}
 			response.sendRedirect(referer);
 			return;
 		}
-		System.out.print("·Î±×ÀÎÃ¼Å©");
-		if(command.equals("/Introtrainerapply.trainer")){	
-			String id = (String)session.getAttribute("LOGIN");
-			forward = new ActionForward(); // ±× ÀÏ ¿äÃ»¹ŞÀº °Å¸é ´ÙÀ½À» ÇØ¶ó.
-			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/introtrainer.jsp");
-
-		  
+		else if(command.equals("/id_Introtrainerapply.trainer")){
+			forward = new Trainer_mng_mainAction().toMngpage(request, response);
 		}
-		if(command.equals("/id_coachapply.trainer")){	
-			String id = (String)session.getAttribute("LOGIN");
-			forward = new ActionForward(); // ±× ÀÏ ¿äÃ»¹ŞÀº °Å¸é ´ÙÀ½À» ÇØ¶ó.
+		else if(command.equals("/id_coachapply.trainer")){
+			forward = new ActionForward();
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
-
 		}
-		if(command.equals("/id_coachapply.trainer")){	
-			String id = (String)session.getAttribute("LOGIN");
-			forward = new ActionForward(); // ±× ÀÏ ¿äÃ»¹ŞÀº °Å¸é ´ÙÀ½À» ÇØ¶ó.
-			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
-		  
-		}
-		 if(command.equals("/id_trainerapply.trainer")) {
+		else if(command.equals("/id_trainerapply.trainer")) {
 			action  = new com.team7.trainer.action.TrainerCreateAction();
-			System.out.print("d");
 			try {
-				forward=action.execute(request, response); //¸Ş¼­µå½ÇÇàÇÔ
+				forward=action.execute(request, response); //ï§ë¶¿ê½Œï¿½ë±¶ï¿½ë–ï¿½ë»¾ï¿½ë¸¿
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			
-		}  //ÇÒ°Å ´ã±â
-		 
-		
-		 if(command.equals("/Search.trainer")){	
-			System.out.print("Æ®·¹ÀÌ³Ê ¼­Ä¡ Å¬¸¯µË´Ï±î");
+		}
+		else if(command.equals("/Search.trainer")){
 			action  = new com.team7.trainer.action.TrainerShowAllAction();
 			try {
-				forward=action.execute(request, response); //¸Ş¼­µå½ÇÇàÇÔ
+				forward=action.execute(request, response); //ï§ë¶¿ê½Œï¿½ë±¶ï¿½ë–ï¿½ë»¾ï¿½ë¸¿
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//		  
 		}
-		
-		 if(command.equals("/trainerUserpage.trainer")){	
-				System.out.println("Æ®·¹ÀÌ³Ê °³ÀÎÆäÀÌÁö Å¬¸¯µË´Ï±î");
+		else if(command.equals("/trainerUserpage.trainer")){
 				action  = new com.team7.trainer.action.TrainerUserpageAction();
 				try {
-					forward=action.execute(request, response); //¸Ş¼­µå½ÇÇàÇÔ
+					forward=action.execute(request, response); //ï§ë¶¿ê½Œï¿½ë±¶ï¿½ë–ï¿½ë»¾ï¿½ë¸¿
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-//			  
-			}System.out.print("dddddd");
-			
-			if(command.equals("/id_mypage.trainer")) {
+		}
+		else if(command.equals("/id_mypage.trainer")) {
 				action  = new com.team7.trainer.action.TrainerMypageAction();
 				System.out.print("d");
 				try {
-					forward=action.execute(request, response); //¸Ş¼­µå½ÇÇàÇÔ
+					forward=action.execute(request, response); 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
-				
-			} 
+		}
 
-		System.out.println(command+"...dla..ÀÓ");
+		System.out.println(command+"...ë¡œ ê°„ë‹¤ëŠ”...ï¿½ in trainer");
 		if(forward != null){
-			
+
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());
 			}else{
 				RequestDispatcher dispatcher= request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
 			}
-			
-		}//°¡¼­ ÆäÀÌÁö º¸³»±â
-		
+
+		}
+
 
 	}
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //³»°¡ Ãß°¡ÇÔ
+		response.setContentType("text/html; charset=utf-8"); //ï¿½ê¶¡åª›ï¿½ ç•°ë¶½ï¿½ï¿½ë¸¿
 		doProcess(request,response);
-	}  	
+	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //³»°¡ Ãß°¡ÇÔ
+		response.setContentType("text/html; charset=utf-8"); //ï¿½ê¶¡åª›ï¿½ ç•°ë¶½ï¿½ï¿½ë¸¿
 		doProcess(request,response);
-	}   
+	}
 }

@@ -8,12 +8,13 @@
 
     <meta charset="utf-8">
     <title>코치찾기</title>
-    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-      <link rel="stylesheet" href="css/styleyuncard.css" />
-      <link rel="stylesheet" href="css/normalizeyuncard.css">
+    <!-- <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> -->
+      <!-- <link rel="stylesheet" href="css/styleyuncard.css" /> -->
+      <!-- <link rel="stylesheet" href="css/normalizeyuncard.css"> -->
       <!-- <link rel="stylesheet" href="css/mainyun.css"> -->
-      <link rel="stylesheet" type="text/css" href="css/gridgrid88yuncard.css">
+      <!-- <link rel="stylesheet" type="text/css" href="css/gridgrid88yuncard.css"> -->
       <link rel="stylesheet" type="text/css" href="css/picpiccard.css">
+      <link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
 
 
 <%
@@ -21,9 +22,6 @@ request.setCharacterEncoding("UTF-8");
 List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
 List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
 
-
-
-<body id="top">
 
 <div class="container00">
   <img src="img\main3look.jpg" class="pic_000">
@@ -65,40 +63,82 @@ List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
       </div>
           </div>
 
-              <div id="buttons"></div>
+<div id="buttons"></div>
 
 
-              <div id="gallery">
+<div id="gallery">
 
-                <div class="grid">
+  <div class="grid">
 
      <% for(int i =0 ; i < tser.size() ; i++){ %>
 
-                  <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>" onclick="javascript:window.location.href='trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>'">
-                    <div class="card">
-                      <div class="card__img">
-                      <img class="card__img" src="Files/trainer/<%=tser.get(i).getId() %>/1/<%=tser.get(i).getPicture() %>" alt="Snowy Mountains">
-                      </div>
-                    <div class="card__content">
-                      <div class="card__tag00"> <%=tser.get(i).getTname() %></div>
-                      <div class="card__header"><%=tser.get(i).getTbigtext() %> </div>
-                      <p class="card__text"><%=tser.get(i).getTsmalltext() %></p>
-                     <!--  <button class="card__btn card__unshow_">자세히 <span>&rarr;</span></button> 우선 버튼 치우고  -->
-                    </div>
-                  </div>
-                  </article>
+      <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>" onclick="javascript:window.location.href='trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>'">
+        <div class="card">
+          <div class="card__img">
+<% 
 
-                 <!-- <input type="hidden" name="number" value="<%= tser.get(i).getNo() %>"> -->
-           <%} %>
-              </div>
+String picwhere = "";
+String picalt = "";
+  for(int j = 0 ; j < photos.size();j++){
+      if(photos.get(j).getId().contains(tser.get(i).getId()+"_")){ 
+        picwhere = "Files/trainer/"+tser.get(i).getId()+"/1/"+photos.get(j).getPicture();
+        picalt = "tser.get(i).getPicture()";
+        break;
+      } else{ 
+          int k = (int)(Math.random() * 6)+1;
+        picwhere = "img/exc/yoga"+k+".jpg";
+      }
+  } %>
 
-          <script src="js/filter-tagscard.js"></script>
+          <img class="card__img" src="Files/trainer/<%=tser.get(i).getId() %>/1/<%=tser.get(i).getPicture() %>" alt="Snowy Mountains">
+          <img class="card__img" src="<%=picwhere %>" alt="<%=picalt %>">
+        </div>
+        <div class="card__content2">
+          <div class="content__header"><%=tser.get(i).getTname() %> </div>
+          <div class="content__text"><%=tser.get(i).getTsmalltext()%></div>
+          <div class="content_what">서비스 : <span><%= tser.get(i).getTmajor() %></span></div>
+          <div class="content_where">장소 : <span><%=tser.get(i).getTwhere()%></span></div>
+        </div>
+      </div>
+      </article>
+ <%} %>
+      </div>
+
+
+<style type="text/css">
+  #gallery{
+    width: 100%;
+    margin: 20px auto;
+    max-width: 900px;
+  }
+  .card__content2 *{
+    font-size: 12px;
+    margin: 2.5px;
+  }
+  .content__header{
+    font-size: 14px;
+  }
+  .grid{
+    all:unset;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+  }
+
+  @media only screen and (max-width: 600px){
+    .grid{
+      grid-template-columns: unset;
+      grid-template-columns: repeat(auto-fill,1fr);
+    }
+  }
+
+</style>
+          <!-- <script src="js/filter-tagscard.js"></script> -->
+<script src="js/taggings_jay.js?ver=3"></script>
 
 
 
 
-    </main>
 
+</main>
 
-</body>
-</html>
