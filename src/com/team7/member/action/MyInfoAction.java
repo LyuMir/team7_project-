@@ -59,5 +59,28 @@ public class MyInfoAction {
 				request.getRequestDispatcher("id_myinfo.log");
 		dispatcher.forward(request, response);
 	}
+	
+public void toMyHealthZzimPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		
+		String id = (String) request.getSession().getAttribute("LOG_ID");
+		
+		MemberLogInfo l = new MemberLogInfo();
+		l.setId(id);
+		
+		List<MemberInfo1> minfo = new MyInfoService().myinfo(l);
+		
+		List<PostBean> cposts = new PostService().getMyCPOSTs(id);
+		
+		request.setAttribute("minfo", minfo);
+		request.setAttribute("cposts", cposts);
+		
+
+		RequestDispatcher dispatcher=
+				request.getRequestDispatcher("_FORWHERE.jsp?forwhere=8others/HealthMy.jsp");
+		dispatcher.forward(request, response);
+		
+		
+	}
 
 }

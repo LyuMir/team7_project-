@@ -1,23 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="com.team7.vo.MemberInfo1" %>
+<%@ page import="com.team7.vo.Gym_info" %>
 <%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="java.util.List" %>
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
   <title> Mypage </title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="css/mypage.css">
+  <link rel="stylesheet" href="css/healthmy.css">
 
 </head>
 
-<%
-	request.setCharacterEncoding("UTF-8");
-
-
-
-List<MemberInfo1> minfo = (List<MemberInfo1>) request.getAttribute("minfo");
-
-List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
-%>
+<body>
 <!-- Start jside Menu -->
 <div class="main">
   <h2>내 프로필</h2>
@@ -32,20 +29,20 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
          </div>
   </div>
          <div class="row for-name">
-   <h3 title="User Name"> <%=minfo.get(0).getName() %> </h3>
+   <h3 title="User Name"> 회원이름 </h3>
         <span class="tagline"> 닉네임 </span>
           </div>
          </div> <!--//col-->
   </span>
 </div> <!--//menu-head-->
-<div class="menu-containers">
+<nav class="menu-containers">
 <ul class="menu-items">
 <li class="thisnow"><a href="#1"> <i class="material-icons">widgets</i>  나의 정보페이지 </a></li>
 <li><a href="#1"> <i class="material-icons">bar_chart</i> 최근 본 페이지 </a></li>
 <li class="has-sub"> <span class="dropdown-heading"> <i class="material-icons">collections</i> 나의 관심바구니 </span>
      <ul>
       <li> <a href="myhealthzzim.mypage"> 나의 헬스장 </a> </li>
-     <li> <a href="#2"> 나의 트레이너</a> </li>
+     <li> <a href="mytrainerzzim.mypage"> 나의 트레이너</a> </li>
       <li> <a href="#2"> 나의 소모임</a> </li>
 
      </ul>
@@ -56,30 +53,33 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 <li> <a href="#1">  <i class="material-icons">pie_chart</i>  로그아웃 </a></li>
 
 </ul>
-</div>
+</nav>
 </div>
 </article>
 <!--End jSide Menu-->
-
-<menu class="myprofile">
   <!--  이 아래부분만 바뀌면 됩니다 -->
-  <div class="thunbox">
-    <img class="profile_img2" src="a.jpeg">
-    <p class="grade">사용자</p>
-  </div>
+<menu class="myprofile">
+  <p class="title">내가 즐겨찾기한 헬스장</p>
+  <input style="margin-left: 10px;" type="checkbox" name="" value=""> 
+  <ul>
+    <li> </li>
+    <li>
+        <div class="thunbox">
+         <img class="profile_img2" src="a.jpeg">
+         <div class="marginleft">
+        <h3>건강한 내 몸을 찾아 대글귀</h3>
+        <h4>땡땡땡 헬스장</h4>
+        <h5>#태그들 #태그들</h5>
+        <p class="grade"><a href="d">♥</a></p>
+      </div>
 
-  <h3 class="textmp">김윤영 회원님</h3>
-<br>
-<div class="">
-  <div class="myinfo">
-  <h4> 성함 : <%=minfo.get(0).getName() %></h4>
-  <h4> ID :<%=minfo.get(0).getId() %> </h4>
-  <h4> 이메일 :<%=minfo.get(0).getEmail() %> </h4>
-  <h4> 주소 :<%=minfo.get(0).getAddress() %> </h4>
-  <h4> 관심사 :<%=minfo.get(0).getInterest() %></h4>
-  <h4> 가입일 :<%=minfo.get(0).getJoindate() %></h4>
+    </li>
+  </ul>
 
-  <button type="button" name="button" class="btn">정보수정</button>
+
+
+
+  <button type="button" name="button" class="btn">삭제하기</button>
 
 </div>
 </div>
@@ -209,4 +209,5 @@ $(".menu-containers").jSideMenu({
 </script>
 
 </body>
+
 </html>
