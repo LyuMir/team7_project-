@@ -5,15 +5,15 @@
 <head>
     <meta charset="utf-8">
     <title>타 이 틀 </title>
-    <link rel="stylesheet" href="css/introhealth.css">
+    <link rel="stylesheet" href="css/introhealth.css?ver=501">
 </head> 
 
 <body>
 <main role="main">
 
   <section class="hero">
-    <div class="wrap__pic__00">
-      <img src="img\intro.jpg" class="main_pic_00">
+    <div class="main_pic_w">
+      <img src="img\intro.jpg" class="main_pic_01">
     </div>
 
     <div class="sidenav">

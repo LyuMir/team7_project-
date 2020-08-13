@@ -56,7 +56,7 @@ public class MyInfoAction {
 		new MyInfoService().myinfoedit(minfo);
 
 		RequestDispatcher dispatcher=
-				request.getRequestDispatcher("myinfo.log");
+				request.getRequestDispatcher("id_myinfo.log");
 		dispatcher.forward(request, response);
 	}
 	

@@ -1,3 +1,4 @@
+
 /* Extra Classes */
 .no-margin {
 	margin: 0;
@@ -91,7 +92,7 @@ ul.grt-menu {
 	padding:0;
 	list-style-type: none;
 	align-items: center;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+
 
 }
 
@@ -104,7 +105,7 @@ ul.grt-menu:after {
 
 ul.grt-menu li {
 	display: inline-block;
-	margin:0 10px;
+	/*margin:0 10px;*/
 	padding:0;/*
 	-webkit-transition: all ease 0.8s;
 	-moz-transition: all ease 0.8s;
@@ -112,7 +113,8 @@ ul.grt-menu li {
 }
 
 ul.grt-menu li a {
-	padding: 5px 12px;
+	/*padding: 5px 12px;*/
+	padding: 5px 3px;
     /*margin: 12px 45px 1px 1px;*/
     font-size: 12px;
     display: inline-block;
@@ -156,15 +158,18 @@ ul.grt-menu li.grt-dropdown ul.grt-dropdown-list {
 	background:white;
 	margin: 0;
 	padding: 0;
-	min-width:150px;
+	/*min-width:150px;*/
 	/*animation: fadeIn 0.8s;*/
 	animation: fadeIn 0.2s;
 	z-index: 999;
+
+    border-radius: 0 0 10px 10px;
 }
 
 ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li a {
 	display:block;
-	font-size:11px; /* 硫붾돱 �븞�쓽 洹� �룿�듃 �겕湲곗엯�꽩�뵒�뀖. */
+	/*font-size:11px; */
+	/* 메뉴 안의 그 폰트 크기입ㄴ디ㅏ. */
 	color: black;/*
 	-webkit-transition: all ease 0.8s;
 	-moz-transition: all ease 0.8s;
@@ -174,6 +179,7 @@ ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li a {
 
 ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li:last-child a {
 	padding-bottom:15px;
+	border-radius:0 0 10px 10px;
 }
 
 ul.grt-menu li.grt-dropdown.active-dropdown {
