@@ -51,27 +51,15 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			response.sendRedirect(referer);
 			return;
 		}
-		System.out.print("로그인체크");
-		if(command.equals("/Mng.health")){	
-			String id = (String)session.getAttribute("LOGIN");
-				
-			
-			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+		else if(command.equals("/Mng.health")){	
+			forward = new ActionForward(); 
 			forward.setPath("_FORWHERE.jsp?forwhere=4health/introhealth.jsp");
-		  
-	}
-			if(command.equals("/id_gymapply.health")){	
-			String id = (String)session.getAttribute("LOGIN");
-				
-			System.out.print("어플라이페이지 클릭됩니까?");
-			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
-			forward.setPath("_FORWHERE.jsp?forwhere=4health/gym_Apply.jsp");
-		  
 		}
-		
-		
-		
-		 if(command.equals("/id_gymcreate.health")) {
+		else if(command.equals("/id_gymapply.health")){
+			forward = new ActionForward(); 
+			forward.setPath("_FORWHERE.jsp?forwhere=4health/gym_Apply.jsp");
+		}
+		else if(command.equals("/id_gymcreate.health")) {
 			action  = new com.team7.gym.action.GymCreateAction();
 			System.out.print("d");
 			try {
@@ -79,11 +67,8 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			
-		}  //할거 담기
-		
-		 if(command.equals("/Search.health")){	
+		}
+		else if(command.equals("/Search.health")){	
 			System.out.print("짐 서치 클릭됩니까");
 			action  = new com.team7.gym.action.GymShowAllAction();
 			try {
@@ -91,10 +76,8 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//		  
 		}
-		 
-		 if(command.equals("/GymUserpage.health")){	
+		else if(command.equals("/GymUserpage.health")){	
 				System.out.println("헬스장 개인페이지 클릭됩니까");
 				action  = new com.team7.gym.action.GymUserpageAction();
 				try {
@@ -102,10 +85,9 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-//			  
-			}System.out.print("dddddd");
-	
-		System.out.println(command+"...dla..임");
+		}
+		
+		System.out.println(command+"...갑닏아 / gym.");
 		if(forward != null){
 			
 			if(forward.isRedirect()){

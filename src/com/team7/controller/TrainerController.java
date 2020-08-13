@@ -43,62 +43,45 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			response.sendRedirect(referer);
 			return;
 		}
-		System.out.print("로그인체크");
-		if(command.equals("/Introtrainerapply.trainer")){	
-			String id = (String)session.getAttribute("LOGIN");
-			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+		else if(command.equals("/id_Introtrainerapply.trainer")){
+			System.out.println("여기까지 오는지 봅시다. ");
+			forward = new ActionForward();
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/introtrainer.jsp");
-
-		  
 		}
-		if(command.equals("/id_coachapply.trainer")){	
-			String id = (String)session.getAttribute("LOGIN");
-			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+		else if(command.equals("/id_coachapply.trainer")){	
+			forward = new ActionForward();
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
 
 		}
-		if(command.equals("/id_coachapply.trainer")){	
-			String id = (String)session.getAttribute("LOGIN");
-			forward = new ActionForward(); // 그 일 요청받은 거면 다음을 해라.
+		else if(command.equals("/id_coachapply.trainer")){	
+			forward = new ActionForward();
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
-		  
 		}
-		 if(command.equals("/id_trainerapply.trainer")) {
+		else if(command.equals("/id_trainerapply.trainer")) {
 			action  = new com.team7.trainer.action.TrainerCreateAction();
-			System.out.print("d");
 			try {
 				forward=action.execute(request, response); //메서드실행함
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			
-		}  //할거 담기
-		 
-		
-		 if(command.equals("/Search.trainer")){	
-			System.out.print("트레이너 서치 클릭됩니까");
+		}
+		else if(command.equals("/Search.trainer")){	
 			action  = new com.team7.trainer.action.TrainerShowAllAction();
 			try {
 				forward=action.execute(request, response); //메서드실행함
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//		  
 		}
-		
-		 if(command.equals("/trainerUserpage.trainer")){	
-				System.out.println("트레이너 개인페이지 클릭됩니까");
+		else if(command.equals("/trainerUserpage.trainer")){	
 				action  = new com.team7.trainer.action.TrainerUserpageAction();
 				try {
 					forward=action.execute(request, response); //메서드실행함
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-//			  
-			}System.out.print("dddddd");
-			
-			if(command.equals("/id_mypage.trainer")) {
+		}
+		else if(command.equals("/id_mypage.trainer")) {
 				action  = new com.team7.trainer.action.TrainerMypageAction();
 				System.out.print("d");
 				try {
@@ -106,11 +89,9 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
-				
-			} 
+		} 
 
-		System.out.println(command+"...dla..임");
+		System.out.println(command+"...보내는 페이지 in trainer");
 		if(forward != null){
 			
 			if(forward.isRedirect()){

@@ -5,7 +5,7 @@
   <div class="wrap_big_00">
     <div class="top_left00 fleft"><a href="index.jsp"><img src="img/logo1.png"></a></div>
     <div class="top_right00 fright">
- 		<a><%=id %><img src="img/welcom.png"></a>
+ 		<a href="myinfo.log"><%=id %><img src="img/welcom.png"></a>
       <a href="logout.log"><img src="img/logout.png"></a>
       <!-- <a href="">마이 페이지</a>-->
     </div>

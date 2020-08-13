@@ -50,7 +50,7 @@ public class TrainerUserpageAction implements Action{
 		List<ZZIMBean> zzimYN = null;
 		String id = (String )request.getSession().getAttribute("LOG_ID");
 		if(id !=null)
-			zzimYN = new ZzimService().select_gym_Z_YN(id, no);
+			zzimYN = new ZzimService().select_trainer_Z_YN(id, no);
 		
 		
 		ActionForward forward= new ActionForward();

@@ -31,7 +31,7 @@ function zzimThis1(req){
 
 function zzimThis1_C(req){
 	var url = "gymC.zzim";
-	alert('eeeㄷㄷㄷㄷ');
+	// alert('eeeㄷㄷㄷㄷ');
 
     	$.ajax({
             type:"post",

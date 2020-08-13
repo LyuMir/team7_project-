@@ -574,7 +574,8 @@ margin-top: 13px;
 
 #findnav{
 
-max-width: 800%;
+/*max-width: 800%;*/
+max-width: 800px;
 width: 100%;
 
 
@@ -583,7 +584,7 @@ width: 100%;
 .scrolled{
   position: fixed;
   top: 40px;
-  z-index: 100;
+  z-index: 1;
 }
 
 .findwhere{
