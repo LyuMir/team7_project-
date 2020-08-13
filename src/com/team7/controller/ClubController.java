@@ -39,7 +39,6 @@ public class ClubController extends javax.servlet.http.HttpServlet
 		//해당 jsp에서 처리...!!!
 		if(command.startsWith("/id_") && logined !=1) {
 
-			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
 //			request.setAttribute("fail", "로그인이 필요한 서비스입니다!");
 //			response.setContentType("text/html;charset=UTF-8");
 //			PrintWriter out = response.getWriter();
@@ -47,7 +46,14 @@ public class ClubController extends javax.servlet.http.HttpServlet
 //			out.println("history.back();");
 //			out.println("</script>");
 			String referer = request.getHeader("Referer");
+			if(referer.contains("/id_")) {
+				referer = "index.jsp";
+			}
+			else {
+				request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
+			}
 			response.sendRedirect(referer);
+//			response.sendRedirect("_FORWHERE.jsp?fail3=nolog&forwhere="+referer);
 			
 			return;	//여기에 걸리면 밑에 구문들은 실행하지 않습니다... sendRedirect라서 어차피 실행 안되겠지만, 혹시 모르니까. 
 		}

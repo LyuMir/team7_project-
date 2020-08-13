@@ -63,6 +63,8 @@ main{
 .top_right00{
   /*margin: auto 0;*/
         display: flex;
+        position: absolute;
+        right: 0;
         /*flex-direction: column;*/
         justify-content: center;
         margin-right:30px;
@@ -325,3 +327,15 @@ float: left;
     float: unset;
   }
 }*/
+#homeimg0_small{
+  display: none;
+}
+
+@media screen and (max-width: 650px){
+  #homeimg0{
+    display: none;
+  }
+  #homeimg0_small{
+    display: unset;
+  }
+}

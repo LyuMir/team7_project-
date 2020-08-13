@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team7.trainer.action.Action;
+import com.team7.trainer.action.Trainer_mng_mainAction;
 import com.team7.vo.ActionForward;
 
 
@@ -18,17 +19,15 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");	//내가 추가함
-		String RequestURI=request.getRequestURI();	//req 가져옴 :http://localhost:8080/WebProject0724_MVC2/boardList.bo
-		String contextPath=request.getContextPath(); //http://localhost:8080/WebProject0724_MVC2/
-		String command=RequestURI.substring(contextPath.length()); //앞에 글자 지움 : boardList.bo
-		//즉 '/'이후 맨 마지막만.
+		request.setCharacterEncoding("UTF-8");	//�궡媛� 異붽��븿
+		String RequestURI=request.getRequestURI();	//req 媛��졇�샂 :http://localhost:8080/WebProject0724_MVC2/boardList.bo
+		String contextPath=request.getContextPath(); 
+		String command=RequestURI.substring(contextPath.length()); 
 
 
-		ActionForward forward=null;	//forward : 갈 곳 지정
+		ActionForward forward=null;	
 		Action action=null;
 
-		//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
 
 		HttpSession session = request.getSession(true);
 		int logined =0;
@@ -38,20 +37,18 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		}
 
 		if(command.startsWith("/id_") && logined !=1) {
-			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
 			String referer = request.getHeader("Referer");
+			if(referer.contains("/id_")) {
+				referer = "index.jsp";
+			}
+			else {
+				request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
+			}
 			response.sendRedirect(referer);
 			return;
 		}
 		else if(command.equals("/id_Introtrainerapply.trainer")){
-			System.out.println("여기까지 오는지 봅시다. ");
-			forward = new ActionForward();
-			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/introtrainer.jsp");
-		}
-		else if(command.equals("/id_coachapply.trainer")){
-			forward = new ActionForward();
-			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
-
+			forward = new Trainer_mng_mainAction().toMngpage(request, response);
 		}
 		else if(command.equals("/id_coachapply.trainer")){
 			forward = new ActionForward();
@@ -60,7 +57,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		else if(command.equals("/id_trainerapply.trainer")) {
 			action  = new com.team7.trainer.action.TrainerCreateAction();
 			try {
-				forward=action.execute(request, response); //메서드실행함
+				forward=action.execute(request, response); //硫붿꽌�뱶�떎�뻾�븿
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -68,7 +65,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		else if(command.equals("/Search.trainer")){
 			action  = new com.team7.trainer.action.TrainerShowAllAction();
 			try {
-				forward=action.execute(request, response); //메서드실행함
+				forward=action.execute(request, response); //硫붿꽌�뱶�떎�뻾�븿
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -76,7 +73,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		else if(command.equals("/trainerUserpage.trainer")){
 				action  = new com.team7.trainer.action.TrainerUserpageAction();
 				try {
-					forward=action.execute(request, response); //메서드실행함
+					forward=action.execute(request, response); //硫붿꽌�뱶�떎�뻾�븿
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -85,13 +82,13 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 				action  = new com.team7.trainer.action.TrainerMypageAction();
 				System.out.print("d");
 				try {
-					forward=action.execute(request, response); //메서드실행함
+					forward=action.execute(request, response); 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 		}
 
-		System.out.println(command+"...보내는 페이지 in trainer");
+		System.out.println(command+"...로 간다는...� in trainer");
 		if(forward != null){
 
 			if(forward.isRedirect()){
@@ -101,19 +98,19 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 				dispatcher.forward(request, response);
 			}
 
-		}//가서 페이지 보내기
+		}
 
 
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //내가 추가함
+		response.setContentType("text/html; charset=utf-8"); //�궡媛� 異붽��븿
 		doProcess(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //내가 추가함
+		response.setContentType("text/html; charset=utf-8"); //�궡媛� 異붽��븿
 		doProcess(request,response);
 	}
 }

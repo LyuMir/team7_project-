@@ -339,6 +339,8 @@ if(id ==null){
 	ied = <%=ied %>;
 	joinyn = <%=joinyn%>;
 
+	var clubname00 = '<%=rlist.get(0).getName()%>';
+
 	var z1button = $('#z_zzim_1');
 	var z2button = $('#z_join1');
 
@@ -496,6 +498,10 @@ var plzjoin_00 = $('#plzjoin_00');
 		}
 		else if(joinyn != 1){
 			alert('글을 쓰시려면 소모임에 가입하셔야 합니다!');
+			var confi0 = confirm(clubname00+' 소모임에 가입 신청을 하시겠습니까?');
+			if(confi0){
+				joinme();
+			}
 		}
 		// alert('글을 쓰시려면 소모임에 가입하셔야 합니다!');
 	});

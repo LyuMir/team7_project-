@@ -38,10 +38,15 @@ public class LOGController extends javax.servlet.http.HttpServlet
 			logyn=(Integer) session.getAttribute("LOG_STATUS");
 		}
 		
-		if(command.contains("myinfo") && logyn !=1) {
+		if(command.contains("id_") && logyn !=1) {
 
-			request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다!");
 			String referer = request.getHeader("Referer");
+			if(referer.contains("/id_")) {
+				referer = "index.jsp";
+			}
+			else {
+				request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
+			}
 			response.sendRedirect(referer);
 			
 			return;
@@ -81,10 +86,10 @@ public class LOGController extends javax.servlet.http.HttpServlet
 //				e.printStackTrace();
 //			}
 		}
-		else if(command.equals("/myinfo.log")) {
+		else if(command.equals("/id_myinfo.log")) {
 			new MyInfoAction().toMyInfoPage(request, response);
 		}
-		else if(command.equals("/editmyinfo.log")) {
+		else if(command.equals("/id_editmyinfo.log")) {
 			new MyInfoAction().infoEdit(request, response);
 		}
 
