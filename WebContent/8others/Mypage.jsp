@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8" />
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.team7.vo.MemberInfo1" %>
+<%@ page import="com.team7.vo.PostBean" %>
+<%@ page import="java.util.List" %>
+
   <title> Mypage </title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 
 <style media="screen">
 
@@ -728,7 +729,16 @@ code{
 
 
 </head>
-<body>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+
+
+
+List<MemberInfo1> minfo = (List<MemberInfo1>) request.getAttribute("minfo");
+
+List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
+%>
 <!-- Start jside Menu -->
 <div class="main">
   <h2>내 프로필</h2>
@@ -743,7 +753,7 @@ code{
          </div>
   </div>
          <div class="row for-name">
-   <h3 title="User Name"> 회원이름 </h3>
+   <h3 title="User Name"> <%=minfo.get(0).getName() %> </h3>
         <span class="tagline"> 닉네임 </span>
           </div>
          </div> <!--//col-->
@@ -783,12 +793,12 @@ code{
 <br>
 <div class="">
   <div class="myinfo">
-  <h4> 성함 :</h4>
-  <h4> ID :</h4>
-  <h4> 이메일 :</h4>
-  <h4> 주소 :</h4>
-  <h4> 관심사 :</h4>
-  <h4> 가입일 :</h4>
+  <h4> 성함 : <%=minfo.get(0).getName() %></h4>
+  <h4> ID :<%=minfo.get(0).getId() %> </h4>
+  <h4> 이메일 :<%=minfo.get(0).getEmail() %> </h4>
+  <h4> 주소 :<%=minfo.get(0).getAddress() %> </h4>
+  <h4> 관심사 :<%=minfo.get(0).getInterest() %></h4>
+  <h4> 가입일 :<%=minfo.get(0).getJoindate() %></h4>
 
   <button type="button" name="button" class="btn">정보수정</button>
 
