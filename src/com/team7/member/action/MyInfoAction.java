@@ -34,7 +34,7 @@ public class MyInfoAction {
 		
 
 		RequestDispatcher dispatcher=
-				request.getRequestDispatcher("_FORWHERE.jsp?forwhere=8others/Personal_infomations.jsp");
+				request.getRequestDispatcher("_FORWHERE.jsp?forwhere=8others/Mypage.jsp");
 		dispatcher.forward(request, response);
 		
 		
