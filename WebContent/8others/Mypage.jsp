@@ -38,7 +38,7 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
          </div> <!--//col-->
   </span>
 </div> <!--//menu-head-->
-<nav class="menu-container">
+<div class="menu-containers">
 <ul class="menu-items">
 <li class="thisnow"><a href="#1"> <i class="material-icons">widgets</i>  나의 정보페이지 </a></li>
 <li><a href="#1"> <i class="material-icons">bar_chart</i> 최근 본 페이지 </a></li>
@@ -56,7 +56,7 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 <li> <a href="#1">  <i class="material-icons">pie_chart</i>  로그아웃 </a></li>
 
 </ul>
-</nav>
+</div>
 </div>
 </article>
 <!--End jSide Menu-->
@@ -68,7 +68,7 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
     <p class="grade">사용자</p>
   </div>
 
-  <h3 class="text">김윤영 회원님</h3>
+  <h3 class="textmp">김윤영 회원님</h3>
 <br>
 <div class="">
   <div class="myinfo">
@@ -126,8 +126,8 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
         target = $(this);
 
 //Accessing DOM
-  jSide = $(".menu-container, .menu-head");
-  devHeight = $(window).height();
+  jSide = $(".menu-containers, .menu-head");
+  devHeight = $(".menu-containers").height();
   headHeight = $(".menu-head").height();
   dHeading = $(".dropdown-heading");
   menuTrigger = $(".menu-trigger");
@@ -200,7 +200,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 
 
 $(function(){
-$(".menu-container").jSideMenu({
+$(".menu-containers").jSideMenu({
     jSidePosition: "position-left", //possible options position-left or position-right
     jSideSticky: true, // menubar will be fixed on top, false to set static
     jSideSkin: "default-skin", // to apply custom skin, just put its name in this string
