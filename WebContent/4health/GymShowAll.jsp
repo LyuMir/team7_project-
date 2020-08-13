@@ -13,8 +13,8 @@
       <!-- <link rel="stylesheet" href="css/normalizeyuncard.css"> -->
       <!-- <link rel="stylesheet" href="css/mainyun.css"> -->
       <!-- <link rel="stylesheet" type="text/css" href="css/gridgrid88yuncard.css"> -->
-      <link rel="stylesheet" type="text/css" href="css/gridgrid88.css">
-      <link rel="stylesheet" type="text/css" href="css/picpiccard.css">
+      <!-- <link rel="stylesheet" type="text/css" href="css/gridgrid88.css"> -->
+      <link rel="stylesheet" type="text/css" href="css/picpiccard.css"> 
       <link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	21d928db4da229461e099041921f1bbc"></script>
 <script>
@@ -108,30 +108,46 @@ marker.setMap(map);
 
 <div class="grid">
 
-     <% for(int i =0 ; i < gser.size() ; i++){ %>
+     <% for(int i =0 ; i < gser.size() ; i++){ 
+     
+     %>
 
   <article class="grid__item" onclick="javascript:location.href='GymUserpage.health?number=<%=gser.get(i).getGid() %>'">
     <div class="card">
       <div class="card__img">
-      	<img class="card__img" src="Files/gym/<%=gser.get(i).getOwner()%>/1/<%=photos.get(0).getPicture() %>" alt="<%=gser.get(i).getPicture() %>">
+<% 
+
+String picwhere = "";
+String picalt = "";
+	for(int j = 0 ; j < photos.size();j++){
+      if(photos.get(j).getId().contains(gser.get(i).getOwner()+"_")){ 
+        picwhere = "Files/gym/"+gser.get(i).getOwner()+"/1/"+photos.get(j).getPicture();
+        picalt = "gser.get(i).getPicture()";
+        break;
+      } else{ 
+      		int k = (int)(Math.random() * 4)+1;
+        picwhere = "img/exc/gym"+k+".jpg";
+      }
+	} %>
+        <img class="card__img" src="<%=picwhere %>" alt="<%=picalt %>">
       </div>
       <div class="card__content2">
         <!-- <div class="__tag00"> <%=gser.get(i).getGid()%></div> -->
         <div class="content__header"><%=gser.get(i).getGname()%> </div>
         <div class="content__text"><%=gser.get(i).getGsmalltext()%></div>
-        <div class="content_what">서비스 : <span><%= gser.get(i).getGtype() %></span></div>
+        <div class="content_what"> <span><%= gser.get(i).getGtype() %></span></div>
         <div class="content_where">장소 : <span><%=gser.get(i).getAddress()%></span></div>
       </div>
     </div>
   </article>
-    <%} %>
+    <% }%>
 </div>
 </div>
 
 <style type="text/css">
   #gallery{
     width: 100%;
-    margin: 20px;
+    margin: 20px auto;
     max-width: 900px;
   }
   .card__content2 *{
@@ -143,6 +159,7 @@ marker.setMap(map);
   }
   .grid{
     all:unset;
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 250px);
   }
