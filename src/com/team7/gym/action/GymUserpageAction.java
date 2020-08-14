@@ -30,7 +30,6 @@ public class GymUserpageAction implements Action{
 		
 //		DTO_Notice notice = new DTO_Notice();
 //		notice.setNo(no);
-		System.out.println("유저페이지 액션까지왔을까요?");
 		int no = Integer.parseInt(request.getParameter("number"));
 		
 		System.out.println(no+"입니다!!");

@@ -123,8 +123,9 @@
 	margin: 10px 0 ;
 }
 .posts img{
-	max-height: 350px;
+	/*max-height: 350px;*/
 	max-width: 100%;
+	
 
 		object-fit: cover; 
 }

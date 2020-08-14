@@ -53,4 +53,9 @@ public class PostGetAction {
 		}
 		out.println("</div>");
 	}
+	
+	public void indexadGetter(HttpServletRequest request, HttpServletResponse response) {
+//		ArrayList<List<Object>> rlistlist = new ArrayList<List<Object>>();
+//		rlistlist = new 
+	}
 }

@@ -51,6 +51,8 @@ function postGetter(){
   // boTs.eq(1).text(datasss.children('div').eq(1).data('title'));
   // boTs.eq(2).text(datasss.children('div').eq(2).data('title'));
 
+  console.log(datasss.html());
+
   boxs.eq(0).text(text550);
   boxs.eq(1).text(datasss.children('div').eq(1).text());
   boxs.eq(2).text(datasss.children('div').eq(2).text());
