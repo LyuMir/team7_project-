@@ -23,6 +23,15 @@ public class GymService {
 	}
 	
 	
+	public List<Gym_info> select_mygym_prof(String gymowner){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		Gym_info gym = new Gym_info();
+		gym.setOwner(gymowner);
+		List<Gym_info> rlist = sqlsession.selectList("select_GYM_by_Owner",gym);
+		sqlsession.close();
+		return rlist;
+	}
+	
 //	public List<DTO_Notice> getNoticeList(int page) {
 //
 //		PageInfo pageinfo = new PageInfo();

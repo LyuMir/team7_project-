@@ -38,10 +38,12 @@ List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
       <div id="buttons1"></div>
       <div id="buttons2"></div>
     </div>
+
+<!--
 	  <div class="sticky_side_bar fright">
 	  	ꓥ  &nbsp; &nbsp; 1 2 3 4 5  … 12 &nbsp; &nbsp;  ꓦ
 	  </div>
-
+ -->
     <div class="grid">    
      <% for(int i = 0; i < rlist.size(); i++){ %>
      

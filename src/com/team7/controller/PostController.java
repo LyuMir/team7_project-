@@ -62,6 +62,11 @@ public class PostController extends javax.servlet.http.HttpServlet
 			new PostGetAction().indexGetter(request, response);
 			return; //안가. 
 		}
+		else if(command.equals("/index_ad.post")) {
+			new PostGetAction().indexadGetter(request,response);
+			return;	//나도 안가 . ajax임. 
+		}
+		
 
 		//가야할 곳은 바로 거기임.. 
 		if(gobackRefresh) {	//새로고침

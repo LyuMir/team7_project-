@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team7.gym.action.Action;
+import com.team7.gym.action.Gym_mng_mainAction;
+import com.team7.trainer.action.Trainer_mng_mainAction;
 import com.team7.vo.ActionForward;
 
 
@@ -57,8 +59,7 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			return;
 		}
 		else if(command.equals("/Mng.health")){	
-			forward = new ActionForward(); 
-			forward.setPath("_FORWHERE.jsp?forwhere=4health/introhealth.jsp");
+			forward = new Gym_mng_mainAction().toMngpage(request, response);
 		}
 		else if(command.equals("/id_gymapply.health")){
 			forward = new ActionForward(); 
@@ -83,7 +84,6 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			}
 		}
 		else if(command.equals("/GymUserpage.health")){	
-				System.out.println("헬스장 개인페이지 클릭됩니까");
 				action  = new com.team7.gym.action.GymUserpageAction();
 				try {
 					forward=action.execute(request, response); //메서드실행함

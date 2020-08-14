@@ -9,7 +9,7 @@
 <%@ page import="java.util.ArrayList" %>
 
 
-    <link rel="stylesheet" type="text/css" href="css/club_main.css?ver=68">
+    <link rel="stylesheet" type="text/css" href="css/club_main.css?ver=71">
 	<link rel="stylesheet" type="text/css" href="css/photo_modal00.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

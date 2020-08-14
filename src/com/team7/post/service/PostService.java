@@ -7,7 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.team7.dao.Class_DAO;
 import com.team7.vo.PostBean;
+import com.team7.vo.Trainer_info;
 import com.team7.vo.ClubBean;
+import com.team7.vo.Gym_info;
 import com.team7.vo.MemberLogInfo;
 
 public class PostService {
@@ -87,5 +89,24 @@ public class PostService {
 		posts.add(post3);
 		sqlsession.close();
 		return posts;
+	}
+	
+	public List<Gym_info> getAdForIndex1(){	// 고쳐 써야 한다!!!
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<Gym_info> rlist1 = sqlsession.selectList("");	//어ㅕ기!!!
+		sqlsession.close();
+		return rlist1;
+	}
+	public List<Trainer_info> getAdForIndex2(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<Trainer_info> rlist2 = sqlsession.selectList("");
+		sqlsession.close();
+		return rlist2;
+	}
+	public List<ClubBean> getAdForIndex3(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ClubBean> rlist3	 = sqlsession.selectList("");
+		sqlsession.close();
+		return rlist3;
 	}
 }

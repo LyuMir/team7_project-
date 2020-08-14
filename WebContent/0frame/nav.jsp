@@ -30,7 +30,7 @@
                  <li><a href="id_health.my">My 헬스장</a></li>
                 <li><a href="id_trainer.my">My 트레이너</a></li>
                 <li><a href="id_my.club">My 소모임</a></li>
-                <li><a href="id_myinfo.mypage">회원정보</a></li>
+                <li><a href="id_myinfo.log">회원정보</a></li>
                 
               </ul>
             </li>
@@ -82,10 +82,46 @@
     min-width: 123px;
   }
 
-  ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li a:hover{
+/*  ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li a:hover{
     background-color: #987c67;
     color: white;
+  }*/
+
+  ul.grt-menu li.grt-dropdown ul.grt-dropdown-list.fff11 li a:hover{
+    background-color: #664200;
+    color: white;
   }
+
+  ul.grt-menu li.grt-dropdown ul.grt-dropdown-list.fff12 li a:hover{
+    background-color: #473800;
+    color: white;
+  }
+
+  ul.grt-menu li.grt-dropdown ul.grt-dropdown-list.fff13 li a:hover{
+    background-color: #666500;
+    color: white;
+  }
+
+  ul.grt-menu li.grt-dropdown ul.grt-dropdown-list.fff14 li a:hover{
+    background-color: #663c00;
+    color: white;
+  }
+
+  ul.grt-menu li.grt-dropdown ul.grt-dropdown-list.fff15 li a:hover{
+    background-color: #472a00;
+    color: white;
+  }
+
+/*
+#664200
+#473800
+#666500
+#663c00
+#472a00
+987c67
+*/
+
+
 
 /*  li.grt-dropdown:hover{
     background-color: #d8b2a7;
