@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.team7.member.action.MyInfoAction;
 import com.team7.notice.action.Action;
@@ -21,17 +22,36 @@ public class MypageController extends javax.servlet.http.HttpServlet
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");	//³»°¡ Ãß°¡ÇÔ
-		String RequestURI=request.getRequestURI();	//req °¡Á®¿È :http://localhost:8080/WebProject0724_MVC2/boardList.bo
+		request.setCharacterEncoding("UTF-8");	//ë‚´ê°€ ì¶”ê°€í•¨
+		String RequestURI=request.getRequestURI();	//req ê°€ì ¸ì˜´ :http://localhost:8080/WebProject0724_MVC2/boardList.bo
 		String contextPath=request.getContextPath(); //http://localhost:8080/WebProject0724_MVC2/
-		String command=RequestURI.substring(contextPath.length()); //¾Õ¿¡ ±ÛÀÚ Áö¿ò : boardList.bo
-		//Áï '/'ÀÌÈÄ ¸Ç ¸¶Áö¸·¸¸. 
+		String command=RequestURI.substring(contextPath.length()); //ì•ì— ê¸€ì ì§€ì›€ : boardList.bo
+		//ì¦‰ '/'ì´í›„ ë§¨ ë§ˆì§€ë§‰ë§Œ. 
 		
 		
-		ActionForward forward=null;	//forward : °¥ °÷ ÁöÁ¤ 
-		Action action=null;			//action : ÇÒ ÀÏ ÁöÁ¤  Á¤È®È÷´Â action.execute()·Î. (ÀÎÅÍÆäÀÌ½º·Î ±¸¼ºÇÔ)
+		ActionForward forward=null;	//forward : ê°ˆ ê³³ ì§€ì • 
+		Action action=null;			//action : í•  ì¼ ì§€ì •  ì •í™•íˆëŠ” action.execute()ë¡œ. (ì¸í„°í˜ì´ìŠ¤ë¡œ êµ¬ì„±í•¨)
+		int logyn =0;
+		HttpSession session = request.getSession();
+		if(session.getAttribute("LOG_STATUS") ==null) {}
+		else {
+			logyn=(Integer) session.getAttribute("LOG_STATUS");
+		}
 		
-//		if(command.equals("/noticeshow.notice")){	// ±× ÀÏ ¿äÃ»¹ŞÀº °Å¸é ´ÙÀ½À» ÇØ¶ó.
+		if(command.contains("id_") && logyn !=1) {
+
+			String referer = request.getHeader("Referer");
+			if(referer.contains("/id_")) {
+				referer = "index.jsp";
+			}
+			else {
+				request.getSession().setAttribute("fail", "æ¿¡ì’“ë ‡ï¿½ì”¤ï¿½ì”  ï¿½ë¸˜ï¿½ìŠ‚ï¿½ë¸³ ï¿½ê½Œé®ê¾©ë’ªï¿½ì—¯ï¿½ë•²ï¿½ë–, æ¿¡ì’“ë ‡ï¿½ì”¤ï¿½ë¹äºŒì‡±ê½­ï¿½ìŠ‚.");
+			}
+			response.sendRedirect(referer);
+			
+			return;
+		}
+//		if(command.equals("/noticeshow.notice")){	// ê·¸ ì¼ ìš”ì²­ë°›ì€ ê±°ë©´ ë‹¤ìŒì„ í•´ë¼.
 //			action  = new com.team7.notice.action.NoticeListShowAction();
 //			try {
 //				forward=action.execute(request, response );
@@ -39,7 +59,7 @@ public class MypageController extends javax.servlet.http.HttpServlet
 //				e.printStackTrace();
 //			}
 //		}
-		if(command.equals("/myinfo.mypage")) {
+		if(command.equals("/id_myinfo.mypage")) {
 			new MyInfoAction().toMyInfoPage(request, response);
 		}
 		
@@ -71,7 +91,7 @@ public class MypageController extends javax.servlet.http.HttpServlet
 		
 		
 
-		if(forward != null){	//°¡¾ßÇÒ °÷ÀÌ ÀÖ´Ù¸é º¸³¿. \
+		if(forward != null){	//ê°€ì•¼í•  ê³³ì´ ìˆë‹¤ë©´ ë³´ëƒ„. \
 			if(forward.getPath()==null) {
 				forward.setPath("/index.jsp");
 			}
@@ -80,10 +100,10 @@ public class MypageController extends javax.servlet.http.HttpServlet
 			}
 			if(forward.getPath().startsWith("\\")) {
 				forward.setPath(forward.getPath().substring(1));
-				System.out.println(forward.getPath()+"ÇÊ¿ä ÇÒ±î?");
+				System.out.println(forward.getPath()+"í•„ìš” í• ê¹Œ?");
 			}
 
-			System.out.println(forward.getPath()+"À¸·Î °©´Ï´Ù...");
+			System.out.println(forward.getPath()+"ìœ¼ë¡œ ê°‘ë‹ˆë‹¤...");
 			
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());
@@ -97,13 +117,13 @@ public class MypageController extends javax.servlet.http.HttpServlet
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //³»°¡ Ãß°¡ÇÔ
+		response.setContentType("text/html; charset=utf-8"); //ë‚´ê°€ ì¶”ê°€í•¨
 		doProcess(request,response);
 	}  	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //³»°¡ Ãß°¡ÇÔ
+		response.setContentType("text/html; charset=utf-8"); //ë‚´ê°€ ì¶”ê°€í•¨
 		doProcess(request,response);
 	}   
 	

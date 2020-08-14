@@ -23,15 +23,15 @@ public class LOGController extends javax.servlet.http.HttpServlet
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");	//내가 추가함
-		String RequestURI=request.getRequestURI();	//req 가져옴 :http://localhost:8080/WebProject0724_MVC2/boardList.bo
+		request.setCharacterEncoding("UTF-8");	//�궡媛� 異붽��븿
+		String RequestURI=request.getRequestURI();	//req 媛��졇�샂 :http://localhost:8080/WebProject0724_MVC2/boardList.bo
 		String contextPath=request.getContextPath(); //http://localhost:8080/WebProject0724_MVC2/
-		String command=RequestURI.substring(contextPath.length()); //앞에 글자 지움 : boardList.bo
-		//즉 '/'이후 맨 마지막만. 
+		String command=RequestURI.substring(contextPath.length()); //�븵�뿉 湲��옄 吏��� : boardList.bo
+		//利� '/'�씠�썑 留� 留덉�留됰쭔. 
 		
 		
-		ActionForward forward=null;	//forward : 갈 곳 지정 
-		Action action=null;			//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
+		ActionForward forward=null;	//forward : 媛� 怨� 吏��젙 
+		Action action=null;			//action : �븷 �씪 吏��젙  �젙�솗�엳�뒗 action.execute()濡�. (�씤�꽣�럹�씠�뒪濡� 援ъ꽦�븿)
 		HttpSession session = request.getSession();
 		int logyn =0;
 		if(session.getAttribute("LOG_STATUS") ==null) {}
@@ -46,7 +46,7 @@ public class LOGController extends javax.servlet.http.HttpServlet
 				referer = "index.jsp";
 			}
 			else {
-				request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
+				request.getSession().setAttribute("fail", "로그인이필요합니다");
 			}
 			response.sendRedirect(referer);
 			
@@ -54,7 +54,7 @@ public class LOGController extends javax.servlet.http.HttpServlet
 		}
 		
 		
-		if(command.equals("/join.log")){	// 그 일 요청받은 거면 다음을 해라.
+		if(command.equals("/join.log")){	// 洹� �씪 �슂泥�諛쏆� 嫄곕㈃ �떎�쓬�쓣 �빐�씪.
 			action  = new com.team7.member.action.JoinAction();
 			try {
 				forward=action.execute(request, response );
@@ -95,13 +95,13 @@ public class LOGController extends javax.servlet.http.HttpServlet
 		}
 
 
-		if(forward != null){	//가야할 곳이 있다면 보냄. \
-			//안보냄. 새로고침 시킬거임. 
+		if(forward != null){	//媛��빞�븷 怨녹씠 �엳�떎硫� 蹂대깂. \
+			//�븞蹂대깂. �깉濡쒓퀬移� �떆�궗嫄곗엫. 
 
 //			response.setContentType("text/html;charset=UTF-8");
 //			PrintWriter out = response.getWriter();
 //			out.println("<script>");
-////			out.println("alert('잘못된 경로 : 이미 가입되어있는 소모임입니다. ')");
+////			out.println("alert('�옒紐삳맂 寃쎈줈 : �씠誘� 媛��엯�릺�뼱�엳�뒗 �냼紐⑥엫�엯�땲�떎. ')");
 ////			out.println("location.reload(true);");
 //			out.println("history.back();");
 //			
@@ -113,13 +113,13 @@ public class LOGController extends javax.servlet.http.HttpServlet
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //내가 추가함
+		response.setContentType("text/html; charset=utf-8"); //�궡媛� 異붽��븿
 		doProcess(request,response);
 	}  	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.setContentType("text/html; charset=utf-8"); //내가 추가함
+		response.setContentType("text/html; charset=utf-8"); //�궡媛� 異붽��븿
 		doProcess(request,response);
 	}   
 	
