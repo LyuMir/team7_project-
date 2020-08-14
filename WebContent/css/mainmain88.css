@@ -41,7 +41,12 @@ a{
 main{
   min-height: 1000px;
 }
-
+footer{
+	/*all:unset !important;*/
+	background-color: #e8e8e8;
+	width: 100%;
+	margin-top: 60px;
+}
 .mylist0 li{
   margin: 10px;
 }

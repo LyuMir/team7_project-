@@ -25,15 +25,6 @@
    --skin-color: blcak;
 }
 
-.mainwarp{
-
-  width: 850px;
-  height: 800px;
-  margin: 0 auto;
-
-
-}
-
 .thunbox{
   display: block;
     width: 130px;
@@ -66,11 +57,14 @@ margin: 0px;
 }
 
 .myprofile{
-width: 640px;
+/*width: 640px;*/
+max-width: 630px;
+min-width: 500px;
 border: 0.4px solid #d6d6d6;
-float: right;
+float: left;
+margin-left: 10px;
 /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); */
- margin-top: 50px;
+ margin-top: 30px;
 }
 
 h2{
@@ -91,7 +85,7 @@ h4{
       /* font-size: 20px; */
       margin-left: 50px;
       width: 320px;
-      height: 40px;
+      /*height: 40px;*/
       margin-bottom: 30px;
       color: #666666;
       font-weight: bold;
@@ -141,7 +135,9 @@ h4{
 }
 
 .main{
-  width: 1000px;
+  /*width: 1000px;*/
+  /*max-width: 980px;*/
+  width: 780px;
   height: auto;
   margin: 0 auto;
   border-radius: 50%;
@@ -150,10 +146,10 @@ h4{
 }
 .sidenav{
  display: block;
- width: 270px;
- height: 900px;
+ /*width: 270px;*/
+ /*height: 900px;*/
  float: left;
- margin-top: 50px;
+ margin-top: 30px;
 }
 
 
@@ -266,8 +262,8 @@ h4{
     background: var(--skin);
 
     z-index: 1000;
-    width: 270px;
-    height:600px;
+    width: 230px;
+    /*height:600px;*/
 
 }
 .menu-head .layer{

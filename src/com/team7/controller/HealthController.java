@@ -84,7 +84,6 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			}
 		}
 		else if(command.equals("/GymUserpage.health")){	
-				System.out.println("헬스장 개인페이지 클릭됩니까");
 				action  = new com.team7.gym.action.GymUserpageAction();
 				try {
 					forward=action.execute(request, response); //메서드실행함

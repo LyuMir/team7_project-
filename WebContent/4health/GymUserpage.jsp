@@ -36,11 +36,10 @@ if(id.equals(gser.get(0).getOwner())){
 
 
 
-    <link rel="stylesheet" type="text/css" href="css/gympage.css?ver=6">
 
 	<main class="mainwrap_club">
 
-		<section class="mainwrap">
+		<section class="">
 			<div class="main_head">
 				<!-- 사진 크게 넣을거임. ...사진 될까? -->
 				<img class="ImageForModal" src="Files/gym/<%=gser.get(0).getOwner()%>/1/<%=photoBean.get(0).getPicture() %>" onclick="ImageClickFunction(this)">
@@ -54,7 +53,7 @@ if(id.equals(gser.get(0).getOwner())){
 
 <div>
 
-<div class="div1">
+<div class="div1 fright">
 
 <% String imsigtype = gser.get(0).getGtype();
    String [] gtype = imsigtype.split(",");
@@ -155,12 +154,14 @@ if(id.equals(gser.get(0).getOwner())){
 	</div>
 
 	<div class="cert info" >
-
+<%
+	String [] price = gser.get(0).getGprice().split(",");
+%>
 		<p class="hg2" > 헬스장 가격</p><br>
-		<p class="a_text2">1개월권  : 	</p><br>
-		<p class="a_text2">3개월권  : 	</p><br>
-		<p class="a_text2">6개월권  : 	</p><br>
-		<p class="a_text2">12개월권 : 	</p><br>
+		<p class="a_text2">1개월권  : <%=price[0] %>	</p><br>
+		<p class="a_text2">3개월권  : 	<%=price[1] %></p><br>
+		<p class="a_text2">6개월권  : 	<%=price[2] %></p><br>
+		<p class="a_text2">12개월권 : <%=price[3] %>	</p><br>
 
 	</div>
 
@@ -231,15 +232,15 @@ if(id.equals(gser.get(0).getOwner())){
 		for(int i = 0 ; i < posts.size(); i++){
 			int pcon = 99;
 			String pc = posts.get(i).getPcon();
-				if(pc.equals("전체공개"))
+				if(pc.contains("전체"))
 					pcon = 1;
-				else if(pc.equals("비밀글"))
+				else if(pc.contains("비밀"))
 					pcon = 0;
-			int showme = 0;
-			if(imgymOwner ==1 ){
-				showme = 1;
-			}
+			int showme = 1;
 			if(pcon ==0){
+				showme = 0;
+			}
+			if(imgymOwner ==1 || id.equals(posts.get(i).getWriter())){
 				showme = 1;
 			}
 			
@@ -279,6 +280,7 @@ if(id.equals(gser.get(0).getOwner())){
 
 	<script type="text/javascript" src="js/trainerpagejs.js"></script>
 	<script type="text/javascript" src="77zzim/zzim1_gymZzim.js?ver=16"></script>
+    <link rel="stylesheet" type="text/css" href="css/gympage.css?ver=8">
 	<link rel="stylesheet" type="text/css" href="css/club_main.css">
 
 <style type="text/css">
@@ -286,8 +288,9 @@ if(id.equals(gser.get(0).getOwner())){
 		box-sizing: border-box;
 	}
 	.mainwrap_club{
-		width: 1000px;
-		margin: 0 auto;
+		/*width: 1000px;*/
+		/*margin: 0 auto;*/
+		max-width: 810px;
 	}
 
 	.club_right{
@@ -342,15 +345,19 @@ if(id.equals(gser.get(0).getOwner())){
 		float: left;
 		margin-top: 50px;
 	}
+	.div1{
+		margin: 50px 0 0 20px;
+		max-width: 380px;
+		width: 100%;
+	}
 	.main_head{
 		float: left;
-		     width: 400px;
+		     /*width: 400px;*/
 	}
 	.main_head img{
-		width: 400px;
+		max-width: 380px;
 		max-height: 550px;
-		    height: 500px;
-		margin-top: 50px;
+		height: 100%;
 
   		object-fit: cover;
 	}
