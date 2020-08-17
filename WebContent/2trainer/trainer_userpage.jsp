@@ -282,15 +282,15 @@ for (int i=0 ; i < time.length ; i ++) {
 		for(int i = 0 ; i < posts.size(); i++){
 			int pcon = 99;
 			String pc = posts.get(i).getPcon();
-				if(pc.equals("전체공개"))
+				if(pc.contains("전체"))
 					pcon = 1;
-				else if(pc.equals("비밀글"))
+				else if(pc.contains("비밀"))
 					pcon = 0;
-			int showme = 0;
-			if(imtrainer ==1 ){
-				showme = 1;
-			}
+			int showme = 1;
 			if(pcon ==0){
+				showme = 0;
+			}
+			if(imtrainer == 1 || id.equals(posts.get(i).getWriter())){
 				showme = 1;
 			}
 			
