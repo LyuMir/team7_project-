@@ -25,6 +25,7 @@ private 	String photo; 	// 추가됨.
 
 //추가 db적 요인 
 private		int memberNum;
+private 	int zzimNum;
 	
 	public int getNo() {
 		return no;
@@ -109,6 +110,12 @@ private		int memberNum;
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public int getZzimNum() {
+		return zzimNum;
+	}
+	public void setZzimNum(int zzimNum) {
+		this.zzimNum = zzimNum;
 	}
 	
 	

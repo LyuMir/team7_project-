@@ -219,6 +219,10 @@ float: left;
   text-decoration: underline;
 }
 
+.displaynone{
+  display: none !important;
+}
+
 .fleft{
   float: left;
 }

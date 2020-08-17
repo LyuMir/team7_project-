@@ -18,13 +18,13 @@
       <link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	21d928db4da229461e099041921f1bbc"></script>
 <script>
-		var container = document.getElementById('map');
+		var container3 = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(33.450701, 126.570667),
 			level: 3
 		};
 
-		var map = new kakao.maps.Map(container, options);
+		var map = new kakao.maps.Map(container3, options);
 
 	</script>
 
@@ -83,7 +83,7 @@ marker.setMap(map);
 
 
 <a id="showHere"></a>
-<main role="main">
+<main class="mainwrap">
 
 
   <div class="container2">
@@ -96,7 +96,6 @@ marker.setMap(map);
     </div>
   </div>
 
-
   <div id="gallery">
 
 <!-- 태그버튼 여기  -->
@@ -105,6 +104,10 @@ marker.setMap(map);
       <div id="buttons1"></div>
       <div id="buttons2"></div>
   </div>
+<!-- 검색기능 여기  -->
+    <div id="searchBar">
+        <input id="search_club_name" type="text" name="" placeholder="이름 검색">
+    </div>
 
 <div class="grid">
 
@@ -112,7 +115,7 @@ marker.setMap(map);
      
      %>
 
-  <article class="grid__item" onclick="javascript:location.href='GymUserpage.health?number=<%=gser.get(i).getGid() %>'">
+  <article class="grid__item" data-name="<%=gser.get(i).getGname()%>" onclick="javascript:location.href='GymUserpage.health?number=<%=gser.get(i).getGid() %>'">
     <div class="card">
       <div class="card__img">
 <% 
@@ -132,7 +135,6 @@ String picalt = "";
         <img class="card__img" src="<%=picwhere %>" alt="<%=picalt %>">
       </div>
       <div class="card__content2">
-        <!-- <div class="__tag00"> <%=gser.get(i).getGid()%></div> -->
         <div class="content__header"><%=gser.get(i).getGname()%> </div>
         <div class="content__text"><%=gser.get(i).getGsmalltext()%></div>
         <div class="content_what"> <span><%= gser.get(i).getGtype() %></span></div>
@@ -174,6 +176,22 @@ String picalt = "";
 </style>
 
 <script src="js/taggings_jay.js?ver=3"></script>
+<script type="text/javascript">
+  
+  var all_no_arr =[];
+  var article00 = $('article.grid__item');
+  // var sthgood="hey!";
+  // for (var i = 0; i < article00.length; i++) {
+  //     // all_no_arr[i]= article00.eq(i).data('id').toString();
+  //     all_no_arr[i]= article00.eq(i).data('id');
+  // }
+  // console.log(all_no_arr);
+
+  var search00 = $('#searchBar').children('input');
+
+
+</script>
+<script type="text/javascript" src="88search/searchJ.js"></script>
         <!-- <script src="js/filter-tagscard.js"></script> -->
         <!-- <script type="text/javascript"></script> -->
         <!-- <script src="js/" type="text/javascript"></script> -->

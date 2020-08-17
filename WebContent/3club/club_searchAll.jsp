@@ -5,7 +5,7 @@
 <%@ page import="com.team7.vo.ClubBean" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=8">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=9">
 	<!-- 바디... main만 있어도 됨.  -->
 <%
 request.setCharacterEncoding("UTF-8");
@@ -19,6 +19,7 @@ List<ClubBean> rlist // = new Class_DAO().club_selectorAll2(iii);
 			=(List<ClubBean>) request.getAttribute("rlist");
 
 List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
+
 
 //List<dtos.Class_DTO_ClubProperties2> rlist  = new Class_DAO().club_selectorAll();
 
@@ -37,6 +38,12 @@ List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
       <div id="buttons0"></div>
       <div id="buttons1"></div>
       <div id="buttons2"></div>
+    </div>
+    <div id="searchBar">
+            <!-- <input id="searchone" type="text" name="" onchange="search(this,'club','name')"> -->
+        <input id="search_club_name" type="text" name="" placeholder="이름 검색"> <!-- onchange="search2(this,'club','name')"> -->
+        <!-- <input type="search_club_exc" name="" placeholder="운동 검색" oninput="">     -->
+            <!-- <button onclick="reshowall()">리셋(전체보기)</button> -->
     </div>
 
 <!--
@@ -93,9 +100,11 @@ List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
      	      else{
      	    	  photo1 = realFolder+rlist.get(i).getAdmin()+"_"+rlist.get(i).getNo()+"/main/"+picture00;
      	      }
+
+              
      	
      	%>
-		<article class="grid__item" onclick="gotoClub2(this)">
+		<article class="grid__item" onclick="gotoClub2(this)" data-id="<%=rlist.get(i).getNo()%>" data-name="<%=rlist.get(i).getName() %>">
     <!-- <article class="grid__item" > -->
 			<div class="card">
 				<div class="card__img00 fright">
@@ -154,8 +163,22 @@ var kk = 0 ;
     $(item).css('bottom',(height - pheight)/2);
   });
 
+
+
+var all_no_arr =[];
+var article00 = $('article.grid__item');
+// var sthgood="hey!";
+for (var i = 0; i < article00.length; i++) {
+    all_no_arr[i]= article00.eq(i).data('id').toString();
+}
+console.log(all_no_arr);
+
+var search00 = $('#searchBar').children('input');
+
+
 </script>
 <script src="js/taggings_jay.js?ver=3"></script>
+<script type="text/javascript" src="88search/searchJ.js?ver=23"></script>
 
 </main>
 

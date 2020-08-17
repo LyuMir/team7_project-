@@ -9,7 +9,7 @@
 <%@ page import="java.util.List" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
+<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=2">
 
 <body>
 	<!-- 바디... main만 있어도 됨.  -->
@@ -133,7 +133,7 @@ String id = (String) session.getAttribute("LOG_ID");
      	      }
      	
      	%>
-		<article class="grid__item ">
+		<article class="grid__item " data-id="<%=rlist.get(i).getNo()%>">
 			<div class="wrapEn0">
 				<div class="overray0 editit" onclick="editClub(this)">소모임 수정하기</div>
 				<div class="overray0 deleteit" onclick="deleteClub(this)">소모임 삭제하기</div>

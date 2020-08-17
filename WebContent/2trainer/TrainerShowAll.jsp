@@ -50,8 +50,7 @@ List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
 
 
         <a id="showHere"></a>
-     <main role="main">
-
+<main class="mainwrap">
 
         <div class="container2">
           <div >
@@ -63,7 +62,17 @@ List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
       </div>
           </div>
 
-<div id="buttons"></div>
+<!-- 태그 여기  -->
+  <div id="buttons">
+      <div id="buttons0"></div>
+      <div id="buttons1"></div>
+      <div id="buttons2"></div>
+  </div>
+
+<!-- 검색기능 여기  -->
+    <div id="searchBar">
+        <input id="search_club_name" type="text" name="" placeholder="이름 검색">
+    </div>
 
 
 <div id="gallery">
@@ -72,7 +81,7 @@ List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
 
      <% for(int i =0 ; i < tser.size() ; i++){ %>
 
-      <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>" onclick="javascript:window.location.href='trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>'">
+      <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>" data-name="<%=tser.get(i).getTname() %>" onclick="javascript:window.location.href='trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>'">
         <div class="card">
           <div class="card__img">
 <% 
@@ -136,8 +145,14 @@ String picalt = "";
           <!-- <script src="js/filter-tagscard.js"></script> -->
 <script src="js/taggings_jay.js?ver=3"></script>
 
+<script type="text/javascript">
+  
+  var all_no_arr =[];
+  var article00 = $('article.grid__item');
+  var search00 = $('#searchBar').children('input');
+</script>
 
-
+<script type="text/javascript" src="88search/searchJ.js"></script>
 
 
 </main>

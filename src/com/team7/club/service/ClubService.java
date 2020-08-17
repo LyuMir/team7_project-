@@ -67,13 +67,13 @@ public class ClubService {
 		sqlsession.close();
 		return theclub;
 	}
-	public List<ClubBean> select_club_by_ZZIM(MemberLogInfo id) { // 아이디(admin)에 따른 모든 것들. 
+	public List<ClubBean> select_club_by_ZZIM(MemberLogInfo id) { // 내가 찜한 클럽들 (아이디에 따른 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		List<ClubBean> theclub = sqlsession.selectList("Select_club_by_MyZZIM", id);
 		sqlsession.close();
 		return theclub;
 	}
-	public List<ClubBean> select_club_by_where(ClubBean clubBean) { // 아이디(admin)에 따른 모든 것들. 
+	public List<ClubBean> select_club_by_where(ClubBean clubBean) { // 어느 구역?
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		List<ClubBean> theclub = sqlsession.selectList("Select_club_by_where", clubBean);
 		sqlsession.close();
@@ -93,4 +93,16 @@ public class ClubService {
 		sqlsession.commit();
 		sqlsession.close();
 	}
+	
+	public List<ClubBean> zzim_order(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ClubBean> rlist = sqlsession.selectList("Select_club_by_order_zzim_desc");
+		sqlsession.close();
+		return rlist;
+	}
+
+	
+//	public List<ClubBean> person_order(){
+//		
+//	}
 }
