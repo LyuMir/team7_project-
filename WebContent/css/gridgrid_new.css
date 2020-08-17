@@ -205,6 +205,9 @@ main *{
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.grid__item:hover .card__img01{
+  width: 100%;
+}
 .zzimSystem{
   display: inline-block;
 }
@@ -228,7 +231,7 @@ main *{
 }
 .card__img01{
   display: inline-block;
-  width: 100%;
+  width: 105%;
   height: 13rem;
   overflow: hidden;
   object-fit: cover;

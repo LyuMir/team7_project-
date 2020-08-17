@@ -7,7 +7,7 @@
 <!-- <html>
 <head>
 	<title>소모임 전체보기...</title> -->
-	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=5">
+	<link rel="stylesheet" type="text/css" href="css/gridgrid_new.css?ver=6">
 <!-- </head>
 <body> -->
 	<!-- 바디... main만 있어도 됨.  -->
@@ -96,7 +96,7 @@ List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
      	      }
      	
      	%>
-		<article class="grid__item">
+		<article class="grid__item" data-id="<%=rlist.get(i).getNo()%>">
 			<div class="wrapEn0">
 				<div class="overray0 manageit" onclick="manageClub(this)">소모임 관리하기</div>
 				<!-- <div class="overray0 deleteit" onclick="deleteClub(this)">소모임 삭제하기</div> -->

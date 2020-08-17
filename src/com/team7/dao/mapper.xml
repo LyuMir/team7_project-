@@ -100,6 +100,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from team7.team7_club where no = #{no}
 	</delete>
 	
+	
+
+	<select id="Select_club_by_order_zzim_desc" resultType="com.team7.vo.ClubBean" >
+		select *, count(person) as 'zzimNum' from team7_club, team7_zzim3 where team7_club.no = team7_zzim3.club group by team7_zzim3.club order by count(person) desc;
+	</select>
+	<select id="Select_club_by_search_name" resultType="com.team7.vo.ClubBean" >
+		select * from team7_club where name like '%${name}%'
+	</select>
+	<select id="Select_club_by_search_exc" resultType="com.team7.vo.ClubBean" >
+		select * from team7_club where e_type like '%${e_type}%'
+	</select>
+	
+	
+	
+	
 
 	<select id="select_C_enrolls" resultType="com.team7.vo.C_enroll_Bean" >
 		select * from team7.team7_club_enroll where club = ${no}

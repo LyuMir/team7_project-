@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+	<title>ㄴ</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+ <button onclick="clickc()">누르기</button>
+
+ <script type="text/javascript">
+ 	
+ 	function clickc(){
+ 		var result = search_name("이름이",);
+ 		alert(result.text());
+ 		var rere00 = result.text(); // [ 숫자,숫자,숫자..../..... ,숫자,] // 끝에 , 주의
+
+ 	}
+
+
+function search_name(search00,what00="clubname"){
+    var url = what00+".search";
+    var datasss;
+    $.ajax({
+        type:"post",
+        url:url,
+        data : {search:search00}, 
+        async:false,
+        dataType:"html",
+        success : function(data){
+            datasss = $(data);
+    console.log(datasss);
+        }
+    })
+    return datasss;
+}
+ </script>
+</body>
+</html>
