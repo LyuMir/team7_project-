@@ -39,38 +39,29 @@ public class MypageController extends javax.servlet.http.HttpServlet
 		}
 		
 		if(command.contains("id_") && logyn !=1) {
-
 			String referer = request.getHeader("Referer");
 			if(referer.contains("/id_")) {
 				referer = "index.jsp";
 			}
 			else {
-				request.getSession().setAttribute("fail", "濡쒓렇�씤�씠 �븘�슂�븳 �꽌鍮꾩뒪�엯�땲�떎, 濡쒓렇�씤�빐二쇱꽭�슂.");
+				request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
 			}
 			response.sendRedirect(referer);
-			
 			return;
 		}
-//		if(command.equals("/noticeshow.notice")){	// 그 일 요청받은 거면 다음을 해라.
-//			action  = new com.team7.notice.action.NoticeListShowAction();
-//			try {
-//				forward=action.execute(request, response );
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
+		
 		if(command.equals("/id_myinfo.mypage")) {
 			new MyInfoAction().toMyInfoPage(request, response);
 		}
-		
-		
+		else if(command.equals("/edit_info.mypage")) {
+			
+		}
 		else if(command.equals("/myhealthzzim.mypage")) {
 			new MyInfoAction().toMyHealthZzimPage(request, response);
 		}
 		else if(command.equals("/mytrainerzzim.mypage")) {
 			new MyInfoAction().toMyHealthZzimPage(request, response);
 		}
-		
 		else if(command.equals("/edit.notice")) {
 			action  = new com.team7.notice.action.NoticeEditAction();
 			try {

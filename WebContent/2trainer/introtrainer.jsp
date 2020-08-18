@@ -112,15 +112,19 @@
 
     <style type="text/css">
 .main_with_main{
-  position: absolute;
-  top: 510px;
+    /* position: absolute; */
+    position: relative;
+    top: 400px;
     color: 987c67;
     text-shadow: none;
-    /*font-weight: 550;*/
-    width: 99%;
+    /* font-weight: 550; */
+    /* width: 99%; */
     padding: 15px;
     font-size: 15px;
-  text-align: left;
+    text-align: left;
+    width: 100%;
+    margin: auto;
+    max-width: 900px;
 }
 .main_with_main a{
   color: #987c67;

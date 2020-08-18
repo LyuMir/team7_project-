@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>데일리 헬스</title>
     <!--  넌 문제 맞음... main -->
-    <link rel="stylesheet" href="css/main.css?ver=3">
+    <link rel="stylesheet" href="css/main.css?ver=6">
     <link rel="stylesheet" type="text/css" href="css/mainmain88.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css\grt-responsive-menu.css">
@@ -110,10 +110,11 @@ request.setCharacterEncoding("UTF-8");
     <div class="imgleft">
     </div>
     <p align="center">거품 없는 가격 공개</p>
-    <div class="imgright">
+    <div class="imgright fright">
     </div>
+    <div class="fclear"></div>
     <p align="center">복잡한 상담은 NO!</p>
-    <div class="imgleft">
+    <div class="imgleft" style="margin: auto;">
     </div>
   </div>
 </div>

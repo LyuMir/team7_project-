@@ -70,7 +70,7 @@ if(photoBean !=null && photoBean.size()>1){
 					<span class="a_text"> <%=tser.get(0).getTbigtext() %></span>
 					<span> </span>
 				</div>
-				<div class="zzim">
+				<div class="zzim" style="width: 100%;">
 	<% if(zyn){ %>
 					<button data-id2="<%=tser.get(0).getNo() %>"  class="hero__btn1" onclick="zzimThis2_C(this)">찜 취소 <img src="img/heart_and_star/heart34.png"></button>
 	<% }else{ %>
