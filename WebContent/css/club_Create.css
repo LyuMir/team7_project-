@@ -40,7 +40,7 @@ table{
 	width: 100%;
 }
 td:first-child{
-	width: 160px;
+	width: 100px;
 	height: 70px;
 	text-align: right;
 	padding: 8px;

@@ -29,9 +29,9 @@
 		dto.setNo(Integer.parseInt(id));
 
 		List<ClubBean> theclub = new ClubService().club_selector_no(dto);
-		
+
 		String myid = (String) session.getAttribute("LOG_ID");
-		
+
 		List<PhotoBean> cpho = new PhotoClubService().getfilenames_clubmains(myid, Integer.parseInt(id));
 		String cp1 = null;
 		String cp2 = null;
@@ -45,13 +45,13 @@
 				}
 			}
 		}
-		
+
 		session.setAttribute("clubid", theclub.get(0).getNo());
 	%>
 
 	<main>
 		<table>
-			
+
 
 	<form class="" action="edit.club" enctype="multipart/form-data"  method="post"	id="club_creator_form">
 		<input readonly="true" type="hidden" name="no" value="<%=id%>">
@@ -63,26 +63,39 @@
 			</tr>
 			<tr>
 				<td>공개성</td>
+		<%
+			String s1="", s2="", s3="", s4="";
+			if(theclub.get(0).getPublicity().equals("open"))	s1="selected";
+			else if(theclub.get(0).getPublicity().equals("local_open"))	s2="selected";
+			else if(theclub.get(0).getPublicity().equals("friend_only"))		s3="selected";
+			else s4="selected";
+		%>
 				<td><select name="club_publicity" id="meeting_publicity">
 						<option>선택하세요.</option>
-						<option value="open">공개</option>
-						<option value="local_open">지역공개</option>
-						<option value="friend_only">친구공개</option>
-				</select>&emsp;현재 : <%= theclub.get(0).getPublicity() %>&emsp; <span id="meeting_pubText"></span></td>
+						<option value="open" <%=s1%>>공개</option>
+						<option value="local_open" <%=s2%>>지역공개</option>
+						<option value="friend_only" <%=s3%>>친구공개</option>
+				</select>	<%-- &emsp;현재 : <%= theclub.get(0).getPublicity() %>&emsp;  --%><span id="meeting_pubText"></span></td>
 			</tr>
 			<tr>
 				<td>모집</td>
-				<td><span class="radioColor"> <input type="radio" name="club_memberJoin" id="r1" value="공개 모집"> <label for="r1">공개 모집 </label></span> 
-				<input type="radio" name="club_memberJoin" id="r2" value="제한 모집"><label for="r2">공개 제한모집 </label> <input type="radio"
-					name="club_memberJoin" id="r3" value="초대 모집"> <label for="r3">초대 모집 </label> <input type="radio" name="club_memberJoin" id="r4" value="모집 중단"> <label for="r4">모집 중단 </label><div id="meeting_memGet">
-						<span class="no_displ">멤버를 제한없이 모집합니다. </span> <span
-							class="no_displ">멤버를 <input type="" name="club_memLimit"
-							style="width: 30px; height: 20px;">명 까지 모집하고, 그 후에는 모집을
-							중단합니다.
+				<td>
+					<%-- <span class="radioColor">  --%>
+						<input type="radio" name="club_memberJoin" id="r1" value="공개 모집"> <label for="r1">공개 모집 </label>
+					<%-- </span> --%>
+					<input type="radio" name="club_memberJoin" id="r2" value="제한 모집"><label for="r2">공개 제한모집 </label>
+					<input type="radio"	name="club_memberJoin" id="r3" value="초대 모집"> <label for="r3">초대 모집 </label>
+					<input type="radio" name="club_memberJoin" id="r4" value="모집 중단"> <label for="r4">모집 중단 </label>
+					<div id="meeting_memGet">
+						<span class="no_displ">멤버를 제한없이 모집합니다. </span> <span class="no_displ">멤버를
+							<input type="" name="club_memLimit" style="width: 30px; height: 20px;" value="<%=theclub.get(0).getMemberLimit()%>">
+								명 까지 모집하고, 그 후에는 모집을 중단합니다.
 						</span> <span class="no_displ">모임의 초대권을 가진 사람만 멤버를 초대할 수 있습니다. </span> <span
 							class="no_displ">현재 멤버를 더 모집하지 않습니다. </span>
 						<!-- <span>선택하세요. </span> -->
-					</div>&emsp;현재 : <%= theclub.get(0).getMemberJoin() %>&emsp;</td>
+					</div>
+					<%-- &emsp;현재 : <%= theclub.get(0).getMemberJoin() %>&emsp; --%>
+				</td>
 			</tr>
 			<tr>
 				<td>운동종류</td>
@@ -112,12 +125,12 @@
 						<option value="meeting1">매주 @요일</option>
 						<option value="meeting2">매 @번째 주 @요일</option>
 						<option value="meeting3">매달 @번째 @요일</option>
-				</select>&emsp;|| <span id="meetingDate_week"> <!-- 여기 텍스트 html로 전부 
+				</select>&emsp;|| <span id="meetingDate_week"> <!-- 여기 텍스트 html로 전부
 							예 ) 매주 input 요일.
 							 --> &emsp; &emsp;
 				</span>||&emsp; <input type="hidden" name="club_date"
 					id="meetingDate_sender"> <!-- <input type="checkbox" name=""> -->
-					<!-- <input class="small_input" type="text" name="">시 ~ 
+					<!-- <input class="small_input" type="text" name="">시 ~
 						<input class="small_input" type="" name=""> 시 --> <select
 					name="club_hour1">
 						<option>1</option>
@@ -210,7 +223,7 @@
 				<td>소모임 사진</td>
 				<td>소모임 프로필 사진 <!-- : b ... 소모임 대표 사진 : b // 현재 사진 올리기 기능이 제한되어
 					있습니다. 문의사항 : 이재형 0720 -->
-					  <span style="color: red; font-weight: 700;">(프로필 사진은 업로드 즉시 적용됩니다. 주의하세요!)</span>
+					  <span style="color: red; font-weight: 700;">(프로필 사진은 5mb 이하여야 합니다! 업로드 즉시 적용되니 주의하세요!)</span>
 					<br>
 		<form id="photo_upload" enctype="multipart/form-data" accept-charset="UTF-8" method="post" action="photo_upload.club">
 				<input type="file" id="photo1" name="photo1" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 메인 사진 (대문 사진)
@@ -221,7 +234,7 @@
 				<input type="file" id="photo2" name="photo2" accept=".jpg,.jpeg,.png,.gif,.bmp,.webm"> 메인 프로필 사진
 		</form> 	 <button onclick="photo_upload2()">사진 업로드</button>
 						<br>
-						현재 메인 사진 : 
+						현재 메인 사진 :
 		<% if(cp1 ==null){ %>
 		설정되지 않음. (기본 사진 )
 		<%}else{ %>
@@ -234,7 +247,7 @@
 						<img src="<%=cp2%>">
 		<%} %>
 						프로필 :
-						
+
 				</td>
 			</tr>
 		</table>
@@ -242,4 +255,30 @@
 		<button onclick="formSender2()">소모임 수정하기</button>
 	</div>
 	</main>
+
+<%
+	//String s11="", s12="", s13="", s14="";
+	//String conceality="";
+	//if(theclub.get(0).getMemberJoin().contains("공개")) conceality="공개";
+	String conceality = theclub.get(0).getMemberJoin();
+	String excs = theclub.get(0).getE_type();
+	String times = theclub.get(0).getMeetingDate();
+
+%>
+
 	<script type="text/javascript" src="js/club_CRU.js?version=22"></script>
+	
+	
+<script type="text/javascript">
+	// var
+	var conceality = '<%=conceality%>';
+	var excs = '<%=excs%>';
+	var times = '<%=times%>';
+
+	if(conceality.indexOf("공개") > 0 ) $('input#r1').text('::after');
+	else if(conceality.indexOf("제한") > 0 ) $('input#r2').text('::after');
+	else if(conceality.indexOf("초대") > 0 ) $('input#r3').text('::after');
+	else if(conceality.indexOf("중단") > 0 ) $('input#r4').text('::after');
+
+
+</script>

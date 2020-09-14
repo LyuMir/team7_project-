@@ -14,7 +14,7 @@
 	session.setAttribute("clubid", 000);
 	// session.removeAttribute("")
 %>
-	<main>
+	<main class="mainwrap">
 			<table>
 		<form class="" action="create.club" method="post" id="club_creator_form">
 				<tr>

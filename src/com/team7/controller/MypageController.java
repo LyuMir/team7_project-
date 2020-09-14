@@ -45,7 +45,7 @@ public class MypageController extends javax.servlet.http.HttpServlet
 				referer = "index.jsp";
 			}
 			else {
-				request.getSession().setAttribute("fail", "濡쒓렇�씤�씠 �븘�슂�븳 �꽌鍮꾩뒪�엯�땲�떎, 濡쒓렇�씤�빐二쇱꽭�슂.");
+				request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다. 로그인해주세요!");
 			}
 			response.sendRedirect(referer);
 			

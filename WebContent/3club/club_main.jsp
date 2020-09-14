@@ -16,7 +16,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String) session.getAttribute("LOG_ID");
-	
+
 	int adminyn=0, joinyn=0;
 
 List<ClubBean> mylist = (List<ClubBean>) request.getAttribute("mylist");
@@ -28,7 +28,7 @@ boolean ami = (boolean) request.getAttribute("ami");	//탈퇴 중 tf
 boolean ied = (boolean) request.getAttribute("ied");	//가입신청중 tf
 
 List<PhotoBean> clubphoto = (List<PhotoBean>)request.getAttribute("clubphoto");
-boolean cpho = true,  cp1 = false, cp2 = false; 
+boolean cpho = true,  cp1 = false, cp2 = false;
 String pdir1 = "",pdir2="";
 if(clubphoto == null){
 		cpho = false;
@@ -57,7 +57,7 @@ for(int k = j ; k >=0 ; k--){
 	int last0 = pid.lastIndexOf("_");
 	pid = pid.substring(last0 + 1);
 	ppnum.add(Integer.parseInt(pid));
-	pp00.add(u--); 
+	pp00.add(u--);
 }
 
 int mypostnumber = (Integer) session.getAttribute("mypostnumber");
@@ -66,7 +66,7 @@ int mypostnumber = (Integer) session.getAttribute("mypostnumber");
 	//out.println(rlist);
 	//out.println(rlist00.get(0));
 if(id ==null){
-	
+
 }else{
 	if(id.equals(rlist.get(0).getAdmin())){
 		adminyn=1;
@@ -79,8 +79,8 @@ if(id ==null){
 }
 %>
 <!--  가입자 / 구경자 / 관리자에 따라... -->
-<!-- 
-		찜하기/탈퇴하기 | 	찜하기. 가입신청   | 관리하기 / 가입관리 
+<!--
+		찜하기/탈퇴하기 | 	찜하기. 가입신청   | 관리하기 / 가입관리
 
 		new_write 글쓰기 관리 : 권한없음 (disabled) | 가능  | 삭제까지...?
  -->
@@ -103,7 +103,7 @@ if(id ==null){
 				</select>
 				<select id="goclub3" onchange="gotoClub(this)">
 					<option><%=rlist.get(0).getName()%>과 가까운 소모임</option>
-		<% for(int i = 0 ; i < tlist.size(); i++){ 
+		<% for(int i = 0 ; i < tlist.size(); i++){
 				if(tlist.get(i).getNo() == rlist.get(0).getNo()){}else{%>
 					<option data-id="<%= tlist.get(i).getNo() %>"><%=tlist.get(i).getName() %></option>
 		<% } }%>
@@ -148,7 +148,7 @@ if(id ==null){
 					<span class="weight500">현재 정원 : </span>/150, <%=rlist.get(0).getMemberJoin() %> 중
 				</div>
 				<div class="profile_info">
-					
+
 					<div><span class="weight500">운동 : </span><span><%=rlist.get(0).getE_type() %></span></div>
 					<div><span class="weight500">날짜 : </span><span><%=rlist.get(0).getMeetingDate() %></span></div>
 					<div><span class="weight500">장소 : </span><span><%=rlist.get(0).getArea() %></span></div>
@@ -176,7 +176,10 @@ if(id ==null){
 	<%} %>
 				<div class="modal">
 					<img class="modal-content">
-					<div class="caption">***소모임의 메인 이미지입니다. </div>
+					<div class="caption">
+            <%=rlist.get(0).getName() %> 소모임의 메인 이미지입니다. <br>
+            소개글 : <%=rlist.get(0).getProfile()%>
+          </div>
 				</div>
 			</article>
 			<hr>
@@ -217,18 +220,18 @@ if(id ==null){
 			</article>
 <% } %>
 			<div class="posts">
-<% 
+<%
 	if(cposts ==null || cposts.size() <1){
 %>
 				<article> 아무도 포스트를 쓰지 않았어요... 당신의 도움이 필요해요! </article>
 
-<% }else{ 
+<% }else{
 	out.print("oㅐ"+cposts.size());
 
 		for(int i = cposts.size()-1 ; i>=0; i--){
-			boolean showme = false;	
+			boolean showme = false;
 			int shst = 0;
-		
+
 				if(cposts.get(i).getPcon().contains("관리자만")){
 					shst = 3;
 					if(adminyn == 1)
@@ -244,13 +247,13 @@ if(id ==null){
 %>
 				<article>
 					<div class="post_title"><%= cposts.get(i).getTitle() %></div>
-					
+
 	<% if(cpphotos.size() >0){ %>
-		<% 
+		<%
 		out.print(i+"번째 포스트..");
 		for(int k = 0 ;  k < ppnum.size(); k ++){
-		out.print(pp00.get(k));	
-		
+		out.print(pp00.get(k));
+
 			if(ppnum.get(k) == i ){ %>
 					<div class="post_img">
 						<img class="ImageForModal" src="Files/clubpost/club_<%=rlist.get(0).getNo() %>/<%=i %>/<%=cpphotos.get(pp00.get(k)).getPicture() %>" onclick="ImageClickFunction(this)">
@@ -259,7 +262,7 @@ if(id ==null){
 						  <div class="caption"><%=cpphotos.get(pp00.get(k)).getPicture() %> </div>
 						</div>
 					</div>
-	<%   } %> 
+	<%   } %>
 	<%} }%>
 					<div class="post_text">
 						<%=cposts.get(i).getContents() %>
@@ -328,7 +331,7 @@ if(id ==null){
 <script type="text/javascript">
 
 	//minyn %>;
-	//nyn %>; // 0과 1입니다. 
+	//nyn %>; // 0과 1입니다.
 	var ami = false;
 	var ied = false;
 	var id ="";
@@ -370,10 +373,10 @@ var plzjoin_00 = $('#plzjoin_00');
 			$('#form4').submit();
 		}
 	}
-	
-	
+
+
 	setTimeout(goinTFs(),1000);
-	
+
 	function goinTFs(){
 		if(ami){
 			goingoutTF();	//탈퇴중인가
@@ -393,13 +396,13 @@ var plzjoin_00 = $('#plzjoin_00');
 			photoname.text(pname);
 	}
 	// if(ami){
-	//	setTimeout(goingoutTF(),1000);	
+	//	setTimeout(goingoutTF(),1000);
 	// }
 	// if(ied){
 	//	setTimeout(goinginTF(),1000);	//가입중인가.
 	// }
-	
-	
+
+
 	function goingoutTF(){
 		if(ami){
 			$('button#z_join1').html("탈퇴 중 <img src='img/heart_and_star/star_black34.png'>");

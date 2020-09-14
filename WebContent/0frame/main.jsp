@@ -95,8 +95,8 @@ request.setCharacterEncoding("UTF-8");
         <h1 class="hero__title">D a i l y  health.jy</h1>
         <p class="hero__snippet">for better life, better health.</p>
         <ul class="btn-list">
-            <li class="btn-list__item"><a class="hero__btn  btn" href="">상담신청</a></li>
-            <li class="btn-list__item"><a class="hero__btn  btn" href="">사업등록</a></li>
+            <li class="btn-list__item"><a class="hero__btn  btn" href="Search.trainer">상담신청</a></li>
+            <li class="btn-list__item"><a class="hero__btn  btn" href="Mng.health">사업등록</a></li>
         </ul>
       </div>
   </section>

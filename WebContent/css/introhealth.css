@@ -49,7 +49,17 @@
   width: 100%;
   object-fit: cover;
 }
-
+.main_with_main{
+  position: absolute;
+    top: 510px;
+    color: 987c67;
+    text-shadow: none;
+    /* font-weight: 550; */
+    width: 99%;
+    padding: 15px;
+    font-size: 15px;
+    text-align: left;
+}
 
 .sidenav {
   width: 200px;

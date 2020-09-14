@@ -5,7 +5,7 @@
 <%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="com.team7.vo.Gym_info" %>
 
-    <link rel="stylesheet" href="css/introhealth.css?ver=501">
+    <link rel="stylesheet" href="css/introhealth.css?ver=502">
 
 <%
   List<Gym_info> rlist = (List<Gym_info>) request.getAttribute("rlist");

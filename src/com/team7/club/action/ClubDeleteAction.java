@@ -20,14 +20,12 @@ public class ClubDeleteAction implements Action{
 
 		
 		String clubid = request.getParameter("clubid");
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 
 		ClubBean clubBean = new ClubBean();
 		clubBean.setNo(Integer.parseInt(clubid));
 		
 		List<CmemberBean> theclub = new CMemberService().cmember_selector(clubBean);
-		if(theclub.size() <2) {
+		if(theclub.size() <2) {	//
 			HttpSession session = request.getSession();
 			String idid = (String)session.getAttribute("LOG_ID");
 			CmemberBean cmember = new CmemberBean();
@@ -35,19 +33,28 @@ public class ClubDeleteAction implements Action{
 			cmember.setClub(Integer.parseInt(clubid));
 			new CMemberService().deleteMember(cmember);
 			new ClubService().club_deletor(clubBean);
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('소모임이 성공적으로 삭제되었습니다. ')");
+//			out.println("history.back()");
+			out.println("location.href='id_Mng.club'");
 			out.println("</script>");
+			return null;
 		}
 		else {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('삭제 실패 : 소모임에 남아있는 인원이 있습니다. ')");
+			out.println("history.back()");
 			out.println("</script>");
+			return null;
 		}
-		
-		ActionForward forward= new ActionForward();
-		forward.setPath("id_Mng.club");
-		return forward;
+//		System.out.println(theclub.size()+"인. ");
+//		ActionForward forward= new ActionForward();
+//		forward.setPath("id_Mng.club");
+//		return forward;
 	}
 
 }
