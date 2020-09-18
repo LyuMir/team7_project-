@@ -112,6 +112,16 @@ System.out.println(ddd+r+"개 db에 넣기 완료 (서버에 파일과는 다른) ");
 		return photos;
 	}
 	
+	
+	public void upload_empty(String id ) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		PhotoBean photos = new PhotoBean();
+		photos.setId(id);
+		photos.setPicture("");
+		sqlsession.insert("insert_PICTURE",photos);
+		sqlsession.commit();
+		sqlsession.close();
+	}
 
 	public List<PhotoBean> entire_trainerphoto(){
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();

@@ -59,6 +59,34 @@ public class PostActions {
 		// refresh Ω√≈≥∞Õ. 
 	}
 	
+	public void delete(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("utf-8");
+	//	String writer_or_admin = (String) request.getSession().getAttribute("LOG_ID");
+		int cpostno =0, tpostno=0, gpostno=0;
+		String cno = request.getParameter("cpostno");
+		String tno = request.getParameter("tpostno");
+		String gno = request.getParameter("gpostno");
+		if(cno !=null) {
+			cpostno = Integer.parseInt(cno);
+		}
+		else if(tno !=null) {
+			tpostno = Integer.parseInt(tno);
+		}
+		else if(gno !=null) {
+			gpostno = Integer.parseInt(gno);
+		}
+		
+		
+		if(cpostno != 0)
+			new PostService().deleteCpost(cpostno);
+		if(tpostno != 0)
+			new PostService().deleteTpost(tpostno);
+		if(gpostno != 0)
+			new PostService().deleteGpost(gpostno);
+		
+		
+	}
+	
 	
 	public void photoposts(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //        MultipartRequest multi=new MultipartRequest(request,"C:\\Users\\Administrator\\Desktop\\NEW_PROJECTS\\PROJECT00\\.metadata\\");

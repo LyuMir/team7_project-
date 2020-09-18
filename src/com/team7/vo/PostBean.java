@@ -6,6 +6,8 @@ public class PostBean {
 	
 	private int gym, trainer;	// 포스트 통합 빈이 되었습니다. 
 	
+	private int count, zzimed;	// 같이 넣어버리자
+	
 	public int getClub() {
 		return club;
 	}
@@ -59,6 +61,18 @@ public class PostBean {
 	}
 	public void setTrainer(int trainer) {
 		this.trainer = trainer;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public int getZzimed() {
+		return zzimed;
+	}
+	public void setZzimed(int zzimed) {
+		this.zzimed = zzimed;
 	}
 	
 }

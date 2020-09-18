@@ -196,6 +196,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from team7.team7_cpost where writer = '${id}'
 	</select>
 	
+	<delete id="delete_Cpost">
+		delete from team7_cpost where no = ${value}
+	</delete>
+	<delete id="delete_Gpost">
+		delete from team7_gpost where no = ${value}
+	</delete>
+	<delete id="delete_Tpost">
+		delete from team7_tpost where no = ${value}
+	</delete>
+	
 	
 	
 	<insert id="insert_GPOST" parameterType="String">
@@ -204,11 +214,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_GPOST_by_gymno" resultType="com.team7.vo.PostBean" >
 		select * from team7.team7_gpost where gym = ${no} order by no desc
 	</select>
+	<select id="select_GPOST" resultType="com.team7.vo.PostBean" >
+		select count(gym) as no, gym from team7.team7_gpost group by gym
+	</select>
 	<insert id="insert_TPOST" parameterType="String">
 		insert into team7.team7_tpost values(${trainer}, default, '${title}','${writer}','${contents}','${pkind}','${pcon}')
 	</insert>
 	<select id="select_TPOST_by_trainerno" resultType="com.team7.vo.PostBean" >
 		select * from team7.team7_tpost where trainer = ${no} order by no desc
+	</select>
+	<select id="select_TPOST" resultType="com.team7.vo.PostBean" >
+		select count(trainer) as no, trainer from team7.team7_tpost group by trainer
 	</select>
 	
 	<select id="select_POST_for_index1" resultType="com.team7.vo.PostBean" >
@@ -294,11 +310,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<select id="select_gpost_zzim" resultType="com.team7.vo.ZZIMBean" >
+		select *, count(gpost) as count,
+		case when (#{person} = person) then 1 else 0 end as 'zzimed' 
+		from team7_gpost_zzim group by gpost
+	</select>
+	<select id="select_tpost_zzim" resultType="com.team7.vo.ZZIMBean" >
+		select *, count(tpost) as count,
+		case when (#{person} = person) then 1 else 0 end as 'zzimed' 
+		from team7_tpost_zzim group by tpost
+	</select>
+	<select id="select_cpost_zzim" resultType="com.team7.vo.ZZIMBean" >
+		select *, count(cpost) as count,
+		case when (#{person} = person) then 1 else 0 end as 'zzimed' 
+		from team7_cpost_zzim group by cpost
+	</select>
+	
+	<insert id="insert_gpost_z" parameterType="String">
+		insert into team7.team7_gpost_zzim values( default, '${person}', ${gpost} )
+	</insert>
+	<insert id="insert_tpost_z" parameterType="String">
+		insert into team7.team7_tpost_zzim values( default, '${person}', ${tpost} )
+	</insert>
+	<insert id="insert_cpost_z" parameterType="String">
+		insert into team7_cpost_zzim values( default, '${person}', ${cpost} )
+	</insert>
+	
+	<delete id="delete_gpost_z">
+		delete from team7.team7_gpost_zzim where person = '${person}' AND gpost = ${gpost}
+	</delete>
+	<delete id="delete_tpost_z">
+		delete from team7.team7_tpost_zzim where person = '${person}' AND tpost = ${tpost}
+	</delete>
+	<delete id="delete_cpost_z">
+		delete from team7.team7_cpost_zzim where person = '${person}' AND cpost = ${cpost}
+	</delete>
 	
 	
-	
-	
-	
+
+
 
 
 	
@@ -329,7 +379,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from team7.team7_trainer where id = '${id}'
 	</select>
 	
-	 
+	<update id="update_Trainer">
+		update team7.team7_trainer set
+			tphone = #{tphone} ,  temail = ${temail} , 
+			ttime = #{ttime}, twhere= #{twhere},tmajor= #{tmajor},
+			tcareer= #{tcareer},tprofile= #{tprofile},tcerti= #{tcerti},
+			tsns= #{tsns},tstory= #{tstory},
+			thowjoin= #{thowjoin},tbigtext= #{tbigtext},tsmalltext= #{tsmalltext}
+		where id = #{id}
+	</update>
+	
 	
 	
 	<insert id="insert_Gym" parameterType="String">
@@ -355,6 +414,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 
+	<update id="update_gym_info">
+		update team7.team7_gym  
+			set gname = #{gname} , address_num = #{address_num} , address = ${address} , 
+				gphone = #{gphone}, opentime= #{opentime},grpice= #{grpice},
+				gtype= #{gtype},contents= #{contents},gpage= #{gpage},
+				gcerti= #{gcerti},gprogram= #{gprogram},
+				gsmalltext= #{gsmalltext}
+		where owner = #{owner}
+	</update>
 
 
  

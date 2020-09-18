@@ -21,6 +21,7 @@ request.setCharacterEncoding("UTF-8");
 List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser"); 
 List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
+List<ZZIMBean> gpostzzim = (List<ZZIMBean>) request.getAttribute("gpostzzim");
 
 List<ZZIMBean> zyn2 = (List<ZZIMBean>) request.getAttribute("zzimYN");
 boolean zyn = false;
@@ -37,7 +38,7 @@ if(id.equals(gser.get(0).getOwner())){
 
 
 
-	<main class="mainwrap_club">
+	<main class="mainwrap_club" style="margin-top:50px;">
 
 		<section class="">
 			<div class="main_head">
@@ -51,7 +52,6 @@ if(id.equals(gser.get(0).getOwner())){
 			</div>
 
 
-<div>
 
 <div class="div1 fright">
 
@@ -102,7 +102,6 @@ if(id.equals(gser.get(0).getOwner())){
 				<button class="hero__btn1">바로 등록하기</button>
 	</div>
 
-</div>
 </div>
 	</section>
 
@@ -252,8 +251,43 @@ if(id.equals(gser.get(0).getOwner())){
 				<div class="post_text fclear">
 					<%=posts.get(i).getContents() %>
 				</div>
-				<div class="post_like fright">
-					<img src="img/heart_and_star/heart35.png"> 0
+	<% 
+		//삭제창
+		if(posts.get(i).getWriter().equals(id) ||  imgymOwner ==1){
+	
+	%>
+          <div class="deleter fright">
+            <img style="width:10px; margin-top:5px; cursor:pointer;" src="img/icons/close33.png" onclick="deletethispost(this)">
+            <form action="delete.post" style="display:none;"><input name="gpostno" value="<%=posts.get(i).getNo()%>"></form>
+          </div>
+				
+				
+				
+					<%}
+		boolean heartgood = true;
+		for(int l = 0 ; l < gpostzzim.size(); l++){
+			boolean zzimed = false;		
+			if(gpostzzim.get(l).getCpost() == posts.get(i).getNo()){
+				int zcount = gpostzzim.get(l).getCount();
+				if(gpostzzim.get(l).getZzimed()==1){
+	%>
+					<div class="post_like fright" onclick="gpost_z_cancel(this)" data-no="<%=posts.get(i).getNo()%>">
+						<img src="img/heart_and_star/heart35.png"> 
+	<%			}else{ %>
+					<div class="post_like fright" onclick="gpost_z(this)" data-no="<%=posts.get(i).getNo()%>">
+						<img src="img/heart_and_star/heart034.png"> 
+	<%			} %>
+						<span><%=zcount %></span>
+	<%
+				heartgood = false;
+			} 
+		}
+		if(heartgood){	
+	%>
+					<div class="post_like fright" onclick="gpost_z(this)" data-no="<%=posts.get(i).getNo()%>">
+						<img src="img/heart_and_star/heart034.png"> <span>0</span> 
+	<% } %>
+	
 				</div>
 				<div class="post_writer fright"> by <%= posts.get(i).getWriter() %></div>
 			<% if(pcon == 1){ %>
@@ -278,8 +312,10 @@ if(id.equals(gser.get(0).getOwner())){
 	</main>
 
 
+	<script type="text/javascript" src="6posts/post_delete.js"></script>
 	<script type="text/javascript" src="js/trainerpagejs.js"></script>
 	<script type="text/javascript" src="77zzim/zzim1_gymZzim.js?ver=16"></script>
+	<script type="text/javascript" src="77zzim/zzim_posts_gym.js?ver=1"></script>
     <link rel="stylesheet" type="text/css" href="css/gympage.css?ver=8">
 	<link rel="stylesheet" type="text/css" href="css/club_main.css">
 
@@ -346,7 +382,7 @@ if(id.equals(gser.get(0).getOwner())){
 		margin-top: 50px;
 	}
 	.div1{
-		margin: 50px 0 0 20px;
+	/*	margin: 50px 0 0 20px; */
 		max-width: 380px;
 		width: 100%;
 	}
@@ -401,7 +437,6 @@ if(id.equals(gser.get(0).getOwner())){
 		padding: 2px 4px;
 
 		cursor: pointer;
-		float: left;
 		transition: all ease 1s;
 	}
 	.post_like img{
@@ -471,7 +506,11 @@ if(id.equals(gser.get(0).getOwner())){
 		outline: none;
 	}
 
-
+	@media screen and (max-width: 1005px){}
+		.main_head {
+			width:400px;
+		}
+}
 </style>
 
 

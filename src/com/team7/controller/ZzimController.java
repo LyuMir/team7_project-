@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.team7.club.action.Action;
 import com.team7.vo.ActionForward;
 import com.team7.zzim.action.GymZAction;
+import com.team7.zzim.action.Post_Zzim_Actions;
 import com.team7.zzim.action.TrainerZAction;
 import com.team7.zzim.action.Zzim_Club_Actions;
 
@@ -78,6 +79,30 @@ public class ZzimController extends javax.servlet.http.HttpServlet
 		else if(command.equals("/gymC.zzim")) {
 			System.out.println("Çï½ºÀå Âò Ãë¼Ò");;
 			new GymZAction().gzC(request, response);
+		}
+		else if(command.equals("/gpost.zzim")) {
+			System.out.println("gpostÂò");
+			new Post_Zzim_Actions().gpost_zzim(request, response);
+		}
+		else if(command.equals("/gpostC.zzim")) {
+			System.out.println("gpostÂò Äµ½½");
+			new Post_Zzim_Actions().gpost_zzimC(request, response);
+		}
+		else if(command.equals("/tpost.zzim")) {
+			System.out.println("tpostÂò");
+			new Post_Zzim_Actions().tpost_zzim(request, response);
+		}
+		else if(command.equals("/tpostC.zzim")) {
+			System.out.println("tpostÂò Äµ½½");
+			new Post_Zzim_Actions().tpost_zzimC(request, response);
+		}
+		else if(command.equals("/cpost.zzim")) {
+			System.out.println("cpostÂò");
+			new Post_Zzim_Actions().cpost_zzim(request, response);
+		}
+		else if(command.equals("/cpostC.zzim")) {
+			System.out.println("cpostÂò Äµ½½");
+			new Post_Zzim_Actions().cpost_zzimC(request, response);
 		}
 //		else if(command.equals("/gym.zzim")) {
 //			System.out.println("Çï½ºÀå Âò");

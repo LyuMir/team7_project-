@@ -1,4 +1,4 @@
-	
+
 
 
 setTimeout(fo(),1000);
@@ -27,9 +27,9 @@ $(document).ready(function(){
 
 	//	alert(	$('#meetingDate_select option:selected').val() );
 
-	$('#meetingDate_select').change(function(){
+	$('#meetingDate_select').change(md());
 	//	alert($(this).val());
-
+	function md(){
 		greentogo1 = 1;
 		if($(this).val() == "meeting1"){
 			meetinghtml="매주 <select name='meeting_week1'>	<option value='월'>월</option>	<option value='화'>화</option>	<option value='수'>수</option>	<option value='목'>목</option>	<option value='금'>금</option>	<option value='토'>토</option>	<option value='일'>일</option></select>요일";
@@ -45,25 +45,27 @@ $(document).ready(function(){
 			greentogo1 = 0;
 		}
 		$('#meetingDate_week').html(meetinghtml);
-	});
+	}
 
-	$('#meeting_publicity').change(function(){
-		greentogo2 = 1;
-		if($(this).val() == "open"){
-			meeting_pubText = "소모임을 공개합니다. 데일리헬스에 존재하는 회원은 누구나 볼 수 있습니다.  ";
-		}
-		else if($(this).val() == "local_open"){
-			meeting_pubText = "같은 지역의 회원에게 소모임을 공개합니다.  ";
-		}
-		else if($(this).val() == "friend_only"){
-			meeting_pubText = "소모임의 멤버와 친구 추가 된 회원에게만 공개됩니다.  ";
-		}
-		else{
-			meeting_pubText = "공개성을 선택해주세요. ";
-			greentogo2=0;
-		}
-		$('#meeting_pubText').html(meeting_pubText);
-	});
+	$('#meeting_publicity').change(mp());
+
+	function mp(){
+			greentogo2 = 1;
+			if($(this).val() == "open"){
+				meeting_pubText = "소모임을 공개합니다. 데일리헬스에 존재하는 회원은 누구나 볼 수 있습니다.  ";
+			}
+			else if($(this).val() == "local_open"){
+				meeting_pubText = "같은 지역의 회원에게 소모임을 공개합니다.  ";
+			}
+			else if($(this).val() == "friend_only"){
+				meeting_pubText = "소모임의 멤버와 친구 추가 된 회원에게만 공개됩니다.  ";
+			}
+			else{
+				meeting_pubText = "공개성을 선택해주세요. ";
+				greentogo2=0;
+			}
+			$('#meeting_pubText').html(meeting_pubText);
+	}
 
 	$('input[name=club_memberJoin]').change(function(){
 		//alert('sdfsdf');
@@ -105,11 +107,11 @@ $(document).ready(function(){
 
 		// 중복 이름 확인 절차 ㄱㄱ
 		$.ajax({
-				url : './9oldjsp/__club_name__validate.jsp', //문서 위치. 
+				url : './9oldjsp/__club_name__validate.jsp', //문서 위치.
 
-				dataType : 'text', 
+				dataType : 'text',
 
-				data : {'input1':thone}, // key : value, key : value , ... 여러개 가능 
+				data : {'input1':thone}, // key : value, key : value , ... 여러개 가능
 
 				dataType : 'text',
 
@@ -135,11 +137,11 @@ $(document).ready(function(){
 					}
 					else{
 						gogo(i);
-						noBecause("소모임 이름 : '"+thone+"' : 사용하실 수 있습니다. ",i,"green");	
+						noBecause("소모임 이름 : '"+thone+"' : 사용하실 수 있습니다. ",i,"green");
 						greentogo0 = 1;
 					}
 				}
-				
+
 			});
 
 	});
@@ -181,7 +183,7 @@ $(document).ready(function(){
 			if(!confirm0){
 				return;
 			}
-			
+
 		}
 
 		if( greentogo== 1 ){
@@ -198,7 +200,7 @@ $(document).ready(function(){
 		}
 		else if(greentogo1 == 0 ){
 			alert('모임 정기모임 시간을 선택해주세요. ');
-		}	
+		}
 	}
 
 	function formSender2() {

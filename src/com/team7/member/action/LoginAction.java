@@ -32,6 +32,7 @@ public class LoginAction implements Action{
 			session.setAttribute("LOG_ID",log_id2);
 	        session.setAttribute("LOG_STATUS",1);
 	        session.removeAttribute("fail");
+	        session.setMaxInactiveInterval(24*60*60); 	//하루동안 유지. 
 //	        session.setAttribute("NAME",namedata);
 //			forward.setPath("/index.jsp"); 	// 아 이제 포워드 없어요
 			out.println("성공");

@@ -13,7 +13,7 @@ import com.team7.controller.ClubController;
 import com.team7.photo.service.PhotoClubService;
 import com.team7.post.service.PostService;
 import com.team7.vo.*;
-import com.team7.zzim.controller.ZzimService;
+import com.team7.zzim.service.ZzimService;
 
 public class ClubPageAction implements Action{
 
@@ -69,6 +69,8 @@ public class ClubPageAction implements Action{
 		List<PostBean> cposts = new PostService().getCPOSTs(Integer.parseInt(club_id));
 		List<PhotoBean> cpphotos = new PhotoClubService().getPs_cpost(Integer.parseInt(club_id));
 		List<PhotoBean> clubphoto = new PhotoClubService().getfilenames_clubmains(rlist.get(0).getAdmin(), Integer.parseInt(club_id));
+		List<ZZIMBean> cpostzzim= new ZzimService().select_cpost_Z(id0);
+		if(cpostzzim ==null) cpostzzim = new ArrayList<ZZIMBean>();
 		
 		request.setAttribute("mylist", mylist);
 		request.setAttribute("mylist2", mylist2);
@@ -83,6 +85,7 @@ public class ClubPageAction implements Action{
 		request.setAttribute("cposts", cposts);
 		request.setAttribute("cpphotos", cpphotos);
 		request.setAttribute("clubphoto", clubphoto);
+		request.setAttribute("cpostzzim", cpostzzim);
 		
 		int mypostnumber = 0 ; 
 		for(int i = 0 ; i < cposts.size(); i ++) {

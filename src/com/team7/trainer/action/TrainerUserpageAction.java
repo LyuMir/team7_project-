@@ -14,7 +14,7 @@ import com.team7.trainer.service.TrainerUserpageService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.Trainer_info;
 import com.team7.vo.ZZIMBean;
-import com.team7.zzim.controller.ZzimService;
+import com.team7.zzim.service.ZzimService;
 import com.team7.vo.PageInfo;
 import com.team7.vo.PhotoBean;
 import com.team7.vo.PostBean;
@@ -29,10 +29,9 @@ public class TrainerUserpageAction implements Action{
 
 //		DTO_Notice notice = new DTO_Notice();
 //		notice.setNo(no);
-		System.out.println("���������� �׼Ǳ�����������?");
 		int no = Integer.parseInt(request.getParameter("number"));
+				
 
-		System.out.println(no);
 
 		Trainer_info info = new Trainer_info();
 		info.setNo(no);
@@ -52,13 +51,18 @@ public class TrainerUserpageAction implements Action{
 		if(id !=null)
 			zzimYN = new ZzimService().select_trainer_Z_YN(id, no);
 
-
+		List<ZZIMBean> trainerzzim = new ZzimService().select_trainer_count2(id);
+		List<ZZIMBean> tpostzzim = new ZzimService().select_tpost_Z(id);
+		if (tpostzzim ==null) tpostzzim = new ArrayList<ZZIMBean>();
+		
 		ActionForward forward= new ActionForward();
 
 		request.setAttribute("tser", traineronelist);
 		request.setAttribute("photos", photos);
 		request.setAttribute("posts", posts);
 		request.setAttribute("zzimYN", zzimYN);
+		request.setAttribute("trainerzzim", trainerzzim);
+		request.setAttribute("tpostzzim", tpostzzim);
 		forward.setPath("/_FORWHERE.jsp?forwhere=2trainer/trainer_userpage.jsp");
 		return forward;
 

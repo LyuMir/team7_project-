@@ -12,11 +12,11 @@ a{
   margin: 10px;
 }
 
-li{
+/* li{
   list-style-type: none;
   display: inline-block;
   margin-right: 15px;
-}
+} */
 
 .fontsize_title{
   font-size: var(--font-size-title);
@@ -104,7 +104,7 @@ float: left;
 
   /*min-height: 100%;*/
   min-height: 1000px;
-  
+
   margin:0;
 
 }

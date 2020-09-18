@@ -68,6 +68,13 @@ public class PostService {
 		sqlsession.close();
 		return cposts;
 	}
+	public List<PostBean> getTPOSTnum(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<PostBean> posts = sqlsession.selectList("select_TPOST");
+		sqlsession.close();
+		return posts;
+	}
+	
 	public List<PostBean> getGPOSTs(int gymno){
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		ClubBean clubBean = new ClubBean();
@@ -75,6 +82,12 @@ public class PostService {
 		List<PostBean> cposts = sqlsession.selectList("select_GPOST_by_gymno",clubBean);
 		sqlsession.close();
 		return cposts;
+	}
+	public List<PostBean> getGPOSTnum(){
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<PostBean> posts = sqlsession.selectList("select_GPOST");
+		sqlsession.close();
+		return posts;
 	}
 	
 
@@ -108,5 +121,28 @@ public class PostService {
 		List<ClubBean> rlist3	 = sqlsession.selectList("");
 		sqlsession.close();
 		return rlist3;
+	}
+	
+	
+	// delete
+	public void deleteCpost(int postno) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.delete("delete_Cpost",postno);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	public void deleteGpost(int postno) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.delete("delete_Gpost",postno);
+		sqlsession.commit();
+		sqlsession.close();
+		
+	}
+	public void deleteTpost(int postno) {
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.delete("delete_Tpost",postno);
+		sqlsession.commit();
+		sqlsession.close();
+		
 	}
 }

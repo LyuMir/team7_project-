@@ -74,6 +74,22 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/id_editform.health")){
+			action  = new com.team7.gym.action.GymEditFormAction();
+			try {
+				forward=action.execute(request, response); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/id_gymedit.health")) {
+			action  = new com.team7.gym.action.GymEditAction();
+			try {
+				forward=action.execute(request, response); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		else if(command.equals("/Search.health")){	
 			System.out.print("짐 서치 클릭됩니까");
 			action  = new com.team7.gym.action.GymShowAllAction();

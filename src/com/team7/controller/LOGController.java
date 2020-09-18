@@ -46,7 +46,7 @@ public class LOGController extends javax.servlet.http.HttpServlet
 				referer = "index.jsp";
 			}
 			else {
-				request.getSession().setAttribute("fail", "로그인이필요합니다");
+				request.getSession().setAttribute("fail", "로그인이 필요합니다.");
 			}
 			response.sendRedirect(referer);
 			

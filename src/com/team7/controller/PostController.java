@@ -66,6 +66,10 @@ public class PostController extends javax.servlet.http.HttpServlet
 			new PostGetAction().indexadGetter(request,response);
 			return;	//나도 안가 . ajax임. 
 		}
+		else if(command.equals("/delete.post")) {
+			new PostActions().delete(request, response);
+			gobackRefresh = true;
+		}
 		
 
 		//가야할 곳은 바로 거기임.. 

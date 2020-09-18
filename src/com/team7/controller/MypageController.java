@@ -44,7 +44,7 @@ public class MypageController extends javax.servlet.http.HttpServlet
 				referer = "index.jsp";
 			}
 			else {
-				request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다, 로그인해주세요.");
+				request.getSession().setAttribute("fail", "로그인이 필요한 서비스입니다. 로그인해주세요!");
 			}
 			response.sendRedirect(referer);
 			return;

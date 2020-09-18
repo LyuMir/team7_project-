@@ -3,7 +3,10 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
 <%@ page import="com.team7.vo.Trainer_info" %>
+<%@ page import="com.team7.vo.ZZIMBean" %>
+<%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.*" %>
 
     <meta charset="utf-8">
@@ -19,8 +22,14 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
-List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
+List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
+List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");
+List<ZZIMBean> trainerzzim = (List<ZZIMBean>) request.getAttribute("trainerzzim");
+List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
+
+if( trainerzzim ==null || trainerzzim.size() <1 ) trainerzzim = new ArrayList<ZZIMBean>();
+if( posts ==null || posts.size() <1 ) posts = new ArrayList<PostBean>();
+%>
 
 
 <div class="container00">
@@ -81,32 +90,53 @@ List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");%>
 
      <% for(int i =0 ; i < tser.size() ; i++){ %>
 
-      <article class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>" data-name="<%=tser.get(i).getTname() %>" onclick="javascript:window.location.href='trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>'">
+      <article style="margin:7px;" class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>" data-name="<%=tser.get(i).getTname() %>" onclick="javascript:window.location.href='trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>'">
         <div class="card">
           <div class="card__img">
-<% 
+<%
 
 String picwhere = "";
-String picalt = "";
   for(int j = 0 ; j < photos.size();j++){
-      if(photos.get(j).getId().contains(tser.get(i).getId()+"_")){ 
+      if(!photos.get(j).getPicture().equals("") && 
+    		  photos.get(j).getId().contains(tser.get(i).getId()+"_")   ){
         picwhere = "Files/trainer/"+tser.get(i).getId()+"/1/"+photos.get(j).getPicture();
-        picalt = "tser.get(i).getPicture()";
         break;
-      } else{ 
+      } else{
           int k = (int)(Math.random() * 6)+1;
         picwhere = "img/exc/yoga"+k+".jpg";
       }
   } %>
 
-          <img class="card__img" src="Files/trainer/<%=tser.get(i).getId() %>/1/<%=tser.get(i).getPicture() %>" alt="Snowy Mountains">
-          <img class="card__img" src="<%=picwhere %>" alt="<%=picalt %>">
+          <!--  <img class="card__img" src="Files/trainer/< %ser.get(i).getId() %>/1/<=er.get(i).getPicture() %>" alt="Snowy Mountains">-->
+          <img class="card__img" src="<%=picwhere %>">
         </div>
         <div class="card__content2">
           <div class="content__header"><%=tser.get(i).getTname() %> </div>
           <div class="content__text"><%=tser.get(i).getTsmalltext()%></div>
           <div class="content_what">서비스 : <span><%= tser.get(i).getTmajor() %></span></div>
           <div class="content_where">장소 : <span><%=tser.get(i).getTwhere()%></span></div>
+					<div class="card__heart" style="position:unset;">
+            <!-- heart zzim의 관계 설정. ... onclick="Zzimshow_club(this)" -->
+            <div class="zzimSystem"  data-id="<%=tser.get(i).getNo()%>">
+            
+		<%
+			int zzim = 0 ;
+			for(int k = 0 ; k < trainerzzim.size(); k++){
+				if(trainerzzim.get(k).getTrainer() == tser.get(i).getNo()){
+					zzim++;
+				}
+			}
+			int postnum = 0 ; 
+			for(int k= 0 ; k <posts.size(); k++){
+				if(posts.get(k).getTrainer() == tser.get(i).getNo())
+					postnum=posts.get(k).getNo();
+			}
+		%>
+              <img src="img/heart_and_star/heart034.png"> <span class="counter" data-target=""> <%=zzim %>  </span>
+            </div>
+						<img src="img/heart_and_star/star22.png">  <span> <%=postnum %></span>
+           
+					</div>
         </div>
       </div>
       </article>
@@ -146,7 +176,7 @@ String picalt = "";
 <script src="js/taggings_jay.js?ver=3"></script>
 
 <script type="text/javascript">
-  
+
   var all_no_arr =[];
   var article00 = $('article.grid__item');
   var search00 = $('#searchBar').children('input');
@@ -156,4 +186,3 @@ String picalt = "";
 
 
 </main>
-
