@@ -74,16 +74,22 @@
 
 <% }else{  // 등록 되어있는 사람. %>
 
-  <div><a href="">▶나의 헬스장 페이지 보러가기__</a></div>
-
-
-  <div>
-    올리신 헬스장 사진들 :
-      <%for(int i = 0 ; i < photoBean.size(); i++){
-         %>
-        <img src="Files/gym/<%=id%>/<%=i%>/<%=photoBean.get(i).getPicture() %>">
-      <%} %>
+  <div class="small_title">
+    <a href="">▶나의 헬스장 페이지 보러가기__</a>
   </div>
+    <div>
+      올리신 헬스장 사진들 : 
+        <%for(int i = 0 ; i < photoBean.size(); i++){ %>
+          <img src="Files/gym/<%=id%>/<%=i%>/<%=photoBean.get(i).getPicture() %>">
+        <%} %>
+    </div>
+  
+
+  <div class="small_title">
+    <a href="">▶올린 사진 수정하기</a>
+  </div>
+  <div class="small_title">
+    <a href="">▶헬스장 정보 수정하기</a>
   <div><a href="">▶올린 사진 수정하기</a></div>
   <div><a href="id_editform.health">▶헬스장 정보 수정하기</a></div>
 
@@ -103,3 +109,37 @@
 
 
     </main>
+
+    <style type="text/css">
+.main_with_main{
+    /* position: absolute; */
+    position: relative;
+    top: 400px;
+    color: 987c67;
+    text-shadow: none;
+    /* font-weight: 550; */
+    /* width: 99%; */
+    padding: 15px;
+    font-size: 15px;
+    text-align: left;
+    width: 100%;
+    margin: auto;
+    max-width: 900px;
+}
+.main_with_main a{
+  color: #987c67;
+
+}
+.j_title{
+  font-size: 17px;
+  color: black;
+  padding: 3px;
+  margin: 3px;
+  border-bottom: 2px solid silver;
+  display: inline-block;
+}
+
+.small_title{
+  margin:10px;
+}
+    </style>

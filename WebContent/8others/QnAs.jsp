@@ -10,16 +10,15 @@
 	<div class="t_title">자주 하는 질문</div>
 	<div class="ques">
 		<div class="q_titles">데일리 헬스는 어떤 사이트인가요?</div>
-		<div class="q_texts">헬스, 트레이너를 집 안에서 간편하게 찾을 수 있지 않을까? 하는 물음에서 시작되 사이트입니다.</div>
+		<div class="q_texts">헬스, 트레이너를 집 안에서 간편하게 찾을 수 있지 않을까? 하는 물음에서 시작된되 사이트입니다.</div>
 	</div>
 	<div class="ques">
 		<div class="q_titles">트레이너, 헬스장 매칭 서비스를 주제로 한 이유는 무엇인가요?</div>
-		<div class="q_texts">윤영 씨의 아이디어입니다.</div>
+		<div class="q_texts">김윤영 씨의 아이디어입니다.</div>
 	</div>
 	<div class="ques">
 		<div class="q_titles">소모임을 만든 이유는 무엇인가요?</div>
-		<div class="q_texts">만나서 운동할 사람 찾기가 너무 어렵고 힘들어서, 그냥 같이 운동만 하고
-			쿨하게 헤어질 사람을 찾을 수 있다면 좋겠다는 아이디어입니다.</div>
+		<div class="q_texts">만나서 운동할 사람 찾기가 너무 어렵고 힘들어서, 그냥 같이 운동만 하고 쿨하게 헤어질 사람을 찾을 수 있다면 좋겠다는 아이디어입니다.</div>
 	</div>
 	<div class="ques">
 		<div class="q_titles">어떠한 사람들이 만들었나요?</div>
