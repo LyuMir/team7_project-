@@ -1,5 +1,6 @@
 package com.team7.club.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,8 @@ public class ClubShowAction implements Action{
 		//List<ClubBean> rlist = new ClubService().club_selectorAll2(pageInfo);
 		List<ClubBean> rlist = new ClubService().club_selectorAll();
 		List<PhotoBean> plist = new ClubService().club_mainPselector();
+		if(rlist ==null) rlist = new ArrayList<ClubBean>();
+		if(plist ==null) plist = new ArrayList<PhotoBean>();
 		
 		request.setAttribute("rlist", rlist);
 		request.setAttribute("plist", plist);

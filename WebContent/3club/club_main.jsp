@@ -5,6 +5,7 @@
 <%@ page import="com.team7.vo.CmemberBean" %>
 <%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
+<%@ page import="com.team7.vo.ZZIMBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 
@@ -47,6 +48,7 @@ else{
 }
 
 List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
+List<ZZIMBean> cpostzzim = (List<ZZIMBean>) request.getAttribute("cpostzzim");
 List<PhotoBean> cpphotos = (List<PhotoBean>) request.getAttribute("cpphotos");
 int j = cpphotos.size() -1 ;
 ArrayList<Integer> ppnum = new ArrayList<Integer>();
@@ -226,8 +228,6 @@ if(id ==null){
 				<article> 아무도 포스트를 쓰지 않았어요... 당신의 도움이 필요해요! </article>
 
 <% }else{
-	out.print("oㅐ"+cposts.size());
-
 		for(int i = cposts.size()-1 ; i>=0; i--){
 			boolean showme = false;
 			int shst = 0;
@@ -250,9 +250,9 @@ if(id ==null){
 
 	<% if(cpphotos.size() >0){ %>
 		<%
-		out.print(i+"번째 포스트..");
+		//out.print(i+"번째 포스트..");
 		for(int k = 0 ;  k < ppnum.size(); k ++){
-		out.print(pp00.get(k));
+		//out.print(pp00.get(k));
 
 			if(ppnum.get(k) == i ){ %>
 					<div class="post_img">
@@ -267,8 +267,40 @@ if(id ==null){
 					<div class="post_text">
 						<%=cposts.get(i).getContents() %>
 					</div>
-					<div class="post_like fright">
-						<img src="img/heart_and_star/heart35.png"> 0
+	<% 
+		//삭제창
+		if(cposts.get(i).getWriter().equals(id) ||  adminyn ==1){
+	
+	%>
+          <div class="deleter fright">
+            <img style="width:10px; margin-top:5px; cursor:pointer;" src="img/icons/close33.png" data-cpostno="<%=cposts.get(i).getNo()%>" alt="" onclick="deletethispost(this)">
+            <form action="delete.post" style="display:none;"><input name="cpostno" value="<%=cposts.get(i).getNo()%>"></form>
+          </div>
+
+	<% }
+		boolean heartgood = true;
+		for(int l = 0 ; l < cpostzzim.size(); l++){
+			boolean zzimed = false;
+			if(cpostzzim.get(l).getCpost() == cposts.get(i).getNo()){
+				int zcount = cpostzzim.get(l).getCount();
+				if(cpostzzim.get(l).getZzimed()==1){
+	%>
+					<div class="post_like fright" onclick="cpost_z_cancel(this)" data-no="<%=cposts.get(i).getNo()%>">
+						<img src="img/heart_and_star/heart35.png">
+	<%			}else{ %>
+					<div class="post_like fright" onclick="cpost_z(this)" data-no="<%=cposts.get(i).getNo()%>">
+						<img src="img/heart_and_star/heart034.png">
+	<%			} %>
+						<span><%=zcount %></span>
+	<%
+				heartgood = false;
+			}
+		}
+		if(heartgood){
+	%>
+					<div class="post_like fright" onclick="cpost_z(this)" data-no="<%=cposts.get(i).getNo()%>">
+						<img src="img/heart_and_star/heart034.png"> <span>0</span>
+	<% } %>
 					</div>
 					<div class="post_writer fright"> by <%= cposts.get(i).getWriter() %></div>
 		<% if(shst == 3){ %>
@@ -326,7 +358,9 @@ if(id ==null){
 
 
 
+	<script type="text/javascript" src="6posts/post_delete.js"></script>
 	<script type="text/javascript" src="77zzim/zzim_js.js?ver=5"></script>
+	<script type="text/javascript" src="77zzim/zzim_posts_js.js?ver=<%=System.currentTimeMillis()%>"></script>
 	<script type="text/javascript" src="js/photo_modal00.js"></script>
 <script type="text/javascript">
 

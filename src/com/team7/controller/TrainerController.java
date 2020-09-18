@@ -54,10 +54,26 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			forward = new ActionForward();
 			forward.setPath("_FORWHERE.jsp?forwhere=2trainer/trainerapply.jsp");
 		}
+		else if(command.equals("/id_editform.trainer")){
+			action  = new com.team7.trainer.action.TrainerEditFormAction();
+			try {
+				forward=action.execute(request, response); //硫붿꽌�뱶�떎�뻾�븿
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		else if(command.equals("/id_trainerapply.trainer")) {
 			action  = new com.team7.trainer.action.TrainerCreateAction();
 			try {
 				forward=action.execute(request, response); //硫붿꽌�뱶�떎�뻾�븿
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/id_traineredit.trainer")) {
+			action  = new com.team7.trainer.action.TrainerEditAction();
+			try {
+				forward=action.execute(request, response); 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -80,7 +96,6 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		}
 		else if(command.equals("/id_mypage.trainer")) {
 				action  = new com.team7.trainer.action.TrainerMypageAction();
-				System.out.print("d");
 				try {
 					forward=action.execute(request, response); 
 				} catch (Exception e) {
@@ -88,7 +103,6 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 				}
 		}
 
-		System.out.println(command+"...로 간다는...� in trainer");
 		if(forward != null){
 
 			if(forward.isRedirect()){

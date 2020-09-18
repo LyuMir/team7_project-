@@ -31,6 +31,14 @@ public class GymService {
 		sqlsession.close();
 		return rlist;
 	}
+	public void update_gym(Gym_info info) {
+		
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.update("update_gym_info",info);
+		sqlsession.commit();
+		sqlsession.close();
+		
+	}
 	
 //	public List<DTO_Notice> getNoticeList(int page) {
 //

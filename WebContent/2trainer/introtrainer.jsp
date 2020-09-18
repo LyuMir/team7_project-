@@ -55,7 +55,7 @@
         <p class="hero__snippet">평균 등록인원 000명! 데일리 헬스니까!</p>
         <ul class="btn-list">
             <li class="btn-list__item"><a class="hero__btn  btn" href="">사업소개</a></li>
-            <li class="btn-list__item"><a class="hero__btn  btn" href="">내 정보 관리</a></li>
+            <li class="btn-list__item"><a class="hero__btn  btn" href="id_editform.trainer">내 정보 관리</a></li>
 	<% if(true){ %>
             <li class="btn-list__item"><a class="hero__btn  btn" href="">예약관리</a></li>
 	<% }}%>
@@ -92,7 +92,7 @@
       <%} %>
   </div>
   <div><a href="">▶올린 사진 수정하기</a></div>
-  <div><a href="">▶내 트레이너 정보 수정하기</a></div>
+  <div><a href="id_editform.trainer">▶내 트레이너 정보 수정하기</a></div>
 
 <% if(true){	//여기는 예약을 받은 사람만 보인다.  %>
 	<div>

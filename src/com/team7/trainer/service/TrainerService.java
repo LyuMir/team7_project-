@@ -30,7 +30,7 @@ public class TrainerService {
 	public void edit(Trainer_info trainer) {
 
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		sqlsession.update("update_Rrainer",trainer);
+		sqlsession.update("update_Trainer",trainer);
 		sqlsession.commit();
 		sqlsession.close();
 	}

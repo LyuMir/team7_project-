@@ -1,4 +1,4 @@
-package com.team7.zzim.controller;
+package com.team7.zzim.service;
 
 import java.util.List;
 
@@ -174,5 +174,92 @@ public class ZzimService {
 
 		return rlist;
 		
+	}
+	
+	
+	
+	// 여기 아래는 post들의 zzim 들  : team7_&post_zzim
+	
+	public List<ZZIMBean> select_gpost_Z(String id){
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist = sqlsession.selectList("select_gpost_zzim",zzim);
+		
+		return rlist;
+	}
+	public List<ZZIMBean> select_tpost_Z(String id){
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist = sqlsession.selectList("select_tpost_zzim",zzim);
+		
+		return rlist;
+	}
+	public List<ZZIMBean> select_cpost_Z(String id){
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<ZZIMBean> rlist = sqlsession.selectList("select_cpost_zzim",zzim);
+		
+		return rlist;
+	}
+	
+	//찜하기 
+	public void insert_gpost_Z(String id, int gpostno) {
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setGpost(gpostno);
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.insert("insert_gpost_z",zzim);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	public void insert_tpost_Z(String id, int tpostno) {
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setTpost(tpostno);
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.insert("insert_tpost_z",zzim);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	public void insert_cpost_Z(String id, int cpostno) {
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setCpost(cpostno);
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.insert("insert_cpost_z",zzim);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	
+	// 찜취소
+	public void delete_gpost_Z(String id,int gpostno) {
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setGpost(gpostno);
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.delete("delete_gpost_z",zzim);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	public void delete_tpost_Z(String id,int tpostno) {
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setTpost(tpostno);
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.delete("delete_tpost_z",zzim);
+		sqlsession.commit();
+		sqlsession.close();
+	}
+	public void delete_cpost_Z(String id,int cpostno) {
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setCpost(cpostno);
+		zzim.setPerson(id);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		sqlsession.delete("delete_cpost_z",zzim);
+		sqlsession.commit();
+		sqlsession.close();
 	}
 }

@@ -267,8 +267,8 @@
 %>
 
 	<script type="text/javascript" src="js/club_CRU.js?version=22"></script>
-	
-	
+
+
 <script type="text/javascript">
 	// var
 	var conceality = '<%=conceality%>';
@@ -279,6 +279,6 @@
 	else if(conceality.indexOf("제한") > 0 ) $('input#r2').text('::after');
 	else if(conceality.indexOf("초대") > 0 ) $('input#r3').text('::after');
 	else if(conceality.indexOf("중단") > 0 ) $('input#r4').text('::after');
-
+	// 안먹히나?
 
 </script>

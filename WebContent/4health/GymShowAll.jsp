@@ -3,7 +3,10 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.team7.vo.Gym_info" %>
 <%@ page import="com.team7.vo.PhotoBean" %>
+<%@ page import="com.team7.vo.ZZIMBean" %>
+<%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.*" %>
 
     <meta charset="utf-8">
@@ -32,6 +35,11 @@
 request.setCharacterEncoding("UTF-8");
 List<Gym_info> gser  = (List<Gym_info>) request.getAttribute("gser");
 List<PhotoBean> photos = (List<PhotoBean>) request.getAttribute("photos");
+List<ZZIMBean> gymzzim = (List<ZZIMBean>) request.getAttribute("gymzzim");
+List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
+
+if( gymzzim ==null || gymzzim.size() <1 ) gymzzim = new ArrayList<ZZIMBean>();
+if( posts ==null || posts.size() <1 ) posts = new ArrayList<PostBean>();
 %>
 
 
@@ -75,10 +83,9 @@ marker.setMap(map);
 <div class="dicclean">
 </div>
 
-  본 서비스는 어쩌고저쩌고 이렇게 진행이 됩니다알겠죠???   <a href="ddd" class="href">코치검증절차</a>
-  <br>여기에다가 공개적인 문구를 넣어줍니다~~~~~~~~~~~~~~~~~~~
+  본 서비스는 .....   <a href="" class="href">코치검증절차</a>
+  <br>
 
-</div>
 <hr>
 
 
@@ -115,30 +122,51 @@ marker.setMap(map);
      
      %>
 
-  <article class="grid__item" data-name="<%=gser.get(i).getGname()%>" onclick="javascript:location.href='GymUserpage.health?number=<%=gser.get(i).getGid() %>'">
+  <article style="margin:7px;" class="grid__item" data-name="<%=gser.get(i).getGname()%>" onclick="javascript:location.href='GymUserpage.health?number=<%=gser.get(i).getGid() %>'">
     <div class="card">
       <div class="card__img">
 <% 
 
 String picwhere = "";
-String picalt = "";
 	for(int j = 0 ; j < photos.size();j++){
-      if(photos.get(j).getId().contains(gser.get(i).getOwner()+"_")){ 
+      if(!photos.get(j).getPicture().equals("") && 
+    		  photos.get(j).getId().contains(gser.get(i).getOwner()+"_")){ 
         picwhere = "Files/gym/"+gser.get(i).getOwner()+"/1/"+photos.get(j).getPicture();
-        picalt = "gser.get(i).getPicture()";
         break;
       } else{ 
       		int k = (int)(Math.random() * 4)+1;
         picwhere = "img/exc/gym"+k+".jpg";
       }
 	} %>
-        <img class="card__img" src="<%=picwhere %>" alt="<%=picalt %>">
+        <img class="card__img" src="<%=picwhere %>">
       </div>
       <div class="card__content2">
         <div class="content__header"><%=gser.get(i).getGname()%> </div>
         <div class="content__text"><%=gser.get(i).getGsmalltext()%></div>
         <div class="content_what"> <span><%= gser.get(i).getGtype() %></span></div>
         <div class="content_where">장소 : <span><%=gser.get(i).getAddress()%></span></div>
+        <div class="card__heart" style="position:unset;">
+            <!-- heart zzim의 관계 설정. ... onclick="Zzimshow_club(this)" -->
+            <div class="zzimSystem"  data-id="<%=gser.get(i).getGid()%>">
+            
+		<%
+			int zzim = 0 ;
+			for(int k = 0 ; k < gymzzim.size(); k++){
+				if(gymzzim.get(k).getGym() == gser.get(i).getGid()){
+					zzim++;
+				}
+			}
+			int postnum = 0 ; 
+			for(int k= 0 ; k <posts.size(); k++){
+				if(posts.get(k).getGym() == gser.get(i).getGid())
+					postnum=posts.get(k).getNo();
+			}
+		%>
+              <img src="img/heart_and_star/heart034.png"> <span class="counter" data-target=""> <%=zzim %>  </span>
+            </div>
+						<img src="img/heart_and_star/star22.png">  <span> <%=postnum %></span>
+           
+					</div>
       </div>
     </div>
   </article>

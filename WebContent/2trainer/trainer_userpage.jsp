@@ -10,13 +10,14 @@
 <%@ page import="java.text.*" %>
     
 
-    <link rel="stylesheet" type="text/css" href="css/coachprofile.css?ver=3">
+    <link rel="stylesheet" type="text/css" href="css/coachprofile.css?ver=4">
     <link rel="stylesheet" type="text/css" href="css/club_main.css"><!-- 흠... -->
 <%
 request.setCharacterEncoding("UTF-8");
 List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
 List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
+List<ZZIMBean> tpostzzim = (List<ZZIMBean>) request.getAttribute("tpostzzim");
 
 List<ZZIMBean> zyn2 = (List<ZZIMBean>) request.getAttribute("zzimYN");
 boolean zyn = false;
@@ -302,9 +303,40 @@ for (int i=0 ; i < time.length ; i ++) {
 				<div class="post_text fclear">
 					<%=posts.get(i).getContents() %>
 				</div>
-				<div class="post_like fright">
-					<img src="img/heart_and_star/heart35.png"> 0
-				</div>
+	<% 
+		//삭제창
+		if(posts.get(i).getWriter().equals(id) ||  imtrainer ==1){
+	
+	%>
+          <div class="deleter fright">
+            <img style="width:10px; margin-top:5px; cursor:pointer;" src="img/icons/close33.png" onclick="deletethispost(this)">
+            <form action="delete.post" style="display:none;"><input name="tpostno" value="<%=posts.get(i).getNo()%>"></form>
+          </div>
+					<%}
+		boolean heartgood = true;
+		for(int l = 0 ; l < tpostzzim.size(); l++){
+			boolean zzimed = false;		
+			if(tpostzzim.get(l).getCpost() == posts.get(i).getNo()){
+				int zcount = tpostzzim.get(l).getCount();
+				if(tpostzzim.get(l).getZzimed()==1){
+	%>
+					<div class="post_like fright" onclick="tpost_z_cancel(this)" data-no="<%=posts.get(i).getNo()%>">
+						<img src="img/heart_and_star/heart35.png"> 
+	<%			}else{ %>
+					<div class="post_like fright" onclick="tpost_z(this)" data-no="<%=posts.get(i).getNo()%>">
+						<img src="img/heart_and_star/heart034.png"> 
+	<%			} %>
+						<span><%=zcount %></span>
+	<%
+				heartgood = false;
+			} 
+		}
+		if(heartgood){	
+	%>
+					<div class="post_like fright" onclick="tpost_z(this)" data-no="<%=posts.get(i).getNo()%>">
+						<img src="img/heart_and_star/heart034.png"> <span>0</span> 
+	<% } %>
+					</div>
 				<div class="post_writer fright"> by <%= posts.get(i).getWriter() %></div>
 			<% if(pcon == 1){ %>
 				<div class="post_conceal fright">전체 공개된 포스트. </div>
@@ -376,9 +408,12 @@ for (int i=0 ; i < time.length ; i ++) {
 	</main>
 
 
+	<script type="text/javascript" src="6posts/post_delete.js"></script>
 	<script type="text/javascript" src="js/photo_modal00.js"></script>
 
 	<script type="text/javascript" src="77zzim/zzim2_trainersZzim.js?ver=5"></script>
+
+	<script type="text/javascript" src="77zzim/zzim_posts_trainer.js?ver=5"></script>
 
 	<script type="text/javascript">
 
@@ -556,7 +591,6 @@ for (int i=0 ; i < time.length ; i ++) {
 		padding: 2px 4px;
 
 		cursor: pointer;
-		/*float: left;*/
 		transition: all ease 1s;
 	}
 	.post_like img{

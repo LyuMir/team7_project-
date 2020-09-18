@@ -1,45 +1,45 @@
 package com.team7.trainer.action;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.team7.photo.service.PhotoTrainerService;
 import com.team7.trainer.action.Action;
 import com.team7.trainer.service.TrainerService;
 import com.team7.vo.ActionForward;
-import com.team7.vo.PhotoBean;
 import com.team7.vo.Trainer_info;
 
-public class TrainerCreateAction implements Action{
+public class TrainerEditAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 
 		HttpSession session = request.getSession(true);
-		String id= (String)session.getAttribute("LOG_ID"); //오브젝트형식으로있다
+		String id= (String)session.getAttribute("LOG_ID"); 
 		
 		
 //		int no = Integer.parseInt(request.getParameter("no"));
-		String tname = request.getParameter("coachname");
-		String sex = request.getParameter("sex"); //라디오버튼
+//		String tname = request.getParameter("coachname");
+//		String sex = request.getParameter("sex"); //라디오버튼
 		String tphone = request.getParameter("coachphone");
-		String tbirth = request.getParameter("coachbirth");
+//		String tbirth = request.getParameter("coachbirth");
 		String temail = request.getParameter("coachemail");
 		String ttime ="";
 		String [] ttimeimsi = request.getParameterValues("availabeltime");
-		for(int i=0 ; i<=ttimeimsi.length-1; i++) {
-		ttime = ttimeimsi[i]+","+ttime;
+		if(ttimeimsi ==null);
+		else {
+			for(int i=0 ; i<=ttimeimsi.length-1; i++) {
+			ttime = ttimeimsi[i]+","+ttime;
+			}
 		}
 		String tmajor="";
 		String [] majorimsi = request.getParameterValues("major");
+		if(majorimsi !=null)
 		for(int i=0 ; i<=majorimsi.length-1 ; i++) {
 			tmajor = majorimsi[i]+","+tmajor;
 		}// 스플릿으로 빼온다. 자동으로 나온 배열 i 넣는다. 
-//		tmajor
+		;
 		
 		
 		String twhere = request.getParameter("trainerarea"); //셀렉트박스
@@ -53,29 +53,30 @@ public class TrainerCreateAction implements Action{
 		String thowjoin = request.getParameter("coachhowjoin");
 		String tphoto = request.getParameter("photos");
 		
-		
+		System.out.println(tsns+" 라니까??");
 		
 		Trainer_info trainer = new Trainer_info();
 		
-	
-		trainer.setId(id);
-		trainer.setTname(tname);
-		trainer.setSex(sex);
-		trainer.setTphone(tphone);
-		trainer.setTtime(ttime);
-		trainer.setTemail(temail);
-		trainer.setTwhere(twhere);
-		trainer.setTbigtext(bigtext);
-		trainer.setTsmalltext(smalltext);
-		trainer.setTmajor(tmajor);
-		trainer.setTcareer(tcareer);
-		trainer.setTprofile(tprofile);
-		trainer.setTcerti(tcerti);
-		trainer.setTstory(tstory);
-		trainer.setThowjoin(thowjoin);
-		trainer.setTphone(tphone);
-		System.out.println("왜 안되는데?");
 		
+		trainer.setId(id); 
+//		trainer.setTname(tname);
+//		trainer.setSex(sex);
+		trainer.setTtime((ttime == null) ? "":ttime );
+		trainer.setTemail(temail == null ? "" : temail); 
+		trainer.setTwhere(twhere== null ? "" : twhere);
+		trainer.setTbigtext(bigtext== null ? "" : bigtext);
+		trainer.setTsmalltext(smalltext== null ? "" : smalltext);
+		trainer.setTmajor(tmajor== null ? "" : tmajor);
+		trainer.setTcareer(tcareer== null ? "" : tcareer);
+		trainer.setTprofile(tprofile== null ? "" : tprofile);
+		trainer.setTcerti(tcerti== null ? "" : tcerti);
+		trainer.setTstory(tstory== null ? "" : tstory);
+		trainer.setTsns(tsns== null ? "" : tsns);//
+		trainer.setThowjoin(thowjoin== null ? "" : thowjoin);
+		trainer.setTphone(tphone== null ? "" : tphone); 
+		
+		
+		System.out.println(trainer.getTphone()+"인가인가...");
 //		
 //		notice.setContent(content);
 //		notice.setTitle(title);
@@ -85,14 +86,12 @@ public class TrainerCreateAction implements Action{
 		//서비스로 가서 인서트를하고
 		
 		TrainerService tser = new TrainerService();
-		tser.insert(trainer);;
+//		tser.insert(trainer);;
+		tser.edit(trainer);
 		
-		// 사진 없으면 pic data db에 공데이터 넣기 
-		List<PhotoBean> pdata= new PhotoTrainerService().getfilenames_trainerphoto(id, -1);
-		if(pdata == null ||pdata.isEmpty()) new PhotoTrainerService().upload_empty(id);
 		
 		ActionForward forward= new ActionForward();
-		forward.setPath("index.jsp");
+		forward.setPath("id_Introtrainerapply.trainer");
 		return forward;
 	} 
 

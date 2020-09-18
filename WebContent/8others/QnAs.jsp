@@ -10,11 +10,11 @@
 	<div class="t_title">자주 하는 질문</div>
 	<div class="ques">
 		<div class="q_titles">데일리 헬스는 어떤 사이트인가요?</div>
-		<div class="q_texts">이런 사이트입니다.</div>
+		<div class="q_texts">헬스, 트레이너를 집 안에서 간편하게 찾을 수 있지 않을까? 하는 물음에서 시작되 사이트입니다.</div>
 	</div>
 	<div class="ques">
 		<div class="q_titles">트레이너, 헬스장 매칭 서비스를 주제로 한 이유는 무엇인가요?</div>
-		<div class="q_texts">의 아이디어입니다.</div>
+		<div class="q_texts">윤영 씨의 아이디어입니다.</div>
 	</div>
 	<div class="ques">
 		<div class="q_titles">소모임을 만든 이유는 무엇인가요?</div>
@@ -27,7 +27,7 @@
 			만들었습니다.</div>
 	</div>
 	<div class="ques">
-		<div class="q_titles">기타 질문사항...</div>
+		<div class="q_titles">기타 질문사항이 있습니다.</div>
 		<div class="q_texts">다음으로 연락 주세요! : 01010101010101010...</div>
 	</div>
 </div>
@@ -44,6 +44,7 @@
 	width: 100%;
 	max-width: 1000px;
 	margin:25px auto;
+	min-height: 800px;
 }
 
 .ques {

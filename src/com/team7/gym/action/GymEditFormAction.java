@@ -21,7 +21,7 @@ import com.team7.zzim.service.ZzimService;
 
 
 
-public class GymShowAllAction implements Action{
+public class GymEditFormAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -29,24 +29,14 @@ public class GymShowAllAction implements Action{
 		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("LOG_ID");
-	
-		GymShowAllService gser = new GymShowAllService();
 		
-		List<Gym_info> gymlist = new ArrayList<Gym_info>();
-		List<PhotoBean> photos = new PhotoGymService().entire_gymphoto();
-		List<ZZIMBean> gymzzim = new ZzimService().select_gyms_count2(id);
-		List<PostBean> posts = new PostService().getGPOSTnum();
+		List<Gym_info> info = new GymService().select_mygym_prof(id);
+
+		request.setAttribute("gym", info);
 		
-		
-		gymlist = gser.getGyminfo();
-		
-		ActionForward forward= new ActionForward();
-		
-		request.setAttribute("photos", photos);
-		request.setAttribute("gser", gymlist);
-		request.setAttribute("gymzzim", gymzzim);
-		request.setAttribute("posts", posts);
-		forward.setPath("/_FORWHERE.jsp?forwhere=4health/GymShowAll.jsp");
+
+		ActionForward forward = new ActionForward();
+		forward.setPath("/_FORWHERE.jsp?forwhere=4health/gym_editForm.jsp");
 		return forward;
 		
 	}
