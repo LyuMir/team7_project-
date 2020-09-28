@@ -57,7 +57,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		else if(command.equals("/id_editform.trainer")){
 			action  = new com.team7.trainer.action.TrainerEditFormAction();
 			try {
-				forward=action.execute(request, response); //硫붿꽌�뱶�떎�뻾�븿
+				forward=action.execute(request, response); 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -65,7 +65,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		else if(command.equals("/id_trainerapply.trainer")) {
 			action  = new com.team7.trainer.action.TrainerCreateAction();
 			try {
-				forward=action.execute(request, response); //硫붿꽌�뱶�떎�뻾�븿
+				forward=action.execute(request, response); 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -81,7 +81,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		else if(command.equals("/Search.trainer")){
 			action  = new com.team7.trainer.action.TrainerShowAllAction();
 			try {
-				forward=action.execute(request, response); //硫붿꽌�뱶�떎�뻾�븿
+				forward=action.execute(request, response); 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -89,7 +89,7 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 		else if(command.equals("/trainerUserpage.trainer")){
 				action  = new com.team7.trainer.action.TrainerUserpageAction();
 				try {
-					forward=action.execute(request, response); //硫붿꽌�뱶�떎�뻾�븿
+					forward=action.execute(request, response); 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

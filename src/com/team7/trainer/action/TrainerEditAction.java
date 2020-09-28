@@ -27,12 +27,13 @@ public class TrainerEditAction implements Action{
 		String temail = request.getParameter("coachemail");
 		String ttime ="";
 		String [] ttimeimsi = request.getParameterValues("availabeltime");
-		if(ttimeimsi ==null);
-		else {
-			for(int i=0 ; i<=ttimeimsi.length-1; i++) {
+		if(ttimeimsi !=null)
+		{
+			for(int i=0 ; i<ttimeimsi.length; i++) {
 			ttime = ttimeimsi[i]+","+ttime;
 			}
 		}
+		
 		String tmajor="";
 		String [] majorimsi = request.getParameterValues("major");
 		if(majorimsi !=null)
@@ -61,7 +62,7 @@ public class TrainerEditAction implements Action{
 		trainer.setId(id); 
 //		trainer.setTname(tname);
 //		trainer.setSex(sex);
-		trainer.setTtime((ttime == null) ? "":ttime );
+		trainer.setTtime(ttime);
 		trainer.setTemail(temail == null ? "" : temail); 
 		trainer.setTwhere(twhere== null ? "" : twhere);
 		trainer.setTbigtext(bigtext== null ? "" : bigtext);
@@ -76,7 +77,6 @@ public class TrainerEditAction implements Action{
 		trainer.setTphone(tphone== null ? "" : tphone); 
 		
 		
-		System.out.println(trainer.getTphone()+"인가인가...");
 //		
 //		notice.setContent(content);
 //		notice.setTitle(title);

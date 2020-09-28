@@ -380,12 +380,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="update_Trainer">
-		update team7.team7_trainer set
-			tphone = #{tphone} ,  temail = ${temail} , 
-			ttime = #{ttime}, twhere= #{twhere},tmajor= #{tmajor},
-			tcareer= #{tcareer},tprofile= #{tprofile},tcerti= #{tcerti},
-			tsns= #{tsns},tstory= #{tstory},
-			thowjoin= #{thowjoin},tbigtext= #{tbigtext},tsmalltext= #{tsmalltext}
+		update team7.team7_trainer set 
+			tphone = #{tphone} ,  temail = #{temail} , ttime = #{ttime} , twhere= #{twhere} , tmajor= #{tmajor}, 
+			tcareer= #{tcareer}, tprofile= #{tprofile}, tcerti= #{tcerti}, 
+			tsns= #{tsns}, tstory= #{tstory}, 
+			thowjoin= #{thowjoin}, tbigtext= #{tbigtext}, tsmalltext= #{tsmalltext} 
 		where id = #{id}
 	</update>
 	

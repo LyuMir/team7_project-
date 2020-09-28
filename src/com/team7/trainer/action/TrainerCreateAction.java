@@ -61,6 +61,7 @@ public class TrainerCreateAction implements Action{
 		trainer.setId(id);
 		trainer.setTname(tname);
 		trainer.setSex(sex);
+		trainer.setTbirth(tbirth);
 		trainer.setTphone(tphone);
 		trainer.setTtime(ttime);
 		trainer.setTemail(temail);
@@ -74,7 +75,6 @@ public class TrainerCreateAction implements Action{
 		trainer.setTstory(tstory);
 		trainer.setThowjoin(thowjoin);
 		trainer.setTphone(tphone);
-		System.out.println("왜 안되는데?");
 		
 //		
 //		notice.setContent(content);
