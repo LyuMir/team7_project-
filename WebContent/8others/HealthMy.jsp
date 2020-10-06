@@ -25,17 +25,6 @@
 
 	int adminyn=0, joinyn=0;
 
-List<Gym_info> mylist = (List<Gym_info>) request.getAttribute("mylist");
-List<Gym_info> mylist2 = (List<Gym_info>) request.getAttribute("mylist2");
-List<Gym_info> rlist = (List<Gym_info>) request.getAttribute("rlist");
-List<Gym_info> rlist00 =  (List<Gym_info>) request.getAttribute("rlist00");
-List<Gym_info> tlist = (List<Gym_info>) request.getAttribute("tlist");
-boolean ami = (boolean) request.getAttribute("ami");	//탈퇴 중 tf
-boolean ied = (boolean) request.getAttribute("ied");	//가입신청중 tf
-
-
-
-
 
 
 
@@ -44,22 +33,23 @@ boolean ied = (boolean) request.getAttribute("ied");	//가입신청중 tf
 
 List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 List<ZZIMBean> cpostzzim = (List<ZZIMBean>) request.getAttribute("cpostzzim");
-List<PhotoBean> cpphotos = (List<PhotoBean>) request.getAttribute("cpphotos");
+
+
 List<Gym_info> ginfo = (List<Gym_info>) request.getAttribute("ginfo");
 List<ZZIMBean> gz = (List<ZZIMBean>) request.getAttribute("gz");
 
 
-int j = cpphotos.size() -1 ;
-ArrayList<Integer> ppnum = new ArrayList<Integer>();
-ArrayList<Integer> pp00 = new ArrayList<Integer>();
-int u = j;
-for(int k = j ; k >=0 ; k--){
-	String pid = cpphotos.get(k).getId();
-	int last0 = pid.lastIndexOf("_");
-	pid = pid.substring(last0 + 1);
-	ppnum.add(Integer.parseInt(pid));
-	pp00.add(u--);
-}
+//int j = cpphotos.size() -1 ;
+//ArrayList<Integer> ppnum = new ArrayList<Integer>();
+//ArrayList<Integer> pp00 = new ArrayList<Integer>();
+//int u = j;
+//for(int k = j ; k >=0 ; k--){
+//	String pid = cpphotos.get(k).getId();
+//	int last0 = pid.lastIndexOf("_");
+//	pid = pid.substring(last0 + 1);
+//	ppnum.add(Integer.parseInt(pid));
+//	pp00.add(u--);
+//}
 
 
 %>
@@ -113,7 +103,6 @@ for(int k = j ; k >=0 ; k--){
   <!-- 태그 불러오기입니다 -->
 
  <% boolean heartgood = true;
-		for(int l = 0 ; l < gz.size(); l++){
 		
 			
 	%>
@@ -130,9 +119,9 @@ for(int k = j ; k >=0 ; k--){
          <img class="profile_img2" src="img/trainer.jpeg">
          <div class="marginleft">
        
-        <h3><option data-id="<%= ginfo.get(i).getGsmalltext() %>"></option></h3>
+        <h3><%= ginfo.get(i).getGsmalltext() %></h3>
         
-        <h4><option data-id="<%= ginfo.get(i).getGname() %>"></option>
+        <h4><%= ginfo.get(i).getGname() %></h4>
         
         <!-- 태그불러오기입니당 -->
         <% 
@@ -153,7 +142,7 @@ for (int k=0 ; k < major.length ; k ++) {
 
     </li>
   </ul>
-  <% }}}} %>
+  <% }}} %>
 
 
 

@@ -83,6 +83,8 @@ public void toMyHealthZzimPage(HttpServletRequest request, HttpServletResponse r
 		//List<Gym_info> glist =  new GymShowAllService().getZzimGyminfo(dddd);
 		List<Gym_info> ginfo = new ZzimService().select_gyminfo(person);
 		
+		System.out.println(ginfo.get(0).getGsmalltext());
+		
 		request.setAttribute("ginfo", ginfo);
 		request.setAttribute("gz", gz);
 		request.setAttribute("minfo", minfo);

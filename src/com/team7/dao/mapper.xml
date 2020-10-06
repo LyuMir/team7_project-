@@ -396,7 +396,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select  id="selectzzim_Gym" resultType="com.team7.vo.Gym_info" >
 	
-	select*from team7.team7_gym where gid in (select gym from team7.team7_zzim1 where person = 'qqqq'
+	select*from team7.team7_gym where gid in (select gym from team7.team7_zzim1 where person = '${person}')
 	
 	</select>
 	
