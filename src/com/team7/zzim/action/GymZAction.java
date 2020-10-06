@@ -26,6 +26,12 @@ public class GymZAction {
 	}
 	
 	
+
+	
+	
+	
+	
+	
 	public void gzC(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String id=(String)session.getAttribute("LOG_ID");

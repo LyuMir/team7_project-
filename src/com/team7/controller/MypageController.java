@@ -57,6 +57,7 @@ public class MypageController extends javax.servlet.http.HttpServlet
 			
 		}
 		else if(command.equals("/myhealthzzim.mypage")) {
+			System.out.println("헬스찜 리스트 클릭 액션!!!");
 			new MyInfoAction().toMyHealthZzimPage(request, response);
 		}
 		else if(command.equals("/mytrainerzzim.mypage")) {

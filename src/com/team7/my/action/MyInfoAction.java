@@ -8,12 +8,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.team7.gym.service.GymService;
+import com.team7.gym.service.GymShowAllService;
 import com.team7.my.service.MyInfoService;
 import com.team7.post.service.PostService;
 import com.team7.vo.ActionForward;
+import com.team7.vo.Gym_info;
 import com.team7.vo.PostBean;
+import com.team7.vo.ZZIMBean;
 import com.team7.vo.MemberInfo1;
 import com.team7.vo.MemberLogInfo;
+import com.team7.zzim.*;
+import com.team7.zzim.service.ZzimService;
+
 
 public class MyInfoAction {
 
@@ -62,16 +69,22 @@ public class MyInfoAction {
 	
 public void toMyHealthZzimPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		String id = (String) request.getSession().getAttribute("LOG_ID");
-		
+		System.out.println("액션까지왔습니다!");
+		String person = (String) request.getSession().getAttribute("LOG_ID");
+	
+		System.out.println("아이디표기!="+person);
 		MemberLogInfo l = new MemberLogInfo();
-		l.setId(id);
+		l.setId(person);
 		
 		List<MemberInfo1> minfo = new MyInfoService().myinfo(l);
 		
-		List<PostBean> cposts = new PostService().getMyCPOSTs(id);
+		List<PostBean> cposts = new PostService().getMyCPOSTs(person);
+		List<ZZIMBean> gz =  new ZzimService().select_gym_Z(person); //kkkk
+		//List<Gym_info> glist =  new GymShowAllService().getZzimGyminfo(dddd);
+		List<Gym_info> ginfo = new ZzimService().select_gyminfo(person);
 		
+		request.setAttribute("ginfo", ginfo);
+		request.setAttribute("gz", gz);
 		request.setAttribute("minfo", minfo);
 		request.setAttribute("cposts", cposts);
 		
