@@ -1,4 +1,4 @@
-package com.team7.member.action;
+package com.team7.my.action;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.team7.member.service.MyInfoService;
+import com.team7.my.service.MyInfoService;
 import com.team7.post.service.PostService;
 import com.team7.vo.ActionForward;
 import com.team7.vo.PostBean;

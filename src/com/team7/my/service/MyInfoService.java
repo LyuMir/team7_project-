@@ -1,4 +1,4 @@
-package com.team7.member.service;
+package com.team7.my.service;
 
 import java.util.List;
 

@@ -144,9 +144,9 @@ h4{
 }
 
 .main{
-  /*width: 1000px;*/
+  width: 1000px;
   min-width: 870px;
-  /*max-width: 980px;*/
+  max-width: 980px;
   /*width: 780px;*/
   height: auto;
   margin: 0 auto;

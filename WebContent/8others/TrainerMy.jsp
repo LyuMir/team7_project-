@@ -59,7 +59,7 @@
 <!--End jSide Menu-->
 <!--  이 아래부분만 바뀌면 됩니다 -->
 <menu class="myprofile">
-  <p class="title">내가 즐겨찾기한 헬스장</p>
+  <p class="title">내가 즐겨찾기한 트레이너</p>
   <input style="margin-left: 10px;" type="checkbox" name="" value=""> 
   <div>
     <div class="thunbox">

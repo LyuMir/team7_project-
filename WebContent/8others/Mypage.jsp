@@ -127,37 +127,7 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 <div class="myprofile displaynone" id="pp22"> <!-- 최근 본 페이지 -->
   
 </div>
-<div class="myprofile displaynone-000000000000000000000" id="pp31"> <!-- 나의 헬스장 -->
-  <p class="title000">내가 즐겨찾기한 헬스장</p>
 
-  <!-- <input style="margin-left: 10px;" type="checkbox" name="" value="">  -->
-  <div class="thunbox2">
-    <div class="centerer">여기엔 아무것도 없어요...</div>
-  </div>
-  <div class="thunbox2">
-   <img class="profile_img4 fleft" src="img/ex_01.gif">
-    <div class="texts2 fright">
-      <h3>건강한 내 몸을 찾아 대글귀</h3>
-      <div>땡땡땡 헬스장</div>
-      <h5>#태그들 #태그들</h5>
-      <div class="middler grade2"><span style="position: relative; bottom: 13px;">♥</span></div>
-    </div>
-    <div class="fclear"></div>
-  </div>
-
-  <div class="middler"><button type="button" name="button" class="btn">삭제하기</button></div>
-  
-
-</div>
-<div class="myprofile displaynone" id="pp32"> <!-- 나의 트레이너 -->
-  
-</div>
-<div class="myprofile displaynone" id="pp33"> <!-- 나의 소모임 -->
-  
-</div>
-<div class="myprofile displaynone" id="pp44"> <!-- 내가 쓴 글 -->
-  
-</div>
 
 <div class="fclear"></div>
 </div>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team7.member.action.Action;
-import com.team7.member.action.MyInfoAction;
+import com.team7.my.action.MyInfoAction;
 import com.team7.vo.ActionForward;
 
 @WebServlet("*.log")

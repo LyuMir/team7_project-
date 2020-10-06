@@ -56,8 +56,10 @@
 </nav>
 </div>
 </article>
+
 <!--End jSide Menu-->
   <!--  이 아래부분만 바뀌면 됩니다 -->
+  
 <menu class="myprofile">
   <p class="title">내가 즐겨찾기한 헬스장</p>
   <input style="margin-left: 10px;" type="checkbox" name="" value=""> 
@@ -65,7 +67,7 @@
     <li> </li>
     <li>
         <div class="thunbox">
-         <img class="profile_img2" src="a.jpeg">
+         <img class="profile_img2" src="img/trainer.jpeg">
          <div class="marginleft">
         <h3>건강한 내 몸을 찾아 대글귀</h3>
         <h4>땡땡땡 헬스장</h4>
