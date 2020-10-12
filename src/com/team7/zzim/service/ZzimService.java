@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.team7.dao.Class_DAO;
 import com.team7.vo.Gym_info;
 import com.team7.vo.NoticeBean;
+import com.team7.vo.Trainer_info;
 import com.team7.vo.ZZIMBean;
 
 public class ZzimService {
@@ -177,6 +178,18 @@ public class ZzimService {
 		return rlist;
 		
 	}	
+	
+	public List<Trainer_info> select_trainerinfo(String person) {
+
+		ZZIMBean zzim = new ZZIMBean();
+		zzim.setPerson(person);
+		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+		List<Trainer_info> rlist= sqlsession.selectList("selectzzim_trainer", zzim);
+
+		return rlist;
+		
+	}	
+	
 	
 	public List<ZZIMBean> select_trainer_Z_YN(String id, int trainerno) {
 		ZZIMBean zzim = new ZZIMBean();

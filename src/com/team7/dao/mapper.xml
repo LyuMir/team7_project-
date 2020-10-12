@@ -393,6 +393,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id = #{id}
 	</update>
 	
+	<select  id="selectzzim_trainer" resultType="com.team7.vo.Trainer_info" >
+	
+	select*from team7.team7_trainer where id in (select gym from team7.team7_zzim2 where person = '${person}')
+	
+	</select>
+	
 	
 	<select  id="selectzzim_Gym" resultType="com.team7.vo.Gym_info" >
 	

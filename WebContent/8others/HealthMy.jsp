@@ -25,12 +25,6 @@
 
 	int adminyn=0, joinyn=0;
 
-
-
-
-
-
-
 List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 List<ZZIMBean> cpostzzim = (List<ZZIMBean>) request.getAttribute("cpostzzim");
 
@@ -110,7 +104,21 @@ List<ZZIMBean> gz = (List<ZZIMBean>) request.getAttribute("gz");
 <menu class="myprofile">
   <p class="title">내가 즐겨찾기한 헬스장</p>
   <input style="margin-left: 10px;" type="checkbox" name="" value=""> 
-  <% %>
+  
+  <% 
+  boolean hasE = false;
+  if(ginfo == null || ginfo.size()<1){
+
+  }
+  else{
+    hasE = true;
+  }
+
+%>
+   <% if(!hasE){ %>
+   찜목록이 없습니다!
+   
+   <%}else{ %> 
   <% for(int i = 0 ; i < ginfo.size(); i++){ %>
   <ul>
     <li> </li>
@@ -119,7 +127,8 @@ List<ZZIMBean> gz = (List<ZZIMBean>) request.getAttribute("gz");
          <img class="profile_img2" src="img/trainer.jpeg">
          <div class="marginleft">
        
-        <h3><%= ginfo.get(i).getGsmalltext() %></h3>
+        <h3><%= ginfo.get(i).getGid() %>><%= ginfo.get(i).getGsmalltext() %></h3>
+       
         
         <h4><%= ginfo.get(i).getGname() %></h4>
         
@@ -142,7 +151,7 @@ for (int k=0 ; k < major.length ; k ++) {
 
     </li>
   </ul>
-  <% }}} %>
+  <% }}}} %>
 
 
 
