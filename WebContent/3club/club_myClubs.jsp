@@ -30,6 +30,7 @@ List<ClubBean> rlist  = //new Class_DAO().club_selector_id(id00);
 List<PhotoBean> plist = (List<PhotoBean>) request.getAttribute("plist");
 
 
+
 	String realFolder = "";
 	if(rlist.size()>0){
 		realFolder = "Files/clubsphoto/"+rlist.get(0).getAdmin()+"_";//+rlist.get(0).getNo()+"/";

@@ -49,6 +49,12 @@ public class Zzim_Show_Actions {
 		out.close();
 	}
 	
+	
+	
+	//Çï½ºÂò¸ñ·Ï ¾×¼Ç
+	
+	
+	
 	public void club_show_count_nolog(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		List<ZZIMBean> zzim = new ZzimService().select_clubs_count();

@@ -32,5 +32,24 @@ public class GymShowAllService {
 		
 	}
 	
+		public List<Gym_info> getZzimGyminfo(String id) {
+			
 
+			SqlSession sqlsession = new Class_DAO().get_conn().openSession();
+			
+			List<Gym_info> gser = sqlsession.selectList("selectall_Gym");
+			
+			
+			
+			
+					
+			
+			 
+			sqlsession.close();
+			
+			
+			return gser;
+			
+		}
+	
 }
