@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper
-
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="sdf">
 
 
@@ -310,20 +307,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<select id="select_gpost_zzim00" resultType="com.team7.vo.ZZIMBean" >
+		select a.gpost, count(a.gpost) as count, 
+			case when (b.person = ${person}) then 1 else 0 end as 'zzimed'
+		from team7_gpost_zzim a, team7_gpost_zzim b 
+		where a.id = b.id and a.gpost = b.gpost
+		group by a.gpost
+	</select>
+	<select id="select_tpost_zzim00" resultType="com.team7.vo.ZZIMBean" >
+		select a.tpost, count(a.tpost) as count, 
+			case when (b.person = ${person}) then 1 else 0 end as 'zzimed'
+		from team7_tpost_zzim a, team7_tpost_zzim b 
+		where a.id = b.id and a.tpost = b.tpost
+		group by a.tpost
+	</select>
+	<select id="select_cpost_zzim00" resultType="com.team7.vo.ZZIMBean" >
+		select a.cpost, count(a.cpost) as count, 
+			case when (b.person = ${person}) then 1 else 0 end as 'zzimed'
+		from team7_cpost_zzim a, team7_cpost_zzim b 
+		where a.id = b.id and a.cpost = b.cpost
+		group by a.cpost
+	</select>
+	
+	
 	<select id="select_gpost_zzim" resultType="com.team7.vo.ZZIMBean" >
 		select *, count(gpost) as count,
-		case when (#{person} = person) then 1 else 0 end as 'zzimed' 
-		from team7_gpost_zzim group by gpost
+		case when (person = #{person}) then 1 else 0 end as 'zzimed' 
+		from team7_gpost_zzim group by gpost, zzimed
 	</select>
 	<select id="select_tpost_zzim" resultType="com.team7.vo.ZZIMBean" >
 		select *, count(tpost) as count,
-		case when (#{person} = person) then 1 else 0 end as 'zzimed' 
-		from team7_tpost_zzim group by tpost
+		case when (person = #{person}) then 1 else 0 end as 'zzimed' 
+		from team7_tpost_zzim group by tpost, zzimed
 	</select>
 	<select id="select_cpost_zzim" resultType="com.team7.vo.ZZIMBean" >
 		select *, count(cpost) as count,
-		case when (#{person} = person) then 1 else 0 end as 'zzimed' 
-		from team7_cpost_zzim group by cpost
+		case when (person = #{person}) then 1 else 0 end as 'zzimed' 
+		from team7_cpost_zzim group by cpost, zzimed
 	</select>
 	
 	<insert id="insert_gpost_z" parameterType="String">

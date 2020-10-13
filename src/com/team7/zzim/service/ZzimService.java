@@ -1,5 +1,6 @@
 package com.team7.zzim.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -204,6 +205,26 @@ public class ZzimService {
 		
 		return rlist;
 	}
+//	List<ZZIMBean> comberG(List<ZZIMBean> zz){
+//		ZZIMBean z = new ZZIMBean();
+//		ZZIMBean z0 = new ZZIMBean();
+//		List<ZZIMBean> z00 = new ArrayList<ZZIMBean>();
+//		for(int i = 0 ; i < zz.size(); i++) {
+//			z0 = zz.get(i);
+//			if(z0.getGpost() > -1) {
+//				z.setGpost(z0.getGpost());
+//				if(z0.getZzimed()>0) {
+//					z.setCount(z0.getCount() + 1);
+//				}
+//				else {
+//					z.setCount(z0.getCount());
+//				}
+//				z00.add(z0);
+//			}
+//		}
+//		return z00;
+//	}
+	
 	
 	//ÂòÇÏ±â 
 	public void insert_gpost_Z(String id, int gpostno) {

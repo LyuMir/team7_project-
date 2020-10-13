@@ -14,7 +14,7 @@ function changeHTMLsforpostzzim(req,go =1){ // 그 안에 img 랑 span 안의 �
         $(req).attr('onclick',"gpost_z_cancel(this)");
         var countt = $(req).children('span');
         var count00 = countt.text();
-        countt.text(count00 + 1);
+        countt.text(parseInt(count00) + 1);
 
     }
     else{

@@ -65,35 +65,22 @@ public class GymCreateAction implements Action{
 		gym.setGcerti(gcerti);
 		gym.setGprogram(gprogram);
 		gym.setGsmalltext(gsmalltext);
-		
-		System.out.println(owner);
-		System.out.println(gname);
-		System.out.println(address_num);
-		
-		System.out.println(address);
-		System.out.println(gsmalltext);
-		System.out.println(gphone);
-		System.out.println(opentime);
-		System.out.println(gprice);
-		System.out.println(gtype);
-		System.out.println(contents);
-		System.out.println(gpage);
-		System.out.println(gcerti);
-		
-		
+//		
+//		System.out.println(owner);
+//		System.out.println(gname);
+//		System.out.println(address_num);
+//		
+//		System.out.println(address);
+//		System.out.println(gsmalltext);
+//		System.out.println(gphone);
+//		System.out.println(opentime);
+//		System.out.println(gprice);
+//		System.out.println(gtype);
+//		System.out.println(contents);
+//		System.out.println(gpage);
+//		System.out.println(gcerti);
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 		GymService gser = new GymService();
 		gser.insert(gym);
 		

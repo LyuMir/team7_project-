@@ -8,13 +8,13 @@
 <%@ page import="com.team7.vo.PostBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.*" %>
-    
+
 
     <link rel="stylesheet" type="text/css" href="css/coachprofile.css?ver=4">
     <link rel="stylesheet" type="text/css" href="css/club_main.css"><!-- 흠... -->
 <%
 request.setCharacterEncoding("UTF-8");
-List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser"); 
+List<Trainer_info> tser  = (List<Trainer_info>) request.getAttribute("tser");
 List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
 List<ZZIMBean> tpostzzim = (List<ZZIMBean>) request.getAttribute("tpostzzim");
@@ -112,10 +112,10 @@ if(photoBean !=null && photoBean.size()>1){
 String imsimajors = tser.get(0).getTmajor() ;
 String [] major = imsimajors.split(",");
 
-for (int i=0 ; i < major.length ; i ++) { 
+for (int i=0 ; i < major.length ; i ++) {
 
 	if(major[i].equals("")){
-	
+
 	}
 	else{
 
@@ -159,7 +159,7 @@ for (int i=0 ; i < major.length ; i ++) {
 String majors = tser.get(0).getTmajor() ;
 String [] majorss = majors.split(",");
 
-for (int i=0 ; i < major.length ; i ++) { 
+for (int i=0 ; i < major.length ; i ++) {
 
 String majorinfo ="";
 
@@ -174,7 +174,7 @@ String majorinfo ="";
 	}
 	if(majorss[i].equals("weight")){
 		majorinfo += ", 근육 강화를 통한 몸의 균형적인 기능 심화";
-		
+
 	}
 	majorinfo = majorinfo.substring(1);
 %>
@@ -194,10 +194,10 @@ String majorinfo ="";
 String imsitimes = tser.get(0).getTtime() ;
 String [] time = imsitimes.split(",");
 
-for (int i=0 ; i < time.length ; i ++) { 
+for (int i=0 ; i < time.length ; i ++) {
 
 	if(time[i].equals("")){
-	
+
 	}
 	else{
 
@@ -270,7 +270,7 @@ for (int i=0 ; i < time.length ; i ++) {
 <div class="cert info" ><br>
 	<p class="hg" id="review">후기 및 문의사항</p><br>
 		<!-- 포스트는 여기 뒤에.  -->
-<% 
+<%
 	if(posts ==null || posts.size() <1){
 %>
 				<article> 아무도 포스트를 쓰지 않았어요... 당신의 도움이 필요해요! </article>
@@ -294,7 +294,7 @@ for (int i=0 ; i < time.length ; i ++) {
 			if(imtrainer == 1 || id.equals(posts.get(i).getWriter())){
 				showme = 1;
 			}
-			
+
 			if(showme == 1){
 %>
 			<article>
@@ -303,10 +303,10 @@ for (int i=0 ; i < time.length ; i ++) {
 				<div class="post_text fclear">
 					<%=posts.get(i).getContents() %>
 				</div>
-	<% 
+	<%
 		//삭제창
 		if(posts.get(i).getWriter().equals(id) ||  imtrainer ==1){
-	
+
 	%>
           <div class="deleter fright">
             <img style="width:10px; margin-top:5px; cursor:pointer;" src="img/icons/close33.png" onclick="deletethispost(this)">
@@ -315,28 +315,32 @@ for (int i=0 ; i < time.length ; i ++) {
 					<%}
 		boolean heartgood = true;
 		for(int l = 0 ; l < tpostzzim.size(); l++){
-			boolean zzimed = false;		
-			if(tpostzzim.get(l).getCpost() == posts.get(i).getNo()){
+			boolean zzimed = false;
+			if(tpostzzim.get(l).getTpost() == posts.get(i).getNo()){
 				int zcount = tpostzzim.get(l).getCount();
+				//out.print(tpostzzim.get(l).getZzimed());	//얼마 나오는지 보자. 
 				if(tpostzzim.get(l).getZzimed()==1){
 	%>
 					<div class="post_like fright" onclick="tpost_z_cancel(this)" data-no="<%=posts.get(i).getNo()%>">
-						<img src="img/heart_and_star/heart35.png"> 
+						<img src="img/heart_and_star/heart35.png"> <span><%=zcount %></span>
+					</div>
 	<%			}else{ %>
 					<div class="post_like fright" onclick="tpost_z(this)" data-no="<%=posts.get(i).getNo()%>">
-						<img src="img/heart_and_star/heart034.png"> 
+						<img src="img/heart_and_star/heart034.png"> <span><%=zcount %></span>
+					</div>
 	<%			} %>
-						<span><%=zcount %></span>
+						
 	<%
 				heartgood = false;
-			} 
+				break;
+			}
 		}
-		if(heartgood){	
+		if(tpostzzim.size()<1 && heartgood){
 	%>
 					<div class="post_like fright" onclick="tpost_z(this)" data-no="<%=posts.get(i).getNo()%>">
-						<img src="img/heart_and_star/heart034.png"> <span>0</span> 
-	<% } %>
+						<img src="img/heart_and_star/heart034.png"> <span>0</span>
 					</div>
+	<% } %>
 				<div class="post_writer fright"> by <%= posts.get(i).getWriter() %></div>
 			<% if(pcon == 1){ %>
 				<div class="post_conceal fright">전체 공개된 포스트. </div>
@@ -486,7 +490,7 @@ for (int i=0 ; i < time.length ; i ++) {
 		height: 600px;
 		padding-top: 20px;
 		position: fixed;
-		
+
     margin: 38px 0 200px 620px;
 		background-color: inherit;
 		background-color: white;
@@ -709,4 +713,3 @@ for (int i=0 ; i < time.length ; i ++) {
 	});
 
 </script>
-
