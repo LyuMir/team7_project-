@@ -305,7 +305,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="select_zzim2_YN" resultType="com.team7.vo.ZZIMBean" >
-		select * from team7_zzim2 where person = '${person}' AND trainer = ${trainer}
+		select * from team7_zzim2 where person = '${person}' AND trainer = ${id}
 	</select>
 	<select id="select_zzim3_YN" resultType="com.team7.vo.ZZIMBean" >
 		select * from team7_zzim3 where person = '${person}' AND club = ${club}

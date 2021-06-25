@@ -11,14 +11,14 @@ public class TrainerZAction {
 
 	public void tz(HttpServletRequest request, HttpServletResponse response) {
 		
+		
 		HttpSession session = request.getSession();
 		String id=(String)session.getAttribute("LOG_ID");
-		int trainerid = Integer.parseInt(request.getParameter("trianerid"));
-		
+		int trainerid = Integer.parseInt(request.getParameter("trainerid")); //이게 왜 자꾸 아이디가 넘어오자ㅣ
 		ZZIMBean zzim = new ZZIMBean();
 		zzim.setTrainer(trainerid);
 		zzim.setPerson(id);
-		
+		System.out.println("찜하러 이제 바티스가요");
 		new ZzimService().insert_Trainer(zzim);
 		
 	}
@@ -27,7 +27,7 @@ public class TrainerZAction {
 	public void tzC(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String id=(String)session.getAttribute("LOG_ID");
-		int trainerid = Integer.parseInt(request.getParameter("trianerid"));
+		int trainerid = Integer.parseInt(request.getParameter("trainerid"));
 		
 		ZZIMBean zzim = new ZZIMBean();
 		zzim.setTrainer(trainerid);

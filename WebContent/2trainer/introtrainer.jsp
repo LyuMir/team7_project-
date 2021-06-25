@@ -54,11 +54,10 @@
         <h1 class="hero__title">든든한 파트너 <br>데일리헬스!</h1>
         <p class="hero__snippet">평균 등록인원 000명! 데일리 헬스니까!</p>
         <ul class="btn-list">
-            <li class="btn-list__item"><a class="hero__btn  btn" href="">사업소개</a></li>
-            <li class="btn-list__item"><a class="hero__btn  btn" href="id_editform.trainer">내 정보 관리</a></li>
-	<% if(true){ %>
-            <li class="btn-list__item"><a class="hero__btn  btn" href="">예약관리</a></li>
-	<% }}%>
+            <li class="btn-list__item"><a class="hero__btn  btn" href="id_mypage.trainer">내 프로필</a></li>
+            <li class="btn-list__item"><a class="hero__btn  btn" href="id_editform.trainer">정보 수정</a></li>
+
+	<% }%>
         </ul>
       </div>
 <div class="main_with_main">
@@ -82,18 +81,12 @@
 <% }else{  // 등록 되어있는 사람. %>
 
 
-  <div><a href="id_mypage.trainer">▶나의 트레이너 페이지 보러가기</a></div>
-  
-
   <div>
-    올리신 트레이너 사진들 : 
+    <p>나의 프로필사진</p> 
   		<%for(int i = 0 ; i < photoBean.size(); i++){ %>
-        <img src="Files/trainer/<%=id%>/1/<%=photoBean.get(i).getPicture() %>">
+        <img src="Files/trainer/<%=id%>/<%=photoBean.get(i).getPicture() %>" width="300" align="middle">
       <%} %>
   </div>
-  <div><a href="">▶올린 사진 수정하기</a></div>
-  <div><a href="id_editform.trainer">▶내 트레이너 정보 수정하기</a></div>
-
 <% if(true){	//여기는 예약을 받은 사람만 보인다.  %>
 	<div>
     	<div class="j_title">당신이 받은 예약 : </div><br>

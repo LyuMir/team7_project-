@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.apache.ibatis.session.SqlSessionFactory" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
@@ -44,7 +45,7 @@ if( posts ==null || posts.size() <1 ) posts = new ArrayList<PostBean>();
 
 
 
-</div>
+
 <div class="dicclean">
 </div>
 
@@ -84,7 +85,7 @@ if( posts ==null || posts.size() <1 ) posts = new ArrayList<PostBean>();
     </div>
 
 
-<div id="gallery">
+<!-- <div id="gallery"> -->
 
   <div class="grid">
 
@@ -97,9 +98,9 @@ if( posts ==null || posts.size() <1 ) posts = new ArrayList<PostBean>();
 
 String picwhere = "";
   for(int j = 0 ; j < photos.size();j++){
-      if(!photos.get(j).getPicture().equals("") && 
+      if(!photos.get(j).getPicture().equals("") && //파일이 존재하고 (없을수도있음)
     		  photos.get(j).getId().contains(tser.get(i).getId()+"_")   ){
-        picwhere = "Files/trainer/"+tser.get(i).getId()+"/1/"+photos.get(j).getPicture();
+        picwhere = "Files/trainer/"+tser.get(i).getId()+"/"+photos.get(j).getPicture();
         break;
       } else{
           int k = (int)(Math.random() * 6)+1;

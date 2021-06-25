@@ -10,7 +10,7 @@ function zzimThis2(req){
     }
     else{
     	$.ajax({
-            type:"post",
+            type:"GET",
             url:url,
             dataType:"html",
         	async:false,
@@ -35,7 +35,7 @@ function zzimThis2_C(req){
 	// var
 
     	$.ajax({
-            type:"post",
+            type:"GET",
             url:url,
             dataType:"html",
         	async:false,

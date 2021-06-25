@@ -97,8 +97,8 @@ System.out.println(ddd+r+"개 db에 넣기 완료 (서버에 파일과는 다른) ");
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		PhotoBean pb = new PhotoBean();
 		List<PhotoBean> photos;
-		pb.setId(id);
-		pb.setNo(num);
+		pb.setId(id); //트레이너 이름을 가지고있습니다. 
+		pb.setNo(num); //-1 을 가지고있습니다. 
 		if(num == -1) {
 			//전체
 			photos = sqlsession.selectList("select_trainer_photo_all",pb);

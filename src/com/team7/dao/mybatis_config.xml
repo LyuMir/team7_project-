@@ -16,8 +16,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<dataSource type="POOLED">
 				<property name="driver" value="com.mysql.jdbc.Driver" />
 				<property name="url" value="jdbc:mysql://localhost:3306/team7?characterEncoding=UTF8&amp;serverTimeZone=UTC" />
-				<property name="username" value="team7_id" />
-				<property name="password" value="1234" />
+				<property name="username" value="root" />
+				<property name="password" value="qwer1234!" />
 			</dataSource>
 		</environment>
 	</environments>

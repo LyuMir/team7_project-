@@ -3,7 +3,7 @@
 
 <div class="container2" style="margin-top: 50px;">
   <!-- <div class="ad_text text3"><img src="img/logo1.png"></div> -->
-  <img src="img/logo1.png" style="margin-top: 20px;">
+  <img src="img/logo1.png" style="margin-top: 20px;" width="150">
   <div class="board_en">
     <div class="grid_main_0">
       <div class="board">
@@ -89,13 +89,14 @@
 </style>
 
 <script type="text/javascript">
-  var boTs = $('.boardname');
+  var boTs = $('.boardname'); /*  */
   var boxs = $('.boarddiv');
 
  
 postGetter();
 function postGetter(){
     var url = "indexPosts.post";
+    
     var datasss;
     $.ajax({
         type:"GET",

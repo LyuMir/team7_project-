@@ -89,7 +89,7 @@ request.setCharacterEncoding("UTF-8");
 
   <section class="hero">
     <div class="wrap__pic__00">
-      <img src="img\main3.jpg" class="main_pic_00">
+      <img src="img\main3.jpg" class="main_pic_00" >
     </div>
       <div class="text">
         <h1 class="hero__title">D a i l y  health.jy</h1>
@@ -101,28 +101,12 @@ request.setCharacterEncoding("UTF-8");
       </div>
   </section>
 
-<div class="container2">
-  <div >
-    <div class="containertext">
-      <h6 class="ad_text">! 부담없이 ! </h6>
-      <p class="hero__snippet">  데일리 헬스와 함께 미리 보는 헬스장 </p>
-    </div>
-    <div class="imgleft">
-    </div>
-    <p align="center">거품 없는 가격 공개</p>
-    <div class="imgright fright">
-    </div>
-    <div class="fclear"></div>
-    <p align="center">복잡한 상담은 NO!</p>
-    <div class="imgleft" style="margin: auto;">
-    </div>
-  </div>
-</div>
 
-<!--  여기에 게시물들 incl로 -->
+<!-- 최근 게시물 -->
 <%@ include file="../6posts/Index_post.jsp" %>
 
-
+<!-- 추천 게시물  -->
+<%@ include file="../6posts/index_recommend.jsp" %>
     </main>
 
 <!-- include로 뺀 푸터  -->

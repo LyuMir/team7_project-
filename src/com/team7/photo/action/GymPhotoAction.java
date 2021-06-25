@@ -18,22 +18,16 @@ public class GymPhotoAction {
 
         HttpSession session = request.getSession();
 		String bywhom = (String) session.getAttribute("LOG_ID");
-//		String num =  (String)session.getAttribute("num");
-//		String photonum = (String) session.getAttribute("photonum");
-//		MultipartRequest multif=new MultipartRequest(request,
-//				request.getServletContext().getRealPath("Files/dump"),
-//				5*1024*1024,
-//				"UTF-8",
-//				new DefaultFileRenamePolicy());	//임시로 세워뒀어요. 그냥 input으로 받으려고. 
-//		String num = multif.getParameter("num");
-//		String photonum = multif.getParameter("photonum");
-//		System.out.println(num);
-//		System.out.println(photonum);
-//		
-//		String photoid = bywhom+"_gym_"+num+"_"+photonum;
-//		String savefolder = "gym/"+bywhom+"/photonum";
+		String num =  (String)session.getAttribute("num");
+		String photonum = (String) session.getAttribute("photonum");
 		
-		new PhotoGymService().upload_gym_main(request);
+		System.out.println(num+"확인합");
+		System.out.println(photonum+"확인합");
+//		
+		String photoid = bywhom+"_gym_"+num+"_"+photonum;
+		String savefolder = "gym/"+bywhom+"/photonum";
+		
+		new PhotoGymService().upload_gym_main(request);//
 		
 	}
 	

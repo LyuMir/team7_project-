@@ -30,6 +30,9 @@ public class TrainerPhotoAction {
 //        HttpSession session = request.getSession();
 		String trainer = request.getParameter("trainer");
 		List<PhotoBean> photoBean = new PhotoTrainerService().getfilenames_trainerphoto(trainer, -1); // -1 means all
+		System.out.println("오는가요");
+		System.out.println(photoBean.get(0));
+		System.out.println(photoBean.get(1));
 		
 		request.setAttribute("photoBean", photoBean);
 		
