@@ -35,7 +35,10 @@
 <input type="text" name="coachname" ><br>
 	<div class="check_font" id="namecheck"></div>
 
-
+<span class="question"> <br>성별<br></span>
+<input type="radio" name="sex" value="female">여성
+<input type="radio" name="sex" value="male">남성
+	<div class="check_font" id="sexcheck"></div>
 <br><br>
 <span class="question"> 휴대폰 번호<br></span>
 *해당번호로 연락을 드릴 예정이니 정확한 번호를 입력해주세요.<br>
