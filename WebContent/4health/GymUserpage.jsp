@@ -23,9 +23,10 @@ List<PhotoBean> photoBean = (List<PhotoBean>) request.getAttribute("photoBean");
 List<PostBean> posts = (List<PostBean>) request.getAttribute("posts");
 List<ZZIMBean> gpostzzim = (List<ZZIMBean>) request.getAttribute("gpostzzim");
 
+
 List<ZZIMBean> zyn2 = (List<ZZIMBean>) request.getAttribute("zzimYN");
 boolean zyn = false;
-if(zyn2 !=null){
+if(zyn2 != null){
 	zyn = true;
 }
 
@@ -34,8 +35,6 @@ if(id.equals(gser.get(0).getOwner())){
 	imgymOwner=1;
 }
 %>
-
-
 
 
 	<main class="mainwrap_club" style="margin-top:50px;">
@@ -93,7 +92,8 @@ if(id.equals(gser.get(0).getOwner())){
 			</div>
 			<br>
 	<div class="btnnew">
-	<% if(zyn){ %>
+	<% if(zyn){ %> <!-- true면 찜취소야  -->
+	
 				<button data-id2="<%=gser.get(0).getGid() %>" id="z_zzim1" class="hero__btn1" onclick="zzimThis1_C(this)">찜취소 <img src="img/heart_and_star/heart34.png"></button>
 	<% }else{ %>
 				<button data-id2="<%=gser.get(0).getGid() %>" class="hero__btn1" onclick="zzimThis1(this)">찜하기 <img src="img/heart_and_star/heart034.png"></button>

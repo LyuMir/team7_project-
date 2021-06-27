@@ -153,6 +153,7 @@ public class ZzimService {
 		zzim.setPerson(id);
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		List<ZZIMBean> rlist= sqlsession.selectList("select_zzim1_YN", zzim);
+		
 
 		return rlist;
 		
@@ -198,6 +199,7 @@ public class ZzimService {
 		zzim.setPerson(id);
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
 		List<ZZIMBean> rlist= sqlsession.selectList("select_zzim2_YN", zzim);
+		System.out.println(rlist.size()+"사이즈가정말 0인거니?");
 
 		return rlist;
 		

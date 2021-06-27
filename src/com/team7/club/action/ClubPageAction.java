@@ -70,6 +70,7 @@ public class ClubPageAction implements Action{
 		List<PhotoBean> cpphotos = new PhotoClubService().getPs_cpost(Integer.parseInt(club_id));
 		List<PhotoBean> clubphoto = new PhotoClubService().getfilenames_clubmains(rlist.get(0).getAdmin(), Integer.parseInt(club_id));
 		List<ZZIMBean> cpostzzim= new ZzimService().select_cpost_Z(id0);
+		System.out.println(cpostzzim.get(0)+"있는지 확인합니다이이잉");
 		if(cpostzzim ==null) cpostzzim = new ArrayList<ZZIMBean>();
 		
 		request.setAttribute("mylist", mylist);

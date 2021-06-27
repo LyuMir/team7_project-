@@ -20,14 +20,14 @@ public class TrainerController extends javax.servlet.http.HttpServlet  {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");	//�궡媛� 異붽��븿
-		String RequestURI=request.getRequestURI();	//req 媛��졇�샂 :http://localhost:8080/WebProject0724_MVC2/boardList.bo
-		String contextPath=request.getContextPath(); 
-		String command=RequestURI.substring(contextPath.length()); 
+		String RequestURI=request.getRequestURI();	//req 가져옴 :http://localhost:8080/WebProject0724_MVC2/boardList.bo
+		String contextPath=request.getContextPath(); //http://localhost:8080/WebProject0724_MVC2/
+		String command=RequestURI.substring(contextPath.length()); //앞에 글자 지움 : boardList.bo
 
 
 		ActionForward forward=null;	
 		Action action=null;
-
+		//action : 할 일 지정  정확히는 action.execute()로. (인터페이스로 구성함)
 
 		HttpSession session = request.getSession(true);
 		int logined =0;

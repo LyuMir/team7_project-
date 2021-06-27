@@ -48,9 +48,16 @@ public class TrainerUserpageAction implements Action{
 
 		List<ZZIMBean> zzimYN = null;
 		String id = (String )request.getSession().getAttribute("LOG_ID");
-		if(id !=null)
+		if(id !=null) {
+			System.out.println("아이디감지!!!!");
 			zzimYN = new ZzimService().select_trainer_Z_YN(id, no);
-
+			System.out.println(no+id+"트레이너 넘버확인");
+			if(zzimYN.size()==0) {
+				System.out.println("왜 널이들어오는거지");
+				zzimYN = null;
+			}
+		}
+		
 		List<ZZIMBean> trainerzzim = new ZzimService().select_trainer_count2(id);
 		List<ZZIMBean> tpostzzim = new ZzimService().select_tpost_Z(id);
 		if (tpostzzim ==null) tpostzzim = new ArrayList<ZZIMBean>();

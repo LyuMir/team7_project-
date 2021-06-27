@@ -100,7 +100,7 @@ List<ZZIMBean> gz = (List<ZZIMBean>) request.getAttribute("gz");
 		
 			
 	%>
-  
+  sdfasdf
 <menu class="myprofile">
   <p class="title">내가 즐겨찾기한 헬스장</p>
   <input style="margin-left: 10px;" type="checkbox" name="" value=""> 

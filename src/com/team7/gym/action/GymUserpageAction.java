@@ -53,8 +53,16 @@ public class GymUserpageAction implements Action{
 		
 		List<ZZIMBean> zzimYN = null;
 		String id = (String )request.getSession().getAttribute("LOG_ID");
-		if(id !=null)
+		if(id !=null) {
+			System.out.println("아이디감지! 찜을 했는지 판단합니다!");
 			zzimYN = new ZzimService().select_gym_Z_YN(id, no);
+			System.out.println("사이즈감지"+zzimYN.size());
+			if(zzimYN.size()==0) {
+				zzimYN = null;
+			}
+			
+		}
+		System.out.println("확인합니다 널인가"+zzimYN);
 		
 		List<ZZIMBean> gpostzzim= new ZzimService().select_gpost_Z(id);
 

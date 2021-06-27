@@ -36,12 +36,6 @@
 	<div class="check_font" id="namecheck"></div>
 
 
-<span class="question"> <br>성별<br></span>
-<input type="radio" name="sex" value="female">여성
-<input type="radio" name="sex" value="male">남성
-	<div class="check_font" id="sexcheck"></div>
-
-
 <br><br>
 <span class="question"> 휴대폰 번호<br></span>
 *해당번호로 연락을 드릴 예정이니 정확한 번호를 입력해주세요.<br>
@@ -197,7 +191,7 @@
 <br><br><br>
 
 
-<button class="btn" type="" name="button" id="button11">보내기</button>
+<button class="btn" name="button" id="button11">보내기</button>
 
 
 
@@ -218,7 +212,7 @@
 	button.click(function(){
 		alert('???여기는 오나?');
 		if(true){ // 무엇을 쓰고, 저것을 하고, 이걸 채워야지 서밋 가능함. < 으로 해주세요. 
-
+			alert('완료');
 			aform.submit();
 		}
 	});

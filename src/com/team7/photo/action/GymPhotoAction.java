@@ -18,7 +18,8 @@ public class GymPhotoAction {
 
         HttpSession session = request.getSession();
 		String bywhom = (String) session.getAttribute("LOG_ID");
-		String num =  (String)session.getAttribute("num");
+		//String num =  (String) session.getAttribute("num");
+		Integer num = (Integer)session.getAttribute("num");
 		String photonum = (String) session.getAttribute("photonum");
 		
 		System.out.println(num+"»Æ¿Œ«’");

@@ -297,18 +297,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="select_zzim1_YN" resultType="com.team7.vo.ZZIMBean" >
-		select * from team7_zzim1 where person = '${person}' AND gym = ${gym}
+		select * from team7.team7_zzim1 where person = '${person}' AND gym = ${gym}
 	</select>
 	
 	<select id="select_zzim1_Y" resultType="com.team7.vo.ZZIMBean" >
-		select * from team7_zzim1 where person = '${person}'
+		select * from team7.team7_zzim1 where person = '${person}'
 	</select>
 	
 	<select id="select_zzim2_YN" resultType="com.team7.vo.ZZIMBean" >
-		select * from team7_zzim2 where person = '${person}' AND trainer = ${id}
+		select * from team7.team7_zzim2 where person = '${person}' AND trainer = ${trainer}
 	</select>
+	
 	<select id="select_zzim3_YN" resultType="com.team7.vo.ZZIMBean" >
-		select * from team7_zzim3 where person = '${person}' AND club = ${club}
+		select * from team7.team7_zzim3 where person = '${person}' AND club = ${club}
 	</select>
 	
 	
@@ -415,7 +416,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select  id="selectzzim_trainer" resultType="com.team7.vo.Trainer_info" >
 	
-	select*from team7.team7_trainer where id in (select gym from team7.team7_zzim2 where person = '${person}')
+	select*from team7.team7_trainer where id in (select trainer from team7.team7_zzim2 where person = '${person}')
 	
 	</select>
 	

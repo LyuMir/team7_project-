@@ -26,8 +26,8 @@ public class PostGetAction {
 		ArrayList<Integer> types = new ArrayList<Integer>();
 		
 //		types.add(0);
-		for(int j = 0 ; j < 3; j ++) {
-			for(int i = 0 ; i < 3 ; i++) {
+		for(int j = 0 ; j <arr.size(); j ++) {
+			for(int i = 0 ; i < arr.size() ; i++) {
 				if(arr.get(j).size()>i) {
 					titles.add(arr.get(j).get(i).getTitle());
 					texts.add(arr.get(j).get(i).getContents());
@@ -37,6 +37,7 @@ public class PostGetAction {
 			}
 		}
 		
+		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<div>");
@@ -44,7 +45,6 @@ public class PostGetAction {
 		size0 = Integer.min(Integer.min(titles.size(), texts.size()),authors.size());
 		System.out.println(size0);
 		for(int i = 0 ; i < size0 ; i++) {
-			out.println("<div data-title='"+titles.get(i)+"' data-type='"+types.get(i)+"'");
 			out.println(" data-author='"+authors.get(i)+"'     >");
 			out.println(texts.get(i));
 			out.println("</div>");

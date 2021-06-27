@@ -22,6 +22,7 @@ public class GymCreateAction implements Action{
 		
 //		int no = Integer.parseInt(request.getParameter("no"));
 		String gname = request.getParameter("gname");
+		System.out.println(gname+"확인용");
 		String address_num = request.getParameter("adress_num"); //라디오버튼
 		String address = request.getParameter("address1")+","+request.getParameter("address2")+","+request.getParameter("address3");
 		String gphone = request.getParameter("gphone");
@@ -33,13 +34,15 @@ public class GymCreateAction implements Action{
 		+","+request.getParameter("sixprice")+","+request.getParameter("yearprice");
 	
 
-		String gtype="";
+		//String gtype="";
 		String [] gtypeimsi = request.getParameterValues("gtype");
-		for(int i=0 ; i<gtypeimsi.length ; i++) {
-			gtype = gtype+","+gtypeimsi[i];
-			
-		}// 스플릿으로 빼온다. 자동으로 나온 배열 i 넣는다. ;
-		gtype = gtype.substring(1);
+		System.out.println(gtypeimsi[0]+"널인가 널인가널인가");
+		
+//		for(int i=0 ; i<gtypeimsi.length ; i++) {
+//			gtype = gtype+","+gtypeimsi[i];
+//			
+//		}// 스플릿으로 빼온다. 자동으로 나온 배열 i 넣는다. ;
+//		gtype = gtype.substring(1);
 		
 		
 		String contents = request.getParameter("gcontents"); //셀렉트박스
@@ -49,8 +52,18 @@ public class GymCreateAction implements Action{
 		String gsmalltext = request.getParameter("gsmalltext");
 		
 		
-		
+		String gtypes="";
 		Gym_info gym = new Gym_info();
+		if(gtypeimsi ==null) {}
+		else {
+			for(String sth : gtypeimsi) {
+				gtypes +=sth+",";
+			}
+			gtypes =gtypes.substring(0,gtypes.length()-1);
+			gym.setGtype(gtypes);
+		}
+		
+		
 		
 		gym.setOwner(owner);
 		gym.setGname(gname);
@@ -59,7 +72,7 @@ public class GymCreateAction implements Action{
 		gym.setGphone(gphone);
 		gym.setOpentime(opentime);
 		gym.setGprice(gprice);
-		gym.setGtype(gtype);
+		//gym.setGtype(gtype);
 		gym.setContents(contents);
 		gym.setGpage(gpage);
 		gym.setGcerti(gcerti);
@@ -83,10 +96,10 @@ public class GymCreateAction implements Action{
 		
 		GymService gser = new GymService();
 		gser.insert(gym);
-		
+		System.out.println("서비스로갔음 ");
 		
 		ActionForward forward= new ActionForward();
-		forward.setPath("Search.health");
+		forward.setPath("index.jsp");
 		return forward;
 	} 
 

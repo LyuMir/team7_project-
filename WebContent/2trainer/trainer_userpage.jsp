@@ -82,20 +82,21 @@ if (photoBean != null && photoBean.size() > 1) {
 			</div>
 			<div class="zzim" style="width: 100%;">
 				<%
-				if (zyn||id=="") {//트루면!! 찜이 비어있으면!!! //로그인안할시에 
+				if (zyn) {//트루면!! 찜이 비어있으면!!! //로그인안할시에 
 				%>
-				
-				<button data-id2="<%=tser.get(0).getNo()%>" class="hero__btn1"
-					onclick="zzimThis2(this)">
-					찜하기 <img src="img/heart_and_star/heart034.png">
-				</button>
-				
-				<% }else{%>
 				<button data-id2="<%=tser.get(0).getNo()%>" class="hero__btn1"
 					onclick="zzimThis2_C(this)">
 					찜 취소 <img src="img/heart_and_star/heart34.png">
 
 				</button>
+				
+				
+				<% }else{%>
+				<button data-id2="<%=tser.get(0).getNo()%>" class="hero__btn1"
+					onclick="zzimThis2(this)">
+					찜하기 <img src="img/heart_and_star/heart034.png">
+				</button>
+				
 				<%
 				}
 				%>

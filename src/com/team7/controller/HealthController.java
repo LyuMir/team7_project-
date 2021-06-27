@@ -66,9 +66,10 @@ public class HealthController extends javax.servlet.http.HttpServlet  {
 			forward.setPath("_FORWHERE.jsp?forwhere=4health/gym_Apply.jsp");
 		}
 		else if(command.equals("/id_gymcreate.health")) {
+			System.out.println("여기는와야지");
 			action  = new com.team7.gym.action.GymCreateAction();
-			System.out.print("d");
 			try {
+				System.out.println("여기는 오나ㅣ");
 				forward=action.execute(request, response); //메서드실행함
 			} catch (Exception e) {
 				e.printStackTrace();
