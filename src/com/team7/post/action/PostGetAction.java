@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team7.club.service.ClubService;
 import com.team7.post.service.PostService;
+import com.team7.vo.ActionForward;
 import com.team7.vo.ClubBean;
 import com.team7.vo.PostBean;
 
@@ -19,15 +20,17 @@ public class PostGetAction {
 		
 		ArrayList<List<PostBean>> arr = new ArrayList<List<PostBean>>();
 		arr = new PostService().getPOSTsForIndex();
-//		arr.get(0).get(0).getTitle()
 		ArrayList<String> titles = new ArrayList<String>();
 		ArrayList<String> texts = new ArrayList<String>();
 		ArrayList<String> authors = new ArrayList<String>();
 		ArrayList<Integer> types = new ArrayList<Integer>();
 		
+		List<PostBean> gym = arr.get(0);
+		List<PostBean> trainer = arr.get(0);
+		List<PostBean> club = arr.get(0);
 //		types.add(0);
-		for(int j = 0 ; j <arr.size(); j ++) {
-			for(int i = 0 ; i < arr.size() ; i++) {
+		for(int j = 0 ; j < 3; j ++) {
+			for(int i = 0 ; i < 3 ; i++) {
 				if(arr.get(j).size()>i) {
 					titles.add(arr.get(j).get(i).getTitle());
 					texts.add(arr.get(j).get(i).getContents());
@@ -36,29 +39,31 @@ public class PostGetAction {
 				}
 			}
 		}
-		
-		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<div>");
 		int size0;
 		size0 = Integer.min(Integer.min(titles.size(), texts.size()),authors.size());
-		System.out.println(size0);
+		System.out.println(size0+" 확인좀");
 		for(int i = 0 ; i < size0 ; i++) {
+			out.println("<div data-title='"+titles.get(i)+"' data-type='"+types.get(i)+"'");
 			out.println(" data-author='"+authors.get(i)+"'     >");
 			out.println(texts.get(i));
 			out.println("</div>");
 		}
-		out.println("</div>");
+	out.println("</div>");
 	}
 	
 	public void indexadGetter(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
 		ArrayList<String> rlistlist = new ArrayList<String>();
 		ArrayList<String> names = new ArrayList<String>();
 		ArrayList<String> titles = new ArrayList<String>();
 		ArrayList<String> texts = new ArrayList<String>();
 		ArrayList<String> excs = new ArrayList<String>();
 //		ArrayList<String> names = new ArrayList<String>();
+		
+		System.out.println("인덱스게터왔습니다");
 		List<ClubBean> rlist = new ClubService().zzim_order();
 		for (int i = 0; i < rlist.size(); i++) {
 			names.add(rlist.get(i).getAdmin());
@@ -75,5 +80,6 @@ public class PostGetAction {
 			out.print("' data-text='"+texts.get(i)+"'  data-exc='"+excs.get(i)+"'></div>");
 		}
 		out.println("</div>");
+		System.out.println(out+"이걸 확인하려합니다.");
 	}
 }

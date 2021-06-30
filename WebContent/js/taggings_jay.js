@@ -20,18 +20,19 @@
 
     if (tags) {                                   // If the element had tags
       tags.split(',').forEach(function(tagName) { // Split at comma and
-
        if (tagged[tagName] == null || tagged[tagName] == "") {            // If object doesn't have tag
           tagged[tagName] = [];                   // Add empty array to object
         }
+	
+
           tagged[tagName].push(article);       // Add the image to the array
                  
       });
     }
 
     if (tags2) {                                   // If the element had tags
-      tags2.split(',').forEach(function(tagName) { // Split at comma and
-
+      tags2.split(',').forEach(function(tagName) { // Split at space <and address
+		alret(tagName);
         if (tagged2[tagName] == null || tagged2[tagName] == "") {            // If object doesn't have tag
           tagged2[tagName] = [];                   // Add empty array to object
         }
@@ -68,7 +69,7 @@
     }).appendTo($buttons1);                         // Add to the buttons
   });
   $.each(tagged2, function(tagName) {               // For each tag name
-    $('<button/>', {                               // Create empty button
+    $('<button/>', {  								 // Create empty button
       text: tagName + ' (' + tagged2[tagName].length + ')', // Add tag name
       click: function() {                          // Add click handler
         $(this)                                    // The button clicked on
@@ -77,7 +78,7 @@
           .removeClass('active');                  // Remove active from siblings
         $articles                                      // With all of the images
           .hide(500)                                  // Hide them
-          .filter(tagged2[tagName])                 // Find ones with this tag
+          .filter(tagged2)                 // Find ones with this tag
           .fadeIn(300);                                // Show just those images
       }
     }).appendTo($buttons2);                         // Add to the buttons

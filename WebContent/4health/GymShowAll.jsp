@@ -20,16 +20,7 @@
       <link rel="stylesheet" type="text/css" href="css/picpiccard.css"> 
       <link rel="stylesheet" type="text/css" href="css/gridgrid_new.css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	21d928db4da229461e099041921f1bbc"></script>
-<script>
-		var container3 = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
 
-		var map = new kakao.maps.Map(container3, options);
-
-	</script>
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -44,29 +35,7 @@ if( posts ==null || posts.size() <1 ) posts = new ArrayList<PostBean>();
 
 
 <hr>
-<div id="map" style="width:100%;height:350px;"></div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
-
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-// 마커가 표시될 위치입니다
-var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);
-
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-    position: markerPosition
-});
-
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
-</script>
 <div class="container00">
   <img src="img\main3look.jpg" class="pic_000">
   <div class="text00">
@@ -80,18 +49,11 @@ marker.setMap(map);
 
 
 
-<div class="dicclean">
-</div>
-
-  본 서비스는 .....   <a href="" class="href">코치검증절차</a>
-  <br>
-
+<div class="dicclean"></div>
 <hr>
-
 
 <a id="showHere"></a>
 <main class="mainwrap">
-
 
   <div class="container2">
     <div >
@@ -102,7 +64,7 @@ marker.setMap(map);
       </div>
     </div>
   </div>
-
+<hr>
   <div id="gallery">
 
 <!-- 태그버튼 여기  -->
@@ -138,13 +100,23 @@ String picwhere = "";
         picwhere = "img/exc/gym"+k+".jpg";
       }
 	} %>
+	
         <img class="card__img" src="<%=picwhere %>">
       </div>
       <div class="card__content2">
         <div class="content__header"><%=gser.get(i).getGname()%> </div>
         <div class="content__text"><%=gser.get(i).getGsmalltext()%></div>
         <div class="content_what"> <span><%= gser.get(i).getGtype() %></span></div>
-        <div class="content_where">장소 : <span><%=gser.get(i).getAddress()%></span></div>
+        <%
+        String imsiCity = gser.get(i).getAddress();
+		String city[] = imsiCity.split(",");
+		String oneAd = city[0];
+		String theone[] = city[0].split(" ");
+		String cityone = theone[0];
+		
+        
+        %>
+        <div class="content_where">장소 : <span><%=cityone%></span></div>
         <div class="card__heart" style="position:unset;">
             <!-- heart zzim의 관계 설정. ... onclick="Zzimshow_club(this)" -->
             <div class="zzimSystem"  data-id="<%=gser.get(i).getGid()%>">

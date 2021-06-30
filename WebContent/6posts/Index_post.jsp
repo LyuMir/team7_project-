@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page import="com.team7.vo.PostBean" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.text.*" %>
+
+<% request.setCharacterEncoding("UTF-8"); ;
 
 
+
+
+%>
 <div class="container2" style="margin-top: 50px;">
   <!-- <div class="ad_text text3"><img src="img/logo1.png"></div> -->
   <img src="img/logo1.png" style="margin-top: 20px;" width="150">
@@ -110,7 +119,7 @@ function postGetter(){
 
     // return datasss;
 
-    var grid_main_0 = $('.grid_main_0');
+     var grid_main_0 = $('.grid_main_0');
     var stmt = "";
     var dd11 = datasss.children('div');
     for (var i = 0; i < dd11.length; i++) {
@@ -120,7 +129,7 @@ function postGetter(){
       else if(dd11.eq(i).data('type') == 3) stmt += "<div class='boardname'>최근 등록된 소모임글! </div><div class='boarddiv'>";
       stmt += "제목 : "+dd11.eq(i).data('title')+"<br>글쓴이 :"+dd11.eq(i).data('author')+"<br>내용 :"+dd11.eq(i).text();
       stmt += "</div></div>";
-    }
+    } 
 
     grid_main_0.html(stmt);
 

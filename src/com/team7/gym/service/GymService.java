@@ -9,6 +9,7 @@ import com.team7.vo.Gym_info;
 import com.team7.vo.MemberInfo1;
 import com.team7.vo.MemberLogInfo;
 import com.team7.vo.PageInfo;
+import com.team7.vo.Trainer_info;
 
 public class GymService {
 

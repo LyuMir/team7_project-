@@ -8,18 +8,11 @@
 <link rel="stylesheet" href="css/mypage.css?ver=<%=System.currentTimeMillis()%>">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="js/DAUM_adress.js"></script>
-
-</head>
-
 <%
-request.setCharacterEncoding("UTF-8");
-
-
-
-List<MemberInfo1> minfo = (List<MemberInfo1>) request.getAttribute("minfo");
-
-List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
+String choice =request.getParameter("aaa");
+String id = (String) session.getAttribute("LOG_ID");
 %>
+</head>
 <!-- Start jside Menu -->
 <div class="main">
   <h2>내 프로필</h2>
@@ -30,11 +23,11 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
         <div class="col">
           <div class="row for-pic">
            <div class="profile-pic">
-             <img src="img/asif-mughal.jpg" alt="Asif Mughal" />
+             <img src="img/eye.jpg" alt="Asif Mughal" />
            </div>
          </div>
          <div class="row for-name">
-           <h3 title="User Name"> <%=minfo.get(0).getName() %> </h3>
+           <h3 title="User Name"><%=id %></h3>
            <span class="tagline"> 닉네임 </span>
          </div>
        </div> <!--//col-->
@@ -46,7 +39,7 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
       <li><a onclick="panelControl(2)"> <i class="material-icons">bar_chart</i> 최근 본 페이지 </a></li>
       <li class="has-sub"> <span class="dropdown-heading"> <i class="material-icons">collections</i> 나의 관심바구니 </span>
        <ul>
-        <li> <a href="myhealthzzim.mypage"> 나의 헬스장 </a> </li>
+        <li> <a onclick="acyncMovePage('myhealthzzim.mypage')"> 나의 헬스장 </a> </li>
         <li> <a onclick="panelControl(32)"> 나의 트레이너</a> </li>
         <li> <a onclick="panelControl(33)"> 나의 소모임</a> </li>
 
@@ -65,64 +58,11 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 
 <div class="myprofile" id="pp11">
   <!--  이 아래부분만 바뀌면 됩니다 -->
-  <div class="thunbox">
-    <img class="profile_img2" src="a.jpeg">
-    <p class="grade"><%=minfo.get(0).getState() %></p>
-  </div>
+<div>
 
-  <h3 class="textmp">김윤영 회원님</h3>
-  <br>
-  <div class="myinfo">
-    <div id="info0">
-      <h4> 성함 : <%=minfo.get(0).getName() %></h4>
-      <h4> ID : <%=minfo.get(0).getId() %> </h4>
-      <h4> 이메일 : <%=minfo.get(0).getEmail() %> </h4>
-      <h4> 주소 : <%=minfo.get(0).getAddress() %> </h4>
-      <h4> 관심사 : <%=minfo.get(0).getInterest() %></h4>
-      <h4> 가입일 : <%=minfo.get(0).getJoindate() %></h4>
-      <div class="middler"><button type="button" name="button" class="btn" onclick="editpanel()">정보수정</button></div>
-    </div>
-    <div id="infoP">
-      <form id="editForm" action="edit_info.mypage" method="post">
-        <h4>성함 : <input id="name000" type="text" name="name" value="<%=minfo.get(0).getName() %>"> </h4>
-        <h4>ID : <%=minfo.get(0).getId() %></h4>
-        <!-- <input type="text" name="id" value="<%=minfo.get(0).getId() %>"> 
-          아이디는 못 바꾼다. -->
-  <% 
-    String email = minfo.get(0).getEmail();
-    String [] email2 = email.split("@");
-    email = email2[0] ;
-  %>
-        <h4>이메일 : <%=minfo.get(0).getEmail() %></h4><!-- 
-        <input type="text" name="email" value="<%=email %>"> @ 
-        <select>
-          <option></option>
-          <option></option>
-          <option></option>
-        </select> -->
-        <h4>주소 : <span id="addressSpan"></span> <br>
-          <input type="text" id="sample4_postcode" placeholder="우편번호" maxlength="6" name="sample4_postcode">
-          <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" >
-          <input type="text" id="sample4_roadAddress" placeholder="도로명주소" readonly="true" class="sample4_roadAddress placeholder_gray" name="adress">
-          <input type="text" id="sample4_jibunAddress" placeholder="지번주소" readonly="true" class="sample4_jibunAddress placeholder_gray" name="adress">
-          <input type="text" id="sample4_detailAddress" placeholder="상세주소" class="" name="sample4_detailAddress">
-        </h4>
-        <h4>관심사 : 
-          <input type="checkbox" name="interest" value="건강">건강   
-          <input type="checkbox" name="interest" value="몸매">몸매  
-          <input type="checkbox" name="interest" value="체중관리">체중관리
-          <input type="checkbox" name="interest" value="식단조절">식단조절  
-          <input type="checkbox" name="interest" value="다이어트">다이어트  
-          <input type="checkbox" name="interest" value="근육 증가">근육 증가
-        </h4>
-      </form>
-      <div class="middler">
-        <button class="btn" onclick="editcancel()">취소</button>
-        <button class="btn" onclick="editsave()">저장하기</button>
-      </div>
-    </div>
-  </div>
+  <%@ include file="myprofile.jsp" %>
 
+</div>
 </div>
 <div class="myprofile displaynone" id="pp22"> <!-- 최근 본 페이지 -->
   
@@ -146,6 +86,8 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 <!--jSide Menu Js-->
 <script src="js/jquery.jside.menu.js"></script>
 <script>
+
+
 
   var info0 = $('#info0');
   var infoP = $('#infoP');
@@ -172,6 +114,26 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
   var pp32 = $('#pp32');
   var pp33 = $('#pp33');
   var pp4 = $('#pp44');
+  
+  function acyncMovePage(url){
+      // ajax option
+      var ajaxOption = {
+              url : url,
+              async : true,
+              type : "POST",
+              dataType : "html",
+              cache : false
+      };
+      
+      $.ajax(ajaxOption).done(function(data){
+          // Contents 영역 삭제
+          $('#pp11').children().remove();
+          // Contents 영역 교체
+          $('#pp11').html(data);
+      });
+  }
+
+  
 
   function panelControl(req){
 
@@ -189,8 +151,23 @@ List<PostBean> cposts = (List<PostBean>) request.getAttribute("cposts");
 
     }
     else if(req == 31){ // 나의 헬스장
-      pp31.removeClass('displaynone');
-      
+     pp31.removeClass('displaynone');
+    
+     var url = "myhealthzzim.mypage";
+     var datasss;
+     var ajaxOption ={
+         type:"GET",
+         url:url,
+         async:false,
+         dataType:"html",
+         };
+     $.ajax(ajaxOption).done(function(data){
+    	 
+    	 $('#pp11').html(data)
+     });
+
+     
+   
     }
     else if(req == 32){ // 나의 트레이너
       

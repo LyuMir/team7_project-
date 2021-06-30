@@ -47,11 +47,9 @@
         <h1 class="hero__title">헬스장도 역시 <br>데일리헬스!</h1>
         <p class="hero__snippet">평균 등록인원 000명! 데일리 헬스니까!</p>
         <ul class="btn-list">
-            <li class="btn-list__item"><a class="hero__btn  btn" href="">사업소개</a></li>
-            <li class="btn-list__item"><a class="hero__btn  btn" href="id_editform.health">헬스장 정보 관리</a></li>
-  <% if(true){ %>
-            <li class="btn-list__item"><a class="hero__btn  btn" href="">예약관리</a></li>
-  <% }}%>
+            <li class="btn-list__item"><a class="hero__btn  btn" href="id_editform.health">정보 수정</a></li>
+ 
+  <% }%>
         </ul>
       </div>
 <div class="main_with_main">

@@ -24,7 +24,7 @@ public class GymCreateAction implements Action{
 		String gname = request.getParameter("gname");
 		System.out.println(gname+"확인용");
 		String address_num = request.getParameter("adress_num"); //라디오버튼
-		String address = request.getParameter("address1")+","+request.getParameter("address2")+","+request.getParameter("address3");
+		String address = request.getParameter("adress1")+","+request.getParameter("adress2")+","+request.getParameter("address3");
 		String gphone = request.getParameter("gphone");
 		
 		String opentime = request.getParameter("opentime")+","+request.getParameter("fromthistime")+","+request.getParameter("tothistime");

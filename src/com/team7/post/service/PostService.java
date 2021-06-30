@@ -93,9 +93,9 @@ public class PostService {
 
 	public ArrayList<List<PostBean>> getPOSTsForIndex(){
 		SqlSession sqlsession = new Class_DAO().get_conn().openSession();
-		List<PostBean> post1 = sqlsession.selectList("select_POST_for_index1");
-		List<PostBean> post2 = sqlsession.selectList("select_POST_for_index2");
-		List<PostBean> post3 = sqlsession.selectList("select_POST_for_index3");
+		List<PostBean> post1 = sqlsession.selectList("select_POST_for_index1");//짐
+		List<PostBean> post2 = sqlsession.selectList("select_POST_for_index2");//트레이너
+		List<PostBean> post3 = sqlsession.selectList("select_POST_for_index3");//소모임
 		ArrayList<List<PostBean>> posts = new ArrayList<List<PostBean>>();
 		posts.add(post1);
 		posts.add(post2);

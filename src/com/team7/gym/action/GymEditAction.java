@@ -31,8 +31,8 @@ public class GymEditAction implements Action{
 		
 //		int no = Integer.parseInt(request.getParameter("no"));
 //		String gname = request.getParameter("gname");
-		String address_num = request.getParameter("adress_num"); //라디오버튼
-		String address = request.getParameter("address1")+","+request.getParameter("address2")+","+request.getParameter("address3");
+		String address_num = request.getParameter("sample4_postcode"); //라디오버튼
+		String address = request.getParameter("adress1")+","+request.getParameter("adress2")+","+request.getParameter("address3");
 		String gphone = request.getParameter("gphone");
 		
 		String opentime = request.getParameter("opentime")+","+request.getParameter("fromthistime")+","+request.getParameter("tothistime");
@@ -62,7 +62,7 @@ public class GymEditAction implements Action{
 		Gym_info gym = new Gym_info();
 		
 		gym.setOwner(owner);
-//		gym.setGname(gname);
+		//gym.setGname(gname);
 		gym.setAddress_num(address_num);
 		gym.setAddress(address);
 		gym.setGphone(gphone);

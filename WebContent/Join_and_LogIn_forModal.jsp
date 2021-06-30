@@ -18,7 +18,7 @@
 	<div class="logo_loc">
 		<img src="img/logo1.png">
 		<div class="closeModal">
-			<img id="closeModal" src="img/icons/close33.png">
+			<a href="index.jsp"> <img id="closeModal" src="img/icons/close33.png"></a>
 		</div>
 	</div>
 	<div class="joiner_container" id="joiner_container">
@@ -240,8 +240,8 @@
 <script type="text/javascript">
 		var fail2 = "<%=fail2%>";
 		var log_id = "<%=log_id%>";
-		var whatdo = "<%=whatdo%>
-	";
+		var whatdo = "<%=whatdo%>";
+		
 	//alert(fail2 + log_id + whatdo);
 </script>
 

@@ -101,7 +101,7 @@ request.setCharacterEncoding("UTF-8");
       </div>
   </section>
 
-
+<%@ include file="../6posts/Testing.jsp" %>
 <!-- 최근 게시물 -->
 <%@ include file="../6posts/Index_post.jsp" %>
 

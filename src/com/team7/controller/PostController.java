@@ -14,6 +14,7 @@ import com.team7.club.action.Action;
 import com.team7.photo.service.PhotoClubService;
 import com.team7.post.action.PostActions;
 import com.team7.post.action.PostGetAction;
+import com.team7.post.action.PostTest;
 import com.team7.vo.ActionForward;
 
 @WebServlet("*.post")
@@ -61,6 +62,10 @@ public class PostController extends javax.servlet.http.HttpServlet
 		else if(command.equals("/indexPosts.post")){
 			new PostGetAction().indexGetter(request, response);
 			return; //안가. 
+		}
+		else if(command.equals("/TestindexPosts.post")){
+			new PostTest().TestindexGetter(request, response);
+			return; //안가.  //테스트 하는중
 		}
 		else if(command.equals("/index_ad.post")) {
 			new PostGetAction().indexadGetter(request,response);

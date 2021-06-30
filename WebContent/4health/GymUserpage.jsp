@@ -73,11 +73,15 @@ if(id.equals(gser.get(0).getOwner())){
 			<%= gser.get(0).getGsmalltext() %>
 			</p>
 			<div class="info">
-
+		<%String imsiCity = gser.get(0).getAddress();
+		String city[] = imsiCity.split(",");
+		String oneAd = city[0];
+		
+		%>
 
 			<div>
 			<img src="img/time.png" class="littleimg">	<p class="label">헬스장 주소</p>
-			<br><p style="font-size: 13px; margin:0 0;"><%= gser.get(0).getAddress() %></p>
+			<br><p style="font-size: 13px; margin:0 0;"><%= oneAd %></p>
 			</div>
 
 			<div>

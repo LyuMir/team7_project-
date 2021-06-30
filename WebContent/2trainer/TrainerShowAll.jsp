@@ -66,6 +66,7 @@ if( posts ==null || posts.size() <1 ) posts = new ArrayList<PostBean>();
           <div >
 
             <div class="containertext">
+            
           <h3 > 맞춤 코치찾기 </h3>
           <p class="hero__snippet">  가격 정찰제를 통한 신뢰! </p>
         </div>
@@ -90,8 +91,7 @@ if( posts ==null || posts.size() <1 ) posts = new ArrayList<PostBean>();
   <div class="grid">
 
      <% for(int i =0 ; i < tser.size() ; i++){ %>
-
-      <article style="margin:7px;" class="grid__item" data-tags="<%= tser.get(i).getTmajor() %>" data-name="<%=tser.get(i).getTname() %>" onclick="javascript:window.location.href='trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>'">
+      <article style="margin:7px;" class="grid__item" data-tags="<%= tser.get(i).getTmajor().substring(0,tser.get(i).getTmajor().length()-1) %>" data-name="<%=tser.get(i).getTname()%>" onclick="javascript:window.location.href='trainerUserpage.trainer?number=<%= tser.get(i).getNo()%>'">
         <div class="card">
           <div class="card__img">
 <%
@@ -114,7 +114,7 @@ String picwhere = "";
         <div class="card__content2">
           <div class="content__header"><%=tser.get(i).getTname() %> </div>
           <div class="content__text"><%=tser.get(i).getTsmalltext()%></div>
-          <div class="content_what">서비스 : <span><%= tser.get(i).getTmajor() %></span></div>
+          <div class="content_what">서비스 : <span><%= tser.get(i).getTmajor().substring(0,tser.get(i).getTmajor().length()-1) %></span></div>
           <div class="content_where">장소 : <span><%=tser.get(i).getTwhere()%></span></div>
 					<div class="card__heart" style="position:unset;">
             <!-- heart zzim의 관계 설정. ... onclick="Zzimshow_club(this)" -->

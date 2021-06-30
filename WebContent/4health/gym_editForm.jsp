@@ -21,6 +21,8 @@
 
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+<script type="text/javascript" src="js/DAUM_adress.js"></script>
+
       <link rel="stylesheet" type="text/css" href="css/gymform.css">
 
 
@@ -32,7 +34,7 @@
  * 수정 작업 후 꼭 수정하기를 눌러주세요. <br>
  *수정 불가한 항목 수정 혹은 정보 삭제를 원하시는 경우 데일리 헬스 팀에 문의해주세요 . <br> <a href="qna.notice">문의하러가기 </a>  <br>
     </div>
-<form action="id_gymcreate.health" method="post" id="form00">
+<form action="id_gymedit.health" method="post" id="form00">
   <br><br>
 <span class="question">  등록후 최소 6개월간은 데일리 헬스에서 활동을 해주셔야합니다. 동의하십니까?</span><br>
 <input type="radio" name="agree"checked disabled> 네, 동의합니다
@@ -156,18 +158,23 @@
 <span class="question"> 헬스장 주소 <br></span>
 * 헬스장의 정확한 주소지를 입력해주세요.<br>
 <div class="form_adress">
-  <div class="oneline_plz">
-    <input type="text" id="postcode" placeholder="우편번호" maxlength="6" class="input00"  name="sample4_postcode">
-    <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn">
-  </div>
-  <input type="text" id="sample4_roadAddress" placeholder="도로명주소" readonly="true" class="address" name="adress1">
-  <input type="text" id="sample4_jibunAddress" placeholder="지번주소" readonly="true" class="address" name="adress2"><br>
-  <!-- <span id="guide" style="color:#999;display:none; "></span> -->
-  <input type="text" id="sample4_detailAddress" placeholder="상세주소" class="address" name="address3">
-  <input type="hidden" id="sample4_extraAddress" placeholder="참고항목" class="input00"  >
-</div>
+			<div class="oneline_plz">
+				<input type="text" id="sample4_postcode" placeholder="우편번호" maxlength="6"
+					class="input00" name="sample4_postcode" value=""> <input
+					type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"
+					class="btn">
+			</div>
+			<input type="text" id="sample4_roadAddress" placeholder="도로명주소"
+				readonly="true" class="address" name="adress1"> <input
+				type="text" id="sample4_jibunAddress" placeholder="지번주소"
+				readonly="true" class="address" name="adress2"><br>
+			<!-- <span id="guide" style="color:#999;display:none; "></span> -->
+			<input type="text" id="sample4_detailAddress" placeholder="상세주소"
+				class="address" name="address3"> <input type="hidden"
+				id="sample4_extraAddress" placeholder="참고항목" class="input00">
+		</div>
 
-</script>
+
 
 <br><br>
 
